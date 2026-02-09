@@ -1,0 +1,27 @@
+// colors
+$bg: #1c1c1e;
+$bg-rgba: rgba(28, 28, 30, 0.5);
+$color-white: #fff;
+$border-color: #747474;
+$color-primary: #f6b823;
+$icon-color: #242426;
+$error-color: #FF4F4F;
+
+// fonts
+$font-source-code-pro: "Source Code Pro", monospace;
+$font-pixelify-sans: "Pixelify Sans", system-ui;
+$font-amiro: "Arimo", sans-serif;
+
+// misc
+$transition: 0.25s ease-in-out;
+$linear-transition: 0.5s linear;
+
+// media queries: widths
+$extra-large: 2000px;
+$extra-small: 431px;
+$desktop: 1500px;
+$tablet: 1025px;
+$mobile: 769px;
+// media queries: heights
+$mobile-height: 431px;
+$tablet-height: 1025px;

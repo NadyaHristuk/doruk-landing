@@ -1,0 +1,38 @@
+version: 0.2
+
+env:
+  exported-variables:
+    - IMAGE_TAG
+  parameter-store:
+    GITHUB_AUTH_TOKEN: /pipeline/secrets/gitHubAuthToken   
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+
+  pre_build:
+    commands:
+      # Login to ECR
+      - aws ecr get-login-password | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com
+      # Define Image Tag
+      - export IMAGE_TAG=$APP_GROUP-$APP_NAME-$CODEBUILD_BUILD_NUMBER
+
+  build:
+    on-failure: ABORT
+    commands:
+      # Redirect all GitHub URLs to use the token for authentication
+      - 'git config --global url."https://$GITHUB_AUTH_TOKEN@github.com/".insteadOf ssh://git@github.com/'
+      # Build Image
+      - npm install
+      - npm run-script build
+      - ls -AlF
+      - pwd
+      - envsubst < Dockerfile > DockerfileTemp
+      - docker build -t $APP_NAME -f DockerfileTemp .
+      - docker tag $APP_NAME $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG
+
+  post_build:
+    commands:
+      # Push image to ECR
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.eu-central-1.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG

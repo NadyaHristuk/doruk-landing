@@ -1,0 +1,812 @@
+@use "../variables";
+
+// Оптимизация pin-spacer обёртки от GSAP ScrollTrigger
+.pin-spacer {
+    contain: layout style;
+    will-change: transform;
+}
+
+#who-we-are {
+    z-index: 3;
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    contain: layout style; // Изолируем layout пересчёты
+    /* Новый лёгкий слайдер на scroll-snap */
+    .who-we-are-slider {
+        position: relative;
+        /* z-index убран — наследует от #who-we-are */
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 100vw;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+        -webkit-overflow-scrolling: touch;
+        gap: 0;
+
+        /* скрыть скроллбар */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .who-we-are-slider::-webkit-scrollbar { display: none; }
+
+    /* Заголовок секции - отдельно от фонов */
+    .section-header {
+        position: relative;
+        z-index: 4;
+    }
+
+    /* Заголовок who-we-are — переопределения общего .animated-title */
+    .animated-title {
+        top: 3rem;
+        line-height: 4.6rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 4rem;
+            line-height: 9.2rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+            top: 5rem;
+            line-height: unset;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+            top: 6rem;
+            line-height: unset;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            top: 10rem;
+        }
+
+        &::first-letter {
+            font-size: 4.6rem;
+
+            @media screen and (min-width: variables.$mobile) {
+                font-size: 9.2rem;
+            }
+        }
+    }
+
+    /* Фоновые элементы */
+    .backgrounds {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        .background-line,
+        .background-dots {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 100%;
+
+            /* Desktop landscape: опускаем на 23rem */
+            @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
+                top: 23rem;
+            }
+        }
+
+        .background-dots {
+            z-index: 1;
+
+            svg:nth-child(1) {
+                display: none;
+
+                @media screen and (min-width: variables.$desktop) {
+                    display: block;
+                }
+            }
+        }
+
+        .background-line {
+            z-index: 0;
+            top: 0;
+
+            // Portrait: -10rem для всех, кроме extra-small (431-768px) где -15rem
+            @media screen and (orientation: portrait) {
+                top: -10rem;
+            }
+            @media screen and (orientation: portrait) and (min-width: variables.$extra-small) {
+                top: -15rem;
+            }
+            @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
+                top: -10rem;
+            }
+
+            // Landscape: mobile-first от -50rem до 23rem
+            @media screen and (orientation: landscape) {
+                top: -50rem;
+            }
+            @media screen and (orientation: landscape) and (min-width: variables.$mobile) {
+                top: -30rem;
+            }
+            @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
+                top: -10rem;
+            }
+            @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
+                top: 23rem;
+            }
+        }
+
+        .about-svg-dots-left,
+        .about-svg-dots-right {
+            position: absolute;
+            top: 0;
+            pointer-events: none;
+            contain: layout style paint;
+            z-index: 1;
+        }
+
+        .about-svg-dots-left {
+            left: 5.6rem;
+        }
+
+        .about-svg-dots-right {
+            right: 2.3rem;
+        }
+    }
+
+    .backgrounds {
+        .bottom {
+            .background-a,
+            .background-b {
+                position: absolute;
+                left: 0;
+                width: 100vw;
+                height: 100%;
+            }
+
+            .background-b {
+                z-index: 1;
+
+                svg:nth-child(1) {
+                    display: none;
+
+                    @media screen and (min-width: variables.$desktop) {
+                        display: block;
+                    }
+                }
+            }
+
+            .background-a {
+                z-index: 2;
+                top: 0;
+
+                // Portrait: -10rem для всех, кроме extra-small (431-768px) где -15rem
+                @media screen and (orientation: portrait) {
+                    top: -10rem;
+                }
+                @media screen and (orientation: portrait) and (min-width: variables.$extra-small) {
+                    top: -15rem;
+                }
+                @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
+                    top: -10rem;
+                }
+
+                // Landscape: mobile-first от -50rem до 0
+                @media screen and (orientation: landscape) {
+                    top: -50rem;
+                }
+                @media screen and (orientation: landscape) and (min-width: variables.$mobile) {
+                    top: -30rem;
+                }
+                @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
+                    top: -10rem;
+                }
+                @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
+                    top: 0;
+                }
+            }
+
+            .about-svg-dots-left,
+            .about-svg-dots-right {
+                position: absolute;
+                top: 0;
+                pointer-events: none;
+                contain: layout style paint;
+            }
+
+            .about-svg-dots-left {
+                left: 5.6rem;
+            }
+
+            .about-svg-dots-right {
+                right: 2.3rem;
+            }
+        }
+    }
+
+        /* Панели слайдера */
+        .who-we-are-panel {
+        /* z-index убран — наследует от #who-we-are */
+        position: relative;
+        width: 100vw;
+            min-height: 100vh;
+
+        .content {
+            /* Переопределяем absolute из layout.scss */
+            position: relative;
+            top: unset;
+            left: unset;
+            transform: none;
+            width: 100%;
+            max-width: none;
+            height: auto;
+
+            display: flex;
+            align-items: flex-start;
+            /* По макету: контент начинается на 309px от верха секции */
+            padding-top: 16rem;
+
+            @media screen and (min-width: variables.$mobile) {
+                padding-top: 22rem;
+            }
+
+            @media screen and (min-width: variables.$desktop) {
+                padding-top: 30.9rem;
+            }
+
+            @media screen and (orientation: portrait) {
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+            }
+
+            @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+                height: auto;
+            }
+
+            @media screen and (min-width: variables.$desktop), (orientation: landscape) {
+                justify-content: center;
+                flex-flow: row nowrap;
+            }
+
+            /* Стили для обоих вариантов layout */
+            &.layout-default,
+            &.layout-mirrored {
+                .content-image {
+                    --who-image-layer-progress: 0;
+                    --who-image-layer-dir-x: -1;
+                    --who-image-layer-dir-y: -1;
+                    --who-image-layer-shift: 2.4rem;
+                    position: relative;
+                    top: 2rem;
+                    width: 90%;
+
+                    // Portrait: центрируем и увеличиваем
+                    @media screen and (orientation: portrait) {
+                        margin: 0 auto;
+                        --who-image-layer-shift: 3rem;
+                    }
+                    @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
+                        width: 65rem;
+                        --who-image-layer-shift: 4rem;
+                    }
+                    @media screen and (orientation: portrait) and (min-width: variables.$tablet) {
+                        width: 81rem;
+                        --who-image-layer-shift: 5rem;
+                    }
+
+                    // Landscape: 50% → 65rem → 81rem
+                    @media screen and (orientation: landscape) {
+                        width: 50%;
+                        margin: 0;
+                    }
+                    @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
+                        width: 65rem;
+                    }
+                    @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
+                        width: 81rem;
+                    }
+                    @media screen and (orientation: landscape) and (min-width: variables.$desktop) and (min-resolution: 1.5x) {
+                        min-width: 81rem;
+                    }
+
+                    @media screen and (min-width: variables.$desktop) {
+                        left: -2.6rem;
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 1rem;
+                        left: 0.4rem;
+                        width: 107%;
+                        height: 107%;
+                        backdrop-filter: blur(0.7rem);
+                        background: url("assets/svg/bg/about-bg.svg") no-repeat left bottom / contain;
+                        mask: url("assets/svg/bg/about-bg-mask.svg") no-repeat left bottom / contain;
+                        opacity: var(--who-image-layer-progress, 0);
+                        transform: translate3d(
+                            calc((1 - var(--who-image-layer-progress, 0)) * var(--who-image-layer-dir-x, -1) * var(--who-image-layer-shift, 2.4rem)),
+                            calc((1 - var(--who-image-layer-progress, 0)) * var(--who-image-layer-dir-y, -1) * var(--who-image-layer-shift, 2.4rem)),
+                            0
+                        );
+                    }
+
+                    .masked {
+                        position: relative;
+                        width: 100%;
+                        height: auto;
+                        mask: url("assets/svg/bg/about-image-mask.svg") no-repeat center center / contain;
+                    }
+
+                    .title-block {
+                        position: absolute;
+                        top: -0.6rem;
+                        height: 5.6rem;
+                        border: 0.1rem solid variables.$color-primary;
+                        border-radius: 7.4rem;
+                        backdrop-filter: blur(0.7rem);
+                        padding: 0 6rem 0 2rem;
+                        overflow: visible;
+
+                        // Portrait: позиционирование по размерам
+                        @media screen and (orientation: portrait) {
+                            right: 2rem;
+                            width: calc(100% - 4.2rem);
+                        }
+                        @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
+                            right: 3.6rem;
+                            width: calc(100% - 8.8rem);
+                        }
+                        @media screen and (orientation: portrait) and (min-width: variables.$tablet) {
+                            right: 0;
+                            width: calc(100% - 6rem);
+                        }
+                        @media screen and (orientation: portrait) and (min-width: variables.$desktop) {
+                            right: -47rem;
+                            width: calc(100% - 18.2rem);
+                        }
+
+                        // Landscape: позиционирование по размерам
+                        @media screen and (orientation: landscape) {
+                            right: 2.2rem;
+                            width: calc(100% - 5rem);
+                        }
+                        @media screen and (orientation: landscape) and (min-width: variables.$mobile) {
+                            right: 2.8rem;
+                            width: calc(100% - 6.6rem);
+                        }
+                        @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
+                            right: 3.4rem;
+                            width: calc(100% - 8.4rem);
+                        }
+                        @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
+                            right: -47rem;
+                            width: calc(100% - 18.2rem);
+                        }
+
+                        // Общие стили по размерам (независимо от ориентации)
+                        @media screen and (min-width: variables.$tablet) {
+                            top: -1.5rem;
+                            height: 11.6rem;
+                            padding: 0 12rem 0 4rem;
+                        }
+
+                        @media screen and (min-width: variables.$desktop) {
+                            top: 0.8rem;
+                            height: 9.6rem;
+                            padding: 0 4rem 0 10rem;
+                        }
+
+                        .circle {
+                            position: absolute;
+                            top: -0.1rem;
+                            right: 0;
+                            width: 5.6rem;
+                            height: 5.6rem;
+                            border-radius: 50%;
+                            background-color: variables.$color-primary;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            @media screen and (min-width: variables.$tablet) {
+                                width: 11.6rem;
+                                height: 11.6rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) {
+                                left: 0;
+                                right: unset;
+                                width: 9.6rem;
+                                height: 9.6rem;
+                            }
+
+                            i {
+                                transform: rotate(-90deg);
+                                font-size: 3.519rem;
+                                color: variables.$icon-color;
+
+                                @media screen and (min-width: variables.$tablet) {
+                                    transform: rotate(0);
+                                    font-size: 5.576rem;
+                                }
+                            }
+                        }
+
+                        .first-line,
+                        .second-line {
+                            position: relative;
+                            width: 100%;
+                            font-family: variables.$font-source-code-pro;
+                            font-size: 1.4rem;
+                            font-weight: 600;
+                            text-align: center;
+                            text-transform: lowercase;
+                            text-shadow:
+                                0 0 0.6rem variables.$bg,
+                                0 0 1.2rem variables.$bg;
+                            color: variables.$color-white;
+
+                            @media screen and (min-width: variables.$extra-small) {
+                                font-size: 1.8rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) {
+                                font-size: 2.8rem;
+                            }
+                        }
+
+                        .first-line {
+                            top: 0.6rem;
+                            text-wrap-mode: nowrap;
+
+                            // @media screen and (min-width: variables.$extra-small) {
+                            //     transform: translateX(-70%);
+                            // }
+
+                            @media screen and (min-width: variables.$tablet) {
+                                top: 2.4rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) {
+                                top: 0.8rem;
+                                // transform: translateX(-50%);
+                            }
+                        }
+
+                        .first-line .glow-wrapper {
+                            position: relative;
+                            display: inline-block;
+                            white-space: nowrap;
+                            padding: 0 1.4rem;
+                            margin-right: 1.6rem;
+                            color: variables.$color-white;
+                            text-shadow:
+                                0 0 0.4rem rgba(0, 0, 0, 0.45),
+                                0 0 0.8rem rgba(0, 0, 0, 0.3);
+
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                left: -1rem;
+                                right: -1rem;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                height: 100%;
+                                border-radius: 0.8rem;
+                                background: rgba(246, 184, 35, 0.35);
+                                filter: blur(10px);
+                                z-index: -1;
+                            }
+                        }
+
+                        .second-line {
+                            top: 0.8rem;
+                            // transform: translateX(-50%);
+
+                            // @media screen and (min-width: variables.$extra-small) {
+                            //     transform: translateX(-40%);
+                            // }
+
+                            @media screen and (min-width: variables.$tablet) {
+                                top: 3.8rem;
+                                // transform: translateX(-55%);
+                            }
+
+                            @media screen and (min-width: variables.$desktop) {
+                                top: 1.2rem;
+                                // transform: translateX(-20%);
+                            }
+                        }
+                    }
+                }
+
+                .content-text {
+                    position: relative;
+
+                    @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                        width: 100%;
+                        max-width: 81rem;
+                        margin: 0 auto;
+                    }
+
+                    @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+                        width: 100%;
+                        max-width: 32rem;
+                        margin: 0;
+                    }
+
+                    @media screen and (min-width: variables.$desktop) {
+                        width: auto;
+                        max-width: 81rem;
+                        margin: 0;
+                    }
+
+                    .text-block {
+                        --who-layer-before-progress: 0;
+                        --who-layer-after-progress: 0;
+                        --who-layer-substrate-progress: 0;
+                        --who-layer-dir-x: -1;
+                        --who-layer-dir-y: -1;
+                        --who-layer-before-shift: 1.6rem;
+                        --who-layer-after-shift: 0.8rem;
+                        --who-layer-substrate-shift: 24px;
+                        --who-layer-before-min-shift: 0.4rem;
+                        --who-layer-after-min-shift: 0.2rem;
+                        --who-layer-substrate-min-shift: 12px;
+                        position: relative;
+                        top: 8.4rem; // 5.8rem;
+                        left: 21%;
+                        width: 73%;
+                        height: 100%;
+                        /* Project SVG substrate behind the text */
+                        .text-substrate {
+                            position: absolute;
+                            inset: 0;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            pointer-events: none;
+                            z-index: 0;
+                            filter: drop-shadow(0 0.6rem 1.6rem rgba(0,0,0,0.35));
+                            opacity: var(--who-layer-substrate-progress, 0);
+                            transform: translate3d(
+                                calc(
+                                    var(--who-layer-dir-x, -1) *
+                                    (
+                                        var(--who-layer-substrate-min-shift, 12px) +
+                                        (var(--who-layer-substrate-shift, 24px) - var(--who-layer-substrate-min-shift, 12px)) *
+                                            var(--who-layer-substrate-progress, 0)
+                                    )
+                                ),
+                                calc(
+                                    var(--who-layer-dir-y, -1) *
+                                    (
+                                        var(--who-layer-substrate-min-shift, 12px) +
+                                        (var(--who-layer-substrate-shift, 24px) - var(--who-layer-substrate-min-shift, 12px)) *
+                                            var(--who-layer-substrate-progress, 0)
+                                    )
+                                ),
+                                0
+                            );
+                        }
+
+                        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                            top: 12rem;
+                            left: 22%;
+                            width: 43.4rem;
+                            height: 35.4rem;
+                            --who-layer-before-shift: 3.6rem;
+                            --who-layer-after-shift: 1.8rem;
+                        }
+
+                        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+                            top: 3.2rem;
+                            left: 5rem;
+                            width: 73%;
+                        }
+
+                        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+                            left: 15rem;
+                        }
+
+                        @media screen and (min-width: variables.$desktop) {
+                            top: 18.6rem;
+                            left: 0.6rem;
+                            width: 43.4rem;
+                            height: 35.4rem;
+                        }
+
+                        @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
+                            --who-layer-before-shift: 3.6rem;
+                            --who-layer-after-shift: 1.8rem;
+                        }
+
+                        &::before {
+                            content: "";
+                            z-index: 4;
+                            position: absolute;
+                            top: calc(
+                                var(--who-layer-dir-y, -1) *
+                                (
+                                    var(--who-layer-before-min-shift, 0.4rem) +
+                                    (var(--who-layer-before-shift, 1.6rem) - var(--who-layer-before-min-shift, 0.4rem)) *
+                                        var(--who-layer-before-progress, 0)
+                                )
+                            );
+                            left: calc(
+                                var(--who-layer-dir-x, -1) *
+                                (
+                                    var(--who-layer-before-min-shift, 0.4rem) +
+                                    (var(--who-layer-before-shift, 1.6rem) - var(--who-layer-before-min-shift, 0.4rem)) *
+                                        var(--who-layer-before-progress, 0)
+                                )
+                            );
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 3.6rem;
+                            border: 0.1rem solid variables.$border-color;
+                            backdrop-filter: blur(0.7rem);
+                            opacity: var(--who-layer-before-progress, 0);
+
+                            @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                                border-radius: 6.4rem;
+                            }
+
+                            @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+                                border-radius: 3.6rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
+                                border-radius: 6.4rem;
+                            }
+                        }
+
+                        &::after {
+                            content: "";
+                            z-index: 4;
+                            position: absolute;
+                            top: calc(
+                                var(--who-layer-dir-y, -1) *
+                                (
+                                    var(--who-layer-after-min-shift, 0.2rem) +
+                                    (var(--who-layer-after-shift, 0.8rem) - var(--who-layer-after-min-shift, 0.2rem)) *
+                                        var(--who-layer-after-progress, 0)
+                                )
+                            );
+                            left: calc(
+                                var(--who-layer-dir-x, -1) *
+                                (
+                                    var(--who-layer-after-min-shift, 0.2rem) +
+                                    (var(--who-layer-after-shift, 0.8rem) - var(--who-layer-after-min-shift, 0.2rem)) *
+                                        var(--who-layer-after-progress, 0)
+                                )
+                            );
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 3.6rem;
+                            border: 0.1rem solid variables.$border-color;
+                            backdrop-filter: blur(0.7rem);
+                            opacity: var(--who-layer-after-progress, 0);
+
+                            @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                                border-radius: 6.4rem;
+                            }
+
+                            @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+                                border-radius: 3.6rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
+                                border-radius: 6.4rem;
+                            }
+                        }
+
+                        .text {
+                            z-index: 5;
+                            position: relative;
+                            height: 100%;
+                            min-height: 24rem;
+                            padding: 2rem 2.2rem;
+                            font-family: variables.$font-source-code-pro;
+                            font-size: 1.6rem;
+                            line-height: 2rem;
+                            border-radius: 3.6rem;
+                            border: 0.1rem solid variables.$border-color;
+                            color: variables.$color-white;
+                            backdrop-filter: blur(0.7rem);
+
+                            @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                                padding: 4rem;
+                                font-size: 2.2rem;
+                                line-height: 2.8rem;
+                                border-radius: 6.4rem;
+                            }
+
+                            @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
+                                padding: 4rem;
+                                font-size: 2.2rem;
+                                line-height: 2.8rem;
+                                border-radius: 6.4rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* Отзеркаленный layout (изображение справа, текст слева) */
+            &.layout-mirrored {
+                @media screen and (orientation: portrait) {
+                    flex-flow: column nowrap;
+                }
+
+                @media screen and (min-width: variables.$desktop), (orientation: landscape) {
+                    flex-flow: row-reverse nowrap;
+                }
+
+                .content-image {
+                    transform: scaleX(-1);
+                    display: inline-block;
+                    --who-image-layer-dir-x: 1;
+
+                    .title-block {
+                        .circle {
+                            left: unset;
+                            right: 0;
+                        }
+
+                        .first-line {
+                            transform: scaleX(-1); // translateX(40%);
+
+                        //     @media screen and (min-width: variables.$tablet) {
+                        //         transform: scaleX(-1) translateX(70%);
+                        //     }
+
+                        //     @media screen and (min-width: variables.$desktop) {
+                        //         transform: scaleX(-1) translateX(30%);
+                        //     }
+                        }
+
+                        .second-line {
+                            transform: scaleX(-1); // translateX(70%);
+
+                        //     @media screen and (min-width: variables.$mobile) {
+                        //         transform: scaleX(-1) translateX(85%);
+                        //     }
+
+                        //     @media screen and (min-width: variables.$desktop) {
+                        //         transform: scaleX(-1) translateX(100%);
+                        //     }
+                        }
+                    }
+                }
+
+                .content-text {
+                    // Tablet portrait: добавляем правый margin
+                    @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+                        margin: 0 10rem 0 0;
+                    }
+
+                    .text-block {
+                        left: 10.6%;
+                        --who-layer-dir-x: 1;
+
+                        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+                            left: 14%;
+                        }
+
+                        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+                            left: 3.6%;
+                        }
+
+                        @media screen and (min-width: variables.$tablet) {
+                            left: 1rem;
+                        }
+
+                        @media screen and (min-width: variables.$desktop) {
+                            left: -6.4rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

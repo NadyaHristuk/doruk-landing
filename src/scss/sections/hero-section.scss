@@ -1,0 +1,624 @@
+@use "../variables";
+
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: variables.$bg;
+
+    @media screen and (min-width: variables.$tablet) {
+        transform: translate3d(0, 0, 0); // keeps fixed grid bound to this section instead of the viewport
+    }
+
+    // ========== HEADER ==========
+    &__header {
+        position: relative;
+        z-index: 20;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 1.6rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            padding: 4.8rem 5.6rem 0;
+            align-items: center;
+        }
+
+        &-logo {
+            display: block;
+
+            img {
+                width: auto;
+                height: 2.4rem;
+
+                @media screen and (min-width: variables.$mobile) {
+                    width: 21.5rem;
+                    height: 4rem;
+                }
+            }
+        }
+
+        &-lang {
+            position: relative;
+            display: none;
+            width: 6rem;
+            height: 3rem;
+
+            @media screen and (min-width: variables.$mobile) {
+                display: block;
+            }
+
+            &--mobile {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                width: auto;
+                height: auto;
+                overflow: visible;
+
+                @media screen and (min-width: variables.$mobile) {
+                    display: none;
+                }
+
+                .hero__header-lang-indicator {
+                    position: relative;
+                    order: -1;
+                    width: 2.4rem;
+                    height: 0.3rem;
+                    margin-bottom: 0.2rem;
+                }
+
+                .hero__header-lang-list {
+                    position: relative;
+                    top: auto;
+                    right: auto;
+                    column-gap: 0;
+                }
+
+                .hero__header-lang-item {
+                    display: none;
+
+                    &--active {
+                        display: block;
+                    }
+                }
+
+                .hero__header-lang-btn {
+                    font-size: 1.4rem;
+                    line-height: 1.8rem;
+                }
+            }
+        }
+
+        &-lang-indicator {
+            position: absolute;
+            left: 50%;
+            width: 100%;
+            height: 0.4rem;
+            transform: translateX(-50%);
+            transition: top variables.$transition;
+            background-color: variables.$color-primary;
+
+            &--top {
+                top: 0;
+            }
+
+            &--bottom {
+                top: 2.6rem;
+            }
+        }
+
+        &-lang-list {
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 1.6rem;
+        }
+
+        &-lang-btn {
+            cursor: pointer;
+            font-family: variables.$font-amiro;
+            font-size: 1.6rem;
+            color: variables.$border-color;
+            text-transform: uppercase;
+            transition: color variables.$transition;
+
+            &--active {
+                color: variables.$color-white;
+            }
+
+            &:hover {
+                color: variables.$color-primary;
+            }
+        }
+    }
+
+    // ========== BACKGROUND ==========
+    &__bg,
+    &__bg-stars,
+    &__line {
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &__bg {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    &__bg-gradient {
+        position: absolute;
+
+        &--top {
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7rem;
+            background: linear-gradient(
+                180deg,
+                rgba(28, 28, 30, 1) 0%,
+                rgba(36, 36, 38, 0) 100%
+            );
+
+            @media screen and (min-width: variables.$mobile) {
+                left: -3.5rem;
+                width: 72%;
+                height: 16.3rem;
+            }
+        }
+
+        &--bottom {
+            z-index: 1;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+                0deg,
+                variables.$bg 0%,
+                variables.$bg 30%,
+                rgba(36, 36, 38, 0) 100%
+            );
+
+            @media screen and (min-width: variables.$mobile) {
+                top: 64.5%;
+                left: -3.5rem;
+                width: 73%;
+                height: 48.5%;
+            }
+        }
+
+        &--right {
+            z-index: 1;
+            top: 0;
+            right: 25%;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to left, variables.$bg 10%, rgba(0, 0, 0, 0) 100%);
+            display: none;
+
+            @media screen and (min-width: variables.$desktop) {
+                display: block;
+            }
+        }
+    }
+
+    &__bg-rocks {
+        position: absolute;
+        left: -14.9rem; // -149px from XD
+        top: 2.5rem; // 69px - 44px status bar = 25px
+        width: 67.6rem; // 676px from XD
+        height: 46.8rem; // 468px from XD
+        z-index: 0;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top left;
+
+        // Mobile-first: small version for mobile devices (10KB WebP)
+        background-image: image-set(
+            url("assets/webp/home/astronaut-rocks-small.webp") type("image/webp") 1x,
+            url("assets/png/home/astronaut-rocks-small.png") type("image/png") 1x
+        );
+
+        // Tablet: medium version (29KB WebP)
+        @media screen and (min-width: variables.$mobile) {
+            left: -3.5rem;
+            top: 0;
+            transform: none;
+            width: 100%;
+            height: 100%;
+            background-size: 75% auto;
+            background-position: top left;
+            background-image: image-set(
+                url("assets/webp/home/astronaut-rocks-tablet.webp") type("image/webp") 1x,
+                url("assets/png/home/astronaut-rocks-tablet.png") type("image/png") 1x
+            );
+        }
+
+        // Desktop: large version (35KB WebP)
+        @media screen and (min-width: variables.$desktop) {
+            background-image: image-set(
+                url("assets/webp/home/astronaut-rocks-desktop.webp") type("image/webp") 1x,
+                url("assets/png/home/astronaut-rocks-desktop.png") type("image/png") 1x
+            );
+        }
+    }
+
+    &__bg-lightning {
+        position: absolute;
+        z-index: 4;
+        pointer-events: none;
+        left: calc(21% - 3.5rem);
+        top: 8%;
+        width: 34%;
+        height: 86%;
+
+        .animated-lightning {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+    }
+
+    &__bg-stars {
+        top: 0;
+        left: -3.5rem;
+        z-index: 2;
+        width: 100%;
+        height: 80%;
+        background: url("assets/svg/bg/stars.svg") no-repeat top left / contain;
+        // Mask: visible on left, fades towards center/right
+        mask: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0.7) 35%,
+            rgba(0, 0, 0, 0) 55%
+        );
+    }
+
+    &__bg-particles {
+        position: absolute;
+        inset: 0 0 0 -3.5rem;
+        z-index: 3;
+        pointer-events: auto; // нужен для отслеживания мыши
+    }
+
+    // ========== LINE ==========
+    &__line {
+        right: 0;
+        width: 100%;
+        height: 100%;
+        top: 4rem;
+        z-index: 10;
+
+        .svg-line {
+            display: block;
+            height: 100%;
+        }
+    }
+
+    // ========== STAGE (wrapper: from center to right) ==========
+    &__stage {
+        position: relative;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        min-height: 100svh;
+
+        @media screen and (min-width: variables.$desktop) {
+            position: absolute;
+            top: 9.4rem;
+            left: 50%;
+            min-height: auto;
+            width: 50%;
+            height: 73.1rem;
+        }
+    }
+
+    // ========== GRID (decorative rectangles only) ==========
+    &__grid {
+        position: absolute;
+        inset: 0;
+    }
+
+    // ========== CONTENT (title + subtitle) ==========
+    &__content {
+        position: absolute;
+        z-index: 10;
+        top: 38.1rem; // 425px - 44px status bar = 381px
+        left: 1.6rem;
+        width: calc(100% - 3.2rem); // 358px at 390px screen
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        text-shadow: 0 0 1rem variables.$bg;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 0;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__grid-row,
+    &__grid-col {
+        position: absolute;
+        width: 0;
+        left: 50%;
+        height: 100%;
+
+        @media screen and (min-width: variables.$tablet) {
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    &__grid-item {
+        position: absolute;
+        border: 0.1rem solid variables.$border-color;
+        transition: transform variables.$linear-transition;
+    }
+
+    // Horizontal grid items
+    &__grid-row &__grid-item {
+        height: 1.2rem;
+
+        @media screen and (min-width: variables.$tablet) {
+            height: 3.8rem;
+        }
+
+        &:nth-child(1) {
+            top: 28.6rem;
+            left: -15rem;
+            width: 23rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                top: 18.9rem;
+                left: 10.4rem;
+                width: 48.7rem;
+            }
+        }
+
+        &:nth-child(2) {
+            top: 31.7rem;
+            left: -8rem;
+            width: 22.3rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                left: 10.4rem;
+                width: 68.7rem;
+            }
+        }
+
+        &:nth-child(3) {
+            top: 38.6rem;
+            left: -17rem;
+            width: 33.1rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                top: 38.2rem;
+                left: 15.6rem;
+                width: 41.5rem;
+                height: 3.9rem;
+            }
+        }
+
+        &:nth-child(4) {
+            top: 44.8rem;
+            left: -11rem;
+            width: 17.5rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                left: 0;
+                width: 44.5rem;
+            }
+        }
+
+        &:nth-child(5) {
+            top: 41.8rem;
+            left: -20rem;
+            width: 29.3rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                display: none;
+            }
+        }
+    }
+
+    // Vertical grid items
+    &__grid-col &__grid-item {
+        width: 1.2rem;
+
+        @media screen and (min-width: variables.$tablet) {
+            width: 3.8rem;
+        }
+
+        &:nth-child(1) {
+            top: 23rem;
+            left: -3.2rem;
+            height: 25.6rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                top: 0;
+                left: 18.8rem;
+                height: 51.5rem;
+            }
+        }
+
+        &:nth-child(2) {
+            display: none;
+            top: 44.8rem;
+            left: 25.7rem;
+            height: 13.4rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                display: block;
+            }
+        }
+
+        &:nth-child(3) {
+            top: 21rem;
+            left: 50%;
+            height: 30.1rem;
+            transform: translateX(-50%);
+
+            @media screen and (min-width: variables.$tablet) {
+                top: 27rem;
+                left: 36.4rem;
+                height: 46.1rem;
+                transform: translateX(0);
+            }
+        }
+
+        &:nth-child(4) {
+            top: 28.6rem;
+            left: 2rem;
+            height: 25.3rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                top: 13.8rem;
+                left: 49.4rem;
+                height: 40.8rem;
+            }
+        }
+
+        &:nth-child(5) {
+            display: none;
+            top: 27rem;
+            left: 60.1rem;
+            height: 20rem;
+
+            @media screen and (min-width: variables.$tablet) {
+                display: block;
+            }
+        }
+    }
+
+    // ========== TITLE ==========
+    &__title {
+        position: relative;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 2rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            position: absolute;
+            display: block;
+        }
+    }
+
+    &__title-left,
+    &__title-right {
+        position: relative;
+        transition: transform variables.$linear-transition;
+        font-family: variables.$font-amiro;
+        font-size: 7.2rem;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.1rem;
+        color: variables.$color-white;
+        text-transform: uppercase;
+
+        @media screen and (min-width: variables.$mobile) {
+            position: absolute;
+            font-size: 9.6rem;
+            line-height: 12.3rem;
+            letter-spacing: 0.768rem;
+        }
+    }
+
+    &--intro {
+        .hero__title-left,
+        .hero__title-right {
+            transition: none;
+        }
+    }
+
+    &__title-left {
+        text-align: left;
+
+        @media screen and (min-width: variables.$mobile) {
+            left: calc(-5rem + 50%);
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            top: 14.4rem;
+            left: 14.6rem;
+        }
+    }
+
+    &__title-right {
+        text-align: right;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 30rem;
+            right: calc(-15rem + 50%);
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            right: 23.8rem;
+        }
+    }
+
+    // ========== SUBTITLE ==========
+    &__subtitle {
+        position: relative;
+        width: 100%;
+        margin-top: 2rem;
+        text-align: center;
+        color: variables.$color-white;
+        font-size: 3.2rem;
+        line-height: 1.2;
+
+        @media screen and (min-width: variables.$mobile) {
+            position: absolute;
+            top: 0%;
+            margin-top: 0;
+            font-size: 4.8rem;
+            line-height: 6rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            top: 45.5rem;
+            left: 14.6rem;
+            transform: translateX(0);
+            text-align: left;
+            font-size: 8rem;
+            line-height: 10.1rem;
+        }
+    }
+
+    &__subtitle-pixelify {
+        font-family: variables.$font-pixelify-sans;
+        font-weight: 500;
+        letter-spacing: 0;
+
+        @media screen and (min-width: variables.$desktop) {
+            line-height: 9.6rem;
+        }
+
+        &--end {
+            letter-spacing: 0.16rem;
+        }
+    }
+
+    &__subtitle-source {
+        font-family: variables.$font-source-code-pro;
+        font-weight: 400;
+        letter-spacing: 0;
+    }
+}

@@ -1,0 +1,288 @@
+@use "../variables";
+
+.our-benefits {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    .backgrounds {
+        .bottom {
+            .background-a,
+            .background-b {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .background-a {
+                z-index: 2;
+            }
+
+            .background-b {
+                z-index: 1;
+                background-image: url("assets/svg/animations/about-dots-right.svg");
+                background-repeat: no-repeat;
+                background-position: center 25rem;
+                background-size: contain;
+
+                @media screen and (min-width: variables.$mobile) {
+                    background-image: url("assets/svg/animations/benefits-dots.svg");
+                    background-position: center center;
+                    background-size: auto;
+                }
+            }
+        }
+    }
+
+    .content {
+        z-index: 3;
+        height: calc(100% - var(--content-mobile-offset));
+
+        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+            top: calc(var(--content-offset) - 12rem);
+            height: calc(var(--content-offset) + 38rem);
+        }
+
+        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+            top: var(--content-tablet-offset);
+            height: calc(100% - var(--content-tablet-offset));
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+            top: calc(var(--content-offset) - 3rem);
+            height: calc(var(--content-offset) + 38rem);
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            width: 85.4rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            top: calc(var(--content-offset) + 10rem);
+        }
+
+        .content-center {
+            position: relative;
+
+            .svg-background {
+                position: relative;
+                width: 90%;
+                left: 10%;
+
+                @media screen and (min-width: variables.$mobile) {
+                    left: 0;
+                    width: 100%;
+                }
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    top: 8%;
+                    right: 7%;
+                    width: 100%;
+                    height: 100%;
+                    backdrop-filter: blur(0.7rem);
+                    background: url("assets/svg/bg/our-benefits-bg.svg") no-repeat center center / contain;
+                    mask: url("assets/svg/bg/about-bg-mask.svg") no-repeat center center / contain;
+                }
+
+                .masked {
+                    position: relative;
+                    width: 96%;
+                    height: auto;
+                    mask: url("assets/svg/bg/our-benefits-image-mask.svg") no-repeat center center / contain;
+                }
+            }
+        }
+
+        .content-around {
+            position: relative;
+            display: flex;
+            flex-flow: column wrap;
+            row-gap: 4rem;
+            top: 6rem;
+            left: 0;
+            width: 100%;
+            height: auto;
+
+            @media screen and (min-width: variables.$mobile) {
+                left: 6rem;
+            }
+
+            @media screen and (min-width: variables.$desktop) {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100vw - 3.2rem);
+                height: 62rem;
+            }
+
+            .title-block {
+                position: relative;
+                width: 90%;
+                max-width: 40rem;
+                height: 5.4rem;
+                border: 0.1rem solid variables.$border-color;
+                border-radius: 7.4rem;
+                backdrop-filter: blur(0.7rem);
+                overflow: hidden;
+                transition:
+                    width variables.$transition,
+                    border-color variables.$transition;
+
+                &:hover {
+                    width: 100%;
+                    border-color: variables.$color-primary;
+                }
+
+                @media screen and (min-width: variables.$desktop) {
+                    position: absolute;
+                    width: 61rem;
+                    max-width: unset;
+                    height: 9.6rem;
+
+                    &:hover {
+                        width: 65rem;
+                    }
+
+                    &:nth-child(1) {
+                        top: -18%;
+                        left: 10%;
+                    }
+
+                    &:nth-child(2) {
+                        top: 50%;
+                        left: 5%;
+                    }
+
+                    &:nth-child(3) {
+                        left: calc(50% - 30.5rem);
+                        bottom: 0;
+                    }
+
+                    &:nth-child(4) {
+                        top: -10%;
+                        right: 8%;
+                    }
+
+                    &:nth-child(5) {
+                        top: 50%;
+                        right: 4%;
+                    }
+                }
+
+                @media screen and (min-width: variables.$extra-large) {
+                    &:nth-child(1) {
+                        left: 18%;
+                    }
+
+                    &:nth-child(2) {
+                        left: 12%;
+                    }
+
+                    &:nth-child(4) {
+                        right: 18%;
+                    }
+
+                    &:nth-child(5) {
+                        right: 12%;
+                    }
+                }
+
+                .circle {
+                    position: absolute;
+                    top: -0.1rem;
+                    left: 0;
+                    width: 5.4rem;
+                    height: 5.4rem;
+                    border-radius: 50%;
+                    background-color: variables.$color-primary;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    @media screen and (min-width: variables.$desktop) {
+                        width: 9.6rem;
+                        height: 9.6rem;
+                    }
+
+                    i {
+                        font-size: 2rem;
+                        color: variables.$icon-color;
+
+                        @media screen and (min-width: variables.$desktop) {
+                            font-size: 4.8rem;
+                        }
+                    }
+                }
+
+                .text {
+                    position: relative;
+                    height: 5.4rem;
+                    width: calc(100% - 5.4rem);
+                    margin-left: auto;
+                    padding: 0 1.2rem;
+
+                    @media screen and (min-width: variables.$tablet) {
+                        padding: 0 1.8rem;
+                    }
+
+                    @media screen and (min-width: variables.$desktop) {
+                        height: 9.6rem;
+                        width: 51.4rem;
+                        padding: 0 3rem;
+                    }
+                }
+
+                .first-line,
+                .second-line {
+                    position: relative;
+                    top: 0.2rem;
+                    font-family: variables.$font-source-code-pro;
+                    font-size: 1.8rem;
+                    font-weight: 600;
+                    text-transform: lowercase;
+                    color: variables.$color-white;
+
+                    @media screen and (min-width: variables.$desktop) {
+                        font-size: 2.8rem;
+                        top: 0.8rem;
+                    }
+
+                    span {
+                        margin-right: 0.8rem;
+                        color: variables.$color-primary;
+
+                        @media screen and (min-width: variables.$desktop) {
+                            margin-right: 1.6rem;
+                        }
+                    }
+                }
+
+                .first-line {
+                    text-wrap-mode: nowrap;
+
+                    // @media screen and (min-width: variables.$desktop) {
+                    //     top: 0.8rem;
+                    // }
+                }
+
+                .second-line {
+                    text-align: right;
+
+                    span {
+                        margin-right: 0;
+                    }
+
+                    // @media screen and (min-width: variables.$desktop) {
+                    //     top: 0.8rem;
+                    // }
+                }
+            }
+        }
+    }
+}

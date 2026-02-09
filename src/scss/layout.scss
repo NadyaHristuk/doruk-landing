@@ -1,0 +1,561 @@
+@use "variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  user-select: none;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes open-menu {
+  0% {
+    display: none;
+    width: 0%;
+  }
+  1% {
+    display: flex;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes close-menu {
+  0% {
+    display: flex;
+    width: 100%;
+  }
+  99% {
+    display: none;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: variables.$bg;
+  overflow: hidden;
+  max-width: 100%;
+  width: 100%;
+  overscroll-behavior: none;
+
+  main {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    .mobile-menu {
+      z-index: 101;
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      align-items: center;
+      background-color: variables.$bg;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("assets/svg/mobile/bg-lines.svg") no-repeat right -14rem / cover;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("assets/svg/mobile/menu-line.svg") no-repeat -1rem 50% / cover;
+      }
+
+      &--opened {
+        width: 100%;
+        display: flex;
+        animation: open-menu cubic-bezier(0.47, 1.64, 0.41, 0.8) 0.75s forwards;
+      }
+
+      &--closed {
+        width: 0%;
+        display: none;
+        animation: close-menu ease-in 0.35s forwards;
+      }
+
+      .nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: flex-start;
+        gap: 4.8rem;
+        padding-left: 4.8rem;
+      }
+
+      .nav__list {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: flex-start;
+        gap: 4.8rem;
+        padding-left: 4.8rem;
+      }
+
+      .nav__item {
+        z-index: 102;
+        font-family: variables.$font-amiro;
+        font-size: 2.4rem;
+        text-transform: uppercase;
+        color: variables.$color-white;
+        cursor: pointer;
+      }
+
+      &__decorations {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__rectangles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+        &--vertical {
+          .mobile-menu__rectangle {
+            width: 1.2rem;
+
+            &:nth-child(1) {
+              top: 0;
+              left: 2rem;
+              height: 34rem;
+            }
+
+            &:nth-child(2) {
+              bottom: 15rem;
+              right: 6rem;
+              height: 55rem;
+            }
+
+            &:nth-child(3) {
+              bottom: 10rem;
+              right: 2rem;
+              height: 50rem;
+            }
+          }
+        }
+
+        &--horizontal {
+          .mobile-menu__rectangle {
+            height: 1.2rem;
+
+            &:nth-child(1) {
+              top: 2rem;
+              left: 0;
+              width: 40%;
+            }
+
+            &:nth-child(2) {
+              top: 5rem;
+              left: 0;
+              width: 30%;
+            }
+
+            &:nth-child(3) {
+              bottom: 25rem;
+              right: 0;
+              width: 50%;
+            }
+
+            &:nth-child(4) {
+              bottom: 22rem;
+              right: 0;
+              width: 60%;
+            }
+          }
+        }
+      }
+
+      &__rectangle {
+        position: absolute;
+        border: 0.1rem solid variables.$border-color;
+      }
+    }
+
+    .sidebar {
+      z-index: 104;
+      position: fixed;
+      bottom: 4.5rem;
+      right: 0;
+      width: 9.4rem;
+      height: 9.4rem;
+      border-radius: 50%;
+      cursor: pointer;
+
+      @media screen and (min-width: variables.$tablet) {
+        top: 50%;
+        left: 0;
+        right: unset;
+        bottom: unset;
+        width: 5.6rem;
+        height: auto;
+        transform: translateY(-50%);
+        border-radius: 2.8rem;
+        border: 0.1rem solid variables.$border-color;
+        backdrop-filter: blur(0.7rem);
+        cursor: auto;
+      }
+
+      .nav {
+        display: none;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 5.6rem 0;
+
+        @media screen and (min-width: variables.$tablet) {
+          display: flex;
+        }
+      }
+
+      .nav__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        cursor: pointer;
+
+        &--active {
+          .nav__icon {
+            color: variables.$color-white;
+            text-shadow:
+              0 0 2rem variables.$color-primary,
+              0 0 3rem variables.$color-primary,
+              0 0 3rem variables.$color-primary,
+              0 0 4rem variables.$color-primary;
+          }
+        }
+      }
+
+      .nav__icon {
+        font-size: 2.4rem;
+        color: variables.$border-color;
+      }
+
+      .nav__list {
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 5.6rem;
+      }
+
+      &__toggle {
+        position: relative;
+        right: -2.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 0.3rem solid variables.$border-color;
+        background-color: transparent;
+        backdrop-filter: blur(0.7rem);
+
+        @media screen and (min-width: variables.$tablet) {
+          display: none;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 6rem;
+          height: 6rem;
+          transform: translate(-50%, -50%);
+          border-radius: 50%;
+          background-color: variables.$border-color;
+        }
+
+        i {
+          z-index: 103;
+          font-size: 2.4rem;
+          color: variables.$color-white;
+        }
+
+        &:active {
+          border-color: variables.$color-primary;
+
+          &::before {
+            background-color: variables.$color-primary;
+          }
+
+          i {
+            color: variables.$icon-color;
+          }
+        }
+      }
+    }
+
+    /* Gate large composited layer to desktop fine-pointer devices */
+    @media screen and (min-width: variables.$desktop) and (pointer: fine) {
+      #smooth-content {
+        will-change: transform;
+      }
+    }
+
+    /* Respect reduced motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      #smooth-content {
+        will-change: auto;
+      }
+    }
+
+    .animated-title {
+      z-index: 100;
+      position: absolute;
+      top: 0;
+      left: 40%;
+      transition: transform variables.$linear-transition;
+      margin: 0;
+      font-family: variables.$font-amiro;
+      font-size: 3.6rem;
+      font-weight: 700;
+      line-height: var(--content-mobile-offset);
+      letter-spacing: 0;
+      text-transform: uppercase;
+      text-wrap-mode: nowrap;
+      color: variables.$color-white;
+
+      @media screen and (min-width: variables.$mobile) {
+        left: 50%;
+        font-size: 7.2rem;
+        letter-spacing: 1.44rem;
+      }
+
+      @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+        line-height: var(--content-tablet-offset);
+      }
+
+      @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+        line-height: var(--content-offset);
+      }
+
+      &::first-letter {
+        font-family: variables.$font-pixelify-sans;
+        font-size: 4rem;
+
+        @media screen and (min-width: variables.$mobile) {
+          font-size: 8.2rem;
+        }
+      }
+    }
+
+    .backgrounds {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      .top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: var(--content-mobile-offset);
+
+        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+          height: var(--content-tablet-offset);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+          line-height: var(--content-offset);
+        }
+      }
+
+      .bottom {
+        position: absolute;
+        top: var(--content-mobile-offset);
+        left: 0;
+        width: 100%;
+        height: calc(100% - var(--content-mobile-offset));
+
+        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+          top: var(--content-tablet-offset);
+          height: calc(100% - var(--content-tablet-offset));
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+          top: var(--content-tablet-offset);
+          height: calc(100% - var(--content-tablet-offset));
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+          top: var(--content-offset);
+          height: calc(100% - var(--content-offset));
+        }
+      }
+    }
+
+    .content {
+      position: absolute;
+      top: var(--content-mobile-offset);
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 3.2rem);
+      max-width: var(--content-max-width);
+      height: calc(100vh - var(--content-mobile-offset));
+
+      @media screen and (min-width: variables.$mobile) {
+        width: var(--content-tablet-width);
+      }
+
+      @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+        top: var(--content-tablet-offset);
+        height: calc(100% - var(--content-tablet-offset));
+      }
+
+      @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+        top: var(--content-mobile-offset);
+        height: 100%;
+      }
+
+      @media screen and (min-width: variables.$tablet) {
+        width: var(--content-width);
+      }
+
+      @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+        top: var(--content-tablet-offset);
+        height: calc(100% - var(--content-tablet-offset));
+      }
+
+      @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+        top: var(--content-offset);
+        height: calc(100% - var(--content-offset));
+      }
+    }
+  }
+}
+
+/* Высоты по семантическим классам секций */
+.section {
+  width: 100%;
+
+  &--hero,
+  &--who-we-are,
+  &--our-benefits,
+  &--keep-in-touch {
+    height: 100svh;
+    min-height: 100svh;
+  }
+
+  &--key-facts {
+    height: 200rem;
+
+    @media screen and (min-width: variables.$mobile) {
+      height: 230rem;
+    }
+
+    @media screen and (min-width: variables.$tablet) {
+      height: 200rem;
+    }
+  }
+
+  &--our-benefits,
+  &--keep-in-touch {
+    @media screen and (orientation: portrait) {
+      min-height: 90rem;
+
+      @media screen and (min-width: variables.$mobile) {
+        min-height: 100rem;
+      }
+    }
+
+    @media screen and (orientation: landscape) {
+      min-height: 124rem;
+
+      @media screen and (min-width: variables.$tablet) {
+        min-height: 110rem;
+
+        @media screen and (min-resolution: 1.5x) {
+          min-height: 130rem;
+        }
+      }
+    }
+  }
+}
+
+/* Global minimal reset for buttons used as text controls */
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+/* Scope stronger reset where needed to preserve legacy visuals */
+.lang-selector-wrp .lang-selector {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

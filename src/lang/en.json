@@ -1,0 +1,99 @@
+{
+  "home": {
+    "title": {
+      "left": "cre",
+      "right": "ate"
+    },
+    "subtitle": {
+      "text": "the progre",
+      "end": "ss"
+    }
+  },
+  "about": {
+    "title": "Who we are",
+    "blocks": {
+      "left": {
+        "titleStart": "tech heart",
+        "title": "of the",
+        "titleEnd": "gambling company",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      },
+      "center": {
+        "titleStart": "leaders",
+        "title": "in the",
+        "titleEnd": "industry",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      },
+      "right": {
+        "titleStart": "team",
+        "title": "of like-minded",
+        "titleEnd": "individuals",
+        "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      }
+    }
+  },
+  "common": {
+    "symbols": "symbols",
+    "from": "from"
+  },
+  "keyFacts": {
+    "title": "Key facts",
+    "text": {
+      "1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore",
+      "2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore",
+      "3": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore"
+    }
+  },
+  "ourBenefits": {
+    "title": "Our benefits",
+    "topLeft": {
+      "line1": "office or remote",
+      "line2": "you choose"
+    },
+    "centerLeft": {
+      "line1": "better health care",
+      "line2prefix": "with ",
+      "line2suffix": "isurance"
+    },
+    "bottom": {
+      "line1": "you will work with",
+      "line2": "amazing team"
+    },
+    "topRight": {
+      "line1prefix": "tasty dinner",
+      "line1": "in office",
+      "line2": "from our chef"
+    },
+    "centerRight": {
+      "line1prefix": "have fun",
+      "line1": "in office",
+      "line2": "playing zone"
+    }
+  },
+  "keepInTouch": {
+    "title": "Keep in touch",
+    "text": "Feel free to email us or call",
+    "email": "doruk_kyiv@gmail.com",
+    "phone": "+38093 12 35 789",
+    "button": "submit",
+    "input": {
+      "name": "name",
+      "phone": "phone",
+      "email": "email",
+      "comment": "comment"
+    },
+    "messages": {
+      "errorHeader": "Error",
+      "required": "All fiels is required",
+      "server": "Server error, please try again later",
+      "fillForm": "Please fill in the form correctly",
+      "successHeader": "Success",
+      "success": "Your message has been sent successfully"
+    },
+    "a11y": {
+      "toggleLabel": "Toggle contact method",
+      "togglePhone": "phone",
+      "toggleEmail": "email"
+    }
+  }
+}
