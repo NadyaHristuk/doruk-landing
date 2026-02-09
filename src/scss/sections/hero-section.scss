@@ -368,7 +368,6 @@
     &__grid-item {
         position: absolute;
         border: 0.1rem solid variables.$border-color;
-        transition: transform variables.$linear-transition;
     }
 
     // Horizontal grid items

@@ -109,7 +109,6 @@ const App = () => {
             <HeroSection
               setLang={setLang}
               sectionIsActive={activeSection === 'hero'}
-              scrollProgress={scrollProgress}
               lang={lang}
             />
           </Suspense>

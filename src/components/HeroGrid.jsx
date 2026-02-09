@@ -23,7 +23,7 @@ const HeroGrid = () => {
         trigger: '#hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: true
+        scrub: 0.6
       };
 
       // Grid items animation (move left/right on scroll)

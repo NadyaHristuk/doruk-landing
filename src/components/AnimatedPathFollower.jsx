@@ -16,7 +16,7 @@ const AnimatedPathFollower = ({
   trigger,
   start,
   end,
-  scrub = true
+  scrub = 0.6
 }) => {
   const circleRef = useRef(null),
     pathRef = useRef(null),
