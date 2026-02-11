@@ -51,14 +51,6 @@ const HeroHeader = ({ lang, setLang }) => {
         </ul>
       </nav>
       <nav className="hero__header-lang" aria-label="Language selector">
-        <div
-          className={`hero__header-lang-indicator ${
-            lang === defaultLang
-              ? 'hero__header-lang-indicator--bottom'
-              : 'hero__header-lang-indicator--top'
-          }`}
-          aria-hidden="true"
-        />
         <ul className="hero__header-lang-list" role="list">
           {langs.map((item) => (
             <li key={item}>

@@ -92,7 +92,7 @@ const KeyFacts = ({ scrollProgress, lang }) => {
     }
 
     setItems(calculated);
-  }, [radius]); // Removed scrollProgress - positions only depend on radius!
+  }, [radius]);
 
   const onResize = () => {
     const isMobileDevice =
@@ -178,8 +178,8 @@ const KeyFacts = ({ scrollProgress, lang }) => {
 
   return (
     <div className="key-facts">
-      <div className="backgrounds">
-        <div className="top" ref={entryRef}>
+      <div className="key-facts__bg">
+        <div className="key-facts__bg-header" ref={entryRef}>
           <h2
             className="animated-title"
             style={{ transform: `translateX(${progress}%)` }}
@@ -187,18 +187,18 @@ const KeyFacts = ({ scrollProgress, lang }) => {
             {translate('keyFacts.title', lang)}
           </h2>
         </div>
-        <div className="bottom">
-          <div className="background-a" ref={containerARef}>
+        <div className="key-facts__bg-upper">
+          <div className="key-facts__path-upper" ref={containerARef}>
             <AnimatedPathFollower
               container={containerARef.current}
               offsetStart={0.4}
               config={svgConfig.keyFacts.a}
             />
           </div>
-          <div className="background-b" />
+          <div className="key-facts__pattern-upper" />
         </div>
-        <div className="sub-bottom">
-          <div className="background-c" ref={containerBRef}>
+        <div className="key-facts__bg-lower">
+          <div className="key-facts__path-lower" ref={containerBRef}>
             <AnimatedPathFollower
               container={containerBRef.current}
               direction="rtl"
@@ -206,19 +206,19 @@ const KeyFacts = ({ scrollProgress, lang }) => {
               config={svgConfig.keyFacts.b}
             />
           </div>
-          <div className="background-d" />
-          <div className="background-e" />
+          <div className="key-facts__pattern-lower" />
+          <div className="key-facts__pattern-mobile" />
         </div>
       </div>
 
-      <div className="content">
-        <div className="flex-container first">
-          <p className="text-wrp">{translate('keyFacts.text.1', lang)}</p>
-          <div className="circles-wrp">
+      <div className="key-facts__content">
+        <div className="key-facts__block key-facts__block--logos">
+          <p className="key-facts__text">{translate('keyFacts.text.1', lang)}</p>
+          <div className="key-facts__orbits">
             {['first', 'second'].map((circleType) => (
               <div
                 key={circleType}
-                className="circle"
+                className="key-facts__orbit"
                 style={{
                   transform: `translate(-50%, -50%) rotate(${
                     circleType === 'first' ? -scrollProgress : scrollProgress
@@ -230,7 +230,7 @@ const KeyFacts = ({ scrollProgress, lang }) => {
                   .map((item) => (
                     <div
                       key={item.id}
-                      className="circle-item"
+                      className="key-facts__logo"
                       onMouseEnter={() => handleMouseEnter(item.id)}
                       onMouseLeave={() => handleMouseLeave(item.id)}
                       style={{
@@ -248,10 +248,10 @@ const KeyFacts = ({ scrollProgress, lang }) => {
             ))}
           </div>
         </div>
-        <div className="flex-container second">
-          <div className="bg" />
-          <p className="text-wrp">{translate('keyFacts.text.2', lang)}</p>
-          <div className="decoration" aria-hidden="true">
+        <div className="key-facts__block key-facts__block--photo">
+          <div className="key-facts__watermark" />
+          <p className="key-facts__text">{translate('keyFacts.text.2', lang)}</p>
+          <div className="key-facts__figure" aria-hidden="true">
             <picture>
               <source type="image/webp" srcSet={circleImgWebp} />
               <img
@@ -266,10 +266,10 @@ const KeyFacts = ({ scrollProgress, lang }) => {
             </picture>
           </div>
         </div>
-        <div className="flex-container third">
-          <div className="bg" />
-          <p className="text-wrp">{translate('keyFacts.text.3', lang)}</p>
-          <div className="decoration" aria-hidden="true">
+        <div className="key-facts__block key-facts__block--card">
+          <div className="key-facts__watermark" />
+          <p className="key-facts__text">{translate('keyFacts.text.3', lang)}</p>
+          <div className="key-facts__figure" aria-hidden="true">
             <picture>
               <source type="image/webp" srcSet={squareImgWebp} />
               <img
