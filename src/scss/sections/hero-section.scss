@@ -92,30 +92,42 @@
             }
         }
 
-        &-lang-indicator {
-            position: absolute;
-            left: 50%;
-            width: 6.4rem; // 64px
-            height: 0.4rem; // 4px
-            transform: translateX(-50%);
-            transition: top variables.$transition;
-            background-color: variables.$color-primary;
-
-            &--top {
-                top: 0;
-            }
-
-            &--bottom {
-                top: 2.6rem;
-            }
-        }
-
         &-lang-list {
-            height: 3rem;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             column-gap: 1.6rem;
+
+            // Desktop: жёлтая полоска как в макете —
+            // под активным EN и над активным UA с отступом 5px.
+            @media screen and (min-width: variables.$mobile) {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 6.4rem; // 64px
+                    height: 0.4rem; // 4px
+                    background-color: variables.$color-primary;
+                    opacity: 0;
+                    transition: opacity variables.$transition, top variables.$transition, bottom variables.$transition;
+                }
+
+                &--bottom::before {
+                    top: 100%;
+                    bottom: auto;
+                    margin-top: 0.5rem; // 5px ниже блока
+                    opacity: 1;
+                }
+
+                &--top::before {
+                    top: auto;
+                    bottom: 100%;
+                    margin-bottom: 0.5rem; // 5px выше блока
+                    opacity: 1;
+                }
+            }
         }
 
         &-lang-btn {
@@ -124,7 +136,7 @@
             font-size: 1.6rem; // 16px
             line-height: 2rem; // 20px
             font-weight: 400;
-            color: variables.$color-white;
+            color: variables.$border-color;
             text-transform: uppercase;
             transition: color variables.$transition;
 
@@ -134,27 +146,6 @@
 
             &:hover {
                 color: variables.$color-primary;
-            }
-
-            @media screen and (min-width: variables.$mobile) {
-                position: relative;
-
-                &::after {
-                    content: "";
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    bottom: -0.5rem; // ~5px ниже текста
-                    width: 6.4rem; // 64px
-                    height: 0.4rem; // 4px
-                    background-color: variables.$color-primary;
-                    opacity: 0;
-                    transition: opacity variables.$transition;
-                }
-
-                &--active::after {
-                    opacity: 1;
-                }
             }
         }
     }
@@ -341,7 +332,7 @@
             top: 9.4rem;
             left: 50%;
             min-height: auto;
-            width: 50%;
+            width: 79.1rem; // 791px при 1rem = 10px
             height: 73.1rem;
         }
     }
@@ -349,7 +340,7 @@
     // ========== GRID (decorative rectangles only) ==========
     &__grid {
         position: absolute;
-        inset: 0;
+
     }
 
     // ========== CONTENT (title + subtitle) ==========
@@ -381,11 +372,6 @@
         width: 0;
         left: 50%;
         height: 100%;
-
-        @media screen and (min-width: variables.$tablet) {
-            left: 0;
-            width: 100%;
-        }
     }
 
     &__grid-item {
