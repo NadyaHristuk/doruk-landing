@@ -147,6 +147,15 @@
             left: -5px;
             width: 104%;
             height: 100%;
+
+            .svg-line {
+                width: 100%;
+                height: 100%;
+            }
+
+            .svg-line circle {
+                filter: drop-shadow(0 0 0.8rem rgba(246, 184, 35, 0.65));
+            }
         }
 
         .who-we-are__background-dots {
@@ -168,29 +177,6 @@
         .who-we-are__background-line {
             z-index: 0;
             top: 0;
-
-            @media screen and (orientation: portrait) {
-                top: -10rem;
-            }
-            @media screen and (orientation: portrait) and (min-width: variables.$extra-small) {
-                top: -15rem;
-            }
-            @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
-                top: -10rem;
-            }
-
-            @media screen and (orientation: landscape) {
-                top: -50rem;
-            }
-            @media screen and (orientation: landscape) and (min-width: variables.$mobile) {
-                top: -30rem;
-            }
-            @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
-                top: -10rem;
-            }
-            @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
-                top: 11.5rem;
-            }
         }
 
         .who-we-are__dots--left,
@@ -211,75 +197,7 @@
         }
     }
 
-    .who-we-are__backgrounds {
-        .bottom {
-            .background-a,
-            .background-b {
-                position: absolute;
-                left: 0;
-                width: 100vw;
-                height: 100%;
-            }
-
-            .background-b {
-                z-index: 1;
-
-                svg:nth-child(1) {
-                    display: none;
-
-                    @media screen and (min-width: variables.$desktop) {
-                        display: block;
-                    }
-                }
-            }
-
-            .background-a {
-                z-index: 2;
-                top: 0;
-
-                @media screen and (orientation: portrait) {
-                    top: -10rem;
-                }
-                @media screen and (orientation: portrait) and (min-width: variables.$extra-small) {
-                    top: -15rem;
-                }
-                @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
-                    top: -10rem;
-                }
-
-                @media screen and (orientation: landscape) {
-                    top: -50rem;
-                }
-                @media screen and (orientation: landscape) and (min-width: variables.$mobile) {
-                    top: -30rem;
-                }
-                @media screen and (orientation: landscape) and (min-width: variables.$tablet) {
-                    top: -10rem;
-                }
-                @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
-                    top: 0;
-                }
-            }
-
-            .who-we-are__dots--left,
-            .who-we-are__dots--right {
-                position: absolute;
-                top: 0;
-                pointer-events: none;
-                contain: layout style paint;
-            }
-
-            .who-we-are__dots--left {
-                left: 5.6rem;
-            }
-
-            .who-we-are__dots--right {
-                right: 2.3rem;
-            }
-        }
-    }
-
-        /* Панели слайдера */
+    /* Панели слайдера */
         .who-we-are__panel {
         position: relative;
         width: 100vw;

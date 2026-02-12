@@ -327,11 +327,9 @@ const WhoWeAre = ({ lang }) => {
         <div className="who-we-are__background-line" ref={containerRef}>
           <AnimatedPathFollower
             container={containerRef.current}
-            trigger={entryRef.current}
-            start={'top top'}
-            end={'bottom top'}
-            scrub={true}
-            offsetStart={0}
+            direction="rtl"
+            scrub={0.8}
+            offsetStart={0.12}
             config={svgConfig.about}
           />
         </div>

@@ -99,8 +99,8 @@ const KeepInTouch = ({ lang }) => {
 
   return (
     <div className="keep-in-touch">
-      <div className="backgrounds">
-        <div className="top" ref={entryRef}>
+      <div className="keep-in-touch__backgrounds">
+        <div className="keep-in-touch__header" ref={entryRef}>
           <h2
             className="animated-title"
             style={{ transform: `translateX(${progress}%)` }}
@@ -109,8 +109,8 @@ const KeepInTouch = ({ lang }) => {
           </h2>
         </div>
 
-        <div className="bottom">
-          <div className="background-a" ref={containerRef}>
+        <div className="keep-in-touch__bg">
+          <div className="keep-in-touch__bg-line" ref={containerRef}>
             <AnimatedPathFollower
               container={containerRef.current}
               offsetStart={0.2}
@@ -120,34 +120,34 @@ const KeepInTouch = ({ lang }) => {
         </div>
       </div>
 
-      <div className="content">
-        <div className="content-top">
-          <div className="decoration">
+      <div className="keep-in-touch__content">
+        <div className="keep-in-touch__top">
+          <div className="keep-in-touch__decoration">
             <picture>
               <source type="image/webp" srcSet={jpgBgWebp} />
               <img src={jpgBg} width="859" height="557" loading="lazy" alt="" role="presentation" aria-hidden="true" />
             </picture>
-            <div className="input-name-mobile">
+            <div className="keep-in-touch__name--mobile">
               <NameInput lang={lang} value={userName} setValue={setUserName} />
             </div>
           </div>
           <form
-            className="form"
+            className="keep-in-touch__form"
             onSubmit={(e) => {
               e.preventDefault();
               submit();
             }}
           >
-            <div className="flexible">
-              <div className="inputs">
-                <div className="input-name-desktop">
+            <div className="keep-in-touch__flexible">
+              <div className="keep-in-touch__inputs">
+                <div className="keep-in-touch__name--desktop">
                   <NameInput
                     lang={lang}
                     value={userName}
                     setValue={setUserName}
                   />
                 </div>
-                <div className="contact-wrp">
+                <div className="keep-in-touch__contact">
                   {!phoneOrEmail ? (
                     <input
                       required
@@ -171,12 +171,12 @@ const KeepInTouch = ({ lang }) => {
                       aria-label={translate('keepInTouch.input.email', lang)}
                     />
                   )}
-                  <div className="switch-wrp">
+                  <div className="keep-in-touch__switch-wrap">
                     {phoneOrEmail
                       ? translate('keepInTouch.a11y.togglePhone', lang)
                       : translate('keepInTouch.a11y.toggleEmail', lang)}
                     <div
-                      className={`switch ${phoneOrEmail ? 'phone' : 'email'}`}
+                      className={`keep-in-touch__switch ${phoneOrEmail ? 'keep-in-touch__switch--phone' : 'keep-in-touch__switch--email'}`}
                       role="switch"
                       aria-checked={phoneOrEmail}
                       aria-label={translate(
@@ -188,7 +188,7 @@ const KeepInTouch = ({ lang }) => {
                   </div>
                 </div>
               </div>
-              <div className="textarea-wrp">
+              <div className="keep-in-touch__textarea-wrap">
                 <textarea
                   placeholder={translate('keepInTouch.input.comment', lang)}
                   value={userComment}
@@ -197,23 +197,23 @@ const KeepInTouch = ({ lang }) => {
                   onChange={(e) => setUserComment(e.target.value)}
                   aria-label={translate('keepInTouch.input.comment', lang)}
                 ></textarea>
-                <div className="textarea-counter">
+                <div className="keep-in-touch__textarea-counter">
                   {userComment.length ?? 0} {translate('common.from', lang)}{' '}
                   {commentMaxLength} {translate('common.symbols', lang)}
                 </div>
               </div>
             </div>
-            <div className="submit-wrp">
+            <div className="keep-in-touch__submit">
               {serverError && (
                 <div
-                  className="message error-message"
+                  className="keep-in-touch__message"
                   role="alert"
                   aria-live="assertive"
                 >
-                  <div className="close" onClick={() => setServerError(false)}>
+                  <div className="keep-in-touch__close" onClick={() => setServerError(false)}>
                     ✖
                   </div>
-                  <div className="message-header">
+                  <div className="keep-in-touch__message-header">
                     <i className="icon-about-arrow" />
                     {translate('keepInTouch.messages.errorHeader', lang)}
                     <i className="icon-about-arrow" />
@@ -223,14 +223,14 @@ const KeepInTouch = ({ lang }) => {
               )}
               {error && (
                 <div
-                  className="message error-message"
+                  className="keep-in-touch__message"
                   role="alert"
                   aria-live="assertive"
                 >
-                  <div className="close" onClick={() => setError(false)}>
+                  <div className="keep-in-touch__close" onClick={() => setError(false)}>
                     ✖
                   </div>
-                  <div className="message-header">
+                  <div className="keep-in-touch__message-header">
                     <i className="icon-about-arrow" />
                     {translate('keepInTouch.messages.errorHeader', lang)}
                     <i className="icon-about-arrow" />
@@ -240,14 +240,14 @@ const KeepInTouch = ({ lang }) => {
               )}
               {success && (
                 <div
-                  className="message success-message"
+                  className="keep-in-touch__message keep-in-touch__message--success"
                   role="status"
                   aria-live="polite"
                 >
-                  <div className="close" onClick={() => clearForm()}>
+                  <div className="keep-in-touch__close" onClick={() => clearForm()}>
                     ✖
                   </div>
-                  <div className="message-header">
+                  <div className="keep-in-touch__message-header">
                     <i className="icon-about-arrow" />
                     {translate('keepInTouch.messages.successHeader', lang)}
                     <i className="icon-about-arrow" />
@@ -270,11 +270,11 @@ const KeepInTouch = ({ lang }) => {
             </div>
           </form>
         </div>
-        <div className="content-bottom">
-          <div className="text-block">
-            <div className="text">{translate('keepInTouch.text', lang)}</div>
-            <div className="email">{translate('keepInTouch.email', lang)}</div>
-            <div className="phone">{translate('keepInTouch.phone', lang)}</div>
+        <div className="keep-in-touch__bottom">
+          <div className="keep-in-touch__text-block">
+            <div className="keep-in-touch__text">{translate('keepInTouch.text', lang)}</div>
+            <div className="keep-in-touch__email">{translate('keepInTouch.email', lang)}</div>
+            <div className="keep-in-touch__phone">{translate('keepInTouch.phone', lang)}</div>
           </div>
         </div>
       </div>

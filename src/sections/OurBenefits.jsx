@@ -11,11 +11,11 @@ import jpgBgWebp from '../assets/webp/our-benefits/benefits-bg.webp';
 
 const TitleBlock = ({ children, icon }) => {
   return (
-    <li className="title-block">
-      <div className="circle" aria-hidden="true">
+    <li className="our-benefits__item">
+      <div className="our-benefits__circle" aria-hidden="true">
         <i className={icon} aria-hidden="true" />
       </div>
-      <div className="text">{children}</div>
+      <div className="our-benefits__item-text">{children}</div>
     </li>
   );
 };
@@ -27,8 +27,8 @@ const OurBenefits = ({ lang }) => {
 
   return (
     <div className="our-benefits">
-      <div className="backgrounds">
-        <div className="top" ref={entryRef}>
+      <div className="our-benefits__backgrounds">
+        <div className="our-benefits__header" ref={entryRef}>
           <h2
             className="animated-title"
             style={{
@@ -39,8 +39,8 @@ const OurBenefits = ({ lang }) => {
           </h2>
         </div>
 
-        <div className="bottom">
-          <div className="background-a" ref={containerRef}>
+        <div className="our-benefits__bg">
+          <div className="our-benefits__bg-line" ref={containerRef}>
             <AnimatedPathFollower
               container={containerRef.current}
               direction="rtl"
@@ -48,17 +48,17 @@ const OurBenefits = ({ lang }) => {
               config={svgConfig.ourBenefits}
             />
           </div>
-          <div className="background-b" aria-hidden="true" />
+          <div className="our-benefits__bg-dots" aria-hidden="true" />
         </div>
       </div>
 
-      <div className="content">
-        <div className="content-center">
-          <div className="svg-background">
+      <div className="our-benefits__content">
+        <div className="our-benefits__center">
+          <div className="our-benefits__image-wrap">
             <picture>
               <source type="image/webp" srcSet={jpgBgWebp} />
               <img
-                className="masked"
+                className="our-benefits__image-masked"
                 src={jpgBg}
                 width="1380"
                 height="920"
@@ -71,24 +71,24 @@ const OurBenefits = ({ lang }) => {
           </div>
         </div>
         <ul
-          className="content-around"
+          className="our-benefits__list"
           role="list"
           style={{ listStyle: 'none', margin: 0, padding: 0 }}
         >
           <TitleBlock icon="icon-our-benefits-office-remote">
-            <h3 className="first-line truncate">
+            <h3 className="our-benefits__line--first truncate">
               {translate('ourBenefits.topLeft.line1', lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="our-benefits__line--second truncate">
               <span>{translate('ourBenefits.topLeft.line2', lang)}</span>
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-insurance">
-            <h3 className="first-line truncate">
+            <h3 className="our-benefits__line--first truncate">
               {translate('ourBenefits.centerLeft.line1', lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="our-benefits__line--second truncate">
               {translate('ourBenefits.centerLeft.line2prefix', lang)}
               <span>
                 {translate('ourBenefits.centerLeft.line2suffix', lang)}
@@ -97,32 +97,32 @@ const OurBenefits = ({ lang }) => {
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-team">
-            <h3 className="first-line truncate">
+            <h3 className="our-benefits__line--first truncate">
               {translate('ourBenefits.bottom.line1', lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="our-benefits__line--second truncate">
               <span>{translate('ourBenefits.bottom.line2', lang)}</span>
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-lunch-office">
-            <h3 className="first-line truncate">
+            <h3 className="our-benefits__line--first truncate">
               <span>{translate('ourBenefits.topRight.line1prefix', lang)}</span>
               {translate('ourBenefits.topRight.line1', lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="our-benefits__line--second truncate">
               {translate('ourBenefits.topRight.line2', lang)}
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-playing-zone">
-            <h3 className="first-line truncate">
+            <h3 className="our-benefits__line--first truncate">
               <span>
                 {translate('ourBenefits.centerRight.line1prefix', lang)}
               </span>
               {translate('ourBenefits.centerRight.line1', lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="our-benefits__line--second truncate">
               {translate('ourBenefits.centerRight.line2', lang)}
             </p>
           </TitleBlock>
