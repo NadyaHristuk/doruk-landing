@@ -14,7 +14,7 @@
     display: block;
     contain: layout style; // Изолируем layout пересчёты
     /* Новый лёгкий слайдер на scroll-snap */
-    .who-we-are-slider {
+    .who-we-are__slider {
         position: relative;
         /* z-index убран — наследует от #who-we-are */
         display: grid;
@@ -30,16 +30,16 @@
         scrollbar-width: none; /* Firefox */
     }
 
-    .who-we-are-slider::-webkit-scrollbar { display: none; }
+    .who-we-are__slider::-webkit-scrollbar { display: none; }
 
     /* Заголовок секции - отдельно от фонов */
-    .section-header {
+    .who-we-are__header {
         position: relative;
         z-index: 4;
     }
 
     /* Заголовок who-we-are — переопределения общего .animated-title */
-    .animated-title.about-title {
+    .animated-title.who-we-are__title {
         top: 3rem;
         line-height: 4.6rem;
         display: inline-flex;
@@ -67,17 +67,17 @@
         }
     }
 
-    .about-title__word {
+    .who-we-are__title-word {
         display: inline-flex;
         align-items: baseline;
     }
 
-    .about-title__word--first {
+    .who-we-are__title-word--first {
         gap: 1.4rem;
         letter-spacing: 0;
     }
 
-    .about-title__initial {
+    .who-we-are__title-initial {
         font-family: variables.$font-pixelify-sans;
         font-size: 4.6rem;
         font-weight: 700;
@@ -90,7 +90,7 @@
         }
     }
 
-    .about-title__rest {
+    .who-we-are__title-rest {
         font-family: variables.$font-neutral-face;
         font-size: 3.6rem;
         font-weight: 700;
@@ -103,7 +103,7 @@
         }
     }
 
-    .about-title__word--mono {
+    .who-we-are__title-word--mono {
         font-family: variables.$font-ubuntu-sans-mono;
         font-size: 3.6rem;
         font-weight: 700;
@@ -115,24 +115,24 @@
         }
     }
 
-    .about-title__word--first + .about-title__word--mono {
+    .who-we-are__title-word--first + .who-we-are__title-word--mono {
         margin-left: 5.3rem;
     }
 
-    .about-title__word--mono + .about-title__word--mono {
+    .who-we-are__title-word--mono + .who-we-are__title-word--mono {
         margin-left: 5.5rem;
     }
 
     /* Фоновые элементы */
-    .backgrounds {
+    .who-we-are__backgrounds {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
 
-        .background-line,
-        .background-dots {
+        .who-we-are__background-line,
+        .who-we-are__background-dots {
             position: absolute;
             left: 0;
             width: 100vw;
@@ -143,7 +143,13 @@
             }
         }
 
-        .background-dots {
+        .who-we-are__background-line {
+            left: -5px;
+            width: 104%;
+            height: 100%;
+        }
+
+        .who-we-are__background-dots {
             z-index: 1;
 
             svg:nth-child(1) {
@@ -159,11 +165,10 @@
             }
         }
 
-        .background-line {
+        .who-we-are__background-line {
             z-index: 0;
             top: 0;
 
-            // Portrait: -10rem для всех, кроме extra-small (431-768px) где -15rem
             @media screen and (orientation: portrait) {
                 top: -10rem;
             }
@@ -174,7 +179,6 @@
                 top: -10rem;
             }
 
-            // Landscape: mobile-first от -50rem до 23rem
             @media screen and (orientation: landscape) {
                 top: -50rem;
             }
@@ -185,12 +189,12 @@
                 top: -10rem;
             }
             @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
-                top: 23rem;
+                top: 11.5rem;
             }
         }
 
-        .about-svg-dots-left,
-        .about-svg-dots-right {
+        .who-we-are__dots--left,
+        .who-we-are__dots--right {
             position: absolute;
             top: 0;
             pointer-events: none;
@@ -198,16 +202,16 @@
             z-index: 1;
         }
 
-        .about-svg-dots-left {
+        .who-we-are__dots--left {
             left: 5.6rem;
         }
 
-        .about-svg-dots-right {
+        .who-we-are__dots--right {
             right: 2.3rem;
         }
     }
 
-    .backgrounds {
+    .who-we-are__backgrounds {
         .bottom {
             .background-a,
             .background-b {
@@ -233,7 +237,6 @@
                 z-index: 2;
                 top: 0;
 
-                // Portrait: -10rem для всех, кроме extra-small (431-768px) где -15rem
                 @media screen and (orientation: portrait) {
                     top: -10rem;
                 }
@@ -244,7 +247,6 @@
                     top: -10rem;
                 }
 
-                // Landscape: mobile-first от -50rem до 0
                 @media screen and (orientation: landscape) {
                     top: -50rem;
                 }
@@ -259,33 +261,31 @@
                 }
             }
 
-            .about-svg-dots-left,
-            .about-svg-dots-right {
+            .who-we-are__dots--left,
+            .who-we-are__dots--right {
                 position: absolute;
                 top: 0;
                 pointer-events: none;
                 contain: layout style paint;
             }
 
-            .about-svg-dots-left {
+            .who-we-are__dots--left {
                 left: 5.6rem;
             }
 
-            .about-svg-dots-right {
+            .who-we-are__dots--right {
                 right: 2.3rem;
             }
         }
     }
 
         /* Панели слайдера */
-        .who-we-are-panel {
-        /* z-index убран — наследует от #who-we-are */
+        .who-we-are__panel {
         position: relative;
         width: 100vw;
             min-height: 100vh;
 
-        .content {
-            /* Переопределяем absolute из layout.scss */
+        .who-we-are__content {
             position: relative;
             top: unset;
             left: unset;
@@ -296,15 +296,12 @@
 
             display: flex;
             align-items: flex-start;
-            /* По макету: контент начинается на 309px от верха секции */
-            padding-top: 16rem;
-
-            @media screen and (min-width: variables.$mobile) {
-                padding-top: 22rem;
-            }
+            padding-top: 5rem;
 
             @media screen and (min-width: variables.$desktop) {
-                padding-top: 30.9rem;
+                justify-content: center;
+                flex-flow: row nowrap;
+                padding-top: 13rem;
             }
 
             @media screen and (orientation: portrait) {
@@ -316,15 +313,9 @@
                 height: auto;
             }
 
-            @media screen and (min-width: variables.$desktop), (orientation: landscape) {
-                justify-content: center;
-                flex-flow: row nowrap;
-            }
-
-            /* Стили для обоих вариантов layout */
-            &.layout-default,
-            &.layout-mirrored {
-                .content-image {
+            &.who-we-are__content--default,
+            &.who-we-are__content--mirrored {
+                .who-we-are__image {
                     --who-image-layer-progress: 0;
                     --who-image-layer-dir-x: -1;
                     --who-image-layer-dir-y: -1;
@@ -384,14 +375,14 @@
                         );
                     }
 
-                    .masked {
+                    .who-we-are__image-masked {
                         position: relative;
                         width: 100%;
                         height: auto;
                         mask: url("assets/svg/bg/about-image-mask.svg") no-repeat center center / contain;
                     }
 
-                    .title-block {
+                    .who-we-are__title-block {
                         position: absolute;
                         top: -0.6rem;
                         height: 5.6rem;
@@ -450,7 +441,7 @@
                             padding: 0 4rem 0 10rem;
                         }
 
-                        .circle {
+                        .who-we-are__title-circle {
                             position: absolute;
                             top: -0.1rem;
                             right: 0;
@@ -486,8 +477,7 @@
                             }
                         }
 
-                        .first-line,
-                        .second-line {
+                        .who-we-are__title-line {
                             position: relative;
                             width: 100%;
                             font-family: variables.$font-source-code-pro;
@@ -509,7 +499,7 @@
                             }
                         }
 
-                        .first-line {
+                        .who-we-are__title-line--first {
                             top: 0.6rem;
                             text-wrap-mode: nowrap;
 
@@ -527,7 +517,7 @@
                             }
                         }
 
-                        .first-line .glow-wrapper {
+                        .who-we-are__title-line--first .who-we-are__title-glow {
                             position: relative;
                             display: inline-block;
                             white-space: nowrap;
@@ -553,7 +543,7 @@
                             }
                         }
 
-                        .second-line {
+                        .who-we-are__title-line--second {
                             top: 0.8rem;
                             // transform: translateX(-50%);
 
@@ -574,7 +564,7 @@
                     }
                 }
 
-                .content-text {
+                .who-we-are__text {
                     position: relative;
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -595,7 +585,7 @@
                         margin: 0;
                     }
 
-                    .text-block {
+                    .who-we-are__text-block {
                         --who-layer-before-progress: 0;
                         --who-layer-after-progress: 0;
                         --who-layer-substrate-progress: 0;
@@ -613,7 +603,7 @@
                         width: 73%;
                         height: 100%;
                         /* Project SVG substrate behind the text */
-                        .text-substrate {
+                        .who-we-are__text-substrate {
                             position: absolute;
                             inset: 0;
                             width: 100%;
@@ -755,7 +745,7 @@
                             }
                         }
 
-                        .text {
+                        .who-we-are__text-content {
                             z-index: 5;
                             position: relative;
                             height: 100%;
@@ -788,7 +778,7 @@
             }
 
             /* Отзеркаленный layout (изображение справа, текст слева) */
-            &.layout-mirrored {
+            &.who-we-are__content--mirrored {
                 @media screen and (orientation: portrait) {
                     flex-flow: column nowrap;
                 }
@@ -797,18 +787,18 @@
                     flex-flow: row-reverse nowrap;
                 }
 
-                .content-image {
+                .who-we-are__image {
                     transform: scaleX(-1);
                     display: inline-block;
                     --who-image-layer-dir-x: 1;
 
-                    .title-block {
-                        .circle {
+                    .who-we-are__title-block {
+                        .who-we-are__title-circle {
                             left: unset;
                             right: 0;
                         }
 
-                        .first-line {
+                        .who-we-are__title-line--first {
                             transform: scaleX(-1); // translateX(40%);
 
                         //     @media screen and (min-width: variables.$tablet) {
@@ -820,7 +810,7 @@
                         //     }
                         }
 
-                        .second-line {
+                        .who-we-are__title-line--second {
                             transform: scaleX(-1); // translateX(70%);
 
                         //     @media screen and (min-width: variables.$mobile) {
@@ -834,13 +824,13 @@
                     }
                 }
 
-                .content-text {
+                .who-we-are__text {
                     // Tablet portrait: добавляем правый margin
                     @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
                         margin: 0 10rem 0 0;
                     }
 
-                    .text-block {
+                    .who-we-are__text-block {
                         left: 10.6%;
                         --who-layer-dir-x: 1;
 

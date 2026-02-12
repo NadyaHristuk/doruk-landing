@@ -46,19 +46,21 @@ const splitFirstWord = (word) => {
 const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
   const titleId = `${item.id}-title${idSuffix}`;
   const layoutClass =
-    item.layout === 'mirrored' ? 'layout-mirrored' : 'layout-default';
+    item.layout === 'mirrored'
+      ? 'who-we-are__content--mirrored'
+      : 'who-we-are__content--default';
   return (
     <article
-      className="who-we-are-panel"
+      className="who-we-are__panel"
       aria-labelledby={titleId}
       aria-hidden={hidden ? 'true' : undefined}
     >
-      <div className={`content ${layoutClass}`}>
-        <div className="content-image">
+      <div className={`who-we-are__content ${layoutClass}`}>
+        <div className="who-we-are__image">
           <picture>
             <source type="image/webp" srcSet={item.bgWebp} />
             <img
-              className="masked"
+              className="who-we-are__image-masked"
               src={item.bg}
               width="1040"
               height="559"
@@ -68,31 +70,34 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
               aria-hidden="true"
             />
           </picture>
-          <div className="title-block">
-            <div className="circle">
+          <div className="who-we-are__title-block">
+            <div className="who-we-are__title-circle">
               <i className="icon-about-arrow" />
             </div>
-            <h3 className="first-line truncate" id={titleId}>
-              <span className="glow-wrapper">
+            <h3
+              className="who-we-are__title-line who-we-are__title-line--first truncate"
+              id={titleId}
+            >
+              <span className="who-we-are__title-glow">
                 {translate(item.titleStart, lang)}
               </span>
               {translate(item.title, lang)}
             </h3>
-            <p className="second-line truncate">
+            <p className="who-we-are__title-line who-we-are__title-line--second truncate">
               {translate(item.titleEnd, lang)}
             </p>
           </div>
         </div>
-        <div className="content-text">
-          <div className="text-block">
+        <div className="who-we-are__text">
+          <div className="who-we-are__text-block">
             <img
-              className="text-substrate"
+              className="who-we-are__text-substrate"
               src={aboutBgSmall}
               alt=""
               aria-hidden="true"
               role="presentation"
             />
-            <p className="text">{translate(item.text, lang)}</p>
+            <p className="who-we-are__text-content">{translate(item.text, lang)}</p>
           </div>
         </div>
       </div>
@@ -113,6 +118,7 @@ const WhoWeAre = ({ lang }) => {
 
   useMatrixDots({
     sectionId: '#who-we-are',
+    svgSelector: '.who-we-are__dots--left, .who-we-are__dots--right',
     bucketSize: 40, // Увеличиваем размер столбца (больше пикселей = меньше столбцов)
     minTailLength: 3,
     maxTailLength: 7,
@@ -129,11 +135,11 @@ const WhoWeAre = ({ lang }) => {
     const slider = sliderRef.current;
     const sectionEl = document.querySelector('#who-we-are');
     if (!slider || !sectionEl || count <= 1) return;
-    const panels = Array.from(slider.querySelectorAll('.who-we-are-panel'));
+    const panels = Array.from(slider.querySelectorAll('.who-we-are__panel'));
     const panelLayers = panels.map((panel) => ({
-      textBlock: panel.querySelector('.text-block'),
-      imageLayers: panel.querySelector('.content-image'),
-      imageNode: panel.querySelector('.content-image .masked')
+      textBlock: panel.querySelector('.who-we-are__text-block'),
+      imageLayers: panel.querySelector('.who-we-are__image'),
+      imageNode: panel.querySelector('.who-we-are__image .who-we-are__image-masked')
     }));
 
     let activeIndex = 0;
@@ -293,23 +299,23 @@ const WhoWeAre = ({ lang }) => {
   return (
     <>
       {/* Section header - отдельно от фонов */}
-      <header className="section-header" ref={entryRef}>
+      <header className="who-we-are__header" ref={entryRef}>
         <h2
-          className="animated-title about-title"
+          className="animated-title who-we-are__title"
           aria-label={ariaTitle || translate('about.title', lang)}
           style={{ transform: `translateX(${progress}%)` }}
         >
-          <span className="about-title__word about-title__word--first">
-            <span className="about-title__initial">{firstWordParts.initial}</span>
-            <span className="about-title__rest">{firstWordParts.rest}</span>
+          <span className="who-we-are__title-word who-we-are__title-word--first">
+            <span className="who-we-are__title-initial">{firstWordParts.initial}</span>
+            <span className="who-we-are__title-rest">{firstWordParts.rest}</span>
           </span>
           {titleParts.second && (
-            <span className="about-title__word about-title__word--mono">
+            <span className="who-we-are__title-word who-we-are__title-word--mono">
               {titleParts.second}
             </span>
           )}
           {titleParts.third && (
-            <span className="about-title__word about-title__word--mono">
+            <span className="who-we-are__title-word who-we-are__title-word--mono">
               {titleParts.third}
             </span>
           )}
@@ -317,8 +323,8 @@ const WhoWeAre = ({ lang }) => {
       </header>
 
       {/* Фоновые элементы */}
-      <div className="backgrounds">
-        <div className="background-line" ref={containerRef}>
+      <div className="who-we-are__backgrounds">
+        <div className="who-we-are__background-line" ref={containerRef}>
           <AnimatedPathFollower
             container={containerRef.current}
             trigger={entryRef.current}
@@ -329,15 +335,15 @@ const WhoWeAre = ({ lang }) => {
             config={svgConfig.about}
           />
         </div>
-        <div className="background-dots">
-          <SvgDotsLeft className="about-svg-dots-left" />
-          <SvgDotsRight className="about-svg-dots-right" />
+        <div className="who-we-are__background-dots">
+          <SvgDotsLeft className="who-we-are__dots--left" />
+          <SvgDotsRight className="who-we-are__dots--right" />
         </div>
       </div>
 
       {/* Слайдер с контентом */}
       <div
-        className="who-we-are-slider"
+        className="who-we-are__slider"
         role="region"
         aria-label={translate('about.title', lang)}
         ref={sliderRef}

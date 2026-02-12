@@ -28,7 +28,7 @@ export const useScrollTriggers = (containerRef, callbacks, config = {}) => {
 
     // Horizontal Scroll Logic
     const horizontalContainer = document.querySelector('#who-we-are');
-    const horizontalSections = gsap.utils.toArray('.who-we-are-panel');
+    const horizontalSections = gsap.utils.toArray('.who-we-are__panel');
     let scrollTween;
 
     if (enableHorizontalGsap && horizontalContainer) {
