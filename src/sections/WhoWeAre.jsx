@@ -11,14 +11,48 @@ import { translate, svgConfig, aboutContent } from '../config';
 import SvgDotsLeft from '../assets/svg/animations/about-dots-left.svg?react';
 import SvgDotsRight from '../assets/svg/animations/about-dots-right.svg?react';
 import aboutBgSmall from '../assets/svg/bg/about-bg-small.svg';
+import { useMatrixDots } from '../hooks/useMatrixDots';
+
+const AUTOPLAY_HOLD_MS = 3200;
+const SLIDE_ANIMATION_SEC = 0.8;
+
+const getAboutTitleParts = (lang) => {
+  const tokenConfig = translate('about.titleTokens', lang);
+  if (tokenConfig && typeof tokenConfig === 'object') {
+    const first = `${tokenConfig.first || ''}`.trim();
+    const second = `${tokenConfig.second || ''}`.trim();
+    const third = `${tokenConfig.third || ''}`.trim();
+    if (first) return { first, second, third };
+  }
+
+  const fallbackTitle = `${translate('about.title', lang) || ''}`.trim();
+  const words = fallbackTitle.split(/\s+/).filter(Boolean);
+  return {
+    first: words[0] || '',
+    second: words[1] || '',
+    third: words[2] || ''
+  };
+};
+
+const splitFirstWord = (word) => {
+  const chars = Array.from(`${word || ''}`);
+  return {
+    initial: chars[0] || '',
+    rest: chars.slice(1).join('')
+  };
+};
 
 // Panel content component
-const WhoWeAreContent = ({ item, lang }) => {
-  const titleId = `${item.id}-title`;
+const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
+  const titleId = `${item.id}-title${idSuffix}`;
   const layoutClass =
     item.layout === 'mirrored' ? 'layout-mirrored' : 'layout-default';
   return (
-    <article className="who-we-are-panel" aria-labelledby={titleId}>
+    <article
+      className="who-we-are-panel"
+      aria-labelledby={titleId}
+      aria-hidden={hidden ? 'true' : undefined}
+    >
       <div className={`content ${layoutClass}`}>
         <div className="content-image">
           <picture>
@@ -65,13 +99,18 @@ const WhoWeAreContent = ({ item, lang }) => {
     </article>
   );
 };
-import { useMatrixDots } from '../hooks/useMatrixDots';
 
 const WhoWeAre = ({ lang }) => {
   const containerRef = useRef(null);
   const entryRef = useRef(null);
   const sliderRef = useRef(null);
   const progress = useTitleAnimation(entryRef);
+  const titleParts = getAboutTitleParts(lang);
+  const firstWordParts = splitFirstWord(titleParts.first);
+  const ariaTitle = [titleParts.first, titleParts.second, titleParts.third]
+    .filter(Boolean)
+    .join(' ');
+
   useMatrixDots({
     sectionId: '#who-we-are',
     bucketSize: 40, // Увеличиваем размер столбца (больше пикселей = меньше столбцов)
@@ -85,103 +124,169 @@ const WhoWeAre = ({ lang }) => {
   });
 
   useEffect(() => {
-    const count = aboutContent.length;
+    const originalCount = aboutContent.length;
+    const count = originalCount;
     const slider = sliderRef.current;
     const sectionEl = document.querySelector('#who-we-are');
     if (!slider || !sectionEl || count <= 1) return;
+    const panels = Array.from(slider.querySelectorAll('.who-we-are-panel'));
+    const panelLayers = panels.map((panel) => ({
+      textBlock: panel.querySelector('.text-block'),
+      imageLayers: panel.querySelector('.content-image'),
+      imageNode: panel.querySelector('.content-image .masked')
+    }));
 
-    const panelWidth = slider.clientWidth; // ~100vw
-    const maxScroll = panelWidth * (count - 1);
+    let activeIndex = 0;
+    let slideTween = null;
+    let isAutoPlaying = false;
+    let autoplayTimer = null;
+    let triggerActive = false;
 
-    // Vertical pinned scroll drives horizontal slider
-    const scrollAnim = gsap.to(slider, { scrollLeft: maxScroll, ease: 'none' });
+    const clearTimer = (timerId) => {
+      if (timerId) window.clearTimeout(timerId);
+      return null;
+    };
+
+    const currentPanelWidth = () => slider.clientWidth || window.innerWidth || 1;
+
+    const stopAutoplay = () => {
+      isAutoPlaying = false;
+      autoplayTimer = clearTimer(autoplayTimer);
+    };
+
+    const animatePanelState = (index, immediate = false) => {
+      const activeLogicalIndex = index % originalCount;
+      panelLayers.forEach((panelLayer, panelIndex) => {
+        const logicalIndex = panelIndex % originalCount;
+        const isActive = logicalIndex === activeLogicalIndex;
+        const duration = immediate ? 0 : 0.55;
+        const ease = immediate ? 'none' : 'power2.out';
+
+        if (panelLayer.textBlock) {
+          gsap.to(panelLayer.textBlock, {
+            '--who-layer-before-progress': isActive ? 1 : 0,
+            '--who-layer-after-progress': isActive ? 1 : 0,
+            '--who-layer-substrate-progress': isActive ? 1 : 0,
+            duration,
+            ease,
+            overwrite: true
+          });
+        }
+
+        if (panelLayer.imageLayers) {
+          gsap.to(panelLayer.imageLayers, {
+            '--who-image-layer-progress': isActive ? 1 : 0,
+            duration,
+            ease,
+            overwrite: true
+          });
+        }
+
+        if (panelLayer.imageNode) {
+          gsap.to(panelLayer.imageNode, {
+            y: isActive ? 0 : 10,
+            scale: isActive ? 1 : 0.995,
+            duration,
+            ease,
+            overwrite: true
+          });
+        }
+      });
+    };
+
+    const goToSlide = (targetIndex, options = {}) => {
+      const { immediate = false } = options;
+      const clampedIndex = Math.max(0, Math.min(targetIndex, count));
+      const sameSlide = clampedIndex === activeIndex;
+      if (sameSlide && !immediate) return;
+
+      if (slideTween) {
+        slideTween.kill();
+        slideTween = null;
+      }
+
+      activeIndex = clampedIndex;
+      animatePanelState(activeIndex, immediate);
+      slideTween = gsap.to(slider, {
+        scrollLeft: currentPanelWidth() * activeIndex,
+        duration: immediate ? 0 : SLIDE_ANIMATION_SEC,
+        ease: immediate ? 'none' : 'power2.out',
+        overwrite: true,
+        onComplete: () => {
+          if (activeIndex !== count) return;
+          activeIndex = 0;
+          gsap.set(slider, { scrollLeft: 0 });
+          animatePanelState(0, true);
+        }
+      });
+    };
+
+    const scheduleNextAutoplayStep = () => {
+      autoplayTimer = clearTimer(autoplayTimer);
+      if (!isAutoPlaying || !triggerActive) {
+        stopAutoplay();
+        return;
+      }
+
+      autoplayTimer = window.setTimeout(() => {
+        const nextIndex = activeIndex + 1;
+        goToSlide(nextIndex);
+        scheduleNextAutoplayStep();
+      }, AUTOPLAY_HOLD_MS);
+    };
+
+    const startAutoplay = () => {
+      isAutoPlaying = true;
+      scheduleNextAutoplayStep();
+    };
+
+    const onResize = () => {
+      goToSlide(activeIndex, { immediate: true });
+      ScrollTrigger.refresh();
+    };
 
     const trigger = ScrollTrigger.create({
-      trigger: entryRef.current,
-      pin: sectionEl,
-      pinType: 'transform', // Использует CSS transform вместо position:fixed — производительнее
-      start: 'top top', // Изменено с 'top 19' - pin начинается когда секция достигает верха
-      end: `+=${maxScroll}`,
-      scrub: true,
-      anticipatePin: 1, // Предотвращает рывок при активации pin
+      trigger: sectionEl,
+      start: 'top 80%',
+      end: 'bottom top',
       markers: false,
-      animation: scrollAnim
-    });
-
-    // Animate project SVG substrate + text when panel enters
-    const panels = Array.from(slider.querySelectorAll('.who-we-are-panel'));
-    panels.forEach((panel) => {
-      const textBlock = panel.querySelector('.text-block');
-      const imageLayers = panel.querySelector('.content-image');
-      const imageNode = panel.querySelector('.content-image .masked');
-
-      if (textBlock) {
+      onEnter: () => {
+        triggerActive = true;
         gsap.fromTo(
-          textBlock,
-          {
-            '--who-layer-before-progress': 0,
-            '--who-layer-after-progress': 0,
-            '--who-layer-substrate-progress': 0
-          },
-          {
-            '--who-layer-before-progress': 1,
-            '--who-layer-after-progress': 1,
-            '--who-layer-substrate-progress': 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: panel,
-              containerAnimation: scrollAnim,
-              start: 'left center',
-              end: 'right center',
-              scrub: true
-            }
-          }
+          slider,
+          { autoAlpha: 0, y: 36 },
+          { autoAlpha: 1, y: 0, duration: 0.75, ease: 'power2.out', overwrite: true }
         );
-      }
-
-      if (imageLayers) {
+        startAutoplay();
+      },
+      onEnterBack: () => {
+        triggerActive = true;
         gsap.fromTo(
-          imageLayers,
-          { '--who-image-layer-progress': 0 },
-          {
-            '--who-image-layer-progress': 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: panel,
-              containerAnimation: scrollAnim,
-              start: 'left center',
-              end: 'right center',
-              scrub: true
-            }
-          }
+          slider,
+          { autoAlpha: 0, y: 24 },
+          { autoAlpha: 1, y: 0, duration: 0.55, ease: 'power2.out', overwrite: true }
         );
-      }
-
-      if (imageNode) {
-        gsap.fromTo(
-          imageNode,
-          { y: 10, scale: 0.995 },
-          {
-            y: 0,
-            scale: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: panel,
-              containerAnimation: scrollAnim,
-              start: 'left center',
-              end: 'right center',
-              scrub: true
-            }
-          }
-        );
+        startAutoplay();
+      },
+      onLeave: () => {
+        triggerActive = false;
+        stopAutoplay();
+      },
+      onLeaveBack: () => {
+        triggerActive = false;
+        stopAutoplay();
       }
     });
+
+    gsap.set(slider, { autoAlpha: 0, y: 36 });
+    goToSlide(0, { immediate: true });
+    window.addEventListener('resize', onResize);
 
     return () => {
+      stopAutoplay();
+      if (slideTween) slideTween.kill();
+      window.removeEventListener('resize', onResize);
       trigger.kill();
-      ScrollTrigger.getAll().forEach((t) => {
-        if (t.vars && t.vars.containerAnimation === scrollAnim) t.kill();
-      });
     };
   }, []);
 
@@ -190,10 +295,24 @@ const WhoWeAre = ({ lang }) => {
       {/* Section header - отдельно от фонов */}
       <header className="section-header" ref={entryRef}>
         <h2
-          className="animated-title"
+          className="animated-title about-title"
+          aria-label={ariaTitle || translate('about.title', lang)}
           style={{ transform: `translateX(${progress}%)` }}
         >
-          {translate('about.title', lang)}
+          <span className="about-title__word about-title__word--first">
+            <span className="about-title__initial">{firstWordParts.initial}</span>
+            <span className="about-title__rest">{firstWordParts.rest}</span>
+          </span>
+          {titleParts.second && (
+            <span className="about-title__word about-title__word--mono">
+              {titleParts.second}
+            </span>
+          )}
+          {titleParts.third && (
+            <span className="about-title__word about-title__word--mono">
+              {titleParts.third}
+            </span>
+          )}
         </h2>
       </header>
 
@@ -204,14 +323,7 @@ const WhoWeAre = ({ lang }) => {
             container={containerRef.current}
             trigger={entryRef.current}
             start={'top top'}
-            end={(() => {
-              const slider = sliderRef.current;
-              const count = aboutContent.length;
-              if (!slider || count <= 1) return 'bottom top';
-              const panelWidth = slider.clientWidth;
-              const maxScroll = panelWidth * (count - 1);
-              return `+=${maxScroll}`;
-            })()}
+            end={'bottom top'}
             scrub={true}
             offsetStart={0}
             config={svgConfig.about}
@@ -233,6 +345,13 @@ const WhoWeAre = ({ lang }) => {
         {aboutContent.map((item) => (
           <WhoWeAreContent item={item} lang={lang} key={item.id} />
         ))}
+        <WhoWeAreContent
+          item={aboutContent[0]}
+          lang={lang}
+          key={`${aboutContent[0].id}-clone`}
+          idSuffix="-clone"
+          hidden={true}
+        />
       </div>
     </>
   );

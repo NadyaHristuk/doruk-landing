@@ -192,3 +192,25 @@
     url('../assets/fonts/NeutralFaceBold.woff2') format('woff2'),
     url('../assets/fonts/NeutralFaceBold.woff') format('woff');
 }
+
+/* Ubuntu Sans Mono Regular */
+@font-face {
+  font-family: 'Ubuntu Sans Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src:
+    url('../assets/fonts/UbuntuSansMono-Regular.woff2') format('woff2'),
+    url('../assets/fonts/UbuntuSansMono-Regular.woff') format('woff');
+}
+
+/* Ubuntu Sans Mono Bold */
+@font-face {
+  font-family: 'Ubuntu Sans Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src:
+    url('../assets/fonts/UbuntuSansMono-Bold.woff2') format('woff2'),
+    url('../assets/fonts/UbuntuSansMono-Bold.woff') format('woff');
+}

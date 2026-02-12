@@ -11,6 +11,11 @@
   },
   "about": {
     "title": "Who we are",
+    "titleTokens": {
+      "first": "Who",
+      "second": "we",
+      "third": "are"
+    },
     "blocks": {
       "left": {
         "titleStart": "tech heart",

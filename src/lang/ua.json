@@ -11,6 +11,11 @@
   },
   "about": {
     "title": "Хто ми",
+    "titleTokens": {
+      "first": "Хто",
+      "second": "ми",
+      "third": ""
+    },
     "blocks": {
       "left": {
         "titleStart": "tech heart",

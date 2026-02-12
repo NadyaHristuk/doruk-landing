@@ -39,9 +39,13 @@
     }
 
     /* Заголовок who-we-are — переопределения общего .animated-title */
-    .animated-title {
+    .animated-title.about-title {
         top: 3rem;
         line-height: 4.6rem;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0;
+        letter-spacing: 1.44rem;
 
         @media screen and (min-width: variables.$mobile) {
             top: 4rem;
@@ -59,16 +63,64 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: 10rem;
+            top: 0;
         }
+    }
 
-        &::first-letter {
-            font-size: 4.6rem;
+    .about-title__word {
+        display: inline-flex;
+        align-items: baseline;
+    }
 
-            @media screen and (min-width: variables.$mobile) {
-                font-size: 9.2rem;
-            }
+    .about-title__word--first {
+        gap: 1.4rem;
+        letter-spacing: 0;
+    }
+
+    .about-title__initial {
+        font-family: variables.$font-pixelify-sans;
+        font-size: 4.6rem;
+        font-weight: 700;
+        line-height: 5.6rem;
+        letter-spacing: 0;
+
+        @media screen and (min-width: variables.$mobile) {
+            font-size: 9.2rem;
+            line-height: 11.1rem;
         }
+    }
+
+    .about-title__rest {
+        font-family: variables.$font-neutral-face;
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 4.6rem;
+        letter-spacing: 0;
+
+        @media screen and (min-width: variables.$mobile) {
+            font-size: 7.2rem;
+            line-height: 9.2rem;
+        }
+    }
+
+    .about-title__word--mono {
+        font-family: variables.$font-ubuntu-sans-mono;
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 4.4rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            font-size: 7.2rem;
+            line-height: 8.7rem;
+        }
+    }
+
+    .about-title__word--first + .about-title__word--mono {
+        margin-left: 5.3rem;
+    }
+
+    .about-title__word--mono + .about-title__word--mono {
+        margin-left: 5.5rem;
     }
 
     /* Фоновые элементы */
@@ -86,9 +138,8 @@
             width: 100vw;
             height: 100%;
 
-            /* Desktop landscape: опускаем на 23rem */
             @media screen and (orientation: landscape) and (min-width: variables.$desktop) {
-                top: 23rem;
+                top: 11.5rem;
             }
         }
 
@@ -101,6 +152,10 @@
                 @media screen and (min-width: variables.$desktop) {
                     display: block;
                 }
+            }
+
+            svg:nth-child(2) {
+                top: 11.5rem;
             }
         }
 
