@@ -16,7 +16,7 @@ const KeyFacts = lazy(() => import('./sections/KeyFacts'));
 const OurBenefits = lazy(() => import('./sections/OurBenefits'));
 const KeepInTouch = lazy(() => import('./sections/KeepInTouch'));
 // config
-import { menu, snapSpeed } from './config';
+import { menu } from './config';
 // local components
 import { Nav } from './components/Nav';
 // styles
@@ -44,14 +44,10 @@ const App = () => {
   useScrollSmoother(container.current);
 
   // Initialize ScrollTriggers for sections
-  useScrollTriggers(
-    container,
-    {
-      onSectionChange: setActiveSection,
-      onProgress: setScrollProgress
-    },
-    { enableHorizontalGsap: false }
-  );
+  useScrollTriggers(container, {
+    onSectionChange: setActiveSection,
+    onProgress: setScrollProgress
+  });
 
   return (
     <main ref={container}>

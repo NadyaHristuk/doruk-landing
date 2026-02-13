@@ -15,6 +15,7 @@ import { useMatrixDots } from '../hooks/useMatrixDots';
 
 const AUTOPLAY_HOLD_MS = 3200;
 const SLIDE_ANIMATION_SEC = 0.8;
+const AUTOPLAY_ENABLED = false; // Temporary: keep slider static for layout tuning
 
 const getAboutTitleParts = (lang) => {
   const tokenConfig = translate('about.titleTokens', lang);
@@ -47,58 +48,56 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
   const titleId = `${item.id}-title${idSuffix}`;
   const layoutClass =
     item.layout === 'mirrored'
-      ? 'who-we-are__content--mirrored'
-      : 'who-we-are__content--default';
+      ? 'who-we-are__panel--mirrored'
+      : 'who-we-are__panel--default';
   return (
     <article
-      className="who-we-are__panel"
+      className={`who-we-are__panel ${layoutClass}`}
       aria-labelledby={titleId}
       aria-hidden={hidden ? 'true' : undefined}
     >
-      <div className={`who-we-are__content ${layoutClass}`}>
-        <div className="who-we-are__image">
-          <picture>
-            <source type="image/webp" srcSet={item.bgWebp} />
-            <img
-              className="who-we-are__image-masked"
-              src={item.bg}
-              width="1040"
-              height="559"
-              loading="lazy"
-              alt=""
-              role="presentation"
-              aria-hidden="true"
-            />
-          </picture>
-          <div className="who-we-are__title-block">
-            <div className="who-we-are__title-circle">
-              <i className="icon-about-arrow" />
-            </div>
-            <h3
-              className="who-we-are__title-line who-we-are__title-line--first truncate"
-              id={titleId}
-            >
-              <span className="who-we-are__title-glow">
-                {translate(item.titleStart, lang)}
-              </span>
-              {translate(item.title, lang)}
-            </h3>
-            <p className="who-we-are__title-line who-we-are__title-line--second truncate">
-              {translate(item.titleEnd, lang)}
-            </p>
+      <div className="who-we-are__image">
+        <picture>
+          <source type="image/webp" srcSet={item.bgWebp} />
+          <img
+            className="who-we-are__image-masked"
+            src={item.bg}
+            width="1040"
+            height="559"
+            loading="lazy"
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+          />
+        </picture>
+      </div>
+      <div className="who-we-are__info">
+        <div className="who-we-are__title-block">
+          <div className="who-we-are__title-circle">
+            <i className="icon-about-arrow" />
           </div>
+          <h3
+            className="who-we-are__title-line who-we-are__title-line--first truncate"
+            id={titleId}
+          >
+            <span className="who-we-are__title-glow">
+              {translate(item.titleStart, lang)}
+            </span>
+            {translate(item.title, lang)}
+          </h3>
+          <p className="who-we-are__title-line who-we-are__title-line--second truncate">
+            {translate(item.titleEnd, lang)}
+          </p>
         </div>
-        <div className="who-we-are__text">
-          <div className="who-we-are__text-block">
-            <img
-              className="who-we-are__text-substrate"
-              src={aboutBgSmall}
-              alt=""
-              aria-hidden="true"
-              role="presentation"
-            />
-            <p className="who-we-are__text-content">{translate(item.text, lang)}</p>
-          </div>
+        <div className="who-we-are__text-block">
+          <img
+            className="who-we-are__text-substrate"
+            src={aboutBgSmall}
+            alt=""
+            aria-hidden="true"
+            role="presentation"
+          />
+          <p className="who-we-are__text-content">{translate(item.text, lang)}</p>
         </div>
       </div>
     </article>
@@ -242,6 +241,7 @@ const WhoWeAre = ({ lang }) => {
     };
 
     const startAutoplay = () => {
+      if (!AUTOPLAY_ENABLED) return;
       isAutoPlaying = true;
       scheduleNextAutoplayStep();
     };

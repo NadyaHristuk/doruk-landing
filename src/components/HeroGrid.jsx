@@ -19,41 +19,16 @@ const HeroGrid = () => {
 
   useGSAP(
     () => {
-      const trigger = {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 0.6
-      };
-
-      // Grid items animation (move left/right on scroll)
-      if (gridItem1Ref.current) {
-        gsap.to(gridItem1Ref.current, {
-          x: '-12.5rem',
-          ease: 'none',
-          scrollTrigger: trigger
-        });
-      }
-
-      if (gridItem2Ref.current) {
-        gsap.to(gridItem2Ref.current, {
-          x: '12.5rem',
-          ease: 'none',
-          scrollTrigger: trigger
-        });
-      }
-
-      if (gridItem3Ref.current) {
-        gsap.to(gridItem3Ref.current, {
-          x: '-12.5rem',
-          ease: 'none',
-          scrollTrigger: trigger
-        });
-      }
-
-      // Entrance animation for grid items
+      // Entrance animation — replays each time hero section comes back into view
+      // toggleActions: onEnter onLeave onEnterBack onLeaveBack
+      // "play none restart none" — play on first enter, restart on re-enter from below
       const tl = gsap.timeline({
-        defaults: { duration: 1.5, ease: 'power3.out' }
+        defaults: { duration: 1.5, ease: 'power3.out' },
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top 80%',
+          toggleActions: 'play none restart none'
+        }
       });
 
       tl.from(

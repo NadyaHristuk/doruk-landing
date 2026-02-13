@@ -1,14 +1,9 @@
 
 import { useEffect } from 'react';
-import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { snapSpeed } from '../config';
 
-gsap.registerPlugin(ScrollTrigger);
-
-export const useScrollTriggers = (containerRef, callbacks, config = {}) => {
+export const useScrollTriggers = (containerRef, callbacks) => {
   const { onSectionChange, onProgress } = callbacks;
-  const { enableHorizontalGsap = false } = config;
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -26,37 +21,15 @@ export const useScrollTriggers = (containerRef, callbacks, config = {}) => {
       onProgress(progress);
     };
 
-    // Horizontal Scroll Logic
-    const horizontalContainer = document.querySelector('#who-we-are');
-    const horizontalSections = gsap.utils.toArray('.who-we-are__panel');
-    let scrollTween;
-
-    if (enableHorizontalGsap && horizontalContainer) {
-      scrollTween = gsap.to(horizontalSections, {
-        xPercent: -100 * (horizontalSections.length - 1),
-        ease: 'none',
-        scrollTrigger: {
-          trigger: horizontalContainer,
-          pin: true,
-          scrub: snapSpeed,
-          end: () => '+=' + horizontalContainer.offsetWidth,
-          onEnter: () => onSectionChange('who-we-are'),
-          onEnterBack: () => onSectionChange('who-we-are'),
-          onUpdate: (self) => updateProgress(self.progress * 100)
-        }
-      });
-      // Optionally kill this specific tween/trigger on unmount
-    }
-
-    // Creating triggers for other sections
     const sections = [
       { id: 'hero', start: 'top top', end: 'bottom top' },
+      { id: 'who-we-are', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
       { id: 'key-facts', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
       { id: 'our-benefits', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
       { id: 'keep-in-touch', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' }
     ];
 
-    const triggers = sections.map(section => 
+    const triggers = sections.map(section =>
       ScrollTrigger.create({
         trigger: `#${section.id}`,
         start: section.start,
@@ -69,12 +42,7 @@ export const useScrollTriggers = (containerRef, callbacks, config = {}) => {
     );
 
     return () => {
-      // Clean up triggers
       triggers.forEach(t => t.kill());
-      if (scrollTween) {
-        if (scrollTween.scrollTrigger) scrollTween.scrollTrigger.kill();
-        scrollTween.kill();
-      }
     };
-  }, [containerRef, onSectionChange, onProgress, enableHorizontalGsap]);
+  }, [containerRef, onSectionChange, onProgress]);
 };
