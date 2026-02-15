@@ -15,7 +15,7 @@ import { useMatrixDots } from '../hooks/useMatrixDots';
 
 const AUTOPLAY_HOLD_MS = 3200;
 const SLIDE_ANIMATION_SEC = 0.8;
-const AUTOPLAY_ENABLED = false; // Temporary: keep slider static for layout tuning
+const AUTOPLAY_ENABLED = true;
 
 const getAboutTitleParts = (lang) => {
   const tokenConfig = translate('about.titleTokens', lang);
@@ -62,8 +62,8 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
           <img
             className="who-we-are__image-masked"
             src={item.bg}
-            width="1040"
-            height="559"
+            width="798"
+            height="496"
             loading="lazy"
             alt=""
             role="presentation"
@@ -77,7 +77,7 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
             <i className="icon-about-arrow" />
           </div>
           <h3
-            className="who-we-are__title-line who-we-are__title-line--first truncate"
+            className="who-we-are__title-line who-we-are__title-line--first"
             id={titleId}
           >
             <span className="who-we-are__title-glow">
@@ -85,7 +85,7 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
             </span>
             {translate(item.title, lang)}
           </h3>
-          <p className="who-we-are__title-line who-we-are__title-line--second truncate">
+          <p className="who-we-are__title-line who-we-are__title-line--second">
             {translate(item.titleEnd, lang)}
           </p>
         </div>
@@ -181,34 +181,41 @@ const WhoWeAre = ({ lang }) => {
         const isActive = logicalIndex === activeLogicalIndex;
         const duration = immediate ? 0 : 0.55;
         const ease = immediate ? 'none' : 'power2.out';
+        const staggerDelay = immediate ? 0 : 0.2;
 
-        if (panelLayer.textBlock) {
-          gsap.to(panelLayer.textBlock, {
-            '--who-layer-before-progress': isActive ? 1 : 0,
-            '--who-layer-after-progress': isActive ? 1 : 0,
-            '--who-layer-substrate-progress': isActive ? 1 : 0,
-            duration,
-            ease,
-            overwrite: true
-          });
-        }
-
+        // Image decoration layer — appears first after image
         if (panelLayer.imageLayers) {
           gsap.to(panelLayer.imageLayers, {
             '--who-image-layer-progress': isActive ? 1 : 0,
             duration,
+            delay: isActive ? staggerDelay : 0,
             ease,
             overwrite: true
           });
         }
 
-        if (panelLayer.imageNode) {
-          gsap.to(panelLayer.imageNode, {
-            y: isActive ? 0 : 10,
-            scale: isActive ? 1 : 0.995,
+        // Text block layers — appear sequentially: substrate → after → before
+        if (panelLayer.textBlock) {
+          gsap.to(panelLayer.textBlock, {
+            '--who-layer-substrate-progress': isActive ? 1 : 0,
             duration,
+            delay: isActive ? staggerDelay * 2 : 0,
             ease,
             overwrite: true
+          });
+          gsap.to(panelLayer.textBlock, {
+            '--who-layer-after-progress': isActive ? 1 : 0,
+            duration,
+            delay: isActive ? staggerDelay * 3 : 0,
+            ease,
+            overwrite: 'auto'
+          });
+          gsap.to(panelLayer.textBlock, {
+            '--who-layer-before-progress': isActive ? 1 : 0,
+            duration,
+            delay: isActive ? staggerDelay * 4 : 0,
+            ease,
+            overwrite: 'auto'
           });
         }
       });
