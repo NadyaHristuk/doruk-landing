@@ -48,6 +48,9 @@
     }
 
     &__bg-lower {
+        position: absolute;
+        left: 0;
+        width: 100%;
         top: 70vh;
     }
 
@@ -159,9 +162,9 @@
     &__content {
         position: relative;
         z-index: 3;
-        top: var(--content-mobile-offset);
-        left: 50%;
-        transform: translateX(-50%);
+        margin-top: var(--content-mobile-offset);
+        margin-left: auto;
+        margin-right: auto;
         width: calc(100% - 3.2rem);
         max-width: var(--content-max-width);
         height: 170rem;
@@ -171,11 +174,11 @@
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            top: var(--content-tablet-offset);
+            margin-top: var(--content-tablet-offset);
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            top: var(--content-mobile-offset);
+            margin-top: var(--content-mobile-offset);
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -183,11 +186,11 @@
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            top: var(--content-tablet-offset);
+            margin-top: var(--content-tablet-offset);
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            top: var(--content-offset);
+            margin-top: var(--content-offset);
         }
     }
 
@@ -227,14 +230,13 @@
 
     // ========== LOGOS ORBIT ==========
     &__orbits {
-        position: relative;
-        top: 38rem;
-        left: -10rem;
         flex: 1 0 auto;
+        margin-top: 38rem;
+        margin-left: -10rem;
 
         @media screen and (min-width: variables.$mobile) {
-            top: 22rem;
-            left: -12rem;
+            margin-top: 22rem;
+            margin-left: -12rem;
         }
     }
 
@@ -369,7 +371,6 @@
         }
 
         img {
-            position: relative;
             display: block;
             width: 25.55rem;
             height: auto;
@@ -481,8 +482,6 @@
         img {
             z-index: 4;
             position: relative;
-            left: 0;
-            bottom: 0;
             width: 100%;
             height: auto;
             border-radius: 3.6rem;
