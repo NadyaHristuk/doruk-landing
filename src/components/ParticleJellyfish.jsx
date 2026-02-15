@@ -67,12 +67,12 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
         window.matchMedia('(pointer: coarse)').matches) ||
       window.innerWidth < 768;
     const qualityFactor = prefersReduce
-      ? 0.35
+      ? 0.2  // Reduced from 0.35
       : isMobile
-        ? 0.55
+        ? 0.4  // Reduced from 0.55
         : isLowPower
-          ? 0.7
-          : 1;
+          ? 0.5  // Reduced from 0.7
+          : 0.85;  // Reduced from 1.0
     const targetCount = Math.max(40, Math.round(particleCount * qualityFactor));
     const maxDpr = isLowPower || isMobile ? 1.25 : 1.5;
 

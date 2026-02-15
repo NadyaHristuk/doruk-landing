@@ -115,17 +115,32 @@ const WhoWeAre = ({ lang }) => {
     .filter(Boolean)
     .join(' ');
 
+  // Matrix dots animation for left SVG - Matrix rain effect
   useMatrixDots({
     sectionId: '#who-we-are',
-    svgSelector: '.who-we-are__dots--left, .who-we-are__dots--right',
-    bucketSize: 40, // Увеличиваем размер столбца (больше пикселей = меньше столбцов)
-    minTailLength: 3,
-    maxTailLength: 7,
-    minHeadOpacity: 0.7,
-    maxHeadOpacity: 0.9,
-    baseOpacity: 0.1, // Менее заметный фон
-    minDuration: 3000,
-    maxDuration: 5000
+    svgSelector: '.who-we-are__dots--left',
+    bucketSize: 40,
+    minTailLength: 5,      // Longer tails for dramatic effect
+    maxTailLength: 12,
+    minHeadOpacity: 0.9,   // Very bright heads
+    maxHeadOpacity: 1.0,
+    baseOpacity: 0.05,     // Very dim base for contrast
+    minDuration: 6000,     // Slowed down 2x (was 3000)
+    maxDuration: 12000     // Slowed down 2x (was 6000)
+  });
+
+  // Matrix dots animation for right SVG (same params as left)
+  useMatrixDots({
+    sectionId: '#who-we-are',
+    svgSelector: '.who-we-are__dots--right',
+    bucketSize: 40,
+    minTailLength: 5,
+    maxTailLength: 12,
+    minHeadOpacity: 0.9,
+    maxHeadOpacity: 1.0,
+    baseOpacity: 0.05,
+    minDuration: 6000,     // Slowed down 2x
+    maxDuration: 12000     // Slowed down 2x
   });
 
   useEffect(() => {

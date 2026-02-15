@@ -61,19 +61,28 @@ const createColumnState = ({
   minDuration,
   maxDuration
 }) => {
+  // Longer tails for better matrix rain effect
   const tailLength = clamp(
     randomIntBetween(minTailLength, maxTailLength),
-    2,
-    Math.max(2, nodes.length)
+    3,
+    Math.max(3, nodes.length)
   );
+  
+  // Brighter head for more visibility
   const headOpacity = clamp(
     randomBetween(minHeadOpacity, maxHeadOpacity),
-    baseOpacity,
+    0.8,
     1
   );
+  
+  // Smoother fade with exponential curve for more natural look
   const fadeStep = (headOpacity - baseOpacity) / Math.max(tailLength - 1, 1);
-  const duration = Math.max(1200, randomBetween(minDuration, maxDuration));
-  const travelGap = Math.max(3, Math.round(nodes.length * 0.15));
+  
+  // Variable speed for each column
+  const duration = Math.max(2000, randomBetween(minDuration, maxDuration));
+  
+  // Smaller gap for continuous rain effect
+  const travelGap = Math.max(5, Math.round(nodes.length * 0.2));
 
   return {
     nodes,
@@ -93,20 +102,28 @@ const updateColumn = (state, pointer) => {
   if (pointer === state.prevPointer) return;
   state.prevPointer = pointer;
 
+  // Reset previously active nodes to base opacity
   state.activeIndices.forEach((idx) => {
     const item = state.nodes[idx];
     if (item) item.el.style.opacity = String(state.baseOpacity);
   });
   state.activeIndices = [];
 
+  // Create the falling "rain drop" effect
   for (let offset = 0; offset < state.tailLength; offset += 1) {
     const index = pointer - offset;
     if (index >= 0 && index < state.nodes.length) {
       const { el } = state.nodes[index];
+      
+      // Exponential fade for more dramatic effect
+      const fadeRatio = offset / (state.tailLength - 1);
+      const exponentialFade = Math.pow(fadeRatio, 1.5); // Power curve for smoother fade
+      
       const opacity = Math.max(
         state.baseOpacity,
-        state.headOpacity - state.fadeStep * offset
+        state.headOpacity - (state.headOpacity - state.baseOpacity) * exponentialFade
       );
+      
       el.style.opacity = String(opacity);
       state.activeIndices.push(index);
     }

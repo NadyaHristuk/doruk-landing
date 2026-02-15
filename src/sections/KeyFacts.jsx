@@ -33,13 +33,14 @@ const getDestPoint = (x1, y1, x2, y2, displacement = hoverOffset) => {
   return { destX: x2 + dx, destY: y2 + dy };
 };
 
-const KeyFacts = ({ scrollProgress, lang }) => {
+const KeyFacts = ({ lang }) => {
   const entryRef = useRef(null),
     containerARef = useRef(null),
     containerBRef = useRef(null),
     [items, setItems] = useState([]),
     [radius, setRadius] = useState(desktopRadius),
     [isMobile, setIsMobile] = useState(false),
+    [isLowPower, setIsLowPower] = useState(false),
     progress = useTitleAnimation(entryRef);
 
   useEffect(() => {
@@ -100,7 +101,11 @@ const KeyFacts = ({ scrollProgress, lang }) => {
       (window.innerWidth < 1025 &&
         (window.innerWidth > window.innerHeight ||
           window.screen.orientation.angle === 90));
+    const deviceMemory = navigator.deviceMemory || 4;
+    const cores = navigator.hardwareConcurrency || 4;
+    const lowPower = deviceMemory < 8 || cores < 6;
     setIsMobile(isMobileDevice);
+    setIsLowPower(lowPower);
     setRadius(isMobileDevice ? mobileRadius : desktopRadius);
   };
 
@@ -115,7 +120,8 @@ const KeyFacts = ({ scrollProgress, lang }) => {
   }, []);
 
   const handleMouseEnter = (id) => {
-    if (isMobile) return;
+    // Disable hover on mobile or low-power devices for performance
+    if (isMobile || isLowPower) return;
     setItems((prevItems) => {
       const hoveredItem = prevItems.find((item) => item.id === id);
       if (!hoveredItem) return prevItems;
@@ -165,7 +171,8 @@ const KeyFacts = ({ scrollProgress, lang }) => {
   };
 
   const handleMouseLeave = () => {
-    if (isMobile) return;
+    // Disable hover on mobile or low-power devices for performance
+    if (isMobile || isLowPower) return;
     setItems((prevItems) =>
       prevItems.map((item) => ({
         ...item,
@@ -219,11 +226,6 @@ const KeyFacts = ({ scrollProgress, lang }) => {
               <div
                 key={circleType}
                 className="key-facts__orbit"
-                style={{
-                  transform: `translate(-50%, -50%) rotate(${
-                    circleType === 'first' ? -scrollProgress : scrollProgress
-                  }deg)`
-                }}
               >
                 {items
                   .filter((item) => item.circle === circleType)

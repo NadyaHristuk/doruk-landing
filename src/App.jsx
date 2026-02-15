@@ -37,46 +37,42 @@ const App = () => {
   const container = useRef(),
     [mobileMenuOpen, setMobileMenuOpen] = useState(false),
     [activeSection, setActiveSection] = useState('hero'),
-    [lang, setLang] = useState('en'),
-    [scrollProgress, setScrollProgress] = useState(0);
+    [lang, setLang] = useState('en');
 
   // Initialize ScrollSmoother
   useScrollSmoother(container.current);
 
   // Initialize ScrollTriggers for sections
   useScrollTriggers(container, {
-    onSectionChange: setActiveSection,
-    onProgress: setScrollProgress
+    onSectionChange: setActiveSection
   });
 
   return (
     <main ref={container}>
-      <div
-        className={`mobile-menu ${
-          mobileMenuOpen ? 'mobile-menu--opened' : 'mobile-menu--closed'
-        }`}
-      >
-        <div className="mobile-menu__decorations">
-          <div className="mobile-menu__rectangles mobile-menu__rectangles--horizontal">
-            <div className="mobile-menu__rectangle" />
-            <div className="mobile-menu__rectangle" />
-            <div className="mobile-menu__rectangle" />
-            <div className="mobile-menu__rectangle" />
+      {mobileMenuOpen && (
+        <div className="mobile-menu mobile-menu--opened">
+          <div className="mobile-menu__decorations">
+            <div className="mobile-menu__rectangles mobile-menu__rectangles--horizontal">
+              <div className="mobile-menu__rectangle" />
+              <div className="mobile-menu__rectangle" />
+              <div className="mobile-menu__rectangle" />
+              <div className="mobile-menu__rectangle" />
+            </div>
+            <div className="mobile-menu__rectangles mobile-menu__rectangles--vertical">
+              <div className="mobile-menu__rectangle" />
+              <div className="mobile-menu__rectangle" />
+              <div className="mobile-menu__rectangle" />
+            </div>
           </div>
-          <div className="mobile-menu__rectangles mobile-menu__rectangles--vertical">
-            <div className="mobile-menu__rectangle" />
-            <div className="mobile-menu__rectangle" />
-            <div className="mobile-menu__rectangle" />
-          </div>
+          <Nav
+            isMobileMenu={true}
+            activeSection={activeSection}
+            lang={lang}
+            onMenuClose={() => setMobileMenuOpen(false)}
+            setActiveSection={setActiveSection}
+          />
         </div>
-        <Nav
-          isMobileMenu={true}
-          activeSection={activeSection}
-          lang={lang}
-          onMenuClose={() => setMobileMenuOpen(false)}
-          setActiveSection={setActiveSection}
-        />
-      </div>
+      )}
       <aside className="sidebar">
         <button
           type="button"
@@ -101,7 +97,17 @@ const App = () => {
           className="section section--hero"
           aria-label={getSectionLabel(menu, lang, 'hero')}
         >
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Suspense fallback={
+            <div style={{ 
+              minHeight: '100vh', 
+              background: 'var(--color-bg, #1c1c1e)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <div className="skeleton-loader" aria-label="Loading content" />
+            </div>
+          }>
             <HeroSection
               setLang={setLang}
               sectionIsActive={activeSection === 'hero'}
@@ -114,7 +120,12 @@ const App = () => {
           className="section section--who-we-are"
           aria-label={getSectionLabel(menu, lang, 'who-we-are')}
         >
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Suspense fallback={
+            <div style={{ 
+              minHeight: '100vh', 
+              background: 'var(--color-bg, #1c1c1e)'
+            }} />
+          }>
             <WhoWeAre lang={lang} />
           </Suspense>
         </section>
@@ -123,8 +134,13 @@ const App = () => {
           className="section section--key-facts"
           aria-label={getSectionLabel(menu, lang, 'key-facts')}
         >
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
-            <KeyFacts scrollProgress={scrollProgress} lang={lang} />
+          <Suspense fallback={
+            <div style={{ 
+              minHeight: '100vh', 
+              background: 'var(--color-bg, #1c1c1e)'
+            }} />
+          }>
+            <KeyFacts lang={lang} />
           </Suspense>
         </section>
         <section
@@ -132,7 +148,12 @@ const App = () => {
           className="section section--our-benefits"
           aria-label={getSectionLabel(menu, lang, 'our-benefits')}
         >
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Suspense fallback={
+            <div style={{ 
+              minHeight: '100vh', 
+              background: 'var(--color-bg, #1c1c1e)'
+            }} />
+          }>
             <OurBenefits lang={lang} />
           </Suspense>
         </section>
@@ -141,7 +162,12 @@ const App = () => {
           className="section section--keep-in-touch"
           aria-label={getSectionLabel(menu, lang, 'keep-in-touch')}
         >
-          <Suspense fallback={<div style={{ minHeight: '100vh' }} />}>
+          <Suspense fallback={
+            <div style={{ 
+              minHeight: '100vh', 
+              background: 'var(--color-bg, #1c1c1e)'
+            }} />
+          }>
             <KeepInTouch lang={lang} />
           </Suspense>
         </section>

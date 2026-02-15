@@ -550,3 +550,19 @@ button {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* Skeleton loader for lazy-loaded sections */
+.skeleton-loader {
+  width: 6rem;
+  height: 6rem;
+  border: 0.3rem solid variables.$border-color;
+  border-top-color: variables.$color-primary;
+  border-radius: 50%;
+  animation: skeleton-spin 1s linear infinite;
+}
+
+@keyframes skeleton-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

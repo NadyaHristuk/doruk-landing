@@ -243,7 +243,39 @@
         left: 50%;
         top: 50%;
         border-radius: 50%;
-        transition: transform variables.$linear-transition;
+        will-change: transform;
+
+        /* Rotation animation - CSS is more performant than JS */
+        &:first-child {
+            animation: rotate-counterclockwise 180s linear infinite;
+        }
+
+        &:last-child {
+            animation: rotate-clockwise 240s linear infinite;
+        }
+
+        /* Pause animations on reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            animation: none;
+        }
+    }
+
+    @keyframes rotate-clockwise {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    @keyframes rotate-counterclockwise {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(-360deg);
+        }
     }
 
     &__logo {
@@ -260,6 +292,7 @@
         border-radius: 50%;
         backdrop-filter: blur(0.7rem);
         background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center;
+        will-change: transform;
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             width: 11.2rem;
@@ -271,6 +304,11 @@
             width: 11.2rem;
             height: 11.2rem;
             padding: 2.8rem;
+        }
+
+        /* Remove will-change on low-power devices */
+        @media (prefers-reduced-motion: reduce) {
+            will-change: auto;
         }
 
         img {
