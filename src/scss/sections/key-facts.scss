@@ -160,7 +160,7 @@
     &__content {
         position: relative;
         z-index: 3;
-        margin-top: var(--content-mobile-offset);
+        padding-top: var(--content-mobile-offset);
         margin-left: auto;
         margin-right: auto;
         width: calc(100% - 3.2rem);
@@ -172,11 +172,11 @@
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            margin-top: var(--content-tablet-offset);
+            padding-top: var(--content-tablet-offset);
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            margin-top: var(--content-mobile-offset);
+            padding-top: var(--content-mobile-offset);
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -184,11 +184,11 @@
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            margin-top: var(--content-tablet-offset);
+            padding-top: var(--content-tablet-offset);
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            margin-top: var(--content-offset);
+            padding-top: var(--content-offset);
         }
     }
 
