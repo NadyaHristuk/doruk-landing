@@ -185,15 +185,15 @@ const KeyFacts = ({ lang }) => {
 
   return (
     <div className="key-facts">
+      <header className="key-facts__header" ref={entryRef}>
+        <h2
+          className="animated-title"
+          style={{ transform: `translateX(${progress}%)` }}
+        >
+          {translate('keyFacts.title', lang)}
+        </h2>
+      </header>
       <div className="key-facts__bg">
-        <div className="key-facts__bg-header" ref={entryRef}>
-          <h2
-            className="animated-title"
-            style={{ transform: `translateX(${progress}%)` }}
-          >
-            {translate('keyFacts.title', lang)}
-          </h2>
-        </div>
         <div className="key-facts__bg-upper">
           <div className="key-facts__path-upper" ref={containerARef}>
             <AnimatedPathFollower

@@ -15,17 +15,15 @@
         height: 100%;
     }
 
-    &__bg-header,
+    &__header {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+    }
+
     &__bg-upper,
     &__bg-lower {
         height: 100vh;
-    }
-
-    &__bg-header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100vw;
     }
 
     &__bg-upper {
