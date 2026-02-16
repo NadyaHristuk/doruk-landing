@@ -11,89 +11,23 @@ import squareImg from '../assets/png/key-facts/bg-2.png';
 import circleImgWebp from '../assets/webp/key-facts/key-facts-bg.webp';
 import squareImgWebp from '../assets/webp/key-facts/bg-2.webp';
 
-const {
-  logos,
-  hoverOffset,
-  mobileRadius,
-  desktopRadius,
-  radiusMultiplier,
-  firstCircleMaxItemCount
-} = keyFactsConfig;
+const { logos, hoverOffset } = keyFactsConfig;
 
 const getDistance = (x1, y1, x2, y2) => {
   const Vx = x2 - x1;
   const Vy = y2 - y1;
-  return Math.sqrt(Math.pow(Vx, 2) + Math.pow(Vy, 2));
-};
-
-const getDestPoint = (x1, y1, x2, y2, displacement = hoverOffset) => {
-  const Vmod = getDistance(x1, y1, x2, y2);
-  const dx = displacement * ((x2 - x1) / Vmod);
-  const dy = displacement * ((y2 - y1) / Vmod);
-  return { destX: x2 + dx, destY: y2 + dy };
+  return Math.sqrt(Vx * Vx + Vy * Vy);
 };
 
 const KeyFacts = ({ lang }) => {
   const entryRef = useRef(null),
     containerARef = useRef(null),
     containerBRef = useRef(null),
-    [items, setItems] = useState([]),
-    [radius, setRadius] = useState(desktopRadius),
+    orbitsRef = useRef(null),
+    [displacements, setDisplacements] = useState({}),
     [isMobile, setIsMobile] = useState(false),
     [isLowPower, setIsLowPower] = useState(false),
     progress = useTitleAnimation(entryRef);
-
-  useEffect(() => {
-    let calculated = [];
-
-    if (logos.length <= firstCircleMaxItemCount) {
-      calculated = logos.map((item, index) => {
-        const angle = index * (360 / logos.length) * (Math.PI / 180);
-        return {
-          ...item,
-          circle: 'first',
-          startX: radius * Math.cos(angle),
-          startY: radius * Math.sin(angle),
-          x: radius * Math.cos(angle),
-          y: radius * Math.sin(angle)
-        };
-      });
-    } else {
-      const remainingItems = logos.length - firstCircleMaxItemCount;
-
-      calculated = logos
-        .slice(0, firstCircleMaxItemCount)
-        .map((item, index) => {
-          const angle =
-            index * (360 / firstCircleMaxItemCount) * (Math.PI / 180);
-          return {
-            ...item,
-            circle: 'first',
-            startX: radius * Math.cos(angle),
-            startY: radius * Math.sin(angle),
-            x: radius * Math.cos(angle),
-            y: radius * Math.sin(angle)
-          };
-        });
-
-      calculated = [
-        ...calculated,
-        ...logos.slice(firstCircleMaxItemCount).map((item, index) => {
-          const angle = index * (360 / remainingItems) * (Math.PI / 180);
-          return {
-            ...item,
-            circle: 'second',
-            startX: radius * radiusMultiplier * Math.cos(angle),
-            startY: radius * radiusMultiplier * Math.sin(angle),
-            x: radius * radiusMultiplier * Math.cos(angle),
-            y: radius * radiusMultiplier * Math.sin(angle)
-          };
-        })
-      ];
-    }
-
-    setItems(calculated);
-  }, [radius]);
 
   const onResize = () => {
     const isMobileDevice =
@@ -106,7 +40,6 @@ const KeyFacts = ({ lang }) => {
     const lowPower = deviceMemory < 8 || cores < 6;
     setIsMobile(isMobileDevice);
     setIsLowPower(lowPower);
-    setRadius(isMobileDevice ? mobileRadius : desktopRadius);
   };
 
   useEffect(() => {
@@ -120,42 +53,40 @@ const KeyFacts = ({ lang }) => {
   }, []);
 
   const handleMouseEnter = (id) => {
-    // Disable hover on mobile or low-power devices for performance
     if (isMobile || isLowPower) return;
-    setItems((prevItems) => {
-      const hoveredItem = prevItems.find((item) => item.id === id);
-      if (!hoveredItem) return prevItems;
 
-      return prevItems.map((item) => {
-        if (item.id === id) return item;
+    const container = orbitsRef.current;
+    if (!container) return;
 
-        const dist = getDistance(hoveredItem.startX, hoveredItem.startY, item.startX, item.startY);
-        if (dist === 0) return item;
+    const w = container.offsetWidth;
+    const h = container.offsetHeight;
+    const hovered = logos.find((item) => item.id === id);
+    if (!hovered) return;
 
-        const displacement = hoverOffset * (radius / dist);
-        const { destX, destY } = getDestPoint(
-          hoveredItem.startX,
-          hoveredItem.startY,
-          item.startX,
-          item.startY,
-          displacement
-        );
-        return { ...item, x: destX, y: destY };
-      });
+    const hx = (hovered.left / 100) * w;
+    const hy = (hovered.top / 100) * h;
+
+    const newDisplacements = {};
+    logos.forEach((item) => {
+      if (item.id === id) return;
+
+      const ix = (item.left / 100) * w;
+      const iy = (item.top / 100) * h;
+      const dist = getDistance(hx, hy, ix, iy);
+      if (dist === 0) return;
+
+      const force = hoverOffset * (Math.max(w, h) * 0.3 / dist);
+      const dx = ((ix - hx) / dist) * force;
+      const dy = ((iy - hy) / dist) * force;
+      newDisplacements[item.id] = { dx, dy };
     });
+
+    setDisplacements(newDisplacements);
   };
 
   const handleMouseLeave = () => {
-    // Disable hover on mobile or low-power devices for performance
     if (isMobile || isLowPower) return;
-    setItems((prevItems) =>
-      prevItems.map((item) => ({
-        ...item,
-        x: item.startX,
-        y: item.startY,
-        nearests: undefined
-      }))
-    );
+    setDisplacements({});
   };
 
   return (
@@ -196,33 +127,34 @@ const KeyFacts = ({ lang }) => {
       <div className="key-facts__content">
         <div className="key-facts__block key-facts__block--logos">
           <p className="key-facts__text">{translate('keyFacts.text.1', lang)}</p>
-          <div className="key-facts__orbits">
-            {['first', 'second'].map((circleType) => (
-              <div
-                key={circleType}
-                className="key-facts__orbit"
-              >
-                {items
-                  .filter((item) => item.circle === circleType)
-                  .map((item) => (
-                    <div
-                      key={item.id}
-                      className="key-facts__logo"
-                      onMouseEnter={() => handleMouseEnter(item.id)}
-                      onMouseLeave={() => handleMouseLeave(item.id)}
-                      style={{
-                        transform: `translate(calc(${
-                          item.x / 10
-                        }rem - 50%), calc(${
-                          item.y / 10
-                        }rem - 50%)) rotate(-45deg)`
-                      }}
-                    >
-                      <img src={item.src} width="256" height="256" loading="lazy" alt={item.alt} />
-                    </div>
-                  ))}
-              </div>
-            ))}
+          <div className="key-facts__orbits" ref={orbitsRef}>
+            {logos.map((item) => {
+              const d = displacements[item.id];
+              return (
+                <div
+                  key={item.id}
+                  className="key-facts__logo"
+                  onMouseEnter={() => handleMouseEnter(item.id)}
+                  onMouseLeave={handleMouseLeave}
+                  style={{
+                    left: `${item.left}%`,
+                    top: `${item.top}%`,
+                    transform: d
+                      ? `translate(-50%, -50%) translate(${d.dx}px, ${d.dy}px)`
+                      : 'translate(-50%, -50%)'
+                  }}
+                >
+                  <img
+                    src={item.src}
+                    width="256"
+                    height="256"
+                    loading="lazy"
+                    alt={item.alt}
+                    style={{ transform: `rotate(${item.rotation}deg)` }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
         <div className="key-facts__block key-facts__block--photo">

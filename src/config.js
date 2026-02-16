@@ -85,21 +85,17 @@ export const translate = (key, lang) => {
 };
 
 export const keyFactsConfig = {
-  radiusMultiplier: 2.8,
-  firstCircleMaxItemCount: 3,
   hoverOffset: 40,
-  desktopRadius: 80,
-  mobileRadius: 40,
   logos: [
-    { id: 0, src: logo1, x: 0, y: 0, alt: 'Adobe Experience Design' },
-    { id: 1, src: logo2, x: 0, y: 0, alt: 'CSS3' },
-    { id: 2, src: logo3, x: 0, y: 0, alt: 'Figma' },
-    { id: 3, src: logo4, x: 0, y: 0, alt: 'Github' },
-    { id: 4, src: logo5, x: 0, y: 0, alt: 'HTML5' },
-    { id: 5, src: logo6, x: 0, y: 0, alt: 'DotNet' },
-    { id: 6, src: logo7, x: 0, y: 0, alt: 'PHP' },
-    { id: 7, src: logo8, x: 0, y: 0, alt: 'MySQL' },
-    { id: 8, src: logo9, x: 0, y: 0, alt: 'JavaScript' }
+    { id: 0, src: logo1, alt: 'Adobe Experience Design', left: 65.6, top: 16.1, rotation: 31 },
+    { id: 1, src: logo2, alt: 'CSS3', left: 49.1, top: 35.0, rotation: 234 },
+    { id: 2, src: logo3, alt: 'Figma', left: 82.0, top: 27.9, rotation: 331 },
+    { id: 3, src: logo4, alt: 'Github', left: 40.0, top: 11.4, rotation: 0 },
+    { id: 4, src: logo5, alt: 'HTML5', left: 67.8, top: 52.6, rotation: 14 },
+    { id: 5, src: logo6, alt: 'DotNet', left: 79.2, top: 75.1, rotation: 129 },
+    { id: 6, src: logo7, alt: 'PHP', left: 58.5, top: 83.7, rotation: 0 },
+    { id: 7, src: logo8, alt: 'MySQL', left: 94.9, top: 54.1, rotation: 0 },
+    { id: 8, src: logo9, alt: 'JavaScript', left: 42.9, top: 78.9, rotation: 0 }
   ]
 };
 

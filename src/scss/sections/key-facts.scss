@@ -1,4 +1,3 @@
-@use "sass:math";
 @use "../variables";
 
 .key-facts {
@@ -226,62 +225,21 @@
         }
     }
 
-    // ========== LOGOS ORBIT ==========
+    // ========== LOGOS ==========
     &__orbits {
-        flex: 1 0 auto;
-        margin-top: 38rem;
-        margin-left: -10rem;
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        height: 46.6rem;
 
-        @media screen and (min-width: variables.$mobile) {
-            margin-top: 22rem;
-            margin-left: -12rem;
-        }
-    }
-
-    &__orbit {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        border-radius: 50%;
-        will-change: transform;
-
-        /* Rotation animation - CSS is more performant than JS */
-        &:first-child {
-            animation: rotate-counterclockwise 180s linear infinite;
-        }
-
-        &:last-child {
-            animation: rotate-clockwise 240s linear infinite;
-        }
-
-        /* Pause animations on reduced motion preference */
-        @media (prefers-reduced-motion: reduce) {
-            animation: none;
-        }
-    }
-
-    @keyframes rotate-clockwise {
-        from {
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-        to {
-            transform: translate(-50%, -50%) rotate(360deg);
-        }
-    }
-
-    @keyframes rotate-counterclockwise {
-        from {
-            transform: translate(-50%, -50%) rotate(0deg);
-        }
-        to {
-            transform: translate(-50%, -50%) rotate(-360deg);
+        @media screen and (min-width: variables.$tablet) {
+            left: -7.3rem;
+            top: -4.4rem;
         }
     }
 
     &__logo {
         position: absolute;
-        left: 50%;
-        top: 50%;
         width: 6.4rem;
         height: 6.4rem;
         padding: 1.4rem;
@@ -306,7 +264,6 @@
             padding: 2.8rem;
         }
 
-        /* Remove will-change on low-power devices */
         @media (prefers-reduced-motion: reduce) {
             will-change: auto;
         }
@@ -315,19 +272,23 @@
             width: 100%;
             height: auto;
         }
-
-        $item-length: 9;
-
-        @for $i from 1 through $item-length {
-            &:nth-child(#{$i}) img {
-                transform: rotate(#{math.random(360)}deg);
-            }
-        }
     }
 
     // ========== BLOCK: LOGOS ==========
     &__block--logos {
-        height: 55rem;
+        display: block;
+        height: auto;
+    }
+
+    &__block--logos &__text {
+        position: absolute;
+        z-index: 4;
+        left: 0;
+        top: 4rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 4rem;
+        }
     }
 
     // ========== BLOCK: PHOTO ==========
