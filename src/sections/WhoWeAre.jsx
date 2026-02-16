@@ -56,6 +56,21 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
       aria-labelledby={titleId}
       aria-hidden={hidden ? 'true' : undefined}
     >
+      <div className="who-we-are__image">
+        <picture>
+          <source type="image/webp" srcSet={item.bgWebp} />
+          <img
+            className="who-we-are__image-masked"
+            src={item.bg}
+            width="798"
+            height="496"
+            loading="lazy"
+            alt=""
+            role="presentation"
+            aria-hidden="true"
+          />
+        </picture>
+      </div>
       <div className="who-we-are__info">
         <div className="who-we-are__title-block">
           <div className="who-we-are__title-circle">
@@ -74,23 +89,6 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
             {translate(item.titleEnd, lang)}
           </p>
         </div>
-        
-        <div className="who-we-are__image">
-          <picture>
-            <source type="image/webp" srcSet={item.bgWebp} />
-            <img
-              className="who-we-are__image-masked"
-              src={item.bg}
-              width="798"
-              height="496"
-              loading="lazy"
-              alt=""
-              role="presentation"
-              aria-hidden="true"
-            />
-          </picture>
-        </div>
-
         <div className="who-we-are__text-block">
           <img
             className="who-we-are__text-substrate"

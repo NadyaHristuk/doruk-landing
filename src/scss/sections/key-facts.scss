@@ -5,8 +5,8 @@
     width: 100%;
     height: 100%;
 
-    // ========== BACKGROUND LAYER ==========
-    &__bg {
+    // ========== BACKGROUNDS ==========
+    &__backgrounds {
         position: absolute;
         top: 0;
         left: 0;
@@ -20,12 +20,55 @@
         width: 100%;
     }
 
-    &__bg-upper,
-    &__bg-lower {
+    &__title {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 2rem;
+        word-spacing: 0;
+        letter-spacing: 0;
+
+        &::first-letter {
+            font-family: inherit;
+            font-size: inherit;
+        }
+    }
+
+    &__title-initial {
+        font-family: variables.$font-pixelify-sans;
+        font-size: 4.6rem;
+        font-weight: 700;
+        line-height: 5.6rem;
+        letter-spacing: 0;
+
+        @media screen and (min-width: variables.$desktop) {
+            font-size: 9.2rem;
+            line-height: 11.1rem;
+        }
+    }
+
+    &__title-rest {
+        font-family: variables.$font-neutral-face;
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 4.6rem;
+        letter-spacing: 0.8rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            letter-spacing: 1.44rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            font-size: 7.2rem;
+            line-height: 9.2rem;
+        }
+    }
+
+    // ========== BG ZONES ==========
+    &__bg {
         height: 100vh;
     }
 
-    &__bg-upper {
+    &__bg--upper {
         position: absolute;
         top: var(--content-mobile-offset);
         left: 0;
@@ -44,23 +87,23 @@
         }
     }
 
-    &__bg-lower {
+    &__bg--lower {
         position: absolute;
         left: 0;
         width: 100%;
         top: 70vh;
     }
 
-    // ========== UPPER AREA DECORATIONS ==========
-    &__path-upper,
-    &__pattern-upper {
+    // ========== BG-LINE (AnimatedPathFollower) ==========
+    &__bg-line,
+    &__bg-dots {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
     }
 
-    &__path-upper {
+    &__bg-line--upper {
         z-index: 2;
         height: 60%;
 
@@ -82,29 +125,9 @@
         }
     }
 
-    &__pattern-upper {
-        z-index: 1;
-        height: 100%;
-        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
-
-        @media screen and (min-width: variables.$tablet) {
-            background-size: contain;
-        }
-    }
-
-    // ========== LOWER AREA DECORATIONS ==========
-    &__path-lower,
-    &__pattern-lower,
-    &__pattern-mobile {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-    }
-
-    &__path-lower {
+    &__bg-line--lower {
         z-index: 2;
+        height: 100%;
         top: 30rem;
 
         @media screen and (min-width: variables.$tablet) {
@@ -116,8 +139,20 @@
         }
     }
 
-    &__pattern-lower {
+    // ========== BG-DOTS (patterns) ==========
+    &__bg-dots--upper {
         z-index: 1;
+        height: 100%;
+        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
+
+        @media screen and (min-width: variables.$tablet) {
+            background-size: contain;
+        }
+    }
+
+    &__bg-dots--lower {
+        z-index: 1;
+        height: 100%;
         top: -16rem;
         background: url("assets/svg/bg/key-facts-bg-2.svg") no-repeat center right / 200%;
 
@@ -140,8 +175,9 @@
         }
     }
 
-    &__pattern-mobile {
+    &__bg-dots--mobile {
         z-index: 1;
+        height: 100%;
         top: 60rem;
         background: url("assets/svg/bg/key-facts-bg-3.svg") no-repeat center center / 200%;
 
@@ -155,22 +191,39 @@
         }
     }
 
-    // ========== CONTENT LAYER ==========
+    // ========== CONTENT ==========
     &__content {
         position: relative;
         z-index: 3;
         padding-top: var(--content-mobile-offset);
-        margin: 0 auto;
-        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(100% - 3.2rem);
         max-width: var(--content-max-width);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8rem; // Gap between blocks
+        height: 170rem;
 
         @media screen and (min-width: variables.$mobile) {
             width: var(--content-tablet-width);
-            gap: 15rem;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+            padding-top: var(--content-tablet-offset);
+        }
+
+        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+            padding-top: var(--content-mobile-offset);
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            width: var(--content-width);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+            padding-top: var(--content-tablet-offset);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+            padding-top: var(--content-offset);
         }
     }
 
@@ -179,28 +232,28 @@
         position: relative;
         width: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding-top: 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: 5rem;
     }
 
     &__text {
         z-index: 4;
-        width: calc(100% - 3.2rem);
-        max-width: 33.6rem; // Matches design better
+        flex: 0 0 44.6rem;
+        width: 80%;
+        max-width: 29.4rem;
         padding: 2.4rem;
         border-radius: 3.6rem;
         border: 0.1rem solid variables.$border-color;
         backdrop-filter: blur(0.7rem);
         font-family: variables.$font-source-code-pro;
-        font-size: 1.4rem; // Smaller on mobile
-        line-height: 1.4;
+        font-size: 1.6rem;
+        line-height: 2rem;
         color: variables.$color-white;
-        text-align: left;
 
         @media screen and (min-width: variables.$mobile) {
-            max-width: 44.6rem;
+            width: 44.6rem;
+            max-width: unset;
             padding: 4.6rem 3.6rem;
             border-radius: 6.4rem;
             font-size: 2.2rem;
@@ -213,14 +266,11 @@
         position: relative;
         z-index: 5;
         width: 100%;
-        height: 40rem; // Fixed height for mobile orbits
-        margin: 0 auto;
+        height: 46.6rem;
 
         @media screen and (min-width: variables.$tablet) {
-            position: absolute;
-            top: -4.4rem;
             left: -7.3rem;
-            height: 100%;
+            top: -4.4rem;
         }
     }
 
@@ -228,61 +278,62 @@
         position: absolute;
         width: 6.4rem;
         height: 6.4rem;
-        padding: 1rem;
+        padding: 1.4rem;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: transform variables.$linear-transition;
         border-radius: 50%;
         backdrop-filter: blur(0.7rem);
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / contain;
+        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center;
         will-change: transform;
-        z-index: 5;
 
-        @media screen and (min-width: variables.$mobile) {
+        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             width: 11.2rem;
             height: 11.2rem;
             padding: 2.8rem;
         }
 
+        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+            width: 11.2rem;
+            height: 11.2rem;
+            padding: 2.8rem;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            will-change: auto;
+        }
+
         img {
-            width: 80%;
+            width: 100%;
             height: auto;
-            object-fit: contain;
         }
     }
 
     // ========== BLOCK: LOGOS ==========
     &__block--logos {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: auto;
+        display: block;
+        height: auto;
     }
 
     &__block--logos &__text {
-        position: relative;
-        z-index: 6;
-        margin-bottom: -15rem; // Overlap with logos as in design
-        top: 0;
+        position: absolute;
+        z-index: 4;
+        left: 0;
+        top: 4rem;
 
         @media screen and (min-width: variables.$mobile) {
-            margin-bottom: 0;
-            position: absolute;
             top: 4rem;
-            left: 0;
         }
     }
 
     // ========== BLOCK: PHOTO ==========
     &__block--photo {
-        min-height: auto;
-        justify-content: center;
-        gap: 3rem;
+        height: 62rem;
+        justify-content: flex-end;
 
         @media screen and (min-width: variables.$mobile) {
             height: 80rem;
-            justify-content: flex-end;
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -291,68 +342,100 @@
     }
 
     &__block--photo &__figure {
-        position: relative;
-        top: 0;
-        left: 0;
+        position: absolute;
+        top: 32rem;
+        left: -4rem;
         width: 28.6rem;
         height: 28.6rem;
         backdrop-filter: blur(0.7rem);
         border-radius: 50%;
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / contain;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / cover;
 
         @media screen and (min-width: variables.$mobile) {
-            position: absolute;
             top: 38rem;
+            left: 0;
             width: 40rem;
             height: 40rem;
+            min-width: 40rem;
         }
 
         @media screen and (min-width: variables.$tablet) {
+            position: relative;
             top: 3rem;
             left: -3rem;
         }
 
         img {
             display: block;
-            width: 90%;
+            width: 25.55rem;
             height: auto;
+            margin: 0.1rem auto auto;
             border-radius: 50%;
             border: 0.1rem solid variables.$border-color;
+
+            @media screen and (min-width: variables.$mobile) {
+                width: 35.2rem;
+                margin: 0.6rem auto auto;
+            }
+        }
+    }
+
+    &__block--photo &__watermark {
+        z-index: -1;
+        position: absolute;
+        display: none;
+        top: 14rem;
+        left: 10%;
+        width: 20rem;
+        height: 42rem;
+        opacity: 0.3;
+        transform: rotate(-45deg);
+        background-blend-mode: lighten;
+        background: variables.$bg url("assets/png/key-facts/key.png") no-repeat center center / contain;
+        background: variables.$bg url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
+
+        @media screen and (min-width: variables.$mobile) {
+            display: block;
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            top: -13rem;
+            right: 20%;
+            left: unset;
+            transform: rotate(45deg);
+        }
+
+        img {
+            width: 100%;
+            height: auto;
         }
     }
 
     // ========== BLOCK: CARD ==========
     &__block--card {
-        min-height: auto;
-        gap: 3rem;
-
-        @media screen and (min-width: variables.$mobile) {
-            height: 53rem;
-        }
+        height: 53rem;
     }
 
     &__block--card &__figure {
-        position: relative;
-        top: 0;
-        left: 0;
-        width: 100%;
-        max-width: 33.6rem;
+        position: absolute;
+        top: 34rem;
+        left: 10%;
+        width: 28rem;
+        height: 15.6rem;
         border-radius: 3.6rem;
 
         @media screen and (min-width: variables.$mobile) {
-            position: absolute;
             top: 42rem;
-            left: 10%;
             width: 45rem;
+            height: auto;
         }
 
         @media screen and (min-width: variables.$tablet) {
+            position: relative;
             top: 12rem;
             left: -3.2rem;
             width: 62.9rem;
+            min-width: 38rem;
         }
 
         &::after {

@@ -3,20 +3,20 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import HeroGrid1 from '../assets/svg/hero-grid-1.svg?react';
-import HeroGrid2 from '../assets/svg/hero-grid-2.svg?react';
-import HeroGrid3 from '../assets/svg/hero-grid-3.svg?react';
-import HeroGrid4 from '../assets/svg/hero-grid-4.svg?react';
-import HeroGrid5 from '../assets/svg/hero-grid-5.svg?react';
-import HeroGrid6 from '../assets/svg/hero-grid-6.svg?react';
-import HeroGrid7 from '../assets/svg/hero-grid-7.svg?react';
-import HeroGrid8 from '../assets/svg/hero-grid-8.svg?react';
-
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroGrid = () => {
   const gridRef = useRef(null);
-  const itemsRef = useRef([]);
+  const gridItem1Ref = useRef(null);
+  const gridItem2Ref = useRef(null);
+  const gridItem3Ref = useRef(null);
+  const gridItem4Ref = useRef(null);
+  const gridItem5Ref = useRef(null);
+  const gridCol1Ref = useRef(null);
+  const gridCol2Ref = useRef(null);
+  const gridCol3Ref = useRef(null);
+  const gridCol4Ref = useRef(null);
+  const gridCol5Ref = useRef(null);
 
   useGSAP(
     () => {
@@ -29,39 +29,46 @@ const HeroGrid = () => {
         }
       });
 
-      // Animate horizontal items (1, 2, 5, 6, 8)
       tl.from(
-        [itemsRef.current[0], itemsRef.current[1], itemsRef.current[4], itemsRef.current[5], itemsRef.current[7]],
+        [gridItem1Ref.current, gridItem3Ref.current, gridItem5Ref.current],
         { x: '-100vw', opacity: 0 },
         0
-      );
-
-      // Animate vertical items (3, 4, 7)
-      tl.from(
-        [itemsRef.current[2], itemsRef.current[3], itemsRef.current[6]],
-        { y: '-100vh', opacity: 0 },
-        0.2
-      );
+      )
+        .from(
+          [gridItem2Ref.current, gridItem4Ref.current],
+          { x: '100vw', opacity: 0 },
+          0
+        )
+        .from(
+          [gridCol1Ref.current, gridCol3Ref.current, gridCol5Ref.current],
+          { y: '-100vh', opacity: 0 },
+          0.2
+        )
+        .from(
+          [gridCol2Ref.current, gridCol4Ref.current],
+          { y: '100vh', opacity: 0 },
+          0.2
+        );
     },
     { scope: gridRef }
   );
 
-  const gridItems = [
-    HeroGrid1, HeroGrid2, HeroGrid3, HeroGrid4, 
-    HeroGrid5, HeroGrid6, HeroGrid7, HeroGrid8
-  ];
-
   return (
     <div className="hero__grid" ref={gridRef} aria-hidden="true">
-      {gridItems.map((Component, index) => (
-        <div 
-          key={index} 
-          className={`hero__grid-item hero__grid-item--${index + 1}`}
-          ref={el => itemsRef.current[index] = el}
-        >
-          <Component />
-        </div>
-      ))}
+      <div className="hero__grid-row">
+        <div className="hero__grid-item" ref={gridItem1Ref} />
+        <div className="hero__grid-item" ref={gridItem2Ref} />
+        <div className="hero__grid-item" ref={gridItem3Ref} />
+        <div className="hero__grid-item" ref={gridItem4Ref} />
+        <div className="hero__grid-item" ref={gridItem5Ref} />
+      </div>
+      <div className="hero__grid-col">
+        <div className="hero__grid-item" ref={gridCol1Ref} />
+        <div className="hero__grid-item" ref={gridCol2Ref} />
+        <div className="hero__grid-item" ref={gridCol3Ref} />
+        <div className="hero__grid-item" ref={gridCol4Ref} />
+        <div className="hero__grid-item" ref={gridCol5Ref} />
+      </div>
     </div>
   );
 };

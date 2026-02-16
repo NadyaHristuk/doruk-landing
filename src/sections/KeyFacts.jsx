@@ -20,6 +20,11 @@ const getDistance = (x1, y1, x2, y2) => {
 };
 
 const KeyFacts = ({ lang }) => {
+  const keyFactsTitle = `${translate('keyFacts.title', lang) || ''}`;
+  const titleChars = Array.from(keyFactsTitle);
+  const titleInitial = titleChars[0] || '';
+  const titleRest = titleChars.slice(1).join('');
+
   const entryRef = useRef(null),
     lineUpperRef = useRef(null),
     lineLowerRef = useRef(null),
@@ -94,10 +99,12 @@ const KeyFacts = ({ lang }) => {
       <div className="key-facts__backgrounds">
         <header className="key-facts__header" ref={entryRef}>
           <h2
-            className="animated-title"
+            className="animated-title key-facts__title"
             style={{ transform: `translateX(${progress}%)` }}
+            aria-label={keyFactsTitle}
           >
-            {translate('keyFacts.title', lang)}
+            <span className="key-facts__title-initial">{titleInitial}</span>
+            <span className="key-facts__title-rest">{titleRest}</span>
           </h2>
         </header>
         <div className="key-facts__bg key-facts__bg--upper">
