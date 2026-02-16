@@ -20,9 +20,6 @@
 
     &__bg {
         height: 100%;
-        background:
-            url("assets/svg/animations/about-dots-left.svg") no-repeat top center / auto,
-            url("assets/svg/animations/about-dots-right.svg") no-repeat center 80% / auto;
 
         &-line {
             z-index: 1;
@@ -45,9 +42,38 @@
                 height: calc(100% - var(--content-offset));
             }
         }
+
+        &-dots {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+    }
+
+    &__dots--left,
+    &__dots--right {
+        position: absolute;
+        width: auto;
+        height: 100%;
+    }
+
+    &__dots--left {
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__dots--right {
+        top: 80%;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     &__content {
+        position: relative;
         z-index: 3;
     }
 
@@ -197,7 +223,7 @@
         }
     }
 
-    &__decoration {
+    &__figure {
         flex: 0 0 auto;
         position: relative;
         width: calc(50% - 0.4rem);
@@ -285,7 +311,7 @@
         width: 100%;
     }
 
-    &__flexible {
+    &__form-fields {
         display: flex;
         flex-flow: row wrap;
         justify-content: flex-start;
@@ -445,7 +471,7 @@
         }
     }
 
-    &__bottom {
+    &__contact-card {
         position: relative;
         top: 2.8rem;
         right: 1.6rem;
@@ -524,7 +550,7 @@
         }
     }
 
-    &__text-block {
+    &__contact-info {
         z-index: 2;
         position: relative;
         padding: 1.6rem 2.4rem;
@@ -542,7 +568,7 @@
         }
     }
 
-    &__text {
+    &__contact-label {
         margin-bottom: 4rem;
         color: variables.$color-primary;
     }

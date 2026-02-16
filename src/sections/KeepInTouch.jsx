@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 // hooks
 import { useTitleAnimation } from '../hooks';
+import { useMatrixDots } from '../hooks/useMatrixDots';
 // components
 import AnimatedPathFollower from '../components/AnimatedPathFollower.jsx';
 // config
@@ -20,6 +21,8 @@ import {
 // assets
 import jpgBg from '../assets/jpg/keep-in-touch/keep-in-touch-bg.jpg';
 import jpgBgWebp from '../assets/webp/keep-in-touch/keep-in-touch-bg.webp';
+import SvgDotsLeft from '../assets/svg/animations/about-dots-left.svg?react';
+import SvgDotsRight from '../assets/svg/animations/about-dots-right.svg?react';
 
 const NameInput = ({ value, setValue, lang }) => {
   return (
@@ -48,6 +51,32 @@ const KeepInTouch = ({ lang }) => {
     [success, setSuccess] = useState(false),
     [serverError, setServerError] = useState(false),
     progress = useTitleAnimation(entryRef);
+
+  useMatrixDots({
+    sectionId: '#keep-in-touch',
+    svgSelector: '.keep-in-touch__dots--left',
+    bucketSize: 40,
+    minTailLength: 5,
+    maxTailLength: 12,
+    minHeadOpacity: 0.9,
+    maxHeadOpacity: 1.0,
+    baseOpacity: 0.05,
+    minDuration: 6000,
+    maxDuration: 12000
+  });
+
+  useMatrixDots({
+    sectionId: '#keep-in-touch',
+    svgSelector: '.keep-in-touch__dots--right',
+    bucketSize: 40,
+    minTailLength: 5,
+    maxTailLength: 12,
+    minHeadOpacity: 0.9,
+    maxHeadOpacity: 1.0,
+    baseOpacity: 0.05,
+    minDuration: 6000,
+    maxDuration: 12000
+  });
 
   const clearForm = () => {
     setUserName('');
@@ -117,12 +146,16 @@ const KeepInTouch = ({ lang }) => {
               config={svgConfig.keepInTouch}
             />
           </div>
+          <div className="keep-in-touch__bg-dots" aria-hidden="true">
+            <SvgDotsLeft className="keep-in-touch__dots--left" />
+            <SvgDotsRight className="keep-in-touch__dots--right" />
+          </div>
         </div>
       </div>
 
       <div className="keep-in-touch__content">
         <div className="keep-in-touch__top">
-          <div className="keep-in-touch__decoration">
+          <div className="keep-in-touch__figure">
             <picture>
               <source type="image/webp" srcSet={jpgBgWebp} />
               <img src={jpgBg} width="859" height="557" loading="lazy" alt="" role="presentation" aria-hidden="true" />
@@ -138,7 +171,7 @@ const KeepInTouch = ({ lang }) => {
               submit();
             }}
           >
-            <div className="keep-in-touch__flexible">
+            <div className="keep-in-touch__form-fields">
               <div className="keep-in-touch__inputs">
                 <div className="keep-in-touch__name--desktop">
                   <NameInput
@@ -188,7 +221,7 @@ const KeepInTouch = ({ lang }) => {
                   </div>
                 </div>
               </div>
-              <div className="keep-in-touch__textarea-wrap">
+              <div className="keep-in-touch__contact-labelarea-wrap">
                 <textarea
                   placeholder={translate('keepInTouch.input.comment', lang)}
                   value={userComment}
@@ -197,7 +230,7 @@ const KeepInTouch = ({ lang }) => {
                   onChange={(e) => setUserComment(e.target.value)}
                   aria-label={translate('keepInTouch.input.comment', lang)}
                 ></textarea>
-                <div className="keep-in-touch__textarea-counter">
+                <div className="keep-in-touch__contact-labelarea-counter">
                   {userComment.length ?? 0} {translate('common.from', lang)}{' '}
                   {commentMaxLength} {translate('common.symbols', lang)}
                 </div>
@@ -270,9 +303,9 @@ const KeepInTouch = ({ lang }) => {
             </div>
           </form>
         </div>
-        <div className="keep-in-touch__bottom">
-          <div className="keep-in-touch__text-block">
-            <div className="keep-in-touch__text">{translate('keepInTouch.text', lang)}</div>
+        <div className="keep-in-touch__contact-card">
+          <div className="keep-in-touch__contact-info">
+            <div className="keep-in-touch__contact-label">{translate('keepInTouch.text', lang)}</div>
             <div className="keep-in-touch__email">{translate('keepInTouch.email', lang)}</div>
             <div className="keep-in-touch__phone">{translate('keepInTouch.phone', lang)}</div>
           </div>

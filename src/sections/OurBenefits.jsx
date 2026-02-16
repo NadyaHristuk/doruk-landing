@@ -53,7 +53,7 @@ const OurBenefits = ({ lang }) => {
       </div>
 
       <div className="our-benefits__content">
-        <div className="our-benefits__center">
+        <div className="our-benefits__figure">
           <div className="our-benefits__image-wrap">
             <picture>
               <source type="image/webp" srcSet={jpgBgWebp} />
@@ -76,19 +76,19 @@ const OurBenefits = ({ lang }) => {
           style={{ listStyle: 'none', margin: 0, padding: 0 }}
         >
           <TitleBlock icon="icon-our-benefits-office-remote">
-            <h3 className="our-benefits__line--first truncate">
+            <h3 className="our-benefits__item-title truncate">
               {translate('ourBenefits.topLeft.line1', lang)}
             </h3>
-            <p className="our-benefits__line--second truncate">
+            <p className="our-benefits__item-subtitle truncate">
               <span>{translate('ourBenefits.topLeft.line2', lang)}</span>
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-insurance">
-            <h3 className="our-benefits__line--first truncate">
+            <h3 className="our-benefits__item-title truncate">
               {translate('ourBenefits.centerLeft.line1', lang)}
             </h3>
-            <p className="our-benefits__line--second truncate">
+            <p className="our-benefits__item-subtitle truncate">
               {translate('ourBenefits.centerLeft.line2prefix', lang)}
               <span>
                 {translate('ourBenefits.centerLeft.line2suffix', lang)}
@@ -97,32 +97,32 @@ const OurBenefits = ({ lang }) => {
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-team">
-            <h3 className="our-benefits__line--first truncate">
+            <h3 className="our-benefits__item-title truncate">
               {translate('ourBenefits.bottom.line1', lang)}
             </h3>
-            <p className="our-benefits__line--second truncate">
+            <p className="our-benefits__item-subtitle truncate">
               <span>{translate('ourBenefits.bottom.line2', lang)}</span>
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-lunch-office">
-            <h3 className="our-benefits__line--first truncate">
+            <h3 className="our-benefits__item-title truncate">
               <span>{translate('ourBenefits.topRight.line1prefix', lang)}</span>
               {translate('ourBenefits.topRight.line1', lang)}
             </h3>
-            <p className="our-benefits__line--second truncate">
+            <p className="our-benefits__item-subtitle truncate">
               {translate('ourBenefits.topRight.line2', lang)}
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-playing-zone">
-            <h3 className="our-benefits__line--first truncate">
+            <h3 className="our-benefits__item-title truncate">
               <span>
                 {translate('ourBenefits.centerRight.line1prefix', lang)}
               </span>
               {translate('ourBenefits.centerRight.line1', lang)}
             </h3>
-            <p className="our-benefits__line--second truncate">
+            <p className="our-benefits__item-subtitle truncate">
               {translate('ourBenefits.centerRight.line2', lang)}
             </p>
           </TitleBlock>

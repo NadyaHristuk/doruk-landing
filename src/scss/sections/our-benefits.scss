@@ -48,6 +48,7 @@
     }
 
     &__content {
+        position: relative;
         z-index: 3;
         height: calc(100% - var(--content-mobile-offset));
 
@@ -75,7 +76,7 @@
         }
     }
 
-    &__center {
+    &__figure {
         position: relative;
     }
 
@@ -252,8 +253,8 @@
         }
     }
 
-    &__line--first,
-    &__line--second {
+    &__item-title,
+    &__item-subtitle {
         position: relative;
         top: 0.2rem;
         font-family: variables.$font-source-code-pro;
@@ -277,11 +278,11 @@
         }
     }
 
-    &__line--first {
+    &__item-title {
         text-wrap-mode: nowrap;
     }
 
-    &__line--second {
+    &__item-subtitle {
         text-align: right;
 
         span {
