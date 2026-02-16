@@ -57,6 +57,7 @@
                 width: auto;
                 height: auto;
                 overflow: visible;
+                cursor: pointer;
 
                 @media screen and (min-width: variables.$mobile) {
                     display: none;
@@ -66,8 +67,9 @@
                     position: relative;
                     order: -1;
                     width: 2.4rem;
-                    height: 0.3rem;
-                    margin-bottom: 0.2rem;
+                    height: 0.25rem;
+                    background-color: variables.$color-primary;
+                    transition: width variables.$transition;
                 }
 
                 .hero__header-lang-list {
@@ -75,19 +77,44 @@
                     top: auto;
                     right: auto;
                     column-gap: 0;
+                    margin-top: 0.25rem;
                 }
 
-                .hero__header-lang-item {
-                    display: none;
+                .hero__header-lang-btn {
+                    font-family: variables.$font-neutral-face;
+                    font-size: 1.4rem;
+                    line-height: 1.8rem;
+                    font-weight: 400;
+                }
 
-                    &--active {
+                // Closed: show only active lang
+                &:not(.hero__header-lang--open) {
+                    .hero__header-lang-list li {
+                        display: none;
+                    }
+
+                    .hero__header-lang-list li:has(.hero__header-lang-btn--active) {
                         display: block;
                     }
                 }
 
-                .hero__header-lang-btn {
-                    font-size: 1.4rem;
-                    line-height: 1.8rem;
+                // Open: show all langs, wider indicator, centered
+                &.hero__header-lang--open {
+                    align-items: center;
+
+                    .hero__header-lang-indicator {
+                        width: 8.4rem;
+                    }
+
+                    .hero__header-lang-list {
+                        display: flex;
+                        justify-content: center;
+                        column-gap: 2.4rem;
+                    }
+
+                    .hero__header-lang-list li {
+                        display: block;
+                    }
                 }
             }
         }
@@ -176,11 +203,12 @@
             height: 7rem;
             background: linear-gradient(
                 180deg,
-                rgba(28, 28, 30, 1) 0%,
+                #242426 0%,
                 rgba(36, 36, 38, 0) 100%
             );
 
             @media screen and (min-width: variables.$mobile) {
+                top: 0;
                 left: -3.5rem;
                 width: 72%;
                 height: 16.3rem;
@@ -225,8 +253,8 @@
 
     &__bg-rocks {
         position: absolute;
-        left: -14.9rem; // -149px from XD
-        top: 2.5rem; // 69px - 44px status bar = 25px
+        left: -11.9rem;
+        top: 3.5rem;
         width: 67.6rem; // 676px from XD
         height: 46.8rem; // 468px from XD
         z-index: 0;
@@ -270,9 +298,15 @@
         z-index: 4;
         pointer-events: none;
         left: calc(21% - 3.5rem);
-        top: 8%;
-        width: 34%;
-        height: 86%;
+        top: 19%;
+        width: 78%;
+        height: 22%;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 10%;
+            width: 34%;
+            height: 86%;
+        }
 
         .animated-lightning {
             width: 100%;

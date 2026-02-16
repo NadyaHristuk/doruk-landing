@@ -24,6 +24,9 @@ const HeroHeader = ({ lang, setLang }) => {
           langOpen ? 'hero__header-lang--open' : ''
         }`}
         aria-label="Language selector"
+        onClick={() => {
+          if (!langOpen) setLangOpen(true);
+        }}
       >
         <div className="hero__header-lang-indicator" aria-hidden="true" />
         <ul className="hero__header-lang-list" role="list">
@@ -37,14 +40,15 @@ const HeroHeader = ({ lang, setLang }) => {
                 aria-pressed={lang === item}
                 aria-label={`Switch language to ${item}`}
                 tabIndex={langOpen ? 0 : -1}
-                onClick={() => {
+                onClick={(e) => {
                   if (langOpen) {
+                    e.stopPropagation();
                     setLang(item);
                     setLangOpen(false);
                   }
                 }}
               >
-                {langOpen ? item : lang}
+                {item}
               </button>
             </li>
           ))}

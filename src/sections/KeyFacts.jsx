@@ -126,46 +126,21 @@ const KeyFacts = ({ lang }) => {
       const hoveredItem = prevItems.find((item) => item.id === id);
       if (!hoveredItem) return prevItems;
 
-      let nearestItems = [];
-
-      if (hoveredItem.circle === 'first') {
-        nearestItems = prevItems
-          .filter((item) => item.circle === 'second')
-          .map((item) => ({
-            ...item,
-            distance: getDistance(hoveredItem.x, hoveredItem.y, item.x, item.y)
-          }))
-          .sort((a, b) => a.distance - b.distance)
-          .slice(0, 2);
-      }
-
       return prevItems.map((item) => {
-        if (item.id === id) {
-          const { destX, destY } = getDestPoint(0, 0, item.x, item.y);
-          return {
-            ...item,
-            x: destX,
-            y: destY,
-            nearests: nearestItems.map((n) => n.id)
-          };
-        } else if (
-          hoveredItem.circle === 'first' &&
-          nearestItems.some((n) => n.id === item.id)
-        ) {
-          const { destX, destY } = getDestPoint(
-            hoveredItem.x,
-            hoveredItem.y,
-            item.x,
-            item.y,
-            hoverOffset
-          );
-          return {
-            ...item,
-            x: destX,
-            y: destY
-          };
-        }
-        return item;
+        if (item.id === id) return item;
+
+        const dist = getDistance(hoveredItem.startX, hoveredItem.startY, item.startX, item.startY);
+        if (dist === 0) return item;
+
+        const displacement = hoverOffset * (radius / dist);
+        const { destX, destY } = getDestPoint(
+          hoveredItem.startX,
+          hoveredItem.startY,
+          item.startX,
+          item.startY,
+          displacement
+        );
+        return { ...item, x: destX, y: destY };
       });
     });
   };
