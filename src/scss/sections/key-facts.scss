@@ -160,34 +160,17 @@
         position: relative;
         z-index: 3;
         padding-top: var(--content-mobile-offset);
-        margin-left: auto;
-        margin-right: auto;
-        width: calc(100% - 3.2rem);
+        margin: 0 auto;
+        width: 100%;
         max-width: var(--content-max-width);
-        height: 170rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8rem; // Gap between blocks
 
         @media screen and (min-width: variables.$mobile) {
             width: var(--content-tablet-width);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            padding-top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            padding-top: var(--content-mobile-offset);
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            width: var(--content-width);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            padding-top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            padding-top: var(--content-offset);
+            gap: 15rem;
         }
     }
 
@@ -196,28 +179,28 @@
         position: relative;
         width: 100%;
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding-top: 5rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
     }
 
     &__text {
         z-index: 4;
-        flex: 0 0 44.6rem;
-        width: 80%;
-        max-width: 29.4rem;
+        width: calc(100% - 3.2rem);
+        max-width: 33.6rem; // Matches design better
         padding: 2.4rem;
         border-radius: 3.6rem;
         border: 0.1rem solid variables.$border-color;
         backdrop-filter: blur(0.7rem);
         font-family: variables.$font-source-code-pro;
-        font-size: 1.6rem;
-        line-height: 2rem;
+        font-size: 1.4rem; // Smaller on mobile
+        line-height: 1.4;
         color: variables.$color-white;
+        text-align: left;
 
         @media screen and (min-width: variables.$mobile) {
-            width: 44.6rem;
-            max-width: unset;
+            max-width: 44.6rem;
             padding: 4.6rem 3.6rem;
             border-radius: 6.4rem;
             font-size: 2.2rem;
@@ -226,15 +209,18 @@
     }
 
     // ========== LOGOS ==========
-    &__orbits {
+    &__logos {
         position: relative;
         z-index: 5;
         width: 100%;
-        height: 46.6rem;
+        height: 40rem; // Fixed height for mobile orbits
+        margin: 0 auto;
 
         @media screen and (min-width: variables.$tablet) {
-            left: -7.3rem;
+            position: absolute;
             top: -4.4rem;
+            left: -7.3rem;
+            height: 100%;
         }
     }
 
@@ -242,62 +228,61 @@
         position: absolute;
         width: 6.4rem;
         height: 6.4rem;
-        padding: 1.4rem;
+        padding: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: transform variables.$linear-transition;
         border-radius: 50%;
         backdrop-filter: blur(0.7rem);
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center;
+        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / contain;
         will-change: transform;
+        z-index: 5;
 
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+        @media screen and (min-width: variables.$mobile) {
             width: 11.2rem;
             height: 11.2rem;
             padding: 2.8rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            width: 11.2rem;
-            height: 11.2rem;
-            padding: 2.8rem;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            will-change: auto;
         }
 
         img {
-            width: 100%;
+            width: 80%;
             height: auto;
+            object-fit: contain;
         }
     }
 
     // ========== BLOCK: LOGOS ==========
     &__block--logos {
-        display: block;
-        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
     }
 
     &__block--logos &__text {
-        position: absolute;
-        z-index: 4;
-        left: 0;
-        top: 4rem;
+        position: relative;
+        z-index: 6;
+        margin-bottom: -15rem; // Overlap with logos as in design
+        top: 0;
 
         @media screen and (min-width: variables.$mobile) {
+            margin-bottom: 0;
+            position: absolute;
             top: 4rem;
+            left: 0;
         }
     }
 
     // ========== BLOCK: PHOTO ==========
     &__block--photo {
-        height: 62rem;
-        justify-content: flex-end;
+        min-height: auto;
+        justify-content: center;
+        gap: 3rem;
 
         @media screen and (min-width: variables.$mobile) {
             height: 80rem;
+            justify-content: flex-end;
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -306,100 +291,68 @@
     }
 
     &__block--photo &__figure {
-        position: absolute;
-        top: 32rem;
-        left: -4rem;
+        position: relative;
+        top: 0;
+        left: 0;
         width: 28.6rem;
         height: 28.6rem;
         backdrop-filter: blur(0.7rem);
         border-radius: 50%;
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / cover;
+        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         @media screen and (min-width: variables.$mobile) {
+            position: absolute;
             top: 38rem;
-            left: 0;
             width: 40rem;
             height: 40rem;
-            min-width: 40rem;
         }
 
         @media screen and (min-width: variables.$tablet) {
-            position: relative;
             top: 3rem;
             left: -3rem;
         }
 
         img {
             display: block;
-            width: 25.55rem;
+            width: 90%;
             height: auto;
-            margin: 0.1rem auto auto;
             border-radius: 50%;
             border: 0.1rem solid variables.$border-color;
-
-            @media screen and (min-width: variables.$mobile) {
-                width: 35.2rem;
-                margin: 0.6rem auto auto;
-            }
-        }
-    }
-
-    &__block--photo &__watermark {
-        z-index: -1;
-        position: absolute;
-        display: none;
-        top: 14rem;
-        left: 10%;
-        width: 20rem;
-        height: 42rem;
-        opacity: 0.3;
-        transform: rotate(-45deg);
-        background-blend-mode: lighten;
-        background: variables.$bg url("assets/png/key-facts/key.png") no-repeat center center / contain;
-        background: variables.$bg url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
-
-        @media screen and (min-width: variables.$mobile) {
-            display: block;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            top: -13rem;
-            right: 20%;
-            left: unset;
-            transform: rotate(45deg);
-        }
-
-        img {
-            width: 100%;
-            height: auto;
         }
     }
 
     // ========== BLOCK: CARD ==========
     &__block--card {
-        height: 53rem;
+        min-height: auto;
+        gap: 3rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            height: 53rem;
+        }
     }
 
     &__block--card &__figure {
-        position: absolute;
-        top: 34rem;
-        left: 10%;
-        width: 28rem;
-        height: 15.6rem;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 33.6rem;
         border-radius: 3.6rem;
 
         @media screen and (min-width: variables.$mobile) {
+            position: absolute;
             top: 42rem;
+            left: 10%;
             width: 45rem;
-            height: auto;
         }
 
         @media screen and (min-width: variables.$tablet) {
-            position: relative;
             top: 12rem;
             left: -3.2rem;
             width: 62.9rem;
-            min-width: 38rem;
         }
 
         &::after {

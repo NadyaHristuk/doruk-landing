@@ -66,6 +66,7 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
       (typeof window.matchMedia === 'function' &&
         window.matchMedia('(pointer: coarse)').matches) ||
       window.innerWidth < 768;
+    const isMobileViewport = () => window.innerWidth < 768;
     const qualityFactor = prefersReduce
       ? 0.2  // Reduced from 0.35
       : isMobile
@@ -83,25 +84,36 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
     let startTime = performance.now();
     let isVisible = true;
     let observer;
+    let renderDpr = 1;
 
     // ── resize ────────────────────────────────────────────────
     const resize = () => {
       const parent = canvas.parentElement;
       if (!parent) return;
       const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
-      const rect = parent.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = rect.width + 'px';
-      canvas.style.height = rect.height + 'px';
+      renderDpr = dpr;
+      if (isMobileViewport()) {
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        canvas.width = viewportWidth * dpr;
+        canvas.height = viewportHeight * dpr;
+        canvas.style.width = '100vw';
+        canvas.style.height = '100vh';
+      } else {
+        const rect = parent.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+      }
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     // ── init particles ────────────────────────────────────────
     const init = () => {
       resize();
-      const w = canvas.width / (window.devicePixelRatio || 1);
-      const h = canvas.height / (window.devicePixelRatio || 1);
+      const w = canvas.width / renderDpr;
+      const h = canvas.height / renderDpr;
       particles = Array.from({ length: targetCount }, () =>
         createParticle(w, h)
       );
@@ -119,8 +131,8 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
     };
 
     const drawOnce = () => {
-      const w = canvas.width / (window.devicePixelRatio || 1);
-      const h = canvas.height / (window.devicePixelRatio || 1);
+      const w = canvas.width / renderDpr;
+      const h = canvas.height / renderDpr;
       ctx.clearRect(0, 0, w, h);
       ctx.fillStyle = '#ffffff';
       for (let i = 0; i < particles.length; i++) {
@@ -135,8 +147,8 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
     const draw = (now) => {
       if (!isVisible) return;
       const elapsed = (now - startTime) / 1000;
-      const w = canvas.width / (window.devicePixelRatio || 1);
-      const h = canvas.height / (window.devicePixelRatio || 1);
+      const w = canvas.width / renderDpr;
+      const h = canvas.height / renderDpr;
       ctx.clearRect(0, 0, w, h);
 
       const mouseActive = mouse.x > -999;

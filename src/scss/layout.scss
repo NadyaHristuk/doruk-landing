@@ -368,9 +368,9 @@ body {
       transition: transform variables.$linear-transition;
       margin: 0;
       font-family: variables.$font-neutral-face;
-      font-size: 9.2rem;
+      font-size: 4.8rem; // Smaller on mobile
       font-weight: 700;
-      line-height: 11.1rem;
+      line-height: 1.2;
       letter-spacing: 0;
       text-transform: uppercase;
       text-wrap-mode: nowrap;
@@ -383,9 +383,14 @@ body {
         word-spacing: 5rem;
       }
 
+      @media screen and (min-width: variables.$desktop) {
+        font-size: 9.2rem;
+        line-height: 11.1rem;
+      }
+
       &::first-letter {
         font-family: variables.$font-pixelify-sans;
-        font-size: 4rem;
+        font-size: 5.4rem;
 
         @media screen and (min-width: variables.$mobile) {
           font-size: 9.2rem;

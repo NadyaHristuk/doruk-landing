@@ -21,9 +21,9 @@ const getDistance = (x1, y1, x2, y2) => {
 
 const KeyFacts = ({ lang }) => {
   const entryRef = useRef(null),
-    containerARef = useRef(null),
-    containerBRef = useRef(null),
-    orbitsRef = useRef(null),
+    lineUpperRef = useRef(null),
+    lineLowerRef = useRef(null),
+    logosRef = useRef(null),
     [displacements, setDisplacements] = useState({}),
     [isMobile, setIsMobile] = useState(false),
     [isLowPower, setIsLowPower] = useState(false),
@@ -55,7 +55,7 @@ const KeyFacts = ({ lang }) => {
   const handleMouseEnter = (id) => {
     if (isMobile || isLowPower) return;
 
-    const container = orbitsRef.current;
+    const container = logosRef.current;
     if (!container) return;
 
     const w = container.offsetWidth;
@@ -91,43 +91,43 @@ const KeyFacts = ({ lang }) => {
 
   return (
     <div className="key-facts">
-      <header className="key-facts__header" ref={entryRef}>
-        <h2
-          className="animated-title"
-          style={{ transform: `translateX(${progress}%)` }}
-        >
-          {translate('keyFacts.title', lang)}
-        </h2>
-      </header>
-      <div className="key-facts__bg">
-        <div className="key-facts__bg-upper">
-          <div className="key-facts__path-upper" ref={containerARef}>
+      <div className="key-facts__backgrounds">
+        <header className="key-facts__header" ref={entryRef}>
+          <h2
+            className="animated-title"
+            style={{ transform: `translateX(${progress}%)` }}
+          >
+            {translate('keyFacts.title', lang)}
+          </h2>
+        </header>
+        <div className="key-facts__bg key-facts__bg--upper">
+          <div className="key-facts__bg-line key-facts__bg-line--upper" ref={lineUpperRef}>
             <AnimatedPathFollower
-              container={containerARef.current}
+              container={lineUpperRef.current}
               offsetStart={0.4}
               config={svgConfig.keyFacts.a}
             />
           </div>
-          <div className="key-facts__pattern-upper" />
+          <div className="key-facts__bg-dots key-facts__bg-dots--upper" />
         </div>
-        <div className="key-facts__bg-lower">
-          <div className="key-facts__path-lower" ref={containerBRef}>
+        <div className="key-facts__bg key-facts__bg--lower">
+          <div className="key-facts__bg-line key-facts__bg-line--lower" ref={lineLowerRef}>
             <AnimatedPathFollower
-              container={containerBRef.current}
+              container={lineLowerRef.current}
               direction="rtl"
               offsetStart={1.1}
               config={svgConfig.keyFacts.b}
             />
           </div>
-          <div className="key-facts__pattern-lower" />
-          <div className="key-facts__pattern-mobile" />
+          <div className="key-facts__bg-dots key-facts__bg-dots--lower" />
+          <div className="key-facts__bg-dots key-facts__bg-dots--mobile" />
         </div>
       </div>
 
       <div className="key-facts__content">
         <div className="key-facts__block key-facts__block--logos">
           <p className="key-facts__text">{translate('keyFacts.text.1', lang)}</p>
-          <div className="key-facts__orbits" ref={orbitsRef}>
+          <div className="key-facts__logos" ref={logosRef}>
             {logos.map((item) => {
               const d = displacements[item.id];
               return (

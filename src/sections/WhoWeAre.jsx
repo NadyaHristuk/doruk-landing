@@ -56,21 +56,6 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
       aria-labelledby={titleId}
       aria-hidden={hidden ? 'true' : undefined}
     >
-      <div className="who-we-are__image">
-        <picture>
-          <source type="image/webp" srcSet={item.bgWebp} />
-          <img
-            className="who-we-are__image-masked"
-            src={item.bg}
-            width="798"
-            height="496"
-            loading="lazy"
-            alt=""
-            role="presentation"
-            aria-hidden="true"
-          />
-        </picture>
-      </div>
       <div className="who-we-are__info">
         <div className="who-we-are__title-block">
           <div className="who-we-are__title-circle">
@@ -89,6 +74,23 @@ const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
             {translate(item.titleEnd, lang)}
           </p>
         </div>
+        
+        <div className="who-we-are__image">
+          <picture>
+            <source type="image/webp" srcSet={item.bgWebp} />
+            <img
+              className="who-we-are__image-masked"
+              src={item.bg}
+              width="798"
+              height="496"
+              loading="lazy"
+              alt=""
+              role="presentation"
+              aria-hidden="true"
+            />
+          </picture>
+        </div>
+
         <div className="who-we-are__text-block">
           <img
             className="who-we-are__text-substrate"
@@ -115,21 +117,20 @@ const WhoWeAre = ({ lang }) => {
     .filter(Boolean)
     .join(' ');
 
-  // Matrix dots animation for left SVG - Matrix rain effect
+  // Matrix dots animation
   useMatrixDots({
     sectionId: '#who-we-are',
     svgSelector: '.who-we-are__dots--left',
     bucketSize: 40,
-    minTailLength: 5,      // Longer tails for dramatic effect
+    minTailLength: 5,
     maxTailLength: 12,
-    minHeadOpacity: 0.9,   // Very bright heads
+    minHeadOpacity: 0.9,
     maxHeadOpacity: 1.0,
-    baseOpacity: 0.05,     // Very dim base for contrast
-    minDuration: 6000,     // Slowed down 2x (was 3000)
-    maxDuration: 12000     // Slowed down 2x (was 6000)
+    baseOpacity: 0.05,
+    minDuration: 6000,
+    maxDuration: 12000
   });
 
-  // Matrix dots animation for right SVG (same params as left)
   useMatrixDots({
     sectionId: '#who-we-are',
     svgSelector: '.who-we-are__dots--right',
@@ -139,8 +140,8 @@ const WhoWeAre = ({ lang }) => {
     minHeadOpacity: 0.9,
     maxHeadOpacity: 1.0,
     baseOpacity: 0.05,
-    minDuration: 6000,     // Slowed down 2x
-    maxDuration: 12000     // Slowed down 2x
+    minDuration: 6000,
+    maxDuration: 12000
   });
 
   useEffect(() => {
@@ -183,7 +184,6 @@ const WhoWeAre = ({ lang }) => {
         const ease = immediate ? 'none' : 'power2.out';
         const staggerDelay = immediate ? 0 : 0.2;
 
-        // Image decoration layer — appears first after image
         if (panelLayer.imageLayers) {
           gsap.to(panelLayer.imageLayers, {
             '--who-image-layer-progress': isActive ? 1 : 0,
@@ -194,7 +194,6 @@ const WhoWeAre = ({ lang }) => {
           });
         }
 
-        // Text block layers — appear sequentially: substrate → after → before
         if (panelLayer.textBlock) {
           gsap.to(panelLayer.textBlock, {
             '--who-layer-substrate-progress': isActive ? 1 : 0,
@@ -277,7 +276,6 @@ const WhoWeAre = ({ lang }) => {
       trigger: sectionEl,
       start: 'top 80%',
       end: 'bottom top',
-      markers: false,
       onEnter: () => {
         triggerActive = true;
         gsap.fromTo(
@@ -320,7 +318,6 @@ const WhoWeAre = ({ lang }) => {
 
   return (
     <>
-      {/* Section header - отдельно от фонов */}
       <header className="who-we-are__header" ref={entryRef}>
         <h2
           className="animated-title who-we-are__title"
@@ -344,7 +341,6 @@ const WhoWeAre = ({ lang }) => {
         </h2>
       </header>
 
-      {/* Фоновые элементы */}
       <div className="who-we-are__backgrounds">
         <div className="who-we-are__background-line" ref={containerRef}>
           <AnimatedPathFollower
@@ -361,7 +357,6 @@ const WhoWeAre = ({ lang }) => {
         </div>
       </div>
 
-      {/* Слайдер с контентом */}
       <div
         className="who-we-are__slider"
         role="region"
