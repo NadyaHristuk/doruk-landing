@@ -121,7 +121,7 @@
         }
 
         @media screen and (min-width: variables.$tablet) {
-            top: -40rem;
+            top: 5rem;
         }
     }
 
@@ -143,9 +143,11 @@
     &__bg-dots--upper {
         z-index: 1;
         height: 100%;
+        top: -3rem;
         background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
 
         @media screen and (min-width: variables.$tablet) {
+            top: 5rem;
             background-size: contain;
         }
     }
@@ -411,12 +413,12 @@
         }
     }
 
-    // ========== BLOCK: CARD ==========
-    &__block--card {
+    // ========== BLOCK: DEVICE ==========
+    &__block--device {
         height: 53rem;
     }
 
-    &__block--card &__figure {
+    &__block--device &__figure {
         position: absolute;
         top: 34rem;
         left: 10%;
@@ -484,7 +486,7 @@
         }
     }
 
-    &__block--card &__watermark {
+    &__block--device &__watermark {
         z-index: -1;
         position: absolute;
         display: none;

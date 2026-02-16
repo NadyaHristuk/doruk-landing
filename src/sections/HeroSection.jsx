@@ -68,7 +68,7 @@ const HeroSection = ({ lang, setLang }) => {
     <div className="hero" ref={heroRef}>
       <HeroHeader lang={lang} setLang={setLang} />
       <HeroBackground />
-      <div className="hero__line" ref={containerRef} aria-hidden="true">
+      <div className="hero__bg-line" ref={containerRef} aria-hidden="true">
         <AnimatedPathFollower
           container={containerRef.current}
           direction="rtl"

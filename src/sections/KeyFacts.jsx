@@ -182,7 +182,7 @@ const KeyFacts = ({ lang }) => {
             </picture>
           </div>
         </div>
-        <div className="key-facts__block key-facts__block--card">
+        <div className="key-facts__block key-facts__block--device">
           <div className="key-facts__watermark" />
           <p className="key-facts__text">{translate('keyFacts.text.3', lang)}</p>
           <div className="key-facts__figure" aria-hidden="true">

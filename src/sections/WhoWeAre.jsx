@@ -340,7 +340,7 @@ const WhoWeAre = ({ lang }) => {
       </header>
 
       <div className="who-we-are__backgrounds">
-        <div className="who-we-are__background-line" ref={containerRef}>
+        <div className="who-we-are__bg-line" ref={containerRef}>
           <AnimatedPathFollower
             container={containerRef.current}
             direction="rtl"

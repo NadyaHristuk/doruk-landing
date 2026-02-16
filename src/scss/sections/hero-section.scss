@@ -180,7 +180,7 @@
     // ========== BACKGROUND ==========
     &__bg,
     &__bg-stars,
-    &__line {
+    &__bg-line {
         position: absolute;
         pointer-events: none;
     }
@@ -348,7 +348,7 @@
     }
 
     // ========== LINE ==========
-    &__line {
+    &__bg-line {
     right: -15px;
     width: 102%;
     height: 86%;
