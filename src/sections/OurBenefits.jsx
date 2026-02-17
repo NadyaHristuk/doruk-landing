@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 // hooks
 import { useTitleAnimation } from '../hooks';
+import { useMatrixDots } from '../hooks/useMatrixDots';
 // components
 import AnimatedPathFollower from '../components/AnimatedPathFollower';
 // config
@@ -8,6 +9,7 @@ import { translate, svgConfig } from '../config';
 // assets
 import jpgBg from '../assets/jpg/our-benefits/benefits-bg.jpg';
 import jpgBgWebp from '../assets/webp/our-benefits/benefits-bg.webp';
+import SvgBenefitsDots from '../assets/svg/animations/benefits-dots.svg?react';
 
 const TitleBlock = ({ children, icon }) => {
   return (
@@ -25,6 +27,19 @@ const OurBenefits = ({ lang }) => {
     containerRef = useRef(null),
     progress = useTitleAnimation(entryRef);
 
+  useMatrixDots({
+    sectionId: '#our-benefits',
+    svgSelector: '.our-benefits__dots',
+    bucketSize: 40,
+    minTailLength: 5,
+    maxTailLength: 12,
+    minHeadOpacity: 0.9,
+    maxHeadOpacity: 1.0,
+    baseOpacity: 0.05,
+    minDuration: 6000,
+    maxDuration: 12000
+  });
+
   const title = `${translate('ourBenefits.title', lang) || ''}`;
   const titleChars = Array.from(title);
   const titleInitial = titleChars[0] || '';
@@ -32,20 +47,19 @@ const OurBenefits = ({ lang }) => {
 
   return (
     <div className="our-benefits">
+      <div className="our-benefits__header" ref={entryRef}>
+        <h2
+          className="animated-title"
+          style={{
+            transform: `translateX(${progress}%)`
+          }}
+          aria-label={title}
+        >
+          <span className="animated-title__cap">{titleInitial}</span>
+          <span className="animated-title__text">{titleRest}</span>
+        </h2>
+      </div>
       <div className="our-benefits__backgrounds">
-        <div className="our-benefits__header" ref={entryRef}>
-          <h2
-            className="animated-title"
-            style={{
-              transform: `translateX(${progress}%)`
-            }}
-            aria-label={title}
-          >
-            <span className="animated-title__cap">{titleInitial}</span>
-            <span className="animated-title__text">{titleRest}</span>
-          </h2>
-        </div>
-
         <div className="our-benefits__bg">
           <div className="our-benefits__bg-line" ref={containerRef}>
             <AnimatedPathFollower
@@ -55,7 +69,9 @@ const OurBenefits = ({ lang }) => {
               config={svgConfig.ourBenefits}
             />
           </div>
-          <div className="our-benefits__bg-dots" aria-hidden="true" />
+          <div className="our-benefits__bg-dots" aria-hidden="true">
+            <SvgBenefitsDots className="our-benefits__dots" />
+          </div>
         </div>
       </div>
 

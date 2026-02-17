@@ -349,7 +349,7 @@ const WhoWeAre = ({ lang }) => {
             config={svgConfig.about}
           />
         </div>
-        <div className="who-we-are__background-dots">
+        <div className="who-we-are__background-stripes">
           <SvgDotsLeft className="who-we-are__dots--left" />
           <SvgDotsRight className="who-we-are__dots--right" />
         </div>

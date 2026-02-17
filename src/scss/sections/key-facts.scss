@@ -5,87 +5,34 @@
     width: 100%;
     height: 100%;
 
-    // ========== BACKGROUNDS ==========
-    &__backgrounds {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
     &__header {
         position: relative;
-        z-index: 3;
+         z-index: 3;
         width: 100%;
     }
 
-    // ========== BG ZONES ==========
-    &__bg {
-        height: 100vh;
-    }
-
-    &__bg--upper {
-        position: absolute;
-        top: var(--content-mobile-offset);
-        left: 0;
-        width: 100%;
-
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            top: var(--content-offset);
-        }
-    }
-
-    &__bg--lower {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        top: 70vh;
+    &__backgrounds {
+        position: relative;
     }
 
     // ========== BG-LINE (AnimatedPathFollower) ==========
-    &__bg-line,
-    &__bg-dots {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
-
     &__bg-line--upper {
+        position: absolute;
+        top: -5.5rem;
+        right: -0.5rem;
+        width: 105%;
         z-index: 2;
-        height: 60%;
-
-        @media screen and (orientation: landscape) {
-            top: -12rem;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            height: 100%;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            top: -20rem;
-            height: 100%;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            top: 5rem;
-        }
+        height: 100%;
+        width: 105%;       
     }
 
     &__bg-line--lower {
+        position: absolute;
+        top: -5.5rem;
+        right: -0.5rem;
+        width: 105%;
         z-index: 2;
         height: 100%;
-        top: 30rem;
 
         @media screen and (min-width: variables.$tablet) {
             top: 40rem;
@@ -96,22 +43,54 @@
         }
     }
 
-    // ========== BG-DOTS (patterns) ==========
-    &__bg-dots--upper {
+    &__watermark {
         z-index: 1;
-        height: 100%;
-        top: -3rem;
-        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
+        position: absolute;
+        display: none;
+        top: 14rem;
+        left: 10%;
+        width: 20rem;
+        height: 42rem;
+        opacity: 0.3;
+        transform: rotate(-45deg);
+        background: url("assets/png/key-facts/key.png") no-repeat center center / contain;
+        background: url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
+
+        @media screen and (min-width: variables.$mobile) {
+            display: block;
+        }
 
         @media screen and (min-width: variables.$tablet) {
-            top: 5rem;
-            background-size: contain;
+            top: -13rem;
+            right: 20%;
+            left: unset;
+            transform: rotate(45deg);
         }
     }
 
-    &__bg-dots--lower {
+    &__bg-stripes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+
+    &__bg-stripes--upper {
         z-index: 1;
-        height: 100%;
+        top: -3rem;
+        height: 1568.4px;
+        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
+
+        @media screen and (min-width: variables.$tablet) {
+            top: -30rem;
+            width: 105%;
+            left: -18.5rem;            
+        }
+    }
+
+    &__bg-stripes--lower {
+        z-index: 1;
         top: -16rem;
         background: url("assets/svg/bg/key-facts-bg-2.svg") no-repeat center right / 200%;
 
@@ -134,9 +113,8 @@
         }
     }
 
-    &__bg-dots--mobile {
+    &__bg-stripes--mobile {
         z-index: 1;
-        height: 100%;
         top: 60rem;
         background: url("assets/svg/bg/key-facts-bg-3.svg") no-repeat center center / 200%;
 
@@ -155,34 +133,11 @@
         position: relative;
         z-index: 3;
         padding-top: var(--content-mobile-offset);
-        margin-left: auto;
-        margin-right: auto;
+        margin-inline: auto;
         width: calc(100% - 3.2rem);
-        max-width: var(--content-max-width);
-        height: 170rem;
-
-        @media screen and (min-width: variables.$mobile) {
-            width: var(--content-tablet-width);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            padding-top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            padding-top: var(--content-mobile-offset);
-        }
 
         @media screen and (min-width: variables.$tablet) {
-            width: var(--content-width);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            padding-top: var(--content-tablet-offset);
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            padding-top: var(--content-offset);
+            width: 75%;
         }
     }
 
@@ -191,9 +146,11 @@
         position: relative;
         width: 100%;
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        padding-top: 5rem;
+        flex-direction: column;
+        padding-top: 9rem;
+        @media screen and (min-width: variables.$tablet) {
+            flex-direction: row;
+        }
     }
 
     &__text {
@@ -203,7 +160,7 @@
         max-width: 29.4rem;
         padding: 2.4rem;
         border-radius: 3.6rem;
-        border: 0.1rem solid variables.$border-color;
+        border: 0.2rem solid rgba(116, 116, 116, 0.35);
         backdrop-filter: blur(0.7rem);
         font-family: variables.$font-source-code-pro;
         font-size: 1.6rem;
@@ -222,15 +179,11 @@
 
     // ========== LOGOS ==========
     &__logos {
-        position: relative;
-        z-index: 5;
-        width: 100%;
-        height: 46.6rem;
-
-        @media screen and (min-width: variables.$tablet) {
-            left: -7.3rem;
-            top: -4.4rem;
-        }
+        position: absolute;
+        top: 56px;
+        left: 70px;
+        width: 70%;
+        height: 44.6rem;
     }
 
     &__logo {
@@ -270,40 +223,25 @@
     }
 
     // ========== BLOCK: LOGOS ==========
-    &__block--logos {
-        display: block;
-        height: auto;
-    }
 
     &__block--logos &__text {
+        padding-top: 4rem;
+    }
+
+    &__block--logos &__logos {
         position: absolute;
         z-index: 4;
-        left: 0;
-        top: 4rem;
-
-        @media screen and (min-width: variables.$mobile) {
-            top: 4rem;
-        }
     }
 
     // ========== BLOCK: PHOTO ==========
     &__block--photo {
-        height: 62rem;
         justify-content: flex-end;
-
-        @media screen and (min-width: variables.$mobile) {
-            height: 80rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            height: 50rem;
-        }
     }
 
     &__block--photo &__figure {
-        position: absolute;
-        top: 32rem;
-        left: -4rem;
+        flex: 0 0 auto;
+        position: relative;
+        margin-left: -4rem;
         width: 28.6rem;
         height: 28.6rem;
         backdrop-filter: blur(0.7rem);
@@ -311,17 +249,9 @@
         background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / cover;
 
         @media screen and (min-width: variables.$mobile) {
-            top: 38rem;
-            left: 0;
+            margin-left: 0;
             width: 40rem;
             height: 40rem;
-            min-width: 40rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            position: relative;
-            top: 3rem;
-            left: -3rem;
         }
 
         img {
@@ -339,62 +269,19 @@
         }
     }
 
-    &__block--photo &__watermark {
-        z-index: -1;
-        position: absolute;
-        display: none;
-        top: 14rem;
-        left: 10%;
-        width: 20rem;
-        height: 42rem;
-        opacity: 0.3;
-        transform: rotate(-45deg);
-        background-blend-mode: lighten;
-        background: variables.$bg url("assets/png/key-facts/key.png") no-repeat center center / contain;
-        background: variables.$bg url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
-
-        @media screen and (min-width: variables.$mobile) {
-            display: block;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            top: -13rem;
-            right: 20%;
-            left: unset;
-            transform: rotate(45deg);
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
-
     // ========== BLOCK: DEVICE ==========
-    &__block--device {
-        height: 53rem;
-    }
-
     &__block--device &__figure {
-        position: absolute;
-        top: 34rem;
-        left: 10%;
+        position: relative;
+        flex: 0 0 auto;
         width: 28rem;
-        height: 15.6rem;
         border-radius: 3.6rem;
 
         @media screen and (min-width: variables.$mobile) {
-            top: 42rem;
             width: 45rem;
-            height: auto;
         }
 
         @media screen and (min-width: variables.$tablet) {
-            position: relative;
-            top: 12rem;
-            left: -3.2rem;
             width: 62.9rem;
-            min-width: 38rem;
         }
 
         &::after {
@@ -444,7 +331,7 @@
     }
 
     &__block--device &__watermark {
-        z-index: -1;
+        z-index: 1;
         position: absolute;
         display: none;
         bottom: 0;
@@ -453,9 +340,8 @@
         height: 42rem;
         opacity: 0.3;
         transform: rotate(45deg) scaleX(-1);
-        background-blend-mode: lighten;
-        background: variables.$bg url("assets/png/key-facts/key.png") no-repeat center center / contain;
-        background: variables.$bg url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
+        background: url("assets/png/key-facts/key.png") no-repeat center center / contain;
+        background: url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
 
         @media screen and (min-width: variables.$mobile) {
             display: block;
@@ -465,11 +351,6 @@
             bottom: -15rem;
             left: 18%;
             transform: rotate(235deg) scaleX(-1);
-        }
-
-        img {
-            width: 100%;
-            height: auto;
         }
     }
 }

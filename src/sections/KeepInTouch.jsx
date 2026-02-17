@@ -133,18 +133,17 @@ const KeepInTouch = ({ lang }) => {
 
   return (
     <div className="keep-in-touch">
+      <div className="keep-in-touch__header" ref={entryRef}>
+        <h2
+          className="animated-title"
+          style={{ transform: `translateX(${progress}%)` }}
+          aria-label={title}
+        >
+          <span className="animated-title__cap">{titleInitial}</span>
+          <span className="animated-title__text">{titleRest}</span>
+        </h2>
+      </div>
       <div className="keep-in-touch__backgrounds">
-        <div className="keep-in-touch__header" ref={entryRef}>
-          <h2
-            className="animated-title"
-            style={{ transform: `translateX(${progress}%)` }}
-            aria-label={title}
-          >
-            <span className="animated-title__cap">{titleInitial}</span>
-            <span className="animated-title__text">{titleRest}</span>
-          </h2>
-        </div>
-
         <div className="keep-in-touch__bg">
           <div className="keep-in-touch__bg-line" ref={containerRef}>
             <AnimatedPathFollower

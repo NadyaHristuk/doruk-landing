@@ -96,26 +96,27 @@ const KeyFacts = ({ lang }) => {
 
   return (
     <div className="key-facts">
+      <header className="key-facts__header" ref={entryRef}>
+        <h2
+          className="animated-title"
+          style={{ transform: `translateX(${progress}%)` }}
+          aria-label={keyFactsTitle}
+        >
+          <span className="animated-title__cap">{titleInitial}</span>
+          <span className="animated-title__text">{titleRest}</span>
+        </h2>
+      </header>
       <div className="key-facts__backgrounds">
-        <header className="key-facts__header" ref={entryRef}>
-          <h2
-            className="animated-title"
-            style={{ transform: `translateX(${progress}%)` }}
-            aria-label={keyFactsTitle}
-          >
-            <span className="animated-title__cap">{titleInitial}</span>
-            <span className="animated-title__text">{titleRest}</span>
-          </h2>
-        </header>
         <div className="key-facts__bg key-facts__bg--upper">
+          <div className="key-facts__watermark" />
           <div className="key-facts__bg-line key-facts__bg-line--upper" ref={lineUpperRef}>
             <AnimatedPathFollower
               container={lineUpperRef.current}
-              offsetStart={0.4}
+              offsetStart={0.5}
               config={svgConfig.keyFacts.a}
             />
           </div>
-          <div className="key-facts__bg-dots key-facts__bg-dots--upper" />
+          <div className="key-facts__bg-stripes key-facts__bg-stripes--upper" />
         </div>
         <div className="key-facts__bg key-facts__bg--lower">
           <div className="key-facts__bg-line key-facts__bg-line--lower" ref={lineLowerRef}>
@@ -126,8 +127,8 @@ const KeyFacts = ({ lang }) => {
               config={svgConfig.keyFacts.b}
             />
           </div>
-          <div className="key-facts__bg-dots key-facts__bg-dots--lower" />
-          <div className="key-facts__bg-dots key-facts__bg-dots--mobile" />
+          <div className="key-facts__bg-stripes key-facts__bg-stripes--lower" />
+          <div className="key-facts__bg-stripes key-facts__bg-stripes--mobile" />
         </div>
       </div>
 
@@ -165,8 +166,6 @@ const KeyFacts = ({ lang }) => {
           </div>
         </div>
         <div className="key-facts__block key-facts__block--photo">
-          <div className="key-facts__watermark" />
-          <p className="key-facts__text">{translate('keyFacts.text.2', lang)}</p>
           <div className="key-facts__figure" aria-hidden="true">
             <picture>
               <source type="image/webp" srcSet={circleImgWebp} />
@@ -181,6 +180,7 @@ const KeyFacts = ({ lang }) => {
               />
             </picture>
           </div>
+          <p className="key-facts__text">{translate('keyFacts.text.2', lang)}</p>
         </div>
         <div className="key-facts__block key-facts__block--device">
           <div className="key-facts__watermark" />
