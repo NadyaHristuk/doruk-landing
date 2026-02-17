@@ -396,6 +396,44 @@ body {
           font-size: 9.2rem;
         }
       }
+
+      &:has(.animated-title__cap) {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 2rem;
+        word-spacing: 0;
+        letter-spacing: 0;
+      }
+
+      &__cap {
+        font-family: variables.$font-pixelify-sans;
+        font-size: 4.6rem;
+        font-weight: 700;
+        line-height: 5.6rem;
+        letter-spacing: 0;
+
+        @media screen and (min-width: variables.$desktop) {
+          font-size: 9.2rem;
+          line-height: 11.1rem;
+        }
+      }
+
+      &__text {
+        font-family: variables.$font-neutral-face;
+        font-size: 3.6rem;
+        font-weight: 700;
+        line-height: 4.6rem;
+        letter-spacing: 0.8rem;
+
+        @media screen and (min-width: variables.$mobile) {
+          letter-spacing: 1.44rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+          font-size: 7.2rem;
+          line-height: 9.2rem;
+        }
+      }
     }
 
     .backgrounds {

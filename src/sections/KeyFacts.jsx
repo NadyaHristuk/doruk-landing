@@ -99,12 +99,12 @@ const KeyFacts = ({ lang }) => {
       <div className="key-facts__backgrounds">
         <header className="key-facts__header" ref={entryRef}>
           <h2
-            className="animated-title key-facts__title"
+            className="animated-title"
             style={{ transform: `translateX(${progress}%)` }}
             aria-label={keyFactsTitle}
           >
-            <span className="key-facts__title-initial">{titleInitial}</span>
-            <span className="key-facts__title-rest">{titleRest}</span>
+            <span className="animated-title__cap">{titleInitial}</span>
+            <span className="animated-title__text">{titleRest}</span>
           </h2>
         </header>
         <div className="key-facts__bg key-facts__bg--upper">

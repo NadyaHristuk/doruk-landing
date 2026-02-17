@@ -52,6 +52,11 @@ const KeepInTouch = ({ lang }) => {
     [serverError, setServerError] = useState(false),
     progress = useTitleAnimation(entryRef);
 
+  const title = `${translate('keepInTouch.title', lang) || ''}`;
+  const titleChars = Array.from(title);
+  const titleInitial = titleChars[0] || '';
+  const titleRest = titleChars.slice(1).join('');
+
   useMatrixDots({
     sectionId: '#keep-in-touch',
     svgSelector: '.keep-in-touch__dots--left',
@@ -133,8 +138,10 @@ const KeepInTouch = ({ lang }) => {
           <h2
             className="animated-title"
             style={{ transform: `translateX(${progress}%)` }}
+            aria-label={title}
           >
-            {translate('keepInTouch.title', lang)}
+            <span className="animated-title__cap">{titleInitial}</span>
+            <span className="animated-title__text">{titleRest}</span>
           </h2>
         </div>
 
@@ -221,7 +228,7 @@ const KeepInTouch = ({ lang }) => {
                   </div>
                 </div>
               </div>
-              <div className="keep-in-touch__contact-labelarea-wrap">
+              <div className="keep-in-touch__textarea-wrap">
                 <textarea
                   placeholder={translate('keepInTouch.input.comment', lang)}
                   value={userComment}
@@ -230,7 +237,7 @@ const KeepInTouch = ({ lang }) => {
                   onChange={(e) => setUserComment(e.target.value)}
                   aria-label={translate('keepInTouch.input.comment', lang)}
                 ></textarea>
-                <div className="keep-in-touch__contact-labelarea-counter">
+                <div className="keep-in-touch__textarea-counter">
                   {userComment.length ?? 0} {translate('common.from', lang)}{' '}
                   {commentMaxLength} {translate('common.symbols', lang)}
                 </div>

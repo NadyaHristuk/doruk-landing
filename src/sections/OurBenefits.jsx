@@ -25,6 +25,11 @@ const OurBenefits = ({ lang }) => {
     containerRef = useRef(null),
     progress = useTitleAnimation(entryRef);
 
+  const title = `${translate('ourBenefits.title', lang) || ''}`;
+  const titleChars = Array.from(title);
+  const titleInitial = titleChars[0] || '';
+  const titleRest = titleChars.slice(1).join('');
+
   return (
     <div className="our-benefits">
       <div className="our-benefits__backgrounds">
@@ -34,8 +39,10 @@ const OurBenefits = ({ lang }) => {
             style={{
               transform: `translateX(${progress}%)`
             }}
+            aria-label={title}
           >
-            {translate('ourBenefits.title', lang)}
+            <span className="animated-title__cap">{titleInitial}</span>
+            <span className="animated-title__text">{titleRest}</span>
           </h2>
         </div>
 
