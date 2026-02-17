@@ -80,7 +80,7 @@ const KeyFacts = ({ lang }) => {
       const dist = getDistance(hx, hy, ix, iy);
       if (dist === 0) return;
 
-      const force = hoverOffset * (Math.max(w, h) * 0.3 / dist);
+      const force = hoverOffset * ((Math.max(w, h) * 0.3) / dist);
       const dx = ((ix - hx) / dist) * force;
       const dy = ((iy - hy) / dist) * force;
       newDisplacements[item.id] = { dx, dy };
@@ -108,18 +108,28 @@ const KeyFacts = ({ lang }) => {
       </header>
       <div className="key-facts__backgrounds">
         <div className="key-facts__bg key-facts__bg--upper">
-          <div className="key-facts__watermark" />
-          <div className="key-facts__bg-line key-facts__bg-line--upper" ref={lineUpperRef}>
+          {/* <div className="key-facts__bg-art" aria-hidden="true" /> */}
+          <div className="key-facts__watermark key-facts__watermark--upper" />
+          <div className="key-facts__watermark key-facts__watermark--lower" />
+          <div
+            className="key-facts__bg-line key-facts__bg-line--upper"
+            ref={lineUpperRef}
+          >
             <AnimatedPathFollower
               container={lineUpperRef.current}
-              offsetStart={0.5}
+              direction="rtl"
+              offsetStart={0.2}
+              scrub={50}
               config={svgConfig.keyFacts.a}
             />
           </div>
           <div className="key-facts__bg-stripes key-facts__bg-stripes--upper" />
         </div>
         <div className="key-facts__bg key-facts__bg--lower">
-          <div className="key-facts__bg-line key-facts__bg-line--lower" ref={lineLowerRef}>
+          <div
+            className="key-facts__bg-line key-facts__bg-line--lower"
+            ref={lineLowerRef}
+          >
             <AnimatedPathFollower
               container={lineLowerRef.current}
               direction="rtl"
@@ -134,7 +144,9 @@ const KeyFacts = ({ lang }) => {
 
       <div className="key-facts__content">
         <div className="key-facts__block key-facts__block--logos">
-          <p className="key-facts__text">{translate('keyFacts.text.1', lang)}</p>
+          <p className="key-facts__text">
+            {translate('keyFacts.text.1', lang)}
+          </p>
           <div className="key-facts__logos" ref={logosRef}>
             {logos.map((item) => {
               const d = displacements[item.id];
@@ -180,11 +192,15 @@ const KeyFacts = ({ lang }) => {
               />
             </picture>
           </div>
-          <p className="key-facts__text">{translate('keyFacts.text.2', lang)}</p>
+          <p className="key-facts__text">
+            {translate('keyFacts.text.2', lang)}
+          </p>
         </div>
         <div className="key-facts__block key-facts__block--device">
           <div className="key-facts__watermark" />
-          <p className="key-facts__text">{translate('keyFacts.text.3', lang)}</p>
+          <p className="key-facts__text">
+            {translate('keyFacts.text.3', lang)}
+          </p>
           <div className="key-facts__figure" aria-hidden="true">
             <picture>
               <source type="image/webp" srcSet={squareImgWebp} />
