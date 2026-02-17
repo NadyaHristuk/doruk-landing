@@ -85,8 +85,8 @@
             }
 
             &--lower {
-                bottom: 0;
-                left: 60%;
+                top: 57rem;
+                right: 22%;
                 transform: rotate(45deg) scaleX(-1);
             }
         }
@@ -142,7 +142,6 @@
     &__bg-stripes--lower {
         z-index: 1;
         top: -16rem;
-        background: url("assets/svg/bg/key-facts-bg-2.svg") no-repeat center right / 200%;
 
         @media screen and (min-width: variables.$extra-small) {
             top: -32rem;
@@ -161,6 +160,14 @@
         @media screen and (min-width: variables.$desktop) {
             background-size: 60%;
         }
+    }
+
+    &__bg-stripes--lower-left {
+        background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat center left / 200%;
+    }
+
+    &__bg-stripes--lower-right {
+        background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat center right / 200%;
     }
 
     &__bg-stripes--mobile {
@@ -206,7 +213,8 @@
     &__text {
         z-index: 4;
         flex: 0 0 44.6rem;
-        width: 80%;
+        width: 44.6rem;
+        height: 38.6rem;
         max-width: 29.4rem;
         padding: 2.4rem;
         border-radius: 3.6rem;
@@ -218,7 +226,6 @@
         color: variables.$color-white;
 
         @media screen and (min-width: variables.$mobile) {
-            width: 44.6rem;
             max-width: unset;
             padding: 4.6rem 3.6rem;
             border-radius: 6.4rem;
@@ -288,8 +295,9 @@
         justify-content: flex-end;
 
         @media screen and (min-width: variables.$desktop) {
-            align-items: center;
-            justify-content: space-between;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-left: 60rem;
         }
     }
 
@@ -301,7 +309,7 @@
         height: 28.6rem;
         backdrop-filter: blur(0.7rem);
         border-radius: 50%;
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center / cover;
+        background: url("assets/svg/bg/key-facts-circles-soft.svg") no-repeat center center;
 
         @media screen and (min-width: variables.$mobile) {
             margin-left: 0;
@@ -311,26 +319,20 @@
 
         @media screen and (min-width: variables.$desktop) {
             order: 2;
+            width: 43rem;
+            height: 43rem;
+            margin-left: -3.2rem;
+            transform: translateY(12.1rem);
+            z-index: 5;
         }
 
         img {
             display: block;
-            width: 25.55rem;
+            width: 39rem;
             height: auto;
             margin: 0.1rem auto auto;
             border-radius: 50%;
             border: 0.1rem solid variables.$border-color;
-
-            @media screen and (min-width: variables.$mobile) {
-                width: 35.2rem;
-                margin: 0.6rem auto auto;
-            }
-        }
-    }
-
-    &__block--photo &__text {
-        @media screen and (min-width: variables.$desktop) {
-            order: 1;
         }
     }
 

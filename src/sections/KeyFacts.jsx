@@ -137,7 +137,8 @@ const KeyFacts = ({ lang }) => {
               config={svgConfig.keyFacts.b}
             />
           </div>
-          <div className="key-facts__bg-stripes key-facts__bg-stripes--lower" />
+          <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-left" />
+          <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-right" />
           <div className="key-facts__bg-stripes key-facts__bg-stripes--mobile" />
         </div>
       </div>
