@@ -54,7 +54,7 @@
         }
     }
 
-    &__watermark {
+    &__bg--upper &__watermark {
         z-index: 1;
         position: absolute;
         display: none;
@@ -93,7 +93,7 @@
      
     }
 
-     &__block--device &__watermark {
+    &__bg--lower &__watermark {
         z-index: 1;
         position: absolute;
         display: none;
@@ -111,9 +111,9 @@
         }
 
         @media screen and (min-width: variables.$tablet) {
-            bottom: -15rem;
-            left: 18%;
-            transform: rotate(235deg) scaleX(-1);
+            top: 153rem;
+            left: 24%;
+            transform: rotate(238deg);
         }
     }
 
@@ -132,10 +132,10 @@
         background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
 
         @media screen and (min-width: variables.$tablet) {
-            top: -35rem;
-            width: 105%;
-            left: -18.5rem;  
-            height: 1568.4px;          
+            top: -27rem;
+            width: 81%;
+            left: -15.5rem;
+            height: 1445.4px;       
         }
     }
 
@@ -164,6 +164,13 @@
 
     &__bg-stripes--lower-left {
         background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat center left / 200%;
+
+        @media screen and (min-width: variables.$tablet) {
+            top: 51rem;
+            left: -22.5rem;
+            width: 46%;
+            height: 128rem;
+        }
     }
 
     &__bg-stripes--lower-right {
@@ -337,6 +344,10 @@
     }
 
     // ========== BLOCK: DEVICE ==========
+    &__block--device {
+        top: 11.7rem;
+    }
+
     &__block--device &__figure {
         position: relative;
         flex: 0 0 auto;
@@ -349,6 +360,9 @@
 
         @media screen and (min-width: variables.$tablet) {
             width: 62.9rem;
+            top: 15.3rem;
+            right: 3.6rem;
+            z-index: 5;
         }
 
         &::after {

@@ -126,6 +126,7 @@ const KeyFacts = ({ lang }) => {
           <div className="key-facts__bg-stripes key-facts__bg-stripes--upper" />
         </div>
         <div className="key-facts__bg key-facts__bg--lower">
+          <div className="key-facts__watermark" />
           <div
             className="key-facts__bg-line key-facts__bg-line--lower"
             ref={lineLowerRef}
@@ -198,7 +199,6 @@ const KeyFacts = ({ lang }) => {
           </p>
         </div>
         <div className="key-facts__block key-facts__block--device">
-          <div className="key-facts__watermark" />
           <p className="key-facts__text">
             {translate('keyFacts.text.3', lang)}
           </p>
