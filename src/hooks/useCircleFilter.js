@@ -4,7 +4,6 @@ const useCircleFilter = (containerSelector) => {
     useEffect(() => {
         const container = document.getElementById(containerSelector);
         if (!container) {
-            console.error('Container not found');
             return;
         }
 

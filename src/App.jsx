@@ -98,13 +98,7 @@ const App = () => {
           aria-label={getSectionLabel(menu, lang, 'hero')}
         >
           <Suspense fallback={
-            <div style={{ 
-              minHeight: '100vh', 
-              background: 'var(--color-bg, #1c1c1e)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+            <div className="section-fallback section-fallback--centered">
               <div className="skeleton-loader" aria-label="Loading content" />
             </div>
           }>
@@ -120,12 +114,7 @@ const App = () => {
           className="section section--who-we-are"
           aria-label={getSectionLabel(menu, lang, 'who-we-are')}
         >
-          <Suspense fallback={
-            <div style={{ 
-              minHeight: '100vh', 
-              background: 'var(--color-bg, #1c1c1e)'
-            }} />
-          }>
+          <Suspense fallback={<div className="section-fallback" />}>
             <WhoWeAre lang={lang} />
           </Suspense>
         </section>
@@ -134,12 +123,7 @@ const App = () => {
           className="section section--key-facts"
           aria-label={getSectionLabel(menu, lang, 'key-facts')}
         >
-          <Suspense fallback={
-            <div style={{ 
-              minHeight: '100vh', 
-              background: 'var(--color-bg, #1c1c1e)'
-            }} />
-          }>
+          <Suspense fallback={<div className="section-fallback" />}>
             <KeyFacts lang={lang} />
           </Suspense>
         </section>
@@ -148,12 +132,7 @@ const App = () => {
           className="section section--our-benefits"
           aria-label={getSectionLabel(menu, lang, 'our-benefits')}
         >
-          <Suspense fallback={
-            <div style={{ 
-              minHeight: '100vh', 
-              background: 'var(--color-bg, #1c1c1e)'
-            }} />
-          }>
+          <Suspense fallback={<div className="section-fallback" />}>
             <OurBenefits lang={lang} />
           </Suspense>
         </section>
@@ -162,12 +141,7 @@ const App = () => {
           className="section section--keep-in-touch"
           aria-label={getSectionLabel(menu, lang, 'keep-in-touch')}
         >
-          <Suspense fallback={
-            <div style={{ 
-              minHeight: '100vh', 
-              background: 'var(--color-bg, #1c1c1e)'
-            }} />
-          }>
+          <Suspense fallback={<div className="section-fallback" />}>
             <KeepInTouch lang={lang} />
           </Suspense>
         </section>

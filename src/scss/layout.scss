@@ -47,11 +47,7 @@ button {
 
 @keyframes open-menu {
   0% {
-    display: none;
     width: 0%;
-  }
-  1% {
-    display: flex;
   }
   100% {
     width: 100%;
@@ -60,11 +56,7 @@ button {
 
 @keyframes close-menu {
   0% {
-    display: flex;
     width: 100%;
-  }
-  99% {
-    display: none;
   }
   100% {
     width: 0%;
@@ -597,5 +589,16 @@ button {
 @keyframes skeleton-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+.section-fallback {
+  min-height: 100vh;
+  background: var(--color-bg, #1c1c1e);
+
+  &--centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

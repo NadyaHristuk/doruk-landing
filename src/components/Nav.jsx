@@ -29,24 +29,18 @@ export const Nav = ({
               activeSection === item.id ? 'nav__item--active' : ''
             }`}
           >
-            <div
+            <button
               className="nav__link"
-              role="link"
-              tabIndex={0}
+              type="button"
               aria-current={activeSection === item.id ? 'page' : undefined}
               onClick={() => handleNavigate(item.id)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  handleNavigate(item.id);
-                }
-              }}
             >
               {isMobileMenu ? (
                 <span>{item.title[lang]}</span>
               ) : (
                 <i className={`${item.icon} nav__icon`} aria-hidden="true" />
               )}
-            </div>
+            </button>
           </li>
         ))}
       </ul>

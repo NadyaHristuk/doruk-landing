@@ -24,7 +24,6 @@ const useCircleOnPath = (
       containerRef.current = document.querySelector(containerSelector);
 
       if (!containerRef.current) {
-        console.error('Container not found');
         return;
       }
 
@@ -34,7 +33,6 @@ const useCircleOnPath = (
       });
 
       if (!pathsRef.current.every((path) => path)) {
-        console.error('Paths not found');
         return;
       }
 
@@ -44,15 +42,15 @@ const useCircleOnPath = (
       });
 
       if (!circlesRef.current.every((circle) => circle)) {
-        console.error('Circles not found');
         return;
       }
 
       const isReverseNeeded = svgSelectors.length > 1;
 
-      pathsRef.current.forEach((path) => {
+      const pathLengths = pathsRef.current.map((path) => {
         const length = path.getTotalLength();
         path.style.strokeDasharray = length;
+        return length;
       });
 
       const updateCirclePosition = () => {
@@ -60,7 +58,7 @@ const useCircleOnPath = (
         const maxScrollY = containerRef.current.scrollHeight;
 
         pathsRef.current.forEach((path, index) => {
-          const length = path.getTotalLength();
+          const length = pathLengths[index];
           const leftOffset = length * leftCoef;
           const rightOffset = length * rightCoef - length;
           const scroll = scrollY / maxScrollY;

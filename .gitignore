@@ -3,3 +3,6 @@ dist/
 .claude/
 .qodo/
 .kombai/
+.env
+.env.local
+.env.production
