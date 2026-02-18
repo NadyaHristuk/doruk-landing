@@ -94,6 +94,16 @@ const KeepInTouch = ({ lang }) => {
 
   const submit = async () => {
     try {
+      const hasEmptyRequiredFields =
+        !userName.trim() ||
+        !userComment.trim() ||
+        (phoneOrEmail ? !userEmail.trim() : !userPhone.trim());
+
+      if (hasEmptyRequiredFields) {
+        setError(true);
+        return;
+      }
+
       if (phoneOrEmail) {
         if (!emailRegex.test(userEmail)) {
           setError(true);
@@ -296,11 +306,6 @@ const KeepInTouch = ({ lang }) => {
               )}
               <button
                 type="submit"
-                disabled={
-                  !userName ||
-                  (phoneOrEmail ? !userEmail : !userPhone) ||
-                  !userComment
-                }
               >
                 <i className="icon-about-arrow" />
                 <span>{translate('keepInTouch.button', lang)}</span>

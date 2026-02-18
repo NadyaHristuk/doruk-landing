@@ -16,6 +16,10 @@
     &__header {
         position: relative;
         z-index: 4;
+
+        @media screen and (min-width: variables.$desktop) {
+            min-height: 11.1rem;
+        }
     }
 
     &__bg {
@@ -80,6 +84,7 @@
             max-width: none;
             width: calc(100% - 6.8rem);
             margin-inline: 3.4rem;
+            padding-top: 7.4rem;
         }
     }
 
@@ -91,7 +96,7 @@
         row-gap: 1.6rem;
 
         @media screen and (min-width: variables.$desktop) {
-            padding-top: 7.4rem;
+            padding-top: 0;
             flex-flow: row nowrap;
             justify-content: flex-start;
         }
@@ -182,21 +187,12 @@
         }
 
         button {
-            border: none;
-            background:
-                linear-gradient(-45deg, variables.$bg 40%, variables.$color-primary 0 60%, variables.$bg 0)
-                    right/300% 100% no-repeat,
-                linear-gradient(
-                        -45deg,
-                        variables.$color-primary 40%,
-                        variables.$bg 0 60%,
-                        variables.$color-primary 0
-                    )
-                    right/300% 100% no-repeat;
-            background-clip: text, padding-box;
+            border: 0.1rem solid variables.$color-primary;
+            background: variables.$color-primary;
             transition:
-                background-position 0.8s,
-                filter 0.8s;
+                background-color 0.3s,
+                color 0.3s,
+                box-shadow 0.3s;
             color: variables.$icon-color;
             cursor: pointer;
 
@@ -217,22 +213,18 @@
             }
 
             &:hover {
-                background-position: left;
+                background: variables.$bg;
+                color: variables.$color-primary;
+
+                i,
+                span {
+                    color: variables.$color-primary;
+                }
             }
 
             &:active {
                 box-shadow: 0 0 0.4rem variables.$color-primary;
-                filter: brightness(1.2);
-            }
-
-            &[disabled] {
-                cursor: not-allowed;
-                filter: grayscale(0.9) brightness(0.5);
-
-                &:active {
-                    box-shadow: none;
-                    filter: none;
-                }
+                filter: brightness(0.95);
             }
         }
     }
@@ -527,7 +519,7 @@
         @media screen and (min-width: variables.$desktop) {
             top: calc(53rem - 7vw);
             right: 9rem;
-            width: 52.7rem;
+            width: 42.7rem;
             bottom: unset;
         }
 
@@ -591,7 +583,7 @@
     }
 
     &__contact-label {
-        margin-bottom: 4rem;
+        margin: 1rem 0 3rem;
         color: variables.$color-primary;
     }
 
