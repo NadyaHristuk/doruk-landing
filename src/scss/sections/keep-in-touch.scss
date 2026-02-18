@@ -196,9 +196,9 @@
             border: 0.1rem solid variables.$color-primary;
             background: variables.$color-primary;
             transition:
-                background-color 0.3s,
-                color 0.3s,
-                box-shadow 0.3s;
+                background-color 0.55s ease-in-out,
+                color 0.55s ease-in-out,
+                box-shadow 0.55s ease-in-out;
             color: variables.$icon-color;
             cursor: pointer;
 
@@ -207,7 +207,7 @@
             }
 
             i {
-                transition: color variables.$transition;
+                transition: color 0.55s ease-in-out;
                 transform: rotate(45deg);
                 font-size: 4rem;
                 line-height: 0;
@@ -250,7 +250,7 @@
         @media screen and (min-width: variables.$desktop) {
             flex: 0 0 63rem;
             width: 63rem;
-            height: 32rem;
+            height: 42rem;
         }
 
         &::after {
@@ -268,7 +268,7 @@
             @media screen and (min-width: variables.$mobile) {
                 top: -1.6rem;
                 right: -1.6rem;
-                height: calc(100% - 0.4rem);
+                height: calc(100% + 0.6rem);
             }
         }
 
@@ -287,7 +287,7 @@
             @media screen and (min-width: variables.$mobile) {
                 top: -3.2rem;
                 right: -3.2rem;
-                height: calc(100% + 1.2rem);
+                height: calc(100% + 0.8rem);
             }
         }
 
@@ -300,7 +300,7 @@
             border: 0.1rem solid variables.$border-color;
 
             @media screen and (min-width: variables.$desktop) {
-                height: 100%;
+                height: 42rem;
                 object-fit: cover;
             }
         }

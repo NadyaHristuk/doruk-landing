@@ -19,7 +19,14 @@
     }
 
     &__bg {
-        &-line,
+        &-line {
+            position: absolute;
+            top: 0;
+            right: -0.5rem;
+            width: 105%;
+            height: 100%;
+        }
+
         &-dots {
             position: absolute;
             top: 0;
