@@ -182,6 +182,7 @@ const KeepInTouch = ({ lang }) => {
           </div>
           <form
             className="keep-in-touch__form"
+            noValidate
             onSubmit={(e) => {
               e.preventDefault();
               submit();
@@ -267,7 +268,9 @@ const KeepInTouch = ({ lang }) => {
                     {translate('keepInTouch.messages.errorHeader', lang)}
                     <i className="icon-about-arrow" />
                   </div>
-                  {translate('keepInTouch.messages.server', lang)}
+                  <p className="keep-in-touch__message-text">
+                    {translate('keepInTouch.messages.server', lang)}
+                  </p>
                 </div>
               )}
               {error && (
@@ -284,7 +287,9 @@ const KeepInTouch = ({ lang }) => {
                     {translate('keepInTouch.messages.errorHeader', lang)}
                     <i className="icon-about-arrow" />
                   </div>
-                  {translate('keepInTouch.messages.fillForm', lang)}
+                  <p className="keep-in-touch__message-text">
+                    {translate('keepInTouch.messages.fillForm', lang)}
+                  </p>
                 </div>
               )}
               {success && (
@@ -301,7 +306,9 @@ const KeepInTouch = ({ lang }) => {
                     {translate('keepInTouch.messages.successHeader', lang)}
                     <i className="icon-about-arrow" />
                   </div>
-                  {translate('keepInTouch.messages.success', lang)}
+                  <p className="keep-in-touch__message-text">
+                    {translate('keepInTouch.messages.success', lang)}
+                  </p>
                 </div>
               )}
               <button
