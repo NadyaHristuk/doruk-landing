@@ -75,6 +75,8 @@
     &__content {
         position: relative;
         z-index: 3;
+        max-width: 127.8rem;
+        margin-inline: auto;
     }
 
     &__top {
@@ -85,7 +87,7 @@
         row-gap: 1.6rem;
 
         @media screen and (min-width: variables.$desktop) {
-            padding-top: 0;
+            padding-top: 6.4rem;
             flex-flow: row nowrap;
             justify-content: flex-start;
         }
@@ -97,6 +99,10 @@
 
             @media screen and (min-width: variables.$mobile) {
                 width: 40rem;
+            }
+
+            @media screen and (min-width: variables.$desktop) {
+                width: 26.1rem;
             }
         }
 
@@ -158,6 +164,10 @@
             height: 14rem;
             resize: none;
             overflow: hidden;
+
+            @media screen and (min-width: variables.$desktop) {
+                width: 48.6rem;
+            }
 
             &::placeholder {
                 top: 50%;
@@ -235,7 +245,9 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            flex: 0 0 62.9rem;
+            flex: 0 0 42rem;
+            width: 42rem;
+            margin-top: 2.6rem;
         }
 
         &::after {
@@ -497,8 +509,8 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: calc(55rem + -7vw);
-            right: 0;
+            top: calc(45rem - 7vw);
+            right: 4.8rem;
             bottom: unset;
         }
 

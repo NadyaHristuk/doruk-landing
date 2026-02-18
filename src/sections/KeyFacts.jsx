@@ -133,8 +133,8 @@ const KeyFacts = ({ lang }) => {
           >
             <AnimatedPathFollower
               container={lineLowerRef.current}
-              direction="rtl"
-              offsetStart={1.1}
+              direction="ltr"
+              offsetStart={0.3}
               config={svgConfig.keyFacts.b}
             />
           </div>

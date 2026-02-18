@@ -50,7 +50,7 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: 56rem;
+            top: 138rem;
         }
     }
 
@@ -166,8 +166,8 @@
         background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat center left / 200%;
 
         @media screen and (min-width: variables.$tablet) {
-            top: 51rem;
-            left: -22.5rem;
+            top: 28rem;
+            left: 21.5rem;
             width: 46%;
             height: 128rem;
         }
@@ -175,6 +175,14 @@
 
     &__bg-stripes--lower-right {
         background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat center right / 200%;
+
+        @media screen and (min-width: variables.$tablet) {
+            top: 51rem;
+            right: -22.5rem;
+            left: unset;
+            width: 46%;
+            height: 128rem;
+        }
     }
 
     &__bg-stripes--mobile {

@@ -39,16 +39,18 @@
 
     &__dots {
         position: absolute;
-        width: auto;
-        height: 100%;
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        pointer-events: none;
+        contain: layout style paint;
     }
 
     &__content {
         position: relative;
         z-index: 3;
+        margin-inline: auto;
+        transform: translateY(-5rem);
         height: calc(100% - var(--content-mobile-offset));
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -141,12 +143,14 @@
         border-radius: 7.4rem;
         backdrop-filter: blur(0.7rem);
         overflow: hidden;
+        transform-origin: left center;
         transition:
-            width variables.$transition,
+            transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
             border-color variables.$transition;
+        will-change: transform;
 
         &:hover {
-            width: 100%;
+            transform: scaleX(1.03);
             border-color: variables.$color-primary;
         }
 
@@ -155,10 +159,6 @@
             width: 61rem;
             max-width: unset;
             height: 9.6rem;
-
-            &:hover {
-                width: 65rem;
-            }
 
             &:nth-child(1) {
                 top: -18%;
@@ -178,11 +178,17 @@
             &:nth-child(4) {
                 top: -10%;
                 right: 8%;
+                transform-origin: right center;
             }
 
             &:nth-child(5) {
                 top: 50%;
                 right: 4%;
+                transform-origin: right center;
+            }
+
+            &:nth-child(3) {
+                transform-origin: center center;
             }
         }
 
@@ -268,10 +274,29 @@
             margin-right: 0.8rem;
             color: variables.$color-primary;
 
+            &.our-benefits__title-glow {
+                color: variables.$color-white;
+                margin-inline: 1rem;
+            }
+
             @media screen and (min-width: variables.$desktop) {
                 margin-right: 1.6rem;
             }
         }
+    }
+
+    &__title-glow {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        color: variables.$color-white;
+        text-shadow:
+            0 0 2.6rem rgba(246, 184, 35, 0.72),
+            0 0 3.6rem rgba(246, 184, 35, 0.58),
+            0 0 1rem rgba(246, 184, 35, 0.65),
+            0 0 1rem rgba(246, 184, 35, 0.55),
+            0 0 1rem rgba(246, 184, 35, 0.38),
+            0 0 1rem rgba(246, 184, 35, 0.24);
     }
 
     &__item-title {
@@ -283,6 +308,10 @@
 
         span {
             margin-right: 0;
+
+            &.our-benefits__title-glow {
+                margin-inline: 1rem;
+            }
         }
     }
 }

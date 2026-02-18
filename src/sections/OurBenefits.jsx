@@ -103,7 +103,9 @@ const OurBenefits = ({ lang }) => {
               {translate('ourBenefits.topLeft.line1', lang)}
             </h3>
             <p className="our-benefits__item-subtitle truncate">
-              <span>{translate('ourBenefits.topLeft.line2', lang)}</span>
+              <span className="our-benefits__title-glow">
+                {translate('ourBenefits.topLeft.line2', lang)}
+              </span>
             </p>
           </TitleBlock>
 
@@ -113,7 +115,7 @@ const OurBenefits = ({ lang }) => {
             </h3>
             <p className="our-benefits__item-subtitle truncate">
               {translate('ourBenefits.centerLeft.line2prefix', lang)}
-              <span>
+              <span className="our-benefits__title-glow">
                 {translate('ourBenefits.centerLeft.line2suffix', lang)}
               </span>
             </p>
@@ -124,13 +126,17 @@ const OurBenefits = ({ lang }) => {
               {translate('ourBenefits.bottom.line1', lang)}
             </h3>
             <p className="our-benefits__item-subtitle truncate">
-              <span>{translate('ourBenefits.bottom.line2', lang)}</span>
+              <span className="our-benefits__title-glow">
+                {translate('ourBenefits.bottom.line2', lang)}
+              </span>
             </p>
           </TitleBlock>
 
           <TitleBlock icon="icon-our-benefits-lunch-office">
             <h3 className="our-benefits__item-title truncate">
-              <span>{translate('ourBenefits.topRight.line1prefix', lang)}</span>
+              <span className="our-benefits__title-glow">
+                {translate('ourBenefits.topRight.line1prefix', lang)}
+              </span>
               {translate('ourBenefits.topRight.line1', lang)}
             </h3>
             <p className="our-benefits__item-subtitle truncate">
@@ -140,7 +146,7 @@ const OurBenefits = ({ lang }) => {
 
           <TitleBlock icon="icon-our-benefits-playing-zone">
             <h3 className="our-benefits__item-title truncate">
-              <span>
+              <span className="our-benefits__title-glow">
                 {translate('ourBenefits.centerRight.line1prefix', lang)}
               </span>
               {translate('ourBenefits.centerRight.line1', lang)}
