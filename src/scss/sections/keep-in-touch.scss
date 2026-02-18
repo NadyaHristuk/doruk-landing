@@ -75,8 +75,12 @@
     &__content {
         position: relative;
         z-index: 3;
-        max-width: 127.8rem;
-        margin-inline: auto;
+
+        @media screen and (min-width: variables.$desktop) {
+            max-width: none;
+            width: calc(100% - 6.8rem);
+            margin-inline: 3.4rem;
+        }
     }
 
     &__top {
@@ -87,7 +91,7 @@
         row-gap: 1.6rem;
 
         @media screen and (min-width: variables.$desktop) {
-            padding-top: 6.4rem;
+            padding-top: 7.4rem;
             flex-flow: row nowrap;
             justify-content: flex-start;
         }
@@ -102,7 +106,7 @@
             }
 
             @media screen and (min-width: variables.$desktop) {
-                width: 26.1rem;
+                width: 40rem;
             }
         }
 
@@ -166,7 +170,8 @@
             overflow: hidden;
 
             @media screen and (min-width: variables.$desktop) {
-                width: 48.6rem;
+                width: 60.1rem;
+                height: 13.6rem;
             }
 
             &::placeholder {
@@ -245,8 +250,9 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            flex: 0 0 42rem;
-            width: 42rem;
+            flex: 0 0 62.6rem;
+            width: 62.6rem;
+            height: 35.1rem;
             margin-top: 2.6rem;
         }
 
@@ -293,6 +299,11 @@
             height: auto;
             border-radius: 3.6rem;
             border: 0.1rem solid variables.$border-color;
+
+            @media screen and (min-width: variables.$desktop) {
+                height: 100%;
+                object-fit: cover;
+            }
         }
     }
 
@@ -332,6 +343,11 @@
 
         @media screen and (min-width: variables.$mobile) {
             gap: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            gap: 2.3rem;
+            flex-wrap: nowrap;
         }
     }
 
@@ -509,8 +525,9 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: calc(45rem - 7vw);
-            right: 4.8rem;
+            top: calc(53rem - 7vw);
+            right: 9rem;
+            width: 52.7rem;
             bottom: unset;
         }
 

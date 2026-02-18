@@ -553,19 +553,7 @@ body {
       min-height: 90rem;
 
       @media screen and (min-width: variables.$mobile) {
-        min-height: 100rem;
-      }
-    }
-
-    @media screen and (orientation: landscape) {
-      min-height: 124rem;
-
-      @media screen and (min-width: variables.$tablet) {
-        min-height: 110rem;
-
-        @media screen and (min-resolution: 1.5x) {
-          min-height: 130rem;
-        }
+        min-height: 105rem;
       }
     }
   }

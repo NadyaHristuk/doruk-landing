@@ -51,21 +51,21 @@
         z-index: 3;
         margin-inline: auto;
         transform: translateY(-5rem);
-        height: calc(100% - var(--content-mobile-offset));
+    
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             top: calc(var(--content-offset) - 12rem);
-            height: calc(var(--content-offset) + 38rem);
+    
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
             top: var(--content-tablet-offset);
-            height: calc(100% - var(--content-tablet-offset));
+
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
             top: calc(var(--content-offset) - 3rem);
-            height: calc(var(--content-offset) + 38rem);
+
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -74,10 +74,19 @@
 
         @media screen and (min-width: variables.$desktop) {
             top: calc(var(--content-offset) + 10rem);
+            width: calc(100vw - 3.2rem);
+            max-width: 140rem;
         }
     }
 
-    &__figure {}
+    &__figure {
+        @media screen and (min-width: variables.$desktop) {
+            position: relative;
+            z-index: 2;
+            width: 80rem;
+            margin-inline: auto;
+        }
+    }
 
     &__image-wrap {
         position: relative;
@@ -111,6 +120,7 @@
 
     &__list {
         position: relative;
+        z-index: 5;
         display: flex;
         flex-flow: column wrap;
         row-gap: 4rem;
