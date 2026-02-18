@@ -240,7 +240,7 @@ body {
         transform: translateY(-50%);
         border-radius: 2.8rem;
         border: 0.1rem solid variables.$border-color;
-        backdrop-filter: blur(0.7rem);
+        backdrop-filter: variables.$glass-blur;
         cursor: auto;
       }
 
@@ -300,7 +300,7 @@ body {
         border-radius: 50%;
         border: 0.3rem solid variables.$border-color;
         background-color: transparent;
-        backdrop-filter: blur(0.7rem);
+        backdrop-filter: variables.$glass-blur;
 
         @media screen and (min-width: variables.$tablet) {
           display: none;

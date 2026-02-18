@@ -203,7 +203,7 @@
             height: 7rem;
             background: linear-gradient(
                 180deg,
-                #242426 0%,
+                variables.$icon-color 0%,
                 rgba(36, 36, 38, 0) 100%
             );
 
@@ -349,7 +349,7 @@
 
     // ========== LINE ==========
     &__bg-line {
-    right: -15px;
+    right: -1.5rem;
     width: 102%;
     height: 86%;
     top: 6rem;

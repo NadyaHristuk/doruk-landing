@@ -14,9 +14,24 @@ $font-amiro: "Arimo", sans-serif;
 $font-neutral-face: "Neutral Face", $font-amiro;
 $font-ubuntu-sans-mono: "Ubuntu Sans Mono", $font-source-code-pro;
 
-// misc
+// transitions
 $transition: 0.25s ease-in-out;
 $linear-transition: 0.5s linear;
+
+// design tokens
+$border-width: 0.1rem;
+$border-radius-base: 3.6rem;
+$border-radius-pill: 7.4rem;
+$glass-blur: blur(0.7rem);
+
+// glow text-shadow (primary color)
+$text-glow:
+    0 0 2.6rem rgba(246, 184, 35, 0.72),
+    0 0 3.6rem rgba(246, 184, 35, 0.58),
+    0 0 1rem rgba(246, 184, 35, 0.65),
+    0 0 1rem rgba(246, 184, 35, 0.55),
+    0 0 1rem rgba(246, 184, 35, 0.38),
+    0 0 1rem rgba(246, 184, 35, 0.24);
 
 // media queries: widths
 $extra-large: 2000px;
