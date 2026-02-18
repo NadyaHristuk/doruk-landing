@@ -136,8 +136,8 @@ const KeepInTouch = ({ lang }) => {
         setSuccess(true);
         setTimeout(() => clearForm(), 4000);
       }
-    } catch (error) {
-      console.error('Server error:', error);
+    } catch {
+      setServerError(true);
     }
   };
 

@@ -140,8 +140,8 @@ const AnimatedLightning = ({
             r={orbSize}
             fill={color}
             filter="url(#orb-glow)"
-            сx="0"
-            сy="0"
+            cx="0"
+            cy="0"
           >
             <animateMotion
               path={seg.path}

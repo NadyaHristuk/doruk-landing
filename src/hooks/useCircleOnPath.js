@@ -91,7 +91,7 @@ const useCircleOnPath = (
       return () => window.removeEventListener('scroll', updateCirclePosition);
     };
 
-    initAnimation();
+    return initAnimation();
   }, [containerSelector, svgSelectors, offset, reverseOffset]);
 };
 
