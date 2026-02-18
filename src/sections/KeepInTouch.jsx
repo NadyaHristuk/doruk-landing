@@ -174,7 +174,7 @@ const KeepInTouch = ({ lang }) => {
           <div className="keep-in-touch__figure">
             <picture>
               <source type="image/webp" srcSet={jpgBgWebp} />
-              <img src={jpgBg} width="859" height="557" loading="lazy" alt="" role="presentation" aria-hidden="true" />
+              <img src={jpgBg} width="630" height="350" loading="lazy" alt="" role="presentation" aria-hidden="true" />
             </picture>
             <div className="keep-in-touch__name--mobile">
               <NameInput lang={lang} value={userName} setValue={setUserName} />

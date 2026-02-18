@@ -48,8 +48,9 @@
             }
 
             @media screen and (min-width: variables.$mobile) {
-                top: var(--content-offset);
-                height: calc(100% - var(--content-offset));
+                top: 12rem;
+                width: 105%;
+                left: -0.5rem;
             }
         }
 
@@ -247,9 +248,9 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            flex: 0 0 62.6rem;
-            width: 62.6rem;
-            height: 35.1rem;
+            flex: 0 0 63rem;
+            width: 63rem;
+            height: 32rem;
         }
 
         &::after {
@@ -267,6 +268,7 @@
             @media screen and (min-width: variables.$mobile) {
                 top: -1.6rem;
                 right: -1.6rem;
+                height: calc(100% - 0.4rem);
             }
         }
 
@@ -285,6 +287,7 @@
             @media screen and (min-width: variables.$mobile) {
                 top: -3.2rem;
                 right: -3.2rem;
+                height: calc(100% + 1.2rem);
             }
         }
 
