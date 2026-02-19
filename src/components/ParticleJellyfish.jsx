@@ -92,20 +92,14 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
       if (!parent) return;
       const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
       renderDpr = dpr;
-      if (isMobileViewport()) {
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        canvas.width = viewportWidth * dpr;
-        canvas.height = viewportHeight * dpr;
-        canvas.style.width = '100vw';
-        canvas.style.height = '100vh';
-      } else {
-        const rect = parent.getBoundingClientRect();
-        canvas.width = rect.width * dpr;
-        canvas.height = rect.height * dpr;
-        canvas.style.width = rect.width + 'px';
-        canvas.style.height = rect.height + 'px';
-      }
+      const rect = parent.getBoundingClientRect();
+      const width = rect.width || window.innerWidth;
+      const height = rect.height || (isMobileViewport() ? window.innerHeight * 0.5 : window.innerHeight);
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 

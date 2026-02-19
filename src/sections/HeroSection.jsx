@@ -88,15 +88,9 @@ const HeroSection = ({ lang, setLang }) => {
             </span>
           </h1>
           <h2 className="hero__subtitle">
-            <span className="hero__subtitle-pixelify">
-              {translate('home.subtitle.text', lang).charAt(0)}
-            </span>
-            <span className="hero__subtitle-source">
-              {translate('home.subtitle.text', lang).slice(1)}
-            </span>
-            <span className="hero__subtitle-pixelify hero__subtitle-pixelify--end">
-              {translate('home.subtitle.end', lang)}
-            </span>
+            <span className="hero__subtitle-pixelify">{translate('home.subtitle.text', lang).charAt(0)}</span>
+            <span className="hero__subtitle-source">{translate('home.subtitle.text', lang).slice(1)}</span>
+            <span className="hero__subtitle-pixelify hero__subtitle-pixelify--end">{translate('home.subtitle.end', lang)}</span>
           </h2>
         </div>
       </div>

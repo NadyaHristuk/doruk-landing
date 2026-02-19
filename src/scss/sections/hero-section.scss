@@ -2,6 +2,7 @@
 
 .hero {
     position: relative;
+    overflow-x: clip;
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -288,7 +289,7 @@
         position: absolute;
         z-index: 4;
         pointer-events: none;
-        left: calc(21% - 3.5rem);
+        left: calc(27% - 3.5rem);
         top: 19%;
         width: 78%;
         height: 22%;
@@ -327,7 +328,7 @@
         top: 0;
         left: 0;
         width: 100vw;
-        height: 100vh;
+        height: 50vh;
         z-index: 3;
         pointer-events: auto;
 
@@ -339,11 +340,16 @@
     }
 
     &__bg-line {
-    right: -1.5rem;
-    width: 102%;
-    height: 86%;
-    top: 6rem;
-    z-index: 10;
+        right: 0;
+        width: 100%;
+        height: 86%;
+        top: 11rem;
+        z-index: 10;
+        overflow: hidden;
+
+        @media screen and (min-width: variables.$tablet) {
+            top: 6rem;
+        }
 
         .svg-line {
             display: block;
@@ -373,6 +379,16 @@
         position: absolute;
         pointer-events: none;
         z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 13.2rem;
+        left: 0;
+
+        @media screen and (min-width: variables.$tablet) {
+            width: auto;
+            height: auto;
+            top: 0;
+        }
     }
 
     &__content {
@@ -401,8 +417,12 @@
     &__grid-col {
         position: absolute;
         width: 0;
-        left: 50%;
+        left: 50vw;
         height: 100%;
+
+        @media screen and (min-width: variables.$tablet) {
+            left: 50%;
+        }
     }
 
     &__grid-item {
@@ -441,7 +461,7 @@
         }
 
         &:nth-child(3) {
-            top: 38.6rem;
+            top: 36.9rem;
             left: -17rem;
             width: 33.1rem;
 
@@ -454,9 +474,9 @@
         }
 
         &:nth-child(4) {
-            top: 44.8rem;
-            left: -11rem;
-            width: 17.5rem;
+            top: 39.4rem;
+            left: -17.9rem;
+            width: 29.3rem;
 
             @media screen and (min-width: variables.$tablet) {
                 left: 0;
@@ -465,9 +485,9 @@
         }
 
         &:nth-child(5) {
-            top: 41.8rem;
-            left: -20rem;
-            width: 29.3rem;
+            top: 41.9rem;
+            left: -10.7rem;
+            width: 17.5rem;
 
             @media screen and (min-width: variables.$tablet) {
                 display: none;
@@ -547,9 +567,8 @@
         position: relative;
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: 2rem;
+        flex-direction: column;
+        row-gap: 1rem;
 
         @media screen and (min-width: variables.$mobile) {
             position: absolute;
@@ -562,9 +581,9 @@
         position: relative;
         transition: transform variables.$linear-transition;
         font-family: variables.$font-neutral-face;
-        font-size: 7.2rem;
+        font-size: 6.4rem;
         font-weight: 700;
-        line-height: 1;
+        line-height: 7.7rem;
         letter-spacing: -0.1rem;
         color: variables.$color-white;
         text-transform: uppercase;
@@ -599,6 +618,7 @@
 
     &__title-right {
         text-align: right;
+        margin-top: -0.8rem;
 
         @media screen and (min-width: variables.$mobile) {
             top: 30.8rem;
@@ -613,11 +633,12 @@
     &__subtitle {
         position: relative;
         width: 100%;
-        margin-top: 2rem;
+        margin-top: 1rem;
         text-align: center;
+        white-space: nowrap;
         color: variables.$color-white;
-        font-size: 3.2rem;
-        line-height: 1.2;
+        font-size: 4.8rem;
+        line-height: 6rem;
 
         @media screen and (min-width: variables.$mobile) {
             position: absolute;
