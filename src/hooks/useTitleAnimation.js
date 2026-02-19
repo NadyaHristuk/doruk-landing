@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef as useReactRef } from "react";
 
-const startValue = -350;
-const endValue = -50;
+const MOBILE_BREAKPOINT = 430;
+const DESKTOP_START = -350;
+const DESKTOP_END = -50;
+const MOBILE_START = -300;
+const MOBILE_END = 0;
+
+const getAnimValues = () => {
+    if (typeof window === 'undefined' || window.innerWidth > MOBILE_BREAKPOINT) {
+        return { start: DESKTOP_START, end: DESKTOP_END };
+    }
+    return { start: MOBILE_START, end: MOBILE_END };
+};
 
 const useTitleAnimation = ref => {
-    const [progress, setProgress] = useState(startValue);
+    const valuesRef = useReactRef(getAnimValues());
+    const [progress, setProgress] = useState(valuesRef.current.start);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -15,6 +26,9 @@ const useTitleAnimation = ref => {
         const update = () => {
             ticking = false;
             if (!ref.current) return;
+
+            valuesRef.current = getAnimValues();
+            const { start: startValue, end: endValue } = valuesRef.current;
 
             const rect = ref.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;

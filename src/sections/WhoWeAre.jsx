@@ -16,32 +16,8 @@ import { useMatrixDots } from '../hooks/useMatrixDots';
 const AUTOPLAY_HOLD_MS = 3200;
 const SLIDE_ANIMATION_SEC = 0.8;
 const AUTOPLAY_ENABLED = true;
+const TEMP_PAUSE_WHO_SLIDER = true;
 
-const getAboutTitleParts = (lang) => {
-  const tokenConfig = translate('about.titleTokens', lang);
-  if (tokenConfig && typeof tokenConfig === 'object') {
-    const first = `${tokenConfig.first || ''}`.trim();
-    const second = `${tokenConfig.second || ''}`.trim();
-    const third = `${tokenConfig.third || ''}`.trim();
-    if (first) return { first, second, third };
-  }
-
-  const fallbackTitle = `${translate('about.title', lang) || ''}`.trim();
-  const words = fallbackTitle.split(/\s+/).filter(Boolean);
-  return {
-    first: words[0] || '',
-    second: words[1] || '',
-    third: words[2] || ''
-  };
-};
-
-const splitFirstWord = (word) => {
-  const chars = Array.from(`${word || ''}`);
-  return {
-    initial: chars[0] || '',
-    rest: chars.slice(1).join('')
-  };
-};
 
 // Panel content component
 const WhoWeAreContent = ({ item, lang, idSuffix = '', hidden = false }) => {
@@ -109,11 +85,10 @@ const WhoWeAre = ({ lang }) => {
   const entryRef = useRef(null);
   const sliderRef = useRef(null);
   const progress = useTitleAnimation(entryRef);
-  const titleParts = getAboutTitleParts(lang);
-  const firstWordParts = splitFirstWord(titleParts.first);
-  const ariaTitle = [titleParts.first, titleParts.second, titleParts.third]
-    .filter(Boolean)
-    .join(' ');
+  const title = `${translate('about.title', lang) || ''}`;
+  const titleChars = Array.from(title);
+  const titleInitial = titleChars[0] || '';
+  const titleRest = titleChars.slice(1).join('');
 
   // Matrix dots animation
   useMatrixDots({
@@ -143,6 +118,8 @@ const WhoWeAre = ({ lang }) => {
   });
 
   useEffect(() => {
+    if (TEMP_PAUSE_WHO_SLIDER) return;
+
     const originalCount = aboutContent.length;
     const count = originalCount;
     const slider = sliderRef.current;
@@ -318,24 +295,12 @@ const WhoWeAre = ({ lang }) => {
     <>
       <header className="who-we-are__header" ref={entryRef}>
         <h2
-          className="animated-title who-we-are__title"
-          aria-label={ariaTitle || translate('about.title', lang)}
+          className="animated-title"
+          aria-label={title}
           style={{ transform: `translateX(${progress}%)` }}
         >
-          <span className="who-we-are__title-word who-we-are__title-word--first">
-            <span className="who-we-are__title-initial">{firstWordParts.initial}</span>
-            <span className="who-we-are__title-rest">{firstWordParts.rest}</span>
-          </span>
-          {titleParts.second && (
-            <span className="who-we-are__title-word who-we-are__title-word--mono">
-              {titleParts.second}
-            </span>
-          )}
-          {titleParts.third && (
-            <span className="who-we-are__title-word who-we-are__title-word--mono">
-              {titleParts.third}
-            </span>
-          )}
+          <span className="animated-title__cap">{titleInitial}</span>
+          <span className="animated-title__text">{titleRest}</span>
         </h2>
       </header>
 
@@ -356,7 +321,7 @@ const WhoWeAre = ({ lang }) => {
       </div>
 
       <div
-        className="who-we-are__slider"
+        className={`who-we-are__slider ${TEMP_PAUSE_WHO_SLIDER ? 'who-we-are__slider--paused' : ''}`}
         role="region"
         aria-label={translate('about.title', lang)}
         ref={sliderRef}
