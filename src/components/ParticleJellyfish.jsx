@@ -94,7 +94,9 @@ const ParticleJellyfish = ({ className, particleCount = 200 }) => {
       renderDpr = dpr;
       const rect = parent.getBoundingClientRect();
       const width = rect.width || window.innerWidth;
-      const height = rect.height || (isMobileViewport() ? window.innerHeight * 0.5 : window.innerHeight);
+      const height = isMobileViewport()
+        ? window.innerHeight * 0.5
+        : (rect.height || window.innerHeight);
 
       canvas.width = width * dpr;
       canvas.height = height * dpr;
