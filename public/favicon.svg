@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark rounded square background -->
+  <rect width="32" height="32" rx="7" fill="#1c1c1e"/>
+  <!-- Gold D mark — diagonal chamfer at top-left mirrors the logo's angular style -->
+  <path
+    d="M 12,6 L 19,6 C 25.5,6 27,11 27,16 C 27,21 25.5,26 19,26 L 9,26 L 9,9 Z
+       M 12,9 L 17,9 C 23,9 24,12.5 24,16 C 24,19.5 23,23 17,23 L 12,23 Z"
+    fill="#f6b823"
+    fill-rule="evenodd"
+  />
+</svg>

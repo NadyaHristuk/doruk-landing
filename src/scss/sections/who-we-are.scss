@@ -1,6 +1,5 @@
 @use "../variables";
 
-// Оптимизация pin-spacer обёртки от GSAP ScrollTrigger
 .pin-spacer {
     contain: layout style;
     will-change: transform;
@@ -12,11 +11,11 @@
     width: 100%;
     height: auto;
     display: block;
-    contain: layout style; // Изолируем layout пересчёты
-    /* Новый лёгкий слайдер на scroll-snap */
+    contain: layout style;
+
     .who-we-are__slider {
         position: relative;
-        /* z-index убран — наследует от #who-we-are */
+
         display: grid;
         grid-auto-flow: column;
         grid-auto-columns: 100vw;
@@ -26,19 +25,16 @@
         -webkit-overflow-scrolling: touch;
         gap: 0;
 
-        /* скрыть скроллбар */
-        scrollbar-width: none; /* Firefox */
+        scrollbar-width: none;
     }
 
     .who-we-are__slider::-webkit-scrollbar { display: none; }
 
-    /* Заголовок секции - отдельно от фонов */
     .who-we-are__header {
         position: relative;
         z-index: 4;
     }
 
-    /* Заголовок who-we-are — переопределения общего .animated-title */
     .animated-title.who-we-are__title {
         top: 3rem;
         line-height: 4.6rem;
@@ -139,7 +135,6 @@
         }
     }
 
-    /* Фоновые элементы */
     .who-we-are__backgrounds {
         position: absolute;
         top: 0;
@@ -211,7 +206,6 @@
         }
     }
 
-    /* Панели слайдера */
     .who-we-are__panel {
         position: relative;
         width: 100%;
@@ -236,7 +230,7 @@
 
         &.who-we-are__panel--default,
         &.who-we-are__panel--mirrored {
-                // ========== IMAGE (only picture + decorative ::before) ==========
+
                 .who-we-are__image {
                     --who-image-layer-progress: 0;
                     --who-image-layer-dir-x: -1;
@@ -315,7 +309,6 @@
                     }
                 }
 
-                // ========== INFO (title-block + text-block) ==========
                 .who-we-are__info {
                     position: relative;
 
@@ -338,11 +331,10 @@
                     }
                 }
 
-                // ========== TITLE BLOCK (Capsule) ==========
                 .who-we-are__title-block {
                     position: relative;
                     z-index: 5;
-                    width: 33.6rem; // 336px as per design
+                    width: 33.6rem;
                     height: 5.5rem;
                     margin: 0 auto 1.5rem;
                     display: flex;
@@ -382,7 +374,7 @@
                         }
 
                         i {
-                            transform: rotate(45deg); // Up-right arrow for mobile
+                            transform: rotate(45deg);
                             font-size: 2.8rem;
                             color: variables.$icon-color;
 
@@ -436,7 +428,6 @@
                     }
                 }
 
-                // ========== TEXT BLOCK ==========
                 .who-we-are__text-block {
                     --who-layer-before-progress: 0;
                     --who-layer-after-progress: 0;
@@ -544,7 +535,7 @@
                         opacity: var(--who-layer-before-progress, 0);
 
                         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
 
                         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
@@ -552,7 +543,7 @@
                         }
 
                         @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
                     }
 
@@ -584,7 +575,7 @@
                         opacity: var(--who-layer-after-progress, 0);
 
                         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
 
                         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
@@ -592,7 +583,7 @@
                         }
 
                         @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
                     }
 
@@ -614,20 +605,19 @@
                             padding: 4rem;
                             font-size: 2.2rem;
                             line-height: 2.8rem;
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
 
                         @media screen and (min-width: variables.$desktop) and (orientation: landscape) {
                             padding: 4rem;
                             font-size: 2.2rem;
                             line-height: 2.8rem;
-                            border-radius: 6.4rem;
+                            border-radius: variables.$border-radius-large;
                         }
                     }
                 }
             }
 
-            /* Default layout: слои выезжают справа-сверху вниз-влево */
             &.who-we-are__panel--default {
                 .who-we-are__image {
                     --who-image-layer-dir-x: 1;
@@ -640,7 +630,6 @@
                 }
             }
 
-            /* Отзеркаленный layout (изображение справа, текст слева) */
             &.who-we-are__panel--mirrored {
                 @media screen and (orientation: portrait) {
                     flex-flow: column nowrap;

@@ -338,14 +338,12 @@ body {
       }
     }
 
-    /* Gate large composited layer to desktop fine-pointer devices */
     @media screen and (min-width: variables.$desktop) and (pointer: fine) {
       #smooth-content {
         will-change: transform;
       }
     }
 
-    /* Respect reduced motion preferences */
     @media (prefers-reduced-motion: reduce) {
       #smooth-content {
         will-change: auto;
@@ -360,7 +358,7 @@ body {
       transition: transform variables.$linear-transition;
       margin: 0;
       font-family: variables.$font-neutral-face;
-      font-size: 4.8rem; // Smaller on mobile
+      font-size: 4.8rem;
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: 0;
@@ -515,7 +513,6 @@ body {
   }
 }
 
-/* Высоты по семантическим классам секций */
 .section {
   width: 100%;
 
@@ -551,7 +548,6 @@ body {
   }
 }
 
-/* Global minimal reset for buttons used as text controls */
 button {
   -webkit-appearance: none;
   appearance: none;
@@ -563,7 +559,6 @@ button {
   color: inherit;
 }
 
-/* Scope stronger reset where needed to preserve legacy visuals */
 .lang-selector-wrp .lang-selector {
   list-style: none;
   margin: 0;
@@ -576,7 +571,6 @@ button {
   text-overflow: ellipsis;
 }
 
-/* Skeleton loader for lazy-loaded sections */
 .skeleton-loader {
   width: 6rem;
   height: 6rem;

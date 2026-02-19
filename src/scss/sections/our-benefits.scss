@@ -52,11 +52,10 @@
         z-index: 3;
         margin-inline: auto;
         transform: translateY(-5rem);
-    
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             top: calc(var(--content-offset) - 12rem);
-    
+
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {

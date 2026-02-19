@@ -26,7 +26,6 @@
         background: url("assets/svg/bg/key-facts-key-wireframe.svg") no-repeat left top / contain;
     }
 
-    // ========== BG-LINE (AnimatedPathFollower) ==========
     &__bg-line--upper {
         position: absolute;
         top: -5.5rem;
@@ -89,7 +88,7 @@
                 transform: rotate(45deg) scaleX(-1);
             }
         }
-     
+
     }
 
     &__bg--lower &__watermark {
@@ -134,7 +133,7 @@
             top: -27rem;
             width: 81%;
             left: -15.5rem;
-            height: 144.54rem;       
+            height: 144.54rem;
         }
     }
 
@@ -199,7 +198,6 @@
         }
     }
 
-    // ========== CONTENT ==========
     &__content {
         position: relative;
         z-index: 3;
@@ -212,7 +210,6 @@
         }
     }
 
-    // ========== CONTENT BLOCKS ==========
     &__block {
         position: relative;
         width: 100%;
@@ -232,7 +229,7 @@
         max-width: 29.4rem;
         padding: 2.4rem;
         border-radius: variables.$border-radius-base;
-        border: 0.2rem solid rgba(116, 116, 116, 0.35);
+        border: 0.2rem solid rgba(variables.$border-color, 0.35);
         backdrop-filter: variables.$glass-blur;
         font-family: variables.$font-source-code-pro;
         font-size: 1.6rem;
@@ -242,13 +239,12 @@
         @media screen and (min-width: variables.$mobile) {
             max-width: unset;
             padding: 4.6rem 3.6rem;
-            border-radius: 6.4rem;
+            border-radius: variables.$border-radius-large;
             font-size: 2.2rem;
             line-height: 2.8rem;
         }
     }
 
-    // ========== LOGOS ==========
     &__logos {
         position: absolute;
         top: 5.6rem;
@@ -293,8 +289,6 @@
         }
     }
 
-    // ========== BLOCK: LOGOS ==========
-
     &__block--logos &__text {
         padding-top: 4rem;
     }
@@ -304,7 +298,6 @@
         z-index: 4;
     }
 
-    // ========== BLOCK: PHOTO ==========
     &__block--photo {
         justify-content: flex-end;
 
@@ -350,7 +343,6 @@
         }
     }
 
-    // ========== BLOCK: DEVICE ==========
     &__block--device {
         top: 11.7rem;
     }
@@ -418,5 +410,4 @@
         }
     }
 
-   
 }

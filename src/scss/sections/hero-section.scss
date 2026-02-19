@@ -9,10 +9,9 @@
     background-color: variables.$bg;
 
     @media screen and (min-width: variables.$tablet) {
-        transform: translate3d(0, 0, 0); // keeps fixed grid bound to this section instead of the viewport
+        transform: translate3d(0, 0, 0);
     }
 
-    // ========== HEADER ==========
     &__header {
         position: relative;
         z-index: 20;
@@ -87,7 +86,6 @@
                     font-weight: 400;
                 }
 
-                // Closed: show only active lang
                 &:not(.hero__header-lang--open) {
                     .hero__header-lang-list li {
                         display: none;
@@ -98,7 +96,6 @@
                     }
                 }
 
-                // Open: show all langs, wider indicator, centered
                 &.hero__header-lang--open {
                     align-items: center;
 
@@ -126,16 +123,14 @@
             justify-content: center;
             column-gap: 1.6rem;
 
-            // Desktop: жёлтая полоска как в макете —
-            // под активным EN и над активным UA с отступом 5px.
             @media screen and (min-width: variables.$mobile) {
                 &::before {
                     content: "";
                     position: absolute;
                     left: 50%;
                     transform: translateX(-50%);
-                    width: 6.4rem; // 64px
-                    height: 0.4rem; // 4px
+                    width: 6.4rem;
+                    height: 0.4rem;
                     background-color: variables.$color-primary;
                     opacity: 0;
                     transition: opacity variables.$transition, top variables.$transition, bottom variables.$transition;
@@ -144,14 +139,14 @@
                 &--bottom::before {
                     top: 100%;
                     bottom: auto;
-                    margin-top: 0.5rem; // 5px ниже блока
+                    margin-top: 0.5rem;
                     opacity: 1;
                 }
 
                 &--top::before {
                     top: auto;
                     bottom: 100%;
-                    margin-bottom: 0.5rem; // 5px выше блока
+                    margin-bottom: 0.5rem;
                     opacity: 1;
                 }
             }
@@ -160,8 +155,8 @@
         &-lang-btn {
             cursor: pointer;
             font-family: variables.$font-neutral-face;
-            font-size: 1.6rem; // 16px
-            line-height: 2rem; // 20px
+            font-size: 1.6rem;
+            line-height: 2rem;
             font-weight: 400;
             color: variables.$border-color;
             text-transform: uppercase;
@@ -177,7 +172,6 @@
         }
     }
 
-    // ========== BACKGROUND ==========
     &__bg,
     &__bg-stars,
     &__bg-line {
@@ -204,7 +198,7 @@
             background: linear-gradient(
                 180deg,
                 variables.$icon-color 0%,
-                rgba(36, 36, 38, 0) 100%
+                rgba(variables.$icon-color, 0) 100%
             );
 
             @media screen and (min-width: variables.$mobile) {
@@ -225,7 +219,7 @@
                 0deg,
                 variables.$bg 0%,
                 variables.$bg 30%,
-                rgba(36, 36, 38, 0) 100%
+                rgba(variables.$icon-color, 0) 100%
             );
 
             @media screen and (min-width: variables.$mobile) {
@@ -255,21 +249,19 @@
         position: absolute;
         left: -11.9rem;
         top: 3.5rem;
-        width: 67.6rem; // 676px from XD
-        height: 46.8rem; // 468px from XD
+        width: 67.6rem;
+        height: 46.8rem;
         z-index: 0;
         pointer-events: none;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: top left;
 
-        // Mobile-first: small version for mobile devices (10KB WebP)
         background-image: image-set(
             url("assets/webp/home/astronaut-rocks-small.webp") type("image/webp") 1x,
             url("assets/png/home/astronaut-rocks-small.png") type("image/png") 1x
         );
 
-        // Tablet: medium version (29KB WebP)
         @media screen and (min-width: variables.$mobile) {
             left: -3.5rem;
             top: 0;
@@ -284,7 +276,6 @@
             );
         }
 
-        // Desktop: large version (35KB WebP)
         @media screen and (min-width: variables.$desktop) {
             background-image: image-set(
                 url("assets/webp/home/astronaut-rocks-desktop.webp") type("image/webp") 1x,
@@ -322,7 +313,7 @@
         width: 100%;
         height: 80%;
         background: url("assets/svg/bg/stars.svg") no-repeat top left / contain;
-        // Mask: visible on left, fades towards center/right
+
         mask: linear-gradient(
             to right,
             rgba(0, 0, 0, 1) 0%,
@@ -338,7 +329,7 @@
         width: 100vw;
         height: 100vh;
         z-index: 3;
-        pointer-events: auto; // нужен для отслеживания мыши
+        pointer-events: auto;
 
         @media screen and (min-width: variables.$mobile) {
             inset: 0 0 0 -3.5rem;
@@ -347,7 +338,6 @@
         }
     }
 
-    // ========== LINE ==========
     &__bg-line {
     right: -1.5rem;
     width: 102%;
@@ -361,7 +351,6 @@
         }
     }
 
-    // ========== STAGE (wrapper: from center to right) ==========
     &__stage {
         position: relative;
         z-index: 10;
@@ -375,25 +364,23 @@
             top: 9.4rem;
             left: 50%;
             min-height: auto;
-            width: 79.1rem; // 791px при 1rem = 10px
+            width: 79.1rem;
             height: 73.1rem;
         }
     }
 
-    // ========== GRID (decorative rectangles only) ==========
     &__grid {
         position: absolute;
         pointer-events: none;
         z-index: 1;
     }
 
-    // ========== CONTENT (title + subtitle) ==========
     &__content {
         position: absolute;
         z-index: 10;
-        top: 38.1rem; // 425px - 44px status bar = 381px
+        top: 38.1rem;
         left: 1.6rem;
-        width: calc(100% - 3.2rem); // 358px at 390px screen
+        width: calc(100% - 3.2rem);
         display: flex;
         flex-direction: column;
         align-items: stretch;
@@ -423,7 +410,6 @@
         border: 0.1rem solid variables.$border-color;
     }
 
-    // Horizontal grid items
     &__grid-row &__grid-item {
         height: 1.2rem;
 
@@ -489,7 +475,6 @@
         }
     }
 
-    // Vertical grid items
     &__grid-col &__grid-item {
         width: 1.2rem;
 
@@ -558,7 +543,6 @@
         }
     }
 
-    // ========== TITLE ==========
     &__title {
         position: relative;
         width: 100%;
@@ -626,7 +610,6 @@
         }
     }
 
-    // ========== SUBTITLE ==========
     &__subtitle {
         position: relative;
         width: 100%;
