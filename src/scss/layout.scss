@@ -3,24 +3,24 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 * {
-  user-select: none;
+    user-select: none;
 }
 
 html {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 ul,
 ol {
-  list-style: none;
+    list-style: none;
 }
 
 img,
@@ -28,131 +28,135 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 
 input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 
 button {
-  background: none;
-  border: none;
-  cursor: pointer;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 @keyframes open-menu {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 @keyframes close-menu {
-  0% {
-    width: 100%;
-  }
-  100% {
-    width: 0%;
-  }
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background-color: variables.$bg;
-  overflow: hidden;
-  max-width: 100%;
-  width: 100%;
-  overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    background-color: variables.$bg;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    overscroll-behavior: none;
+}
 
-  main {
+main {
     position: relative;
     margin: 0;
     padding: 0;
     width: 100%;
+}
 
-    .mobile-menu {
-      z-index: 101;
-      position: fixed;
-      top: 0;
-      right: 0;
-      height: 100vh;
-      align-items: center;
-      background-color: variables.$bg;
+.mobile-menu {
+    z-index: 101;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    align-items: center;
+    background-color: variables.$bg;
 
-      &::before {
+    &::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("assets/svg/mobile/bg-lines.svg") no-repeat right -14rem / cover;
-      }
+        background: url("assets/svg/mobile/bg-lines.svg") no-repeat
+            right -14rem / cover;
+    }
 
-      &::after {
+    &::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("assets/svg/mobile/menu-line.svg") no-repeat -1rem 50% / cover;
-      }
+        background: url("assets/svg/mobile/menu-line.svg") no-repeat -1rem 50% /
+            cover;
+    }
 
-      &--opened {
+    &--opened {
         width: 100%;
         display: flex;
         animation: open-menu cubic-bezier(0.47, 1.64, 0.41, 0.8) 0.75s forwards;
-      }
+    }
 
-      &--closed {
+    &--closed {
         width: 0%;
         display: none;
         animation: close-menu ease-in 0.35s forwards;
-      }
+    }
 
-      .nav {
+    .nav {
         display: flex;
         flex-flow: column wrap;
         align-items: flex-start;
         gap: 4.8rem;
         padding-left: 4.8rem;
-      }
+    }
 
-      .nav__list {
+    .nav__list {
         display: flex;
         flex-flow: column wrap;
         align-items: flex-start;
         gap: 4.8rem;
         padding-left: 4.8rem;
-      }
+    }
 
-      .nav__item {
+    .nav__item {
         z-index: 102;
         font-family: variables.$font-amiro;
         font-size: 2.4rem;
         text-transform: uppercase;
         color: variables.$color-white;
         cursor: pointer;
-      }
+    }
 
-      &__decorations {
+    &__decorations {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-      }
+    }
 
-      &__rectangles {
+    &__rectangles {
         position: absolute;
         top: 0;
         left: 0;
@@ -160,77 +164,77 @@ body {
         height: 100%;
 
         &--vertical {
-          .mobile-menu__rectangle {
-            width: 1.2rem;
+            .mobile-menu__rectangle {
+                width: 1.2rem;
 
-            &:nth-child(1) {
-              top: 0;
-              left: 2rem;
-              height: 34rem;
-            }
+                &:nth-child(1) {
+                    top: 0;
+                    left: 2rem;
+                    height: 34rem;
+                }
 
-            &:nth-child(2) {
-              bottom: 15rem;
-              right: 6rem;
-              height: 55rem;
-            }
+                &:nth-child(2) {
+                    bottom: 15rem;
+                    right: 6rem;
+                    height: 55rem;
+                }
 
-            &:nth-child(3) {
-              bottom: 10rem;
-              right: 2rem;
-              height: 50rem;
+                &:nth-child(3) {
+                    bottom: 10rem;
+                    right: 2rem;
+                    height: 50rem;
+                }
             }
-          }
         }
 
         &--horizontal {
-          .mobile-menu__rectangle {
-            height: 1.2rem;
+            .mobile-menu__rectangle {
+                height: 1.2rem;
 
-            &:nth-child(1) {
-              top: 2rem;
-              left: 0;
-              width: 40%;
-            }
+                &:nth-child(1) {
+                    top: 2rem;
+                    left: 0;
+                    width: 40%;
+                }
 
-            &:nth-child(2) {
-              top: 5rem;
-              left: 0;
-              width: 30%;
-            }
+                &:nth-child(2) {
+                    top: 5rem;
+                    left: 0;
+                    width: 30%;
+                }
 
-            &:nth-child(3) {
-              bottom: 25rem;
-              right: 0;
-              width: 50%;
-            }
+                &:nth-child(3) {
+                    bottom: 25rem;
+                    right: 0;
+                    width: 50%;
+                }
 
-            &:nth-child(4) {
-              bottom: 22rem;
-              right: 0;
-              width: 60%;
+                &:nth-child(4) {
+                    bottom: 22rem;
+                    right: 0;
+                    width: 60%;
+                }
             }
-          }
         }
-      }
-
-      &__rectangle {
-        position: absolute;
-        border: 0.1rem solid variables.$border-color;
-      }
     }
 
-    .sidebar {
-      z-index: 104;
-      position: fixed;
-      bottom: 4.5rem;
-      right: 0;
-      width: 9.4rem;
-      height: 9.4rem;
-      border-radius: 50%;
-      cursor: pointer;
+    &__rectangle {
+        position: absolute;
+        border: 0.1rem solid variables.$border-color;
+    }
+}
 
-      @media screen and (min-width: variables.$tablet) {
+.sidebar {
+    z-index: 104;
+    position: fixed;
+    bottom: 4.5rem;
+    right: 0;
+    width: 9.4rem;
+    height: 9.4rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @media screen and (min-width: variables.$tablet) {
         top: 50%;
         left: 0;
         right: unset;
@@ -242,9 +246,9 @@ body {
         border: 0.1rem solid variables.$border-color;
         backdrop-filter: variables.$glass-blur;
         cursor: auto;
-      }
+    }
 
-      .nav {
+    .nav {
         display: none;
         flex-flow: column wrap;
         justify-content: center;
@@ -252,11 +256,11 @@ body {
         padding: 5.6rem 0;
 
         @media screen and (min-width: variables.$tablet) {
-          display: flex;
+            display: flex;
         }
-      }
+    }
 
-      .nav__item {
+    .nav__item {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -265,31 +269,31 @@ body {
         cursor: pointer;
 
         &--active {
-          .nav__icon {
-            color: variables.$color-white;
-            text-shadow:
-              0 0 2rem variables.$color-primary,
-              0 0 3rem variables.$color-primary,
-              0 0 3rem variables.$color-primary,
-              0 0 4rem variables.$color-primary;
-          }
+            .nav__icon {
+                color: variables.$color-white;
+                text-shadow:
+                    0 0 2rem variables.$color-primary,
+                    0 0 3rem variables.$color-primary,
+                    0 0 3rem variables.$color-primary,
+                    0 0 4rem variables.$color-primary;
+            }
         }
-      }
+    }
 
-      .nav__icon {
+    .nav__icon {
         font-size: 2.4rem;
         color: variables.$border-color;
-      }
+    }
 
-      .nav__list {
+    .nav__list {
         display: flex;
         flex-flow: column wrap;
         justify-content: center;
         align-items: center;
         row-gap: 5.6rem;
-      }
+    }
 
-      &__toggle {
+    &__toggle {
         position: relative;
         right: -2.4rem;
         display: flex;
@@ -303,99 +307,99 @@ body {
         backdrop-filter: variables.$glass-blur;
 
         @media screen and (min-width: variables.$tablet) {
-          display: none;
+            display: none;
         }
 
         &::before {
-          content: "";
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 6rem;
-          height: 6rem;
-          transform: translate(-50%, -50%);
-          border-radius: 50%;
-          background-color: variables.$border-color;
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6rem;
+            height: 6rem;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background-color: variables.$border-color;
         }
 
         i {
-          z-index: 103;
-          font-size: 2.4rem;
-          color: variables.$color-white;
+            z-index: 103;
+            font-size: 2.4rem;
+            color: variables.$color-white;
         }
 
         &:active {
-          border-color: variables.$color-primary;
+            border-color: variables.$color-primary;
 
-          &::before {
-            background-color: variables.$color-primary;
-          }
+            &::before {
+                background-color: variables.$color-primary;
+            }
 
-          i {
-            color: variables.$icon-color;
-          }
+            i {
+                color: variables.$icon-color;
+            }
         }
-      }
     }
+}
 
-    @media screen and (min-width: variables.$desktop) and (pointer: fine) {
-      #smooth-content {
+@media screen and (min-width: variables.$desktop) and (pointer: fine) {
+    #smooth-content {
         will-change: transform;
-      }
     }
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      #smooth-content {
+@media (prefers-reduced-motion: reduce) {
+    #smooth-content {
         will-change: auto;
-      }
     }
+}
 
-    .animated-title {
-      z-index: 100;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transition: transform variables.$linear-transition;
-      margin: 0;
-      font-family: variables.$font-neutral-face;
-      font-size: 4.8rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: 0;
-      text-transform: uppercase;
-      text-wrap-mode: nowrap;
-      color: variables.$color-white;
+.animated-title {
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transition: transform variables.$linear-transition;
+    margin: 0;
+    font-family: variables.$font-neutral-face;
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-wrap-mode: nowrap;
+    color: variables.$color-white;
 
-      @media screen and (min-width: variables.$mobile) {
+    @media screen and (min-width: variables.$mobile) {
         font-size: 7.2rem;
         line-height: 9.2rem;
         letter-spacing: 1.44rem;
         word-spacing: 5rem;
-      }
+    }
 
-      @media screen and (min-width: variables.$desktop) {
+    @media screen and (min-width: variables.$desktop) {
         font-size: 9.2rem;
         line-height: 11.1rem;
-      }
+    }
 
-      &::first-letter {
+    &::first-letter {
         font-family: variables.$font-pixelify-sans;
         font-size: 5.4rem;
 
         @media screen and (min-width: variables.$mobile) {
-          font-size: 9.2rem;
+            font-size: 9.2rem;
         }
-      }
+    }
 
-      &:has(.animated-title__cap) {
+    &:has(.animated-title__cap) {
         display: inline-flex;
         align-items: baseline;
         gap: 2rem;
         word-spacing: 0;
         letter-spacing: 0;
-      }
+    }
 
-      &__cap {
+    &__cap {
         font-family: variables.$font-pixelify-sans;
         font-size: 4.6rem;
         font-weight: 700;
@@ -403,12 +407,12 @@ body {
         letter-spacing: 0;
 
         @media screen and (min-width: variables.$desktop) {
-          font-size: 9.2rem;
-          line-height: 11.1rem;
+            font-size: 9.2rem;
+            line-height: 11.1rem;
         }
-      }
+    }
 
-      &__text {
+    &__text {
         font-family: variables.$font-neutral-face;
         font-size: 3.6rem;
         font-weight: 700;
@@ -416,24 +420,24 @@ body {
         letter-spacing: 0.8rem;
 
         @media screen and (min-width: variables.$mobile) {
-          letter-spacing: 1.44rem;
+            letter-spacing: 1.44rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
-          font-size: 7.2rem;
-          line-height: 9.2rem;
+            font-size: 7.2rem;
+            line-height: 9.2rem;
         }
-      }
     }
+}
 
-    .backgrounds {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+.backgrounds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-      .top {
+    .top {
         position: absolute;
         top: 0;
         left: 0;
@@ -441,15 +445,15 @@ body {
         height: var(--content-mobile-offset);
 
         @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-          height: var(--content-tablet-offset);
+            height: var(--content-tablet-offset);
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-          line-height: var(--content-offset);
+            line-height: var(--content-offset);
         }
-      }
+    }
 
-      .bottom {
+    .bottom {
         position: absolute;
         top: var(--content-mobile-offset);
         left: 0;
@@ -457,142 +461,160 @@ body {
         height: calc(100% - var(--content-mobile-offset));
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-          top: var(--content-tablet-offset);
-          height: calc(100% - var(--content-tablet-offset));
+            top: var(--content-tablet-offset);
+            height: calc(100% - var(--content-tablet-offset));
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-          top: var(--content-tablet-offset);
-          height: calc(100% - var(--content-tablet-offset));
+            top: var(--content-tablet-offset);
+            height: calc(100% - var(--content-tablet-offset));
         }
 
         @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-          top: var(--content-offset);
-          height: calc(100% - var(--content-offset));
+            top: var(--content-offset);
+            height: calc(100% - var(--content-offset));
         }
-      }
     }
-
-    .content {
-      position: absolute;
-      top: var(--content-mobile-offset);
-      left: 50%;
-      transform: translateX(-50%);
-      width: calc(100% - 3.2rem);
-      max-width: var(--content-max-width);
-      height: calc(100vh - var(--content-mobile-offset));
-
-      @media screen and (min-width: variables.$mobile) {
-        width: var(--content-tablet-width);
-      }
-
-      @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-        top: var(--content-tablet-offset);
-        height: calc(100% - var(--content-tablet-offset));
-      }
-
-      @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-        top: var(--content-mobile-offset);
-        height: 100%;
-      }
-
-      @media screen and (min-width: variables.$tablet) {
-        width: var(--content-width);
-      }
-
-      @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-        top: var(--content-tablet-offset);
-        height: calc(100% - var(--content-tablet-offset));
-      }
-
-      @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-        top: var(--content-offset);
-        height: calc(100% - var(--content-offset));
-      }
-    }
-  }
 }
 
-.section {
-  width: 100%;
-
-  &--hero,
-  &--who-we-are,
-  &--our-benefits,
-  &--keep-in-touch {
-    height: 100svh;
-    min-height: 100svh;
-  }
-
-  &--key-facts {
-    height: 200rem;
+.content {
+    position: absolute;
+    top: var(--content-mobile-offset);
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 3.2rem);
+    max-width: var(--content-max-width);
+    height: calc(100vh - var(--content-mobile-offset));
 
     @media screen and (min-width: variables.$mobile) {
-      height: 230rem;
+        width: var(--content-tablet-width);
+    }
+
+    @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
+        top: var(--content-tablet-offset);
+        height: calc(100% - var(--content-tablet-offset));
+    }
+
+    @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
+        top: var(--content-mobile-offset);
+        height: 100%;
     }
 
     @media screen and (min-width: variables.$tablet) {
-      height: 200rem;
+        width: var(--content-width);
     }
-  }
 
-  &--our-benefits,
-  &--keep-in-touch {
-    @media screen and (orientation: portrait) {
-      min-height: 90rem;
-
-      @media screen and (min-width: variables.$mobile) {
-        min-height: 105rem;
-      }
+    @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
+        top: var(--content-tablet-offset);
+        height: calc(100% - var(--content-tablet-offset));
     }
-  }
+
+    @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
+        top: var(--content-offset);
+        height: calc(100% - var(--content-offset));
+    }
+}
+
+.section {
+    width: 100%;
+
+    &--hero,
+    &--our-benefits,
+    &--keep-in-touch {
+        height: 100svh;
+        min-height: 100svh;
+    }
+
+    &--who-we-are {
+        height: 100svh;
+        min-height: 100svh;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            height: auto;
+            min-height: fit-content;
+        }
+    }
+
+    &--key-facts {
+        height: 200rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            height: 230rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            height: 200rem;
+        }
+    }
+
+    &--our-benefits,
+    &--keep-in-touch {
+        @media screen and (orientation: portrait) {
+            min-height: 90rem;
+
+            @media screen and (min-width: variables.$mobile) {
+                min-height: 105rem;
+            }
+        }
+    }
+
+    @media screen and (max-width: 430px) and (orientation: portrait) {
+        &--hero,
+        &--who-we-are,
+        &--key-facts,
+        &--our-benefits,
+        &--keep-in-touch {
+            height: auto;
+            min-height: fit-content;
+        }
+    }
 }
 
 button {
-  -webkit-appearance: none;
-  appearance: none;
-  background: none;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  color: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
 }
 
 .lang-selector-wrp .lang-selector {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .skeleton-loader {
-  width: 6rem;
-  height: 6rem;
-  border: 0.3rem solid variables.$border-color;
-  border-top-color: variables.$color-primary;
-  border-radius: 50%;
-  animation: skeleton-spin 1s linear infinite;
+    width: 6rem;
+    height: 6rem;
+    border: 0.3rem solid variables.$border-color;
+    border-top-color: variables.$color-primary;
+    border-radius: 50%;
+    animation: skeleton-spin 1s linear infinite;
 }
 
 @keyframes skeleton-spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .section-fallback {
-  min-height: 100vh;
-  background: var(--color-bg, #1c1c1e);
+    min-height: 100vh;
+    background: var(--color-bg, #1c1c1e);
 
-  &--centered {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    &--centered {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
