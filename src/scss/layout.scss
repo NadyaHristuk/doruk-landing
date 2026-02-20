@@ -558,6 +558,10 @@ main {
     &--key-facts {
         height: 200rem;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            height: 173rem;
+        }
+
         @media screen and (min-width: variables.$mobile) {
             height: 230rem;
         }

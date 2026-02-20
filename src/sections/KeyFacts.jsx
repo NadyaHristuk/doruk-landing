@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
 // hooks
 import { useTitleAnimation } from '../hooks';
 // components
@@ -12,6 +12,24 @@ import circleImgWebp from '../assets/webp/key-facts/key-facts-bg.webp';
 import squareImgWebp from '../assets/webp/key-facts/bg-2.webp';
 
 const { logos, hoverOffset } = keyFactsConfig;
+
+const truncateToFit = (el, fullText) => {
+  el.textContent = fullText;
+  if (el.scrollHeight <= el.clientHeight) return;
+
+  let lo = 0;
+  let hi = fullText.length;
+  while (lo < hi) {
+    const mid = (lo + hi + 1) >>> 1;
+    el.textContent = fullText.slice(0, mid) + '...';
+    if (el.scrollHeight <= el.clientHeight) {
+      lo = mid;
+    } else {
+      hi = mid - 1;
+    }
+  }
+  el.textContent = fullText.slice(0, lo) + '...';
+};
 
 const getDistance = (x1, y1, x2, y2) => {
   const Vx = x2 - x1;
@@ -29,10 +47,16 @@ const KeyFacts = ({ lang }) => {
     lineUpperRef = useRef(null),
     lineLowerRef = useRef(null),
     logosRef = useRef(null),
+    textRefs = useRef([]),
+    fullTexts = useRef([]),
     [displacements, setDisplacements] = useState({}),
     [isMobile, setIsMobile] = useState(false),
     [isLowPower, setIsLowPower] = useState(false),
     progress = useTitleAnimation(entryRef);
+
+  const setTextRef = useCallback((el, index) => {
+    textRefs.current[index] = el;
+  }, []);
 
   const onResize = () => {
     const isMobileDevice =
@@ -55,6 +79,27 @@ const KeyFacts = ({ lang }) => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('orientationchange', onResize);
     };
+  }, []);
+
+  useLayoutEffect(() => {
+    textRefs.current.forEach((el, i) => {
+      if (!el) return;
+      if (!fullTexts.current[i]) {
+        fullTexts.current[i] = el.textContent;
+      }
+      truncateToFit(el, fullTexts.current[i]);
+    });
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      textRefs.current.forEach((el, i) => {
+        if (!el || !fullTexts.current[i]) return;
+        truncateToFit(el, fullTexts.current[i]);
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleMouseEnter = (id) => {
@@ -146,7 +191,7 @@ const KeyFacts = ({ lang }) => {
 
       <div className="key-facts__content">
         <div className="key-facts__block key-facts__block--logos">
-          <p className="key-facts__text">
+          <p className="key-facts__text" ref={(el) => setTextRef(el, 0)}>
             {translate('keyFacts.text.1', lang)}
           </p>
           <div className="key-facts__logos" ref={logosRef}>
@@ -159,8 +204,6 @@ const KeyFacts = ({ lang }) => {
                   onMouseEnter={() => handleMouseEnter(item.id)}
                   onMouseLeave={handleMouseLeave}
                   style={{
-                    left: `${item.left}%`,
-                    top: `${item.top}%`,
                     transform: d
                       ? `translate(-50%, -50%) translate(${d.dx}px, ${d.dy}px)`
                       : 'translate(-50%, -50%)'
@@ -194,12 +237,12 @@ const KeyFacts = ({ lang }) => {
               />
             </picture>
           </div>
-          <p className="key-facts__text">
+          <p className="key-facts__text" ref={(el) => setTextRef(el, 1)}>
             {translate('keyFacts.text.2', lang)}
           </p>
         </div>
         <div className="key-facts__block key-facts__block--device">
-          <p className="key-facts__text">
+          <p className="key-facts__text" ref={(el) => setTextRef(el, 2)}>
             {translate('keyFacts.text.3', lang)}
           </p>
           <div className="key-facts__figure" aria-hidden="true">

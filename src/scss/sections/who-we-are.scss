@@ -14,7 +14,8 @@
     contain: layout style;
 
     @media screen and (max-width: 430px) and (orientation: portrait) {
-        padding: 0 1.6rem;
+        margin: 0 1.6rem;
+        width: calc(100% - 3.2rem);
     }
 
     .who-we-are__slider {
@@ -38,6 +39,7 @@
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
+            grid-auto-columns: 100%;
             padding-top: 12.2rem;
         }
     }
@@ -68,9 +70,9 @@
 
             @media screen and (max-width: 430px) and (orientation: portrait) {
                 top: -3rem;
-                height: 608px;
-                left: -1rem;
-                width: 110%;
+                height: 615px;
+                left: -3rem;
+                width: 120%;
             }
 
             .svg-line {
@@ -141,6 +143,7 @@
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             padding-top: 0;
+            padding-bottom: 3rem;
             min-height: fit-content;
         }
 
@@ -212,7 +215,7 @@
                 &::before {
                     content: "";
                     position: absolute;
-                    top: 2rem;
+                    top: 0.8rem;
                     left: 0.4rem;
                     width: 107%;
                     height: 107%;
@@ -306,7 +309,7 @@
                     order: 1;
                     position: absolute;
                     right: 8%;
-                    width: 33.5rem;
+                    width: 32.5rem;
                     height: 5.6rem;
                     margin: 0 0 -5.6rem 0;
                     padding: 0 6rem 0 2rem;
@@ -415,7 +418,6 @@
                     @media screen and (max-width: 430px) and (orientation: portrait) {
                         padding-right: 0.5rem;
                         max-width: unset;
-                        order: 1;
                     }
                 }
 
@@ -461,9 +463,9 @@
 
                 @media screen and (max-width: 430px) and (orientation: portrait) {
                     order: 3;
-                    margin-top: 4rem;
-                    margin-left: 7rem;
-                    width: calc(100% - 6rem);
+                    margin-top: 6rem;
+                    margin-left: 5rem;
+                    width: calc(100% - 5rem);
                     height: auto;
                 }
 
@@ -514,10 +516,7 @@
                     );
 
                     @media screen and (max-width: 430px) and (orientation: portrait) {
-                        width: 105%;
-                        height: 105%;
-                        top: -2.5%;
-                        left: -2.5%;
+                        display: none;
                     }
                 }
 
@@ -595,7 +594,11 @@
                     opacity: var(--who-layer-before-progress, 0);
 
                     @media screen and (max-width: 430px) and (orientation: portrait) {
-                        display: none;
+                        display: block;
+                        top: -0.8rem;
+                        left: -0.8rem;
+                        opacity: 1;
+                        border-radius: variables.$border-radius-base;
                     }
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -655,7 +658,12 @@
                     opacity: var(--who-layer-after-progress, 0);
 
                     @media screen and (max-width: 430px) and (orientation: portrait) {
-                        display: none;
+                        display: block;
+                        top: -1.6rem;
+                        left: -1.6rem;
+                        opacity: 1;
+                        border-radius: variables.$border-radius-base;
+                        backdrop-filter: none;
                     }
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -688,7 +696,7 @@
                     @media screen and (max-width: 430px) and (orientation: portrait) {
                         padding: 2rem;
                         min-height: unset;
-                        width: 290px;
+                        width: 100%;
                     }
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -749,11 +757,11 @@
             }
 
             .who-we-are__text-block {
-                left: 10.6%;
+                left: 0;
                 --who-layer-dir-x: 1;
 
                 @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-                    left: 14%;
+                    left: 10.6%;
                 }
 
                 @media screen and (min-width: variables.$mobile) and (orientation: landscape) {

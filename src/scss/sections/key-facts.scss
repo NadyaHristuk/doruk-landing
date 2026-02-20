@@ -2,12 +2,13 @@
 
 .key-facts {
     position: relative;
-    width: 100%;
     height: 100%;
+    width: calc(100% - 3.2rem);
+    margin: 0 16px;
 
     &__header {
         position: relative;
-         z-index: 3;
+        z-index: 3;
         width: 100%;
     }
 
@@ -23,16 +24,23 @@
         width: 100%;
         height: 100vh;
         pointer-events: none;
-        background: url("assets/svg/bg/key-facts-key-wireframe.svg") no-repeat left top / contain;
+        background: url("assets/svg/bg/key-facts-key-wireframe.svg") no-repeat
+            left top / contain;
     }
 
     &__bg-line--upper {
         position: absolute;
-        top: -5.5rem;
-        right: -0.5rem;
-        width: 105%;
-        z-index: 2;
-        height: 100%;
+        top: 0;
+        right: 1rem;
+        width: 110%;
+        z-index: 1;
+        height: 120%;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            right: -1.6rem;
+            left: -1.6rem;
+            width: calc(100% + 3.2rem);
+        }
     }
 
     &__bg-line--lower {
@@ -42,6 +50,13 @@
         width: 105%;
         z-index: 2;
         height: 100%;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: 50rem;
+            right: -2rem;
+            width: 113%;
+            height: 100%;
+        }
 
         @media screen and (min-width: variables.$tablet) {
             top: 40rem;
@@ -62,8 +77,10 @@
         height: 42rem;
         opacity: 0.3;
         transform: rotate(-45deg);
-        background: url("assets/png/key-facts/key.png") no-repeat center center / contain;
-        background: url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
+        background: url("assets/png/key-facts/key.png") no-repeat center
+            center / contain;
+        background: url("assets/webp/key-facts/key.webp") no-repeat center
+            center / contain;
 
         @media screen and (min-width: variables.$mobile) {
             display: block;
@@ -88,7 +105,6 @@
                 transform: rotate(45deg) scaleX(-1);
             }
         }
-
     }
 
     &__bg--lower &__watermark {
@@ -101,8 +117,10 @@
         height: 42rem;
         opacity: 0.3;
         transform: rotate(45deg) scaleX(-1);
-        background: url("assets/png/key-facts/key.png") no-repeat center center / contain;
-        background: url("assets/webp/key-facts/key.webp") no-repeat center center / contain;
+        background: url("assets/png/key-facts/key.png") no-repeat center
+            center / contain;
+        background: url("assets/webp/key-facts/key.webp") no-repeat center
+            center / contain;
 
         @media screen and (min-width: variables.$mobile) {
             display: block;
@@ -127,7 +145,8 @@
         z-index: 1;
         top: -3rem;
         height: 156.84rem;
-        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 / cover;
+        background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 /
+            cover;
 
         @media screen and (min-width: variables.$tablet) {
             top: -27rem;
@@ -161,7 +180,8 @@
     }
 
     &__bg-stripes--lower-left {
-        background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat center left / 200%;
+        background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat
+            center left / 200%;
 
         @media screen and (min-width: variables.$tablet) {
             top: 28rem;
@@ -172,7 +192,8 @@
     }
 
     &__bg-stripes--lower-right {
-        background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat center right / 200%;
+        background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat
+            center right / 200%;
 
         @media screen and (min-width: variables.$tablet) {
             top: 51rem;
@@ -186,7 +207,8 @@
     &__bg-stripes--mobile {
         z-index: 1;
         top: 60rem;
-        background: url("assets/svg/bg/key-facts-bg-3.svg") no-repeat center center / 200%;
+        background: url("assets/svg/bg/key-facts-bg-3.svg") no-repeat center
+            center / 200%;
 
         @media screen and (min-width: variables.$extra-small) {
             top: 46rem;
@@ -201,12 +223,11 @@
     &__content {
         position: relative;
         z-index: 3;
-        padding-top: var(--content-mobile-offset);
         margin-inline: auto;
-        width: calc(100% - 3.2rem);
 
         @media screen and (min-width: variables.$tablet) {
             width: 75%;
+            padding-top: var(--content-mobile-offset);
         }
     }
 
@@ -218,6 +239,14 @@
         padding-top: 9rem;
         @media screen and (min-width: variables.$tablet) {
             flex-direction: row;
+        }
+    }
+
+    &__block--logos {
+        padding-top: 13rem;
+
+        @media screen and (min-width: variables.$tablet) {
+            padding-top: 8rem;
         }
     }
 
@@ -235,6 +264,15 @@
         font-size: 1.6rem;
         line-height: 2rem;
         color: variables.$color-white;
+        overflow: hidden;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 295px;
+            height: 255px;
+            max-width: none;
+            flex: 0 0 auto;
+            padding: 25px;
+        }
 
         @media screen and (min-width: variables.$mobile) {
             max-width: unset;
@@ -251,10 +289,19 @@
         left: 7rem;
         width: 70%;
         height: 44.6rem;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+        }
     }
 
     &__logo {
         position: absolute;
+        left: var(--logo-left);
+        top: var(--logo-top);
         width: 6.4rem;
         height: 6.4rem;
         padding: 1.4rem;
@@ -264,8 +311,89 @@
         transition: transform variables.$linear-transition;
         border-radius: 50%;
         backdrop-filter: variables.$glass-blur;
-        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center center;
+        background: url("assets/svg/bg/key-facts-circles.svg") no-repeat center
+            center;
         will-change: transform;
+
+        // Desktop positions (from config)
+        // 1: XD, 2: CSS3, 3: Figma, 4: GitHub, 5: HTML5
+        // 6: DotNet, 7: PHP, 8: MySQL, 9: JavaScript
+        &:nth-child(1) {
+            --logo-left: 65.6%;
+            --logo-top: 16.1%;
+        }
+        &:nth-child(2) {
+            --logo-left: 49.1%;
+            --logo-top: 35%;
+        }
+        &:nth-child(3) {
+            --logo-left: 82%;
+            --logo-top: 27.9%;
+        }
+        &:nth-child(4) {
+            --logo-left: 40%;
+            --logo-top: 11.4%;
+        }
+        &:nth-child(5) {
+            --logo-left: 67.8%;
+            --logo-top: 52.6%;
+        }
+        &:nth-child(6) {
+            --logo-left: 79.2%;
+            --logo-top: 75.1%;
+        }
+        &:nth-child(7) {
+            --logo-left: 58.5%;
+            --logo-top: 83.7%;
+        }
+        &:nth-child(8) {
+            --logo-left: 94.9%;
+            --logo-top: 54.1%;
+        }
+        &:nth-child(9) {
+            --logo-left: 42.9%;
+            --logo-top: 78.9%;
+        }
+
+        // Mobile positions
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            &:nth-child(1) {
+                --logo-left: 52%;
+                --logo-top: 97%;
+            } // XD
+            &:nth-child(2) {
+                --logo-left: 89%;
+                --logo-top: 50%;
+            } // CSS3
+            &:nth-child(3) {
+                --logo-left: 70%;
+                --logo-top: 85%;
+            } // Figma
+            &:nth-child(4) {
+                --logo-left: 82%;
+                --logo-top: 30%;
+            } // GitHub
+            &:nth-child(5) {
+                --logo-left: 15%;
+                --logo-top: 80%;
+            } // HTML5
+            &:nth-child(6) {
+                --logo-left: 40%;
+                --logo-top: 78%;
+            } // DotNet
+            &:nth-child(7) {
+                --logo-left: 24%;
+                --logo-top: 92%;
+            } // PHP
+            &:nth-child(8) {
+                --logo-left: 95%;
+                --logo-top: 91%;
+            } // MySQL
+            &:nth-child(9) {
+                --logo-left: 85%;
+                --logo-top: 71%;
+            } // JavaScript
+        }
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             width: 11.2rem;
@@ -290,7 +418,7 @@
     }
 
     &__block--logos &__text {
-        padding-top: 4rem;
+        margin-right: auto;
     }
 
     &__block--logos &__logos {
@@ -299,7 +427,9 @@
     }
 
     &__block--photo {
+        flex-direction: column-reverse;
         justify-content: flex-end;
+        padding-top: 21.5rem;
 
         @media screen and (min-width: variables.$desktop) {
             align-items: flex-end;
@@ -316,7 +446,8 @@
         height: 28.6rem;
         backdrop-filter: variables.$glass-blur;
         border-radius: 50%;
-        background: url("assets/svg/bg/key-facts-circles-soft.svg") no-repeat center center;
+        background: url("assets/svg/bg/key-facts-circles-soft.svg") no-repeat
+            center center;
 
         @media screen and (min-width: variables.$mobile) {
             margin-left: 0;
@@ -344,7 +475,18 @@
     }
 
     &__block--device {
-        top: 11.7rem;
+        padding-top: 6.5rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 11.7rem;
+        }
+    }
+
+    &__block--device &__text {
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            margin-right: auto;
+            margin-left: unset;
+        }
     }
 
     &__block--device &__figure {
@@ -352,6 +494,11 @@
         flex: 0 0 auto;
         width: 28rem;
         border-radius: variables.$border-radius-base;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            margin-left: 17%;
+            z-index: 5;
+        }
 
         @media screen and (min-width: variables.$mobile) {
             width: 45rem;
@@ -409,5 +556,4 @@
             border: 0.1rem solid variables.$border-color;
         }
     }
-
 }
