@@ -6,6 +6,10 @@
     width: calc(100% - 3.2rem);
     margin: 0 16px;
 
+    @media screen and (min-width: variables.$tablet) {
+        width: 100%;
+    }
+
     &__header {
         position: relative;
         z-index: 3;
@@ -40,6 +44,10 @@
             right: -1.6rem;
             left: -1.6rem;
             width: calc(100% + 3.2rem);
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            right: -2.6rem;
         }
     }
 
@@ -149,10 +157,11 @@
             cover;
 
         @media screen and (min-width: variables.$tablet) {
-            top: -27rem;
-            width: 81%;
-            left: -15.5rem;
-            height: 144.54rem;
+            top: -30rem;
+            width: 91%;
+            left: -25.5rem;
+            height: 166.54rem;
+            transform: rotate(7deg);
         }
     }
 
@@ -184,10 +193,12 @@
             center left / 200%;
 
         @media screen and (min-width: variables.$tablet) {
-            top: 28rem;
-            left: 21.5rem;
-            width: 46%;
-            height: 128rem;
+            top: 73rem;
+            left: -42.5rem;
+            width: 86%;
+            height: 146rem;
+            background-size: cover;
+            transform: rotate(30deg);
         }
     }
 
@@ -196,11 +207,13 @@
             center right / 200%;
 
         @media screen and (min-width: variables.$tablet) {
-            top: 51rem;
-            right: -22.5rem;
+            top: 100rem;
+            right: -16.5rem;
             left: unset;
-            width: 46%;
-            height: 128rem;
+            width: 79%;
+            height: 144rem;
+            background-size: cover;
+            transform: rotate(-6deg);
         }
     }
 
@@ -432,6 +445,7 @@
         padding-top: 21.5rem;
 
         @media screen and (min-width: variables.$desktop) {
+            flex-direction: unset;
             align-items: flex-end;
             justify-content: flex-start;
             padding-left: 60rem;
@@ -475,10 +489,10 @@
     }
 
     &__block--device {
-        padding-top: 6.5rem;
+        margin-top: 6.5rem;
 
         @media screen and (min-width: variables.$mobile) {
-            top: 11.7rem;
+            margin-top: 11.7rem;
         }
     }
 
@@ -509,6 +523,7 @@
             top: 15.3rem;
             right: 3.6rem;
             z-index: 5;
+            align-self: flex-start;
         }
 
         &::after {
