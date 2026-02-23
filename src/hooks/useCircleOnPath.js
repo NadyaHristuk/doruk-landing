@@ -1,14 +1,8 @@
 import { useEffect, useRef } from 'react';
 
 const rightCoef = (100 + 0.078) / 100;
-const leftCoef = (100 - 0.74) / 100; //0.7317
+const leftCoef = (100 - 0.74) / 100; 
 
-/**
- * @param {string} containerSelector - Селектор контейнера, який містить SVG.
- * @param {string[]} svgSelectors - Масив селекторів SVG елементів.
- * @param {number} offset - Зміщення кола відносно шляху.
- * @param {number} reverseOffset - Зміщення кола відносно шляху для другого SVG
- */
 const useCircleOnPath = (
   containerSelector,
   svgSelectors,

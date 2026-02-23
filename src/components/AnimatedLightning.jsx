@@ -1,25 +1,7 @@
 import React, { useMemo } from 'react';
 
-/*
-  AnimatedLightning
-  - Glowing orb ("snowball") running along path segments sequentially
-  - Uniform velocity: orb moves at the same px/s speed on every segment
-  - All animations share the same dur & begin to stay in sync
-
-  Props:
-  - highlightPaths?: string[] — orb travels these segments one-by-one
-  - viewBox: string — SVG viewBox
-  - color: string — orb color
-  - speed: number — total cycle duration in seconds (default 25)
-  - opacity: number — base stroke opacity (0 = hidden)
-  - orbSize: number — radius of the glowing orb
-  - basePaths?: string[] — invisible guide paths
-  - strokeWidth: number — base stroke width
-*/
-
 const DEFAULT_D = 'M140,520 L340,120 L620,340 L840,120';
 
-// ── Calculate euclidean length of an SVG path string (M/L only) ──
 function calcPathLength(d) {
   const nums = d.match(/-?\d+\.?\d*/g);
   if (!nums || nums.length < 4) return 0;
@@ -54,7 +36,6 @@ const AnimatedLightning = ({
 
   const totalDur = speed;
 
-  // Pre-compute segment fractions based on path length
   const segments = useMemo(() => {
     const lengths = paths.map(calcPathLength);
     const totalLen = lengths.reduce((s, l) => s + l, 0);
@@ -93,7 +74,7 @@ const AnimatedLightning = ({
         </filter>
       </defs>
 
-      {/* Base paths — only rendered if opacity > 0 */}
+      {}
       {opacity > 0 &&
         Array.isArray(basePaths) &&
         basePaths.length > 0 &&
@@ -110,17 +91,14 @@ const AnimatedLightning = ({
           />
         ))}
 
-      {/* One orb per segment — all animations use same dur & begin=0 */}
+      {}
       {segments.map((seg, idx) => {
         const { start, end } = seg;
         const f = (v) => v.toFixed(4);
 
-        // ── keyPoints/keyTimes for animateMotion ──
-        // Stay at 0 until start, move 0→1 during start→end, stay at 1 until cycle end
         const motionKeyPoints = `0;0;1;1`;
         const motionKeyTimes = `0;${f(start)};${f(end)};1`;
 
-        // ── opacity: visible only during this segment's slot ──
         const fade = 0.005;
         let opKeyTimes, opValues;
         if (idx === 0) {

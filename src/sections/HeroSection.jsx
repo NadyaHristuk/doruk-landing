@@ -2,12 +2,10 @@ import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// components
 import AnimatedPathFollower from '../components/AnimatedPathFollower.jsx';
 import HeroHeader from '../components/HeroHeader.jsx';
 import HeroBackground from '../components/HeroBackground.jsx';
 import HeroGrid from '../components/HeroGrid.jsx';
-// config
 import { translate, svgConfig } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +16,6 @@ const HeroSection = ({ lang, setLang }) => {
   const titleLeftRef = useRef(null);
   const titleRightRef = useRef(null);
 
-  // Title intro animation (appear from sides into fixed positions)
   useGSAP(
     () => {
       const prefersReduce =

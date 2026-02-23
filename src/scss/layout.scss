@@ -86,7 +86,6 @@ main {
     top: 0;
     right: 0;
     height: 100vh;
-    // align-items: center;
     background-color: variables.$bg;
 
     &::before {
@@ -175,19 +174,19 @@ main {
                 &:nth-child(1) {
                     top: 0;
                     left: 2rem;
-                    height: 34rem;
+                    height: 20rem;
                 }
 
                 &:nth-child(2) {
                     bottom: 15rem;
-                    right: 6rem;
-                    height: 55rem;
+                    right: 5rem;
+                    height: 30rem;
                 }
 
                 &:nth-child(3) {
                     bottom: 10rem;
                     right: 2rem;
-                    height: 50rem;
+                    height: 30rem;
                 }
             }
         }
@@ -232,16 +231,12 @@ main {
 .sidebar {
     z-index: 104;
     position: fixed;
-    bottom: 4.5rem;
+    bottom: 2.5rem;
     right: 0;
     width: 9.4rem;
     height: 9.4rem;
     border-radius: 50%;
     cursor: pointer;
-
-    @media screen and (max-width: 430px) and (orientation: portrait) {
-        bottom: -2.5rem;
-    }
 
     @media screen and (min-width: variables.$tablet) {
         top: 50%;
@@ -594,17 +589,6 @@ main {
     &--our-benefits {
         margin-top: 5rem;
     }
-
-    // @media screen and (max-width: 430px) and (orientation: portrait) {
-    //     &--hero,
-    //     &--who-we-are,
-    //     &--key-facts,
-    //     &--our-benefits,
-    //     &--keep-in-touch {
-    //         height: auto;
-    //         min-height: fit-content;
-    //     }
-    // }
 }
 
 button {

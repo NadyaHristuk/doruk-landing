@@ -1,37 +1,23 @@
 import { useState, useRef, lazy, Suspense } from 'react';
-// utils
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { useGSAP } from '@gsap/react';
 import { getSectionLabel } from './utils/navigation';
-// hooks
 import { useScrollTriggers } from './hooks/useScrollTriggers';
 import { useScrollSmoother } from './hooks/useScrollSmoother';
-// components - lazy loaded for code splitting
 const HeroSection = lazy(() => import('./sections/HeroSection'));
 const WhoWeAre = lazy(() => import('./sections/WhoWeAre'));
 const KeyFacts = lazy(() => import('./sections/KeyFacts'));
 const OurBenefits = lazy(() => import('./sections/OurBenefits'));
 const KeepInTouch = lazy(() => import('./sections/KeepInTouch'));
-// config
 import { menu } from './config';
-// local components
 import { Nav } from './components/Nav';
-// styles
 import './scss/fonts.css';
 import './App.scss';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
-
-/**
- * @see {@link https://gsap.com} for GSAP animation library
- * @see {@link https://gsap.com/resources/React} useGSAP() Hook
- * @see {@link https://gsap.com/docs/v3/Plugins/ScrollTrigger} for ScrollTrigger plugin
- * @see {@link https://gsap.com/docs/v3/Plugins/ScrollToPlugin} for ScrollToPlugin
- * @see {@link https://gsap.com/docs/v3/Plugins/ScrollSmoother} for ScrollSmoother plugin
- */
 
 const App = () => {
   const container = useRef(),
@@ -39,10 +25,8 @@ const App = () => {
     [activeSection, setActiveSection] = useState('hero'),
     [lang, setLang] = useState('en');
 
-  // Initialize ScrollSmoother
   useScrollSmoother(container.current);
 
-  // Initialize ScrollTriggers for sections
   useScrollTriggers(container, {
     onSectionChange: setActiveSection
   });

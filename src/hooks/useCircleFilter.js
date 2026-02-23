@@ -54,13 +54,6 @@ const useCircleFilter = (containerSelector) => {
                         path.style.opacity = '1';
                         path.style.fill = '#ffffff';
                     } 
-                    // else if (distance <= 40) {
-                    //     path.style.opacity = '0.8';
-                    //     path.style.fill = '#ffffff';
-                    // } else if (distance <= 60) {
-                    //     path.style.opacity = '0.6';
-                    //     path.style.fill = '#ffffff';
-                    // }
                 });
 
                 e.target.style.opacity = '1';
@@ -75,6 +68,5 @@ const useCircleFilter = (containerSelector) => {
         };
     }, [containerSelector]);
 };
-
 
 export default useCircleFilter;

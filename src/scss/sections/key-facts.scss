@@ -328,9 +328,6 @@
             center;
         will-change: transform;
 
-        // Desktop positions (from config)
-        // 1: XD, 2: CSS3, 3: Figma, 4: GitHub, 5: HTML5
-        // 6: DotNet, 7: PHP, 8: MySQL, 9: JavaScript
         &:nth-child(1) {
             --logo-left: 65.6%;
             --logo-top: 16.1%;
@@ -368,44 +365,43 @@
             --logo-top: 78.9%;
         }
 
-        // Mobile positions
         @media screen and (max-width: 430px) and (orientation: portrait) {
             &:nth-child(1) {
                 --logo-left: 52%;
                 --logo-top: 97%;
-            } // XD
+            }
             &:nth-child(2) {
                 --logo-left: 89%;
                 --logo-top: 50%;
-            } // CSS3
+            }
             &:nth-child(3) {
                 --logo-left: 70%;
                 --logo-top: 85%;
-            } // Figma
+            }
             &:nth-child(4) {
                 --logo-left: 82%;
                 --logo-top: 30%;
-            } // GitHub
+            }
             &:nth-child(5) {
                 --logo-left: 15%;
                 --logo-top: 80%;
-            } // HTML5
+            }
             &:nth-child(6) {
                 --logo-left: 40%;
                 --logo-top: 78%;
-            } // DotNet
+            }
             &:nth-child(7) {
                 --logo-left: 24%;
                 --logo-top: 92%;
-            } // PHP
+            }
             &:nth-child(8) {
                 --logo-left: 95%;
                 --logo-top: 91%;
-            } // MySQL
+            }
             &:nth-child(9) {
                 --logo-left: 85%;
                 --logo-top: 71%;
-            } // JavaScript
+            }
         }
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {

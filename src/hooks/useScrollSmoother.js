@@ -18,7 +18,6 @@ export const useScrollSmoother = (container, debugDisable = false) => {
     const isDesktopWidth = window.innerWidth >= 1024;
     const deviceMemory = navigator.deviceMemory || 4;
     const cores = navigator.hardwareConcurrency || 4;
-    // Stricter check: only enable on powerful devices (8GB+ RAM, 6+ cores)
     const isLowPower = deviceMemory < 8 || cores < 6;
     const enableSmoother =
       !debugDisable && !prefersReduce && !isLowPower && isFinePointer && isDesktopWidth;
@@ -47,7 +46,6 @@ export const useScrollSmoother = (container, debugDisable = false) => {
     }
 
     return () => {
-      // Clean up if component unmounts - though usually App doesn't unmount
       cancelled = true;
       if (idleId && typeof window.cancelIdleCallback === 'function') {
         window.cancelIdleCallback(idleId);

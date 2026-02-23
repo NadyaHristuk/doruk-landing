@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from 'react';
-// utils
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -20,7 +19,6 @@ const AnimatedPathFollower = ({
 }) => {
   const circleRef = useRef(null),
     pathRef = useRef(null),
-    // pathArray removed; we animate along the actual path element
     [isMobile, setIsMobile] = useState(false);
 
   useGSAP(
@@ -37,9 +35,6 @@ const AnimatedPathFollower = ({
       const isLowPower = deviceMemory <= 4 || cores <= 4;
       const disableMotion = prefersReduce || isLowPower;
 
-      // Начальная позиция кружка на пути
-      // LTR: начинает с offsetStart (0 = начало пути)
-      // RTL: начинает с 1 + offsetStart (1.1 = за концом пути, справа)
       const startPos = direction === 'ltr' ? offsetStart : 1 + offsetStart;
       gsap.set(circleRef.current, {
         motionPath: {
@@ -87,7 +82,6 @@ const AnimatedPathFollower = ({
 
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
-    // If in future we need to provide points array, compute here
 
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
