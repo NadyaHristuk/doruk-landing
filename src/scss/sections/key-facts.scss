@@ -135,9 +135,9 @@
         }
 
         @media screen and (min-width: variables.$tablet) {
-            top: 153rem;
+            top: 165rem;
             left: 24%;
-            transform: rotate(238deg);
+            transform: rotate(241deg);
         }
     }
 
@@ -155,6 +155,12 @@
         height: 156.84rem;
         background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 /
             cover;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: -15rem;
+            height: 91.84rem;
+            left: -3rem;
+        }
 
         @media screen and (min-width: variables.$tablet) {
             top: -30rem;
