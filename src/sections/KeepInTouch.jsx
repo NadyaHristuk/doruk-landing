@@ -1,7 +1,10 @@
 import { useState, useRef } from 'react';
+// hooks
 import { useTitleAnimation } from '../hooks';
 import { useMatrixDots } from '../hooks/useMatrixDots';
+// components
 import AnimatedPathFollower from '../components/AnimatedPathFollower.jsx';
+// config
 import {
   translate,
   svgConfig,
@@ -15,6 +18,7 @@ import {
   commentMinLength,
   commentMaxLength
 } from '../config';
+// assets
 import jpgBg from '../assets/jpg/keep-in-touch/keep-in-touch-bg.jpg';
 import jpgBgWebp from '../assets/webp/keep-in-touch/keep-in-touch-bg.webp';
 import SvgDotsLeft from '../assets/svg/animations/about-dots-left.svg?react';
@@ -42,7 +46,7 @@ const KeepInTouch = ({ lang }) => {
     [userPhone, setUserPhone] = useState(''),
     [userEmail, setUserEmail] = useState(''),
     [userComment, setUserComment] = useState(''),
-    [phoneOrEmail, setPhoneOrEmail] = useState(false), 
+    [phoneOrEmail, setPhoneOrEmail] = useState(false), // phone
     [error, setError] = useState(false),
     [success, setSuccess] = useState(false),
     [serverError, setServerError] = useState(false),

@@ -1,7 +1,11 @@
 import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
+// hooks
 import { useTitleAnimation } from '../hooks';
+// components
 import AnimatedPathFollower from '../components/AnimatedPathFollower';
+// config
 import { keyFactsConfig, translate, svgConfig } from '../config';
+// assets
 import circleImg from '../assets/jpg/key-facts/key-facts-bg.jpg';
 import squareImg from '../assets/png/key-facts/bg-2.png';
 import circleImgWebp from '../assets/webp/key-facts/key-facts-bg.webp';
@@ -149,7 +153,7 @@ const KeyFacts = ({ lang }) => {
       </header>
       <div className="key-facts__backgrounds">
         <div className="key-facts__bg key-facts__bg--upper">
-          {}
+          {/* <div className="key-facts__bg-art" aria-hidden="true" /> */}
           <div className="key-facts__watermark key-facts__watermark--upper" />
           <div className="key-facts__watermark key-facts__watermark--lower" />
           <div

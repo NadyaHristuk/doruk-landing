@@ -1,9 +1,13 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+// hooks
 import { useTitleAnimation } from "../hooks";
+// components
 import AnimatedPathFollower from "../components/AnimatedPathFollower";
+// config
 import { translate, svgConfig, aboutContent } from "../config";
+// assets
 import SvgDotsLeft from "../assets/svg/animations/about-dots-left.svg?react";
 import SvgDotsRight from "../assets/svg/animations/about-dots-right.svg?react";
 import aboutBgSmall from "../assets/svg/bg/about-bg-small.svg";
@@ -14,6 +18,7 @@ const SLIDE_ANIMATION_SEC = 0.8;
 const AUTOPLAY_ENABLED = true;
 const TEMP_PAUSE_WHO_SLIDER = false;
 
+// Panel content component
 const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
     const titleId = `${item.id}-title${idSuffix}`;
     const layoutClass =
@@ -86,6 +91,7 @@ const WhoWeAre = ({ lang }) => {
     const titleInitial = titleChars[0] || "";
     const titleRest = titleChars.slice(1).join("");
 
+    // Matrix dots animation
     useMatrixDots({
         sectionId: "#who-we-are",
         svgSelector: ".who-we-are__dots--left",

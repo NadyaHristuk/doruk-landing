@@ -1,5 +1,7 @@
+// language config (JSON with dot-notation)
 import uaJson from './lang/ua.json';
 import enJson from './lang/en.json';
+// assets
 import logo1 from './assets/webp/key-facts/logo-1.webp';
 import logo2 from './assets/webp/key-facts/logo-2.webp';
 import logo3 from './assets/webp/key-facts/logo-3.webp';
@@ -162,10 +164,16 @@ export const svgConfig = {
   }
 };
 
+// Optional path for animated lightning overlay on the hero.
+// Replace with exact path data from design when available.
 export const homeLightning = {
   viewBox: '0 0 1000 600',
+  // Placeholder approximating the mock; provide a precise path later
   d: 'M140,520 L340,120 L620,340 L840,120',
+  // Optional: highlight-only segments (runner animates only here)
+  // Replace array with exact subpaths from provided SVG
   highlight: [],
+  // Split base into behind/front segments for z-index layering
   behindBase: [],
   behindHighlight: [],
   frontBase: [],
@@ -175,7 +183,7 @@ export const homeLightning = {
 export const aboutContent = [
   {
     id: 'slide-1',
-    layout: 'default', 
+    layout: 'default', // изображение слева, текст справа
     bg: aboutLeftBg,
     bgWebp: aboutLeftBgWebp,
     text: 'about.blocks.left.text',
@@ -185,7 +193,7 @@ export const aboutContent = [
   },
   {
     id: 'slide-2',
-    layout: 'mirrored', 
+    layout: 'mirrored', // изображение справа, текст слева (отзеркаленный)
     bg: aboutCenterBg,
     bgWebp: aboutCenterBgWebp,
     text: 'about.blocks.center.text',
@@ -195,7 +203,7 @@ export const aboutContent = [
   },
   {
     id: 'slide-3',
-    layout: 'default', 
+    layout: 'default', // изображение слева, текст справа
     bg: aboutRightBg,
     bgWebp: aboutRightBgWebp,
     text: 'about.blocks.right.text',

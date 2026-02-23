@@ -1,8 +1,12 @@
 import { useRef } from 'react';
+// hooks
 import { useTitleAnimation } from '../hooks';
 import { useMatrixDots } from '../hooks/useMatrixDots';
+// components
 import AnimatedPathFollower from '../components/AnimatedPathFollower';
+// config
 import { translate, svgConfig } from '../config';
+// assets
 import jpgBg from '../assets/jpg/our-benefits/benefits-bg.jpg';
 import jpgBgWebp from '../assets/webp/our-benefits/benefits-bg.webp';
 import SvgBenefitsDots from '../assets/svg/animations/benefits-dots.svg?react';
