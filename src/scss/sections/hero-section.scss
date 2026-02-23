@@ -2,7 +2,7 @@
 
 .hero {
     position: relative;
-    overflow-x: clip;
+    overflow: clip;
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -311,9 +311,9 @@
         height: 22%;
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            top: 170px;
-            width: 79%;
-            left: 70px;
+            top: 175px;
+            width: 77%;
+            left: 60px;
             height: 23%;
         }
 
