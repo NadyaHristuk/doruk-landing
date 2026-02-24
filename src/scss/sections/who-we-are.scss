@@ -70,9 +70,9 @@
 
             @media screen and (max-width: 430px) and (orientation: portrait) {
                 top: -3rem;
-                height: 615px;
-                left: -3rem;
-                width: 120%;
+                height: 639px;
+                left: -5rem;
+                width: 130%;
             }
 
             .svg-line {
@@ -97,7 +97,13 @@
             }
 
             svg:nth-child(1) {
-                display: none;
+                top: 11.5rem;
+
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    top: -9.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
 
                 @media screen and (min-width: variables.$desktop) {
                     display: block;
@@ -105,7 +111,11 @@
             }
 
             svg:nth-child(2) {
-                top: 11.5rem;
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    top: 40.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
             }
         }
 
@@ -298,8 +308,10 @@
                 margin: 0 auto 1.5rem;
                 display: flex;
                 flex-direction: column;
+                align-items: flex-start;
                 justify-content: center;
-                border: 0.1rem solid #f6b823;
+                background-color: rgba(variables.$bg, 0.5);
+                border: 1px solid variables.$color-primary;
                 border-radius: variables.$border-radius-pill;
                 backdrop-filter: variables.$glass-blur;
                 padding: 0 6rem 0 2rem;
@@ -308,20 +320,7 @@
                 @media screen and (max-width: 430px) and (orientation: portrait) {
                     order: 1;
                     position: absolute;
-                    right: 8%;
-                    width: 32.5rem;
-                    height: 5.6rem;
-                    margin: 0 0 -5.6rem 0;
-                    padding: 0 6rem 0 2rem;
-                    background-color: rgba(variables.$bg, 0.5);
-                    border: 1px solid variables.$color-primary;
-                    backdrop-filter: variables.$glass-blur;
-                    border-radius: variables.$border-radius-pill;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
-                    overflow: visible;
+                    right: 7%;
                 }
 
                 @media screen and (min-width: variables.$tablet) {

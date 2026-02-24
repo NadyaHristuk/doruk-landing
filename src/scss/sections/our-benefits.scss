@@ -21,16 +21,26 @@
     &__header {
         position: relative;
         z-index: 4;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            display: flex;
+        }
     }
 
     &__bg {
         &-line {
             position: absolute;
-            top: 0;
+            top: 50rem;
             right: -0.5rem;
             width: 105%;
             height: 100%;
             z-index: 2;
+
+            @media screen and (max-width: 430px) and (orientation: portrait) {
+                right: -2.5rem;
+                width: 112%;
+                height: 125%;
+            }
         }
 
         &-dots {
@@ -57,6 +67,14 @@
         z-index: 3;
         margin-inline: auto;
         transform: translateY(-5rem);
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10rem;
+            top: 0;
+            transform: translateY(0);
+        }
 
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             top: calc(var(--content-offset) - 12rem);
@@ -129,13 +147,9 @@
         display: flex;
         flex-flow: column wrap;
         row-gap: 4rem;
-        margin-top: 6rem;
+        margin-top: 5.8rem;
         width: 100%;
         height: auto;
-
-        @media screen and (min-width: variables.$mobile) {
-            margin-left: 6rem;
-        }
 
         @media screen and (min-width: variables.$desktop) {
             position: absolute;
@@ -169,11 +183,32 @@
             border-color: variables.$color-primary;
         }
 
+        &:nth-child(1) {
+            order: 1;
+        }
+
+        &:nth-child(5) {
+            order: 2;
+        }
+
+        &:nth-child(2) {
+            order: 3;
+        }
+
+        &:nth-child(4) {
+            order: 4;
+        }
+
+        &:nth-child(3) {
+            order: 5;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             position: absolute;
             width: 61rem;
             max-width: unset;
             height: 9.6rem;
+            order: initial;
 
             &:nth-child(1) {
                 top: -18%;

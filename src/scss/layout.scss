@@ -560,7 +560,7 @@ main {
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             height: auto;
-            min-height: 724px;
+            min-height: 662px;
         }
     }
 
@@ -593,6 +593,10 @@ main {
 
     &--our-benefits {
         margin-top: 5rem;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            margin-top: 0;
+        }
     }
 
     // @media screen and (max-width: 430px) and (orientation: portrait) {
