@@ -58,12 +58,19 @@
         width: 105%;
         z-index: 2;
         height: 100%;
+        overflow: visible;
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            top: 50rem;
-            right: -2rem;
-            width: 113%;
+            top: 48rem;
+            right: -3.6rem;
+            width: calc(100% + 7.2rem);
+            height: 42rem;
+        }
+
+        .svg-line {
+            width: 100%;
             height: 100%;
+            overflow: visible;
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -175,6 +182,11 @@
         z-index: 1;
         top: -16rem;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            z-index: 1;
+            top: -16rem;
+        }
+
         @media screen and (min-width: variables.$extra-small) {
             top: -32rem;
             background-size: contain;
@@ -198,6 +210,11 @@
         background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat
             center left / 200%;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: 75rem;
+            left: 1rem;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             top: 73rem;
             left: -42.5rem;
@@ -212,6 +229,11 @@
         background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat
             center right / 200%;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: -1rem;
+            left: -2rem;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             top: 100rem;
             right: -16.5rem;
@@ -223,18 +245,33 @@
         }
     }
 
-    &__bg-stripes--mobile {
+    &__bg-line--mobile {
+        display: none;
         z-index: 1;
-        top: 60rem;
-        background: url("assets/svg/bg/key-facts-bg-3.svg") no-repeat center
-            center / 200%;
+        position: absolute;
+        top: 20rem;
+        right: 1rem;
+        width: 110%;
+        height: 120%;
 
-        @media screen and (min-width: variables.$extra-small) {
-            top: 46rem;
-            background-size: contain;
+        .svg-line {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
         }
 
-        @media screen and (min-width: variables.$mobile) {
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            display: block;
+            right: -1.6rem;
+            left: -1.6rem;
+            width: calc(100% + 3.2rem);
+        }
+
+        @media screen and (min-width: variables.$extra-small) {
+            display: block;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
             display: none;
         }
     }
@@ -255,7 +292,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding-top: 9rem;
+
         @media screen and (min-width: variables.$tablet) {
             flex-direction: row;
         }
@@ -454,6 +491,10 @@
         }
     }
 
+    &__block--photo &__text {
+        margin-left: auto;
+    }
+
     &__block--photo &__figure {
         flex: 0 0 auto;
         position: relative;
@@ -464,6 +505,13 @@
         border-radius: 50%;
         background: url("assets/svg/bg/key-facts-circles-soft.svg") no-repeat
             center center;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            top: -1.5rem;
+            z-index: 5;
+            left: 0.2rem;
+            transform: rotate(15deg);
+        }
 
         @media screen and (min-width: variables.$mobile) {
             margin-left: 0;
@@ -480,9 +528,42 @@
             z-index: 5;
         }
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            overflow: hidden;
+            isolation: isolate;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                pointer-events: none;
+                background: url("assets/svg/bg/key-facts-bg-4.svg") no-repeat
+                    16% 85% / 84%;
+                opacity: 0.65;
+                mix-blend-mode: screen;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 20%;
+                right: -26%;
+                width: 172%;
+                height: 112%;
+                z-index: 1;
+                pointer-events: none;
+                background: url("assets/svg/bg/key-facts-bg-2.svg") no-repeat
+                    right center / contain;
+                opacity: 0.32;
+            }
+        }
+
         img {
             display: block;
-            width: 39rem;
+            position: relative;
+            z-index: 2;
+            width: 25.5rem;
             height: auto;
             margin: 0.1rem auto auto;
             border-radius: 50%;
@@ -491,7 +572,7 @@
     }
 
     &__block--device {
-        margin-top: 6.5rem;
+        margin-top: 5rem;
 
         @media screen and (min-width: variables.$mobile) {
             margin-top: 11.7rem;
@@ -512,7 +593,7 @@
         border-radius: variables.$border-radius-base;
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            margin-left: 17%;
+            margin-left: 23%;
             z-index: 5;
         }
 

@@ -42,6 +42,7 @@ const KeyFacts = ({ lang }) => {
   const entryRef = useRef(null),
     lineUpperRef = useRef(null),
     lineLowerRef = useRef(null),
+    lineMobileRef = useRef(null),
     logosRef = useRef(null),
     textRefs = useRef([]),
     fullTexts = useRef([]),
@@ -174,14 +175,25 @@ const KeyFacts = ({ lang }) => {
           >
             <AnimatedPathFollower
               container={lineLowerRef.current}
-              direction="ltr"
+              direction={isMobile ? 'rtl' : 'ltr'}
               offsetStart={0.3}
               config={svgConfig.keyFacts.b}
             />
           </div>
           <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-left" />
           <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-right" />
-          <div className="key-facts__bg-stripes key-facts__bg-stripes--mobile" />
+          <div
+            className="key-facts__bg-line key-facts__bg-line--mobile"
+            ref={lineMobileRef}
+          >
+            <AnimatedPathFollower
+              container={lineMobileRef.current}
+              direction="rtl"
+              offsetStart={0.2}
+              scrub={50}
+              config={svgConfig.keyFacts.a}
+            />
+          </div>
         </div>
       </div>
 
