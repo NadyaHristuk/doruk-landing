@@ -566,6 +566,7 @@
             width: 335px;
             max-width: calc(100% - 3.2rem);
             height: 185px;
+            margin: 2.4rem auto 0 0;
         }
 
         @media screen and (min-width: variables.$mobile) {
@@ -651,6 +652,11 @@
         font-style: normal;
         color: variables.$color-white;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            font-size: 1.8rem;
+            line-height: 2rem;
+        }
+
         @media screen and (min-width: variables.$mobile) {
             padding: 2rem;
         }
@@ -659,6 +665,13 @@
     &__contact-label {
         margin: 1rem 0 3rem;
         color: variables.$color-primary;
+        text-align: end;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: fit-content;
+            max-width: 18ch;
+            margin-left: auto;
+        }
     }
 
     &__email {
