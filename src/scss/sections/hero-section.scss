@@ -391,7 +391,8 @@
 
     &__bg-rocks {
         position: absolute;
-        left: -11.9rem;
+        left: 50%;
+        transform: translateX(-50%);
         top: 3.5rem;
         width: 67.6rem;
         height: 46.8rem;
@@ -502,15 +503,16 @@
         position: absolute;
         z-index: 4;
         pointer-events: none;
+        container-type: inline-size;
         left: calc(21% - 3.5rem);
         top: 19%;
         width: 78%;
         height: 22%;
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            top: 175px;
+            top: 20svh;
             width: 77%;
-            left: 60px;
+            left: 14svw;
             height: 23%;
         }
 
@@ -579,7 +581,7 @@
 
         @media screen and (max-width: 1024px) {
             width: 100%;
-            height: 46.8rem;
+            height: 45svh;
             inset: auto;
         }
 
@@ -594,23 +596,23 @@
         right: 0;
         width: 100%;
         height: fit-content;
-        top: 46rem;
+        top: 42svh;
         z-index: 10;
 
         @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
-            top: 52rem;
+            top: 48svh;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
-            top: 22rem;
+            top: 20svh;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
-            top: 8rem;
+            top: 7svh;
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: 6rem;
+            top: 5.5svh;
         }
 
         .svg-line {
@@ -626,7 +628,7 @@
         left: 0;
         top: 0;
         width: 100%;
-        min-height: 810px;
+        min-height: 90svh;
 
         @media screen and (min-width: 1024px) and (max-width: 1499px) {
             position: absolute;
@@ -639,7 +641,7 @@
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
-            min-height: 760px;
+            min-height: 85svh;
         }
 
         @media screen and (min-width: 1024px) and (max-width: 1499px) {
@@ -679,7 +681,7 @@
     &__content {
         position: absolute;
         z-index: 10;
-        top: 38.1rem;
+        top: 45svh;
         left: 1.6rem;
         width: calc(100% - 3.2rem);
         display: flex;
@@ -698,7 +700,7 @@
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
-            top: 40rem;
+            top: 36svh;
             left: 0;
             width: 100%;
             padding-inline: 2.4rem;
@@ -708,7 +710,7 @@
         }
 
         @media screen and (min-width: 1024px) and (max-width: 1499px) {
-            top: 20rem;
+            top: 18svh;
             left: 0;
             width: 100%;
             padding-inline: 2.4rem;
