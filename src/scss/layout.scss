@@ -67,7 +67,6 @@ body {
     margin: 0;
     padding: 0;
     background-color: variables.$bg;
-    overflow: hidden;
     max-width: 100%;
     width: 100%;
     overscroll-behavior: none;
@@ -379,7 +378,7 @@ main {
     text-wrap-mode: nowrap;
     color: variables.$color-white;
 
-    @media screen and (max-width: 430px) {
+    @media screen and (max-width: 768px) {
         left: 1.6rem;
     }
 
@@ -411,7 +410,7 @@ main {
         word-spacing: 0;
         letter-spacing: 0;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 768px) {
             gap: 1rem;
             left: 0;
         }
@@ -424,7 +423,7 @@ main {
         line-height: 5.6rem;
         letter-spacing: 0;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 768px) {
             font-size: 4.4rem;
             font-weight: 600;
             line-height: 5.2rem;
@@ -443,7 +442,7 @@ main {
         line-height: 4.6rem;
         letter-spacing: 0.8rem;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 768px) {
             letter-spacing: 0;
             line-height: 4.7rem;
         }

@@ -18,6 +18,11 @@
         width: calc(100% - 3.2rem);
     }
 
+    @media screen and (min-width: 431px) and (max-width: 768px) {
+        margin: 0 1.6rem;
+        width: calc(100% - 3.2rem);
+    }
+
     .who-we-are__slider {
         position: relative;
         width: 100%;
@@ -40,7 +45,14 @@
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             grid-auto-columns: 100%;
+            padding-top: 12.2rem;  
+        }
+
+        @media screen and (min-width: 431px) and (max-width: 768px) {
+            grid-auto-columns: 100%;
             padding-top: 12.2rem;
+            max-width: 430px;
+            margin: 0 auto;
         }
     }
 
@@ -68,11 +80,18 @@
             width: 104%;
             height: 100%;
 
-            @media screen and (max-width: 430px) and (orientation: portrait) {
+            @media screen and (max-width: 430px) and (orientation: portrait) {   
                 top: -3rem;
                 height: 639px;
                 left: -5rem;
                 width: 130%;
+            }
+
+            @media screen and (min-width: 431px) and (max-width: 768px) {
+                top: -3rem;
+                height: 639px;
+                left: -6.4rem;
+                width: calc(100% + 15px);
             }
 
             .svg-line {
@@ -100,6 +119,12 @@
                 top: 11.5rem;
 
                 @media screen and (max-width: 430px) and (orientation: portrait) {
+                    top: 11.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
                     top: -9.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -111,7 +136,13 @@
             }
 
             svg:nth-child(2) {
-                @media screen and (max-width: 430px) and (orientation: portrait) {
+                @media screen and (max-width: 430px) and (orientation: portrait) {                    
+                    top: -9.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
                     top: 40.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -139,6 +170,13 @@
         .who-we-are__dots--right {
             right: 2.3rem;
         }
+
+        @media screen and (max-width: 768px) {
+            .who-we-are__dots--left,
+            .who-we-are__dots--right {
+                display: none;
+            }
+        }
     }
 
     .who-we-are__panel {
@@ -157,11 +195,17 @@
             min-height: fit-content;
         }
 
+        @media screen and (min-width: 431px) and (max-width: 768px) {
+            padding-top: 0;
+            padding-bottom: 3rem;
+            min-height: fit-content;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             justify-content: center;
             flex-flow: row nowrap;
             padding-top: 16rem;
-            gap: 2.4rem;
+            gap: 6.5rem;
         }
 
         @media screen and (orientation: portrait) {
@@ -172,6 +216,11 @@
         &.who-we-are__panel--default,
         &.who-we-are__panel--mirrored {
             @media screen and (max-width: 430px) and (orientation: portrait) {
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media screen and (min-width: 431px) and (max-width: 768px) {
                 display: flex;
                 flex-direction: column;
             }
@@ -188,7 +237,6 @@
                     margin: 0 auto;
                     --who-image-layer-shift: 3rem;
                 }
-
                 @media screen and (max-width: 430px) and (orientation: portrait) {
                     order: 2;
                     width: 100%;
@@ -197,6 +245,16 @@
                     margin: 0;
                     top: 0;
                 }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    order: 2;
+                    width: 100%;
+                    --who-image-layer-shift: 2.3rem;
+                    left: 0;
+                    margin: 0;
+                    top: 0;
+                }
+              
                 @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
                     width: 65rem;
                     --who-image-layer-shift: 4rem;
@@ -281,6 +339,10 @@
                     display: contents;
                 }
 
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    display: contents;
+                }
+
                 @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                     width: 100%;
                     max-width: 81rem;
@@ -323,6 +385,12 @@
                     right: 7%;
                 }
 
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    order: 1;
+                    position: absolute;
+                    right: 7%;
+                }
+
                 @media screen and (min-width: variables.$tablet) {
                     height: 9.6rem;
                     padding: 0 7.8rem 0 14.5rem;
@@ -351,6 +419,14 @@
                         height: 5.6rem;
                     }
 
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 5.6rem;
+                        height: 5.6rem;
+                    }
+
                     @media screen and (min-width: variables.$tablet) {
                         left: 0;
                         right: unset;
@@ -369,6 +445,12 @@
                             font-size: 2rem;
                         }
 
+                        @media screen and (min-width: 431px) and (max-width: 768px) {
+                            transform: rotate(0);
+                            color: variables.$icon-color;
+                            font-size: 2rem;
+                        }
+
                         @media screen and (min-width: variables.$tablet) {
                             transform: rotate(0);
                             font-size: 5.576rem;
@@ -379,7 +461,7 @@
                 .who-we-are__title-line {
                     width: 100%;
                     font-family: variables.$font-source-code-pro;
-                    font-size: 1.4rem;
+                    font-size: 1.8rem;
                     font-weight: 600;
                     text-align: center;
                     text-transform: lowercase;
@@ -392,14 +474,26 @@
                         text-shadow: none;
                         text-align: left;
                         width: auto;
-                        font-size: 1.4rem;
+                        font-size: 1.8rem;
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        text-shadow: none;
+                        text-align: left;
+                        width: auto;
+                        font-size: 1.8rem;
                     }
 
                     @media screen and (min-width: variables.$extra-small) {
                         font-size: 1.8rem;
                     }
 
-                    @media screen and (max-width: 430px) and (orientation: portrait) {
+                    @media screen and (max-width: 34px) and (orientation: portrait) {
+                        font-size: 1.8rem;
+                        line-height: 2rem;
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
                         font-size: 1.8rem;
                         line-height: 2rem;
                     }
@@ -415,6 +509,11 @@
                     padding-right: 9.7rem;
 
                     @media screen and (max-width: 430px) and (orientation: portrait) {
+                        padding-right: 0.5rem;
+                        max-width: unset;
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
                         padding-right: 0.5rem;
                         max-width: unset;
                     }
@@ -435,6 +534,14 @@
                         text-align: right;
                         width: 100%;
                     }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        display: block;
+                        text-align: center;
+                        padding-left: 30%rem;
+                        width: 100%;
+                    }
+
 
                     @media screen and (min-width: variables.$tablet) {
                         padding-left: 10.7rem;
@@ -464,6 +571,14 @@
                     order: 3;
                     margin-top: 6rem;
                     margin-left: 7rem;
+                    width: 29.5rem;
+                    height: auto;
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    order: 3;
+                    margin-top: 8rem;
+                    margin-left: 9rem;
                     width: 29.5rem;
                     height: auto;
                 }
@@ -515,6 +630,10 @@
                     );
 
                     @media screen and (max-width: 430px) and (orientation: portrait) {
+                        display: none;
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
                         display: none;
                     }
                 }
@@ -599,6 +718,12 @@
                         border-radius: variables.$border-radius-base;
                     }
 
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        /* do not override top/left/opacity here; animations rely on them */
+                        border-radius: variables.$border-radius-base;
+                    }
+
+
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                         border-radius: variables.$border-radius-large;
                     }
@@ -661,6 +786,10 @@
                         border-radius: variables.$border-radius-base;
                     }
 
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        border-radius: variables.$border-radius-base;
+                    }
+
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                         border-radius: variables.$border-radius-large;
                     }
@@ -694,6 +823,12 @@
                         width: 100%;
                     }
 
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        padding: 2rem;
+                        min-height: unset;
+                        width: 100%;
+                    }
+
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                         padding: 4rem;
                         font-size: 2.2rem;
@@ -717,9 +852,69 @@
                 --who-image-layer-dir-y: -1;
             }
 
+            .who-we-are__title-block {
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    left: 50%;
+                    right: auto;
+                    transform: translateX(-50%);
+                    width: calc(100% - 4.8rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    margin: 0;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    left: 50%;
+                    right: auto;
+                    transform: translateX(-50%);
+                    width: calc(100% - 11.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    margin: 0;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                .who-we-are__title-circle {
+                    @media screen and (max-width: 430px) and (orientation: portrait) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    i {
+                        @media screen and (max-width: 768px) and (orientation: portrait) {
+                            font-size: clamp(2rem, 3.3vw, 2.4rem);
+                        }
+                    }
+                }
+            }
+
             .who-we-are__text-block {
                 --who-layer-dir-x: 1;
                 --who-layer-dir-y: -1;
+
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    margin-top: 6.4rem;
+                    margin-left: 6rem;
+                    margin-right: auto;
+                    width: calc(100% - 9rem);
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    margin-top: 6.4rem;
+                    margin-left: 7rem;
+                    margin-right: auto;
+                    width: calc(100% - 10rem);
+                }
             }
         }
 
@@ -745,7 +940,45 @@
                 }
             }
 
-            .who-we-are__title-block {
+            .who-we-are__title-block {                
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    text-align: left;
+                    width: calc(100% - 5.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    text-align: left;
+                    width: calc(100% - 11.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                .who-we-are__title-circle {
+                    @media screen and (max-width: 430px) and (orientation: portrait) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    @media screen and (min-width: 431px) and (max-width: 768px) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    i {
+                        @media screen and (max-width: 768px) and (orientation: portrait) {
+                            font-size: clamp(2rem, 3.3vw, 2.4rem);
+                        }
+                    }
+                }
+
                 @media screen and (min-width: variables.$tablet) {
                     left: -4rem;
                 }
@@ -756,6 +989,14 @@
                 margin-right: 7rem;
                 margin-left: auto;
                 --who-layer-dir-x: 1;
+
+                @media screen and (max-width: 430px) and (orientation: portrait) {
+                    width: calc(100% - 9rem);
+                }
+
+                @media screen and (min-width: 431px) and (max-width: 768px) {
+                    width: calc(100% - 10rem);
+                }
 
                 &::before {
                     left: calc(

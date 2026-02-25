@@ -63,6 +63,13 @@
         contain: layout style paint;
     }
 
+    @media screen and (max-width: 768px) {
+        &__bg-dots,
+        &__dots {
+            display: none;
+        }
+    }
+
     &__content {
         position: relative;
         z-index: 3;

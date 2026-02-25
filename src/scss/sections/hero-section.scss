@@ -504,48 +504,41 @@
         z-index: 4;
         pointer-events: none;
         container-type: inline-size;
-        left: calc(21% - 3.5rem);
-        top: 19%;
-        width: 78%;
-        height: 22%;
+        width: 100%;
+        height: 100%;
+
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             top: 20svh;
-            width: 77%;
+     
             left: 14svw;
-            height: 23%;
+   
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
             top: 14%;
             left: 24%;
-            width: 50%;
-            height: auto;
+       
+
             aspect-ratio: 615 / 415;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
             top: 15%;
             left: 31%;
-            width: 38%;
-            height: auto;
+       
+           
             aspect-ratio: 615 / 415;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
             top: 19%;
             left: 33.25%;
-            width: 33.5%;
-            height: auto;
+        
+        
             aspect-ratio: 615 / 415;
         }
 
-        @media screen and (min-width: variables.$desktop) {
-            top: 29%;
-            left: calc(21% - 3.5rem);
-            width: 33.5%;
-            height: 45%;
-        }
 
         .animated-lightning {
             width: 100%;

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
-import { useTitleAnimation } from "../hooks";
+import { useMobile, useTitleAnimation } from "../hooks";
 // components
 import AnimatedPathFollower from "../components/AnimatedPathFollower";
 // config
@@ -85,6 +85,7 @@ const WhoWeAre = ({ lang }) => {
     const containerRef = useRef(null);
     const entryRef = useRef(null);
     const sliderRef = useRef(null);
+    const disableDots = useMobile(769);
     const progress = useTitleAnimation(entryRef);
     const title = `${translate("about.title", lang) || ""}`;
     const titleChars = Array.from(title);
@@ -332,10 +333,12 @@ const WhoWeAre = ({ lang }) => {
                         config={svgConfig.about}
                     />
                 </div>
-                <div className="who-we-are__background-stripes">
-                    <SvgDotsLeft className="who-we-are__dots--left" />
-                    <SvgDotsRight className="who-we-are__dots--right" />
-                </div>
+                {!disableDots && (
+                    <div className="who-we-are__background-stripes">
+                        <SvgDotsLeft className="who-we-are__dots--left" />
+                        <SvgDotsRight className="who-we-are__dots--right" />
+                    </div>
+                )}
             </div>
 
             <div

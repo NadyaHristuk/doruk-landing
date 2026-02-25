@@ -108,6 +108,14 @@
         }
     }
 
+    @media screen and (max-width: 768px) {
+        &__bg-dots,
+        &__dots--left,
+        &__dots--right {
+            display: none;
+        }
+    }
+
     &__content {
         position: relative;
         z-index: 3;

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useTitleAnimation } from "../hooks";
+import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
 import AnimatedPathFollower from "../components/AnimatedPathFollower";
 import { translate, svgConfig } from "../config";
@@ -21,6 +21,7 @@ const TitleBlock = ({ children, icon }) => {
 const OurBenefits = ({ lang }) => {
     const entryRef = useRef(null),
         containerRef = useRef(null),
+        disableDots = useMobile(769),
         progress = useTitleAnimation(entryRef);
 
     useMatrixDots({
@@ -65,9 +66,11 @@ const OurBenefits = ({ lang }) => {
                             config={svgConfig.ourBenefits}
                         />
                     </div>
-                    <div className="our-benefits__bg-dots" aria-hidden="true">
-                        <SvgBenefitsDots className="our-benefits__dots" />
-                    </div>
+                    {!disableDots && (
+                        <div className="our-benefits__bg-dots" aria-hidden="true">
+                            <SvgBenefitsDots className="our-benefits__dots" />
+                        </div>
+                    )}
                 </div>
             </div>
 

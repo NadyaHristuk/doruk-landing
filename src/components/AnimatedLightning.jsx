@@ -46,7 +46,7 @@ const AnimatedLightning = ({
     color = "#f6b8235a",
     speed = 25,
     opacity = 1,
-    orbSize = 9,
+    orbSize = 5,
 }) => {
     const paths =
         Array.isArray(highlightPaths) && highlightPaths.length > 0

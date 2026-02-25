@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useTitleAnimation } from "../hooks";
+import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
 import AnimatedPathFollower from "../components/AnimatedPathFollower.jsx";
 import {
@@ -49,6 +49,7 @@ const KeepInTouch = ({ lang }) => {
         [error, setError] = useState(false),
         [success, setSuccess] = useState(false),
         [serverError, setServerError] = useState(false),
+        disableDots = useMobile(769),
         progress = useTitleAnimation(entryRef);
 
     const title = `${translate("keepInTouch.title", lang) || ""}`;
@@ -161,10 +162,12 @@ const KeepInTouch = ({ lang }) => {
                             config={svgConfig.keepInTouch}
                         />
                     </div>
-                    <div className="keep-in-touch__bg-dots" aria-hidden="true">
-                        <SvgDotsLeft className="keep-in-touch__dots--left" />
-                        <SvgDotsRight className="keep-in-touch__dots--right" />
-                    </div>
+                    {!disableDots && (
+                        <div className="keep-in-touch__bg-dots" aria-hidden="true">
+                            <SvgDotsLeft className="keep-in-touch__dots--left" />
+                            <SvgDotsRight className="keep-in-touch__dots--right" />
+                        </div>
+                    )}
                 </div>
             </div>
 

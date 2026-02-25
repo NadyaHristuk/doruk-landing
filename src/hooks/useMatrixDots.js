@@ -133,6 +133,7 @@ const updateColumn = (state, pointer) => {
 export const useMatrixDots = ({
   sectionId = '#who-we-are',
   svgSelector = '.about-svg-dots-left, .about-svg-dots-right',
+  disableBelowWidth = 768,
   bucketSize = 32,
   minTailLength = 5,
   maxTailLength = 11,
@@ -151,6 +152,7 @@ export const useMatrixDots = ({
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduce) return undefined;
+    if (window.innerWidth <= disableBelowWidth) return undefined;
 
     const cleanupFns = [];
     const root = sectionId ? document.querySelector(sectionId) : document;
@@ -259,7 +261,8 @@ export const useMatrixDots = ({
     maxHeadOpacity,
     baseOpacity,
     minDuration,
-    maxDuration
+    maxDuration,
+    disableBelowWidth
   ]);
 };
 
