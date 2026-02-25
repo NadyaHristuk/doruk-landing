@@ -79,28 +79,28 @@ const AnimatedLightning = ({
         >
             <defs>
                 <radialGradient id="orbGradient" r="55%">
-                    <stop offset="0%" stop-color="#fffdf7" stop-opacity="0.7" />
+                    <stop offset="0%" stopColor="#fffdf7" stop-opacity="0.7" />
                     <stop
                         offset="20%"
-                        stop-color="#fff6d8"
+                        stopColor="#fff6d8"
                         stop-opacity="0.6"
                     />
                     <stop
                         offset="40%"
-                        stop-color="#ffe6a3"
+                        stopColor="#ffe6a3"
                         stop-opacity="0.55"
                     />
                     <stop
                         offset="65%"
-                        stop-color="#ffd26a"
+                        stopColor="#ffd26a"
                         stop-opacity="0.45"
                     />
                     <stop
                         offset="85%"
-                        stop-color="#d4af37"
+                        stopColor="#d4af37"
                         stop-opacity="0.25"
                     />
-                    <stop offset="100%" stop-color="#b8860b" stop-opacity="0" />
+                    <stop offset="100%" stopColor="#b8860b" stop-opacity="0" />
                 </radialGradient>
 
                 <filter
