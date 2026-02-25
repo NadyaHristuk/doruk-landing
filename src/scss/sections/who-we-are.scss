@@ -592,11 +592,10 @@
                     backdrop-filter: variables.$glass-blur;
                     opacity: var(--who-layer-before-progress, 0);
 
+                    /* keep animated before-layer visible on phones but still driven
+                    by var(--who-layer-before-progress) so gsap can move it */
                     @media screen and (max-width: 430px) and (orientation: portrait) {
-                        display: block;
-                        top: -0.8rem;
-                        left: -0.8rem;
-                        opacity: 1;
+                        /* do not override top/left/opacity here; animations rely on them */
                         border-radius: variables.$border-radius-base;
                     }
 
@@ -656,13 +655,10 @@
                     backdrop-filter: variables.$glass-blur;
                     opacity: var(--who-layer-after-progress, 0);
 
+                    /* similarly, allow progress variable to control after-layer movement;
+                    only keep radius and remove forced opacity/positions/backdrop changes */
                     @media screen and (max-width: 430px) and (orientation: portrait) {
-                        display: block;
-                        top: -1.6rem;
-                        left: -1.6rem;
-                        opacity: 1;
                         border-radius: variables.$border-radius-base;
-                        backdrop-filter: none;
                     }
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -758,6 +754,58 @@
             .who-we-are__text-block {
                 left: 0;
                 --who-layer-dir-x: 1;
+
+                /* flip substrate for mirrored layout */
+                .who-we-are__text-substrate {
+                    transform: scaleX(-1)
+                        translate3d(
+                            calc(
+                                var(--who-layer-dir-x, -1) *
+                                    (
+                                        var(
+                                                --who-layer-substrate-min-shift,
+                                                12px
+                                            ) +
+                                            (
+                                                var(
+                                                        --who-layer-substrate-shift,
+                                                        24px
+                                                    ) - var(
+                                                        --who-layer-substrate-min-shift,
+                                                        12px
+                                                    )
+                                            ) *
+                                            var(
+                                                --who-layer-substrate-progress,
+                                                0
+                                            )
+                                    )
+                            ),
+                            calc(
+                                var(--who-layer-dir-y, -1) *
+                                    (
+                                        var(
+                                                --who-layer-substrate-min-shift,
+                                                12px
+                                            ) +
+                                            (
+                                                var(
+                                                        --who-layer-substrate-shift,
+                                                        24px
+                                                    ) - var(
+                                                        --who-layer-substrate-min-shift,
+                                                        12px
+                                                    )
+                                            ) *
+                                            var(
+                                                --who-layer-substrate-progress,
+                                                0
+                                            )
+                                    )
+                            ),
+                            0
+                        );
+                }
 
                 @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                     left: 10.6%;
@@ -889,7 +937,7 @@
         .who-we-are__panel
         .who-we-are__text-block
         .who-we-are__text-substrate {
-        display: none;
+        display: block;
     }
 
     #who-we-are .who-we-are__panel .who-we-are__text-block::before {
