@@ -682,3 +682,54 @@
         margin: 0;
     }
 }
+
+/* Bridge 431px..variables.$mobile-1: keep mobile portrait layout */
+@media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+    .keep-in-touch {
+        width: calc(100% - 3.2rem);
+        margin: 0 16px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .keep-in-touch__content {
+        margin-top: 10rem;
+    }
+
+    .keep-in-touch__bg-line {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: calc(100% - var(--content-mobile-offset));
+    }
+
+    .keep-in-touch__top input,
+    .keep-in-touch__top button {
+        width: 100%;
+        height: 5.6rem;
+    }
+
+    .keep-in-touch__figure {
+        width: 28rem;
+    }
+
+    .keep-in-touch__contact-card {
+        width: 335px;
+        max-width: calc(100% - 3.2rem);
+        height: 185px;
+        margin: 2.4rem auto 0 0;
+        align-self: center;
+        transform: none;
+    }
+
+    .keep-in-touch__contact-info {
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    .keep-in-touch__contact-label {
+        width: fit-content;
+        max-width: 18ch;
+        margin-left: auto;
+    }
+}

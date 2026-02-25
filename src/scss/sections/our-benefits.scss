@@ -359,3 +359,24 @@
         }
     }
 }
+
+/* Bridge 431px..variables.$mobile-1: keep mobile portrait layout */
+@media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+    .our-benefits__header {
+        display: flex;
+    }
+
+    .our-benefits__bg-line {
+        right: -2.5rem;
+        width: 112%;
+        height: 125%;
+    }
+
+    .our-benefits__content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10rem;
+        top: 0;
+        transform: translateY(0);
+    }
+}
