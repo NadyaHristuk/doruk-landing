@@ -29,6 +29,10 @@ const HeroBackground = () => {
         className="hero__bg-gradient hero__bg-gradient--right"
         aria-hidden="true"
       />
+      <div
+        className="hero__bg-gradient hero__bg-gradient--left"
+        aria-hidden="true"
+      />
       <ParticleJellyfish className="hero__bg-particles" particleCount={180} />
     </div>
   );
