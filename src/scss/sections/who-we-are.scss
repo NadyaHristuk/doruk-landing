@@ -779,3 +779,142 @@
         }
     }
 }
+
+/* Bridge 431px..variables.$mobile-1: keep mobile portrait layout */
+@media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+    #who-we-are {
+        margin: 0 1.6rem;
+        width: calc(100% - 3.2rem);
+    }
+
+    /* keep mobile slider spacing so header не наезжает */
+    #who-we-are .who-we-are__slider {
+        grid-auto-columns: 100%;
+        padding-top: 12.2rem;
+    }
+
+    /* composition: column flow and compact panel sizing */
+    #who-we-are .who-we-are__panel {
+        padding-top: 0;
+        padding-bottom: 3rem;
+        min-height: fit-content;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* match mobile: info wrapper becomes boxless so abs title overlays correctly */
+    #who-we-are .who-we-are__panel .who-we-are__info {
+        display: contents;
+    }
+
+    /* image goes second */
+    #who-we-are .who-we-are__panel .who-we-are__image {
+        order: 2;
+        width: 100%;
+        --who-image-layer-shift: 2.3rem;
+        left: 0;
+        margin: 0;
+        top: 0;
+    }
+
+    /* title stays on the image as in mobile */
+    #who-we-are .who-we-are__panel .who-we-are__title-block {
+        order: 1;
+        position: absolute;
+        right: 7%;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__title-block
+        .who-we-are__title-circle {
+        top: 0;
+        right: 0;
+        width: 5.6rem;
+        height: 5.6rem;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__title-block
+        .who-we-are__title-circle
+        i {
+        transform: rotate(0);
+        color: variables.$icon-color;
+        font-size: 2rem;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__title-block
+        .who-we-are__title-line {
+        text-shadow: none;
+        text-align: left;
+        width: auto;
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__title-block
+        .who-we-are__title-line--first {
+        padding-right: 0.5rem;
+        max-width: unset;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__title-block
+        .who-we-are__title-line--second {
+        display: block;
+        text-align: right;
+        width: 100%;
+    }
+
+    /* text block as mobile */
+    #who-we-are .who-we-are__panel .who-we-are__text-block {
+        order: 3;
+        margin-top: 6rem;
+        margin-left: 5rem;
+        width: calc(100% - 5rem);
+        height: auto;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__text-block
+        .who-we-are__text-substrate {
+        display: none;
+    }
+
+    #who-we-are .who-we-are__panel .who-we-are__text-block::before {
+        display: block;
+        top: -0.8rem;
+        left: -0.8rem;
+        opacity: 1;
+        border-radius: variables.$border-radius-base;
+    }
+
+    #who-we-are .who-we-are__panel .who-we-are__text-block::after {
+        display: block;
+        top: -1.6rem;
+        left: -1.6rem;
+        opacity: 1;
+        border-radius: variables.$border-radius-base;
+        backdrop-filter: none;
+    }
+
+    #who-we-are
+        .who-we-are__panel
+        .who-we-are__text-block
+        .who-we-are__text-content {
+        padding: 2rem;
+        min-height: unset;
+        width: 100%;
+    }
+}

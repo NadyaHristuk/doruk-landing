@@ -78,6 +78,31 @@ const AnimatedLightning = ({
             focusable="false"
         >
             <defs>
+                <radialGradient id="orbGradient" r="55%">
+                    <stop offset="0%" stop-color="#fffdf7" stop-opacity="0.7" />
+                    <stop
+                        offset="20%"
+                        stop-color="#fff6d8"
+                        stop-opacity="0.6"
+                    />
+                    <stop
+                        offset="40%"
+                        stop-color="#ffe6a3"
+                        stop-opacity="0.55"
+                    />
+                    <stop
+                        offset="65%"
+                        stop-color="#ffd26a"
+                        stop-opacity="0.45"
+                    />
+                    <stop
+                        offset="85%"
+                        stop-color="#d4af37"
+                        stop-opacity="0.25"
+                    />
+                    <stop offset="100%" stop-color="#b8860b" stop-opacity="0" />
+                </radialGradient>
+
                 <filter
                     id="orb-glow"
                     x="-200%"
@@ -85,21 +110,9 @@ const AnimatedLightning = ({
                     width="500%"
                     height="500%"
                 >
-                    <feGaussianBlur
-                        in="SourceGraphic"
-                        stdDeviation="4.5"
-                        result="blur1"
-                    />
-                    <feGaussianBlur
-                        in="SourceGraphic"
-                        stdDeviation="12"
-                        result="blur2"
-                    />
-                    <feGaussianBlur
-                        in="SourceGraphic"
-                        stdDeviation="21"
-                        result="blur3"
-                    />
+                    <feGaussianBlur stdDeviation="3" result="blur1" />
+                    <feGaussianBlur stdDeviation="8" result="blur2" />
+                    <feGaussianBlur stdDeviation="14" result="blur3" />
                     <feMerge>
                         <feMergeNode in="blur3" />
                         <feMergeNode in="blur2" />
@@ -154,7 +167,7 @@ const AnimatedLightning = ({
                     <circle
                         key={`orb-${idx}`}
                         r={orbSize}
-                        fill={color}
+                        fill="url(#orbGradient)"
                         filter="url(#orb-glow)"
                         cx="0"
                         cy="0"
