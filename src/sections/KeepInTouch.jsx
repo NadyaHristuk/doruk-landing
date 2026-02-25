@@ -25,6 +25,9 @@ const NameInput = ({ value, setValue, lang }) => {
         <input
             required
             type="text"
+            id="keep-in-touch-name"
+            name="name"
+            autoComplete="name"
             value={value}
             minLength={nameMinLength}
             maxLength={inputMaxLength}
@@ -191,14 +194,7 @@ const KeepInTouch = ({ lang }) => {
                     >
                         <div className="keep-in-touch__form-fields">
                             <div className="keep-in-touch__inputs">
-                                <div className="keep-in-touch__name--desktop">
-                                    <NameInput
-                                        lang={lang}
-                                        value={userName}
-                                        setValue={setUserName}
-                                    />
-                                </div>
-                                <div className="keep-in-touch__name--mobile">
+                                <div className="keep-in-touch__name">
                                     <NameInput
                                         lang={lang}
                                         value={userName}
@@ -210,6 +206,9 @@ const KeepInTouch = ({ lang }) => {
                                         <input
                                             required
                                             type="tel"
+                                            id="keep-in-touch-phone"
+                                            name="phone"
+                                            autoComplete="tel"
                                             value={userPhone}
                                             minLength={phoneMinLength}
                                             maxLength={inputMaxLength}
@@ -229,6 +228,9 @@ const KeepInTouch = ({ lang }) => {
                                         <input
                                             required
                                             type="email"
+                                            id="keep-in-touch-email"
+                                            name="email"
+                                            autoComplete="email"
                                             value={userEmail}
                                             minLength={emailMinLength}
                                             maxLength={inputMaxLength}
@@ -246,15 +248,17 @@ const KeepInTouch = ({ lang }) => {
                                         />
                                     )}
                                     <div className="keep-in-touch__switch-wrap">
-                                        {phoneOrEmail
-                                            ? translate(
-                                                  "keepInTouch.a11y.togglePhone",
-                                                  lang,
-                                              )
-                                            : translate(
-                                                  "keepInTouch.a11y.toggleEmail",
-                                                  lang,
-                                              )}
+                                        <span className="keep-in-touch__switch-label">
+                                            {phoneOrEmail
+                                                ? translate(
+                                                      "keepInTouch.a11y.togglePhone",
+                                                      lang,
+                                                  )
+                                                : translate(
+                                                      "keepInTouch.a11y.toggleEmail",
+                                                      lang,
+                                                  )}
+                                        </span>
                                         <div
                                             className={`keep-in-touch__switch ${phoneOrEmail ? "keep-in-touch__switch--phone" : "keep-in-touch__switch--email"}`}
                                             role="switch"
@@ -272,6 +276,9 @@ const KeepInTouch = ({ lang }) => {
                             </div>
                             <div className="keep-in-touch__textarea-wrap">
                                 <textarea
+                                    id="keep-in-touch-comment"
+                                    name="comment"
+                                    autoComplete="off"
                                     placeholder={translate(
                                         "keepInTouch.input.comment",
                                         lang,
@@ -391,17 +398,17 @@ const KeepInTouch = ({ lang }) => {
                     </form>
                 </div>
                 <div className="keep-in-touch__contact-card">
-                    <div className="keep-in-touch__contact-info">
-                        <div className="keep-in-touch__contact-label">
+                    <address className="keep-in-touch__contact-info">
+                        <p className="keep-in-touch__contact-label">
                             {translate("keepInTouch.text", lang)}
-                        </div>
-                        <div className="keep-in-touch__email">
+                        </p>
+                        <p className="keep-in-touch__email">
                             {translate("keepInTouch.email", lang)}
-                        </div>
-                        <div className="keep-in-touch__phone">
+                        </p>
+                        <p className="keep-in-touch__phone">
                             {translate("keepInTouch.phone", lang)}
-                        </div>
-                    </div>
+                        </p>
+                    </address>
                 </div>
             </div>
         </div>

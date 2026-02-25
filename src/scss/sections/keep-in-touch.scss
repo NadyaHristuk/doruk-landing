@@ -27,13 +27,9 @@
         z-index: 4;
         display: flex;
 
-        @media screen and (min-width: variables.$desktop) {
-            min-height: 11.1rem;
-        }
-
         .animated-title {
             @media screen and (min-width: variables.$desktop) {
-                top: 7.4rem;
+                padding-top: 7.4rem;
             }
         }
     }
@@ -81,6 +77,16 @@
         transform: translateX(-50%);
         pointer-events: none;
         contain: layout style paint;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 140%;
+            max-width: none;
+            transform: translateX(-50%) scale(1.15);
+            transform-origin: top center;
+            opacity: 0.35;
+            filter: brightness(1.25) contrast(1.05);
+            mix-blend-mode: screen;
+        }
     }
 
     &__dots--right {
@@ -90,15 +96,25 @@
         transform: translateX(-50%);
         pointer-events: none;
         contain: layout style paint;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 140%;
+            max-width: none;
+            transform: translateX(-50%) scale(1.15);
+            transform-origin: bottom center;
+            opacity: 0.35;
+            filter: brightness(1.25) contrast(1.05);
+            mix-blend-mode: screen;
+        }
     }
 
     &__content {
         position: relative;
         z-index: 3;
+        display: flex;
+        flex-direction: column;
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            display: flex;
-            flex-direction: column;
             margin-top: 10rem;
         }
 
@@ -119,6 +135,7 @@
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             padding-top: 0;
+            align-items: stretch;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -194,21 +211,19 @@
         }
 
         textarea {
-            position: relative;
             width: 60rem;
             height: 14rem;
+            padding-top: 1.4rem;
             resize: none;
             overflow: hidden;
+
+            @media screen and (max-width: 430px) and (orientation: portrait) {
+                width: 100%;
+            }
 
             @media screen and (min-width: variables.$desktop) {
                 width: 60.1rem;
                 height: 13.6rem;
-            }
-
-            &::placeholder {
-                top: 50%;
-                position: relative;
-                transform: translateY(-50%);
             }
         }
 
@@ -330,26 +345,6 @@
         }
     }
 
-    &__name--mobile {
-        display: block;
-        position: absolute;
-        bottom: 0;
-        right: calc(-100% - 0.4rem);
-        width: 90%;
-
-        @media screen and (min-width: variables.$mobile) {
-            display: none;
-        }
-    }
-
-    &__name--desktop {
-        display: none;
-
-        @media screen and (min-width: variables.$mobile) {
-            display: block;
-        }
-    }
-
     &__form {
         z-index: 4;
         position: relative;
@@ -363,6 +358,12 @@
         align-items: flex-start;
         gap: 1.6rem;
         margin-bottom: 1.6rem;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 2.4rem;
+        }
 
         @media screen and (min-width: variables.$mobile) {
             gap: 2.4rem;
@@ -379,12 +380,22 @@
         flex-flow: column wrap;
         gap: 1.6rem;
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+
         @media screen and (min-width: variables.$mobile) {
             gap: 2.4rem;
         }
     }
 
+    &__name {
+        width: 100%;
+    }
+
     &__contact {
+        width: 100%;
         position: relative;
     }
 
@@ -398,6 +409,11 @@
         text-align: center;
         text-transform: capitalize;
         color: variables.$color-white;
+    }
+
+    &__switch-label {
+        display: block;
+        line-height: 1.2;
     }
 
     &__switch {
@@ -432,12 +448,17 @@
 
     &__textarea-wrap {
         position: relative;
+
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 100%;
+            flex: 0 0 100%;
+        }
     }
 
     &__textarea-counter {
         position: absolute;
         right: 5.6rem;
-        bottom: -1.7rem;
+        bottom: -1.9rem;
         width: max-content;
         padding: 0 1rem;
         font-family: variables.$font-source-code-pro;
@@ -536,39 +557,29 @@
     }
 
     &__contact-card {
+        position: relative;
+        align-self: center;
         margin: 2.8rem auto 0;
         width: calc(100% - 3.2rem);
 
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 335px;
+            max-width: calc(100% - 3.2rem);
+            height: 185px;
+        }
+
         @media screen and (min-width: variables.$mobile) {
-            position: absolute;
-            margin-top: 0;
-            right: -6rem;
+            align-self: flex-end;
+            margin-top: 1.6rem;
+            margin-right: 2.4rem;
             width: 44rem;
             transform: rotate(-20deg);
-            margin-left: auto;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
-            bottom: 12rem;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
-            bottom: 20rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: portrait) {
-            bottom: 20rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (orientation: landscape) {
-            bottom: 6rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: calc(53rem - 7vw);
-            right: 9rem;
             width: 42.7rem;
-            bottom: unset;
+            margin-top: -0.8rem;
+            margin-right: 4.8rem;
         }
 
         &::after {
@@ -582,6 +593,11 @@
             border-radius: variables.$border-radius-base;
             border: 0.1rem solid variables.$border-color;
             backdrop-filter: variables.$glass-blur;
+
+            @media screen and (max-width: 430px) and (orientation: portrait) {
+                width: calc(100% - 0.8rem);
+                height: calc(100% - 0.8rem);
+            }
 
             @media screen and (min-width: variables.$mobile) {
                 top: 1.2rem;
@@ -603,6 +619,11 @@
             border: 0.1rem solid variables.$border-color;
             backdrop-filter: variables.$glass-blur;
 
+            @media screen and (max-width: 430px) and (orientation: portrait) {
+                width: calc(100% - 1.6rem);
+                height: calc(100% - 1.6rem);
+            }
+
             @media screen and (min-width: variables.$mobile) {
                 top: 2.8rem;
                 left: 50%;
@@ -615,7 +636,11 @@
     &__contact-info {
         z-index: 2;
         position: relative;
+        margin: 0;
         padding: 1.6rem 2.4rem;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
         backdrop-filter: variables.$glass-blur;
         border-radius: variables.$border-radius-base;
         border: 0.1rem solid variables.$border-color;
@@ -623,6 +648,7 @@
         font-size: 2.2rem;
         font-weight: 600;
         line-height: 2.7rem;
+        font-style: normal;
         color: variables.$color-white;
 
         @media screen and (min-width: variables.$mobile) {
@@ -637,5 +663,9 @@
 
     &__email {
         margin-bottom: 2rem;
+    }
+
+    &__phone {
+        margin: 0;
     }
 }
