@@ -130,7 +130,7 @@
             }
 
             &--lower {
-                top: 57rem;
+                top: 67rem;
                 right: 22%;
                 transform: rotate(45deg) scaleX(-1);
             }
@@ -157,7 +157,7 @@
         }
 
         @media screen and (min-width: variables.$tablet) {
-            top: 165rem;
+            top: 158rem;
             left: 24%;
             transform: rotate(241deg);
         }

@@ -234,7 +234,8 @@
             @media screen and (min-width: variables.$mobile) {
                 top: 0;
                 left: 0;
-                height: 16.3rem;
+                width: 75%;
+                height: 17vh;
             }
         }
 
@@ -307,7 +308,7 @@
             }
 
             @media screen and (min-width: variables.$desktop) {
-                top: 75%;
+                top: 77vh;
             }
         }
 
@@ -439,10 +440,10 @@
         }
     }
 
-    &__hero__bg-box {
-        display: flex;
-        width: 100%;
-        height: 100%;
+    &__bg-box {
+        display: block;
+        width: 100vw;
+        height: 100vh;
     }
 
     &__bg-rocks {

@@ -38,6 +38,11 @@
             width: 105%;
             height: 100%;
             z-index: 2;
+
+            @media screen and (min-width: variables.$desktop) {
+                top: 10rem;
+            }
+
             @media screen and (max-width: 430px) and (orientation: portrait) {
                 right: -2.5rem;
                 width: 112%;

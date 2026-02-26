@@ -586,8 +586,7 @@ main {
         }
     }
 
-    &--our-benefits,
-    &--keep-in-touch {
+    &--our-benefits {
         @media screen and (orientation: portrait) {
             min-height: 90rem;
 
@@ -602,6 +601,17 @@ main {
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             margin-top: 0;
+        }
+    }
+
+    &--keep-in-touch {
+        height: 99.6rem;
+        @media screen and (orientation: portrait) {
+            min-height: 90rem;
+
+            @media screen and (min-width: variables.$mobile) {
+                min-height: 105rem;
+            }
         }
     }
 

@@ -34,7 +34,7 @@
 
         .animated-title {
             @media screen and (min-width: variables.$desktop) {
-                padding-top: 7.4rem;
+                padding-top: 8.4rem;
             }
         }
     }
@@ -133,7 +133,7 @@
             max-width: none;
             width: calc(100% - 6.8rem);
             margin-inline: 3.4rem;
-            padding-top: 14.8rem;
+            padding-top: 30rem;
         }
     }
 
@@ -602,7 +602,7 @@
 
         @media screen and (min-width: variables.$desktop) {
             width: 42.7rem;
-            margin-top: -0.8rem;
+            margin-top: -17.6rem;
             margin-right: 4.8rem;
         }
 
