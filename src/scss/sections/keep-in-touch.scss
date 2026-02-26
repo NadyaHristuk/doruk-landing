@@ -10,7 +10,6 @@
         margin: 0 16px;
         display: flex;
         flex-direction: column;
-        padding-bottom: 11rem;
     }
 
     @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {

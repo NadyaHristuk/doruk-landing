@@ -553,6 +553,13 @@ main {
         min-height: 100svh;
     }
 
+    &--hero {
+        @media screen and (min-width: variables.$desktop) {
+            height: 956px;
+            max-height: 956px;
+        }
+    }
+
     &--who-we-are {
         height: 100svh;
         min-height: 100svh;

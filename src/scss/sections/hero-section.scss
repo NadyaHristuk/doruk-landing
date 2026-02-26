@@ -21,7 +21,6 @@
         justify-content: space-between;
         padding: 1.6rem;
 
-
         @media screen and (max-width: 430px) {
             padding: 2.4rem 2.8rem 0;
             align-items: center;
@@ -43,7 +42,6 @@
             img {
                 width: auto;
                 height: 2.4rem;
-
 
                 @media screen and (max-width: 430px) {
                     height: 3.2rem;
@@ -235,7 +233,7 @@
 
             @media screen and (min-width: variables.$mobile) {
                 top: 0;
-                left: 0;         
+                left: 0;
                 height: 16.3rem;
             }
         }
@@ -252,7 +250,6 @@
                 variables.$bg 30%,
                 rgba(variables.$icon-color, 0) 100%
             );
-
 
             @media screen and (max-width: 430px) {
                 top: 31.5%;
@@ -281,8 +278,6 @@
                     rgba(variables.$bg, 0) 100%
                 );
             }
-
-
 
             @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
                 top: 30%;
@@ -314,7 +309,6 @@
             @media screen and (min-width: variables.$desktop) {
                 top: 75%;
             }
-
         }
 
         &--right {
@@ -329,7 +323,6 @@
                 rgba(0, 0, 0, 0) 100%
             );
             display: none;
-
 
             @media screen and (max-width: 430px) {
                 display: block;
@@ -354,7 +347,6 @@
                     rgba(variables.$bg, 0) 100%
                 );
             }
-
 
             @media screen and (max-width: 430px) {
                 display: block;
@@ -392,8 +384,6 @@
                 );
             }
 
-          
-
             @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
                 display: block;
                 right: 0;
@@ -424,7 +414,6 @@
                 rgba(variables.$bg, 0) 100%
             );
 
-
             @media screen and (max-width: 430px) {
                 display: block;
             }
@@ -450,6 +439,12 @@
         }
     }
 
+    &__hero__bg-box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+    }
+
     &__bg-rocks {
         position: absolute;
         left: 50%;
@@ -470,7 +465,6 @@
             url("assets/png/home/astronaut-rocks-small.png") type("image/png")
                 1x
         );
-
 
         @media screen and (max-width: 430px) {
             left: 50%;
@@ -516,7 +510,7 @@
             );
         }
 
-        @media screen and (min-width: variables.$mobile) {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             left: -3.5rem;
             top: 0;
             transform: none;
@@ -529,28 +523,6 @@
                 url("assets/webp/home/astronaut-rocks-tablet.webp")
                     type("image/webp") 1x,
                 url("assets/png/home/astronaut-rocks-tablet.png")
-                    type("image/png") 1x
-            );
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
-            left: 50%;
-            top: 3.5rem;
-            width: 67.6rem;
-            height: 46.8rem;
-            transform: translateX(-50%);
-            background-size: contain;
-            background-position: top left;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                black 6rem
-            );
-            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
-            background-image: image-set(
-                url("assets/webp/home/astronaut-rocks-small.webp")
-                    type("image/webp") 1x,
-                url("assets/png/home/astronaut-rocks-small.png")
                     type("image/png") 1x
             );
         }
@@ -574,6 +546,14 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
+            left: 0;
+            top: 0;
+            transform: none;
+            width: 100%;
+            height: 100%;
+            background-position: top left;
+            -webkit-mask-image: none;
+            mask-image: none;
             background-image: image-set(
                 url("assets/webp/home/astronaut-rocks-desktop.webp")
                     type("image/webp") 1x,
@@ -591,37 +571,32 @@
         width: 100%;
         height: 100%;
 
-
-
-
         @media screen and (max-width: 430px) {
             top: 14%;
-            left: 24%;    
+            left: 24%;
 
             aspect-ratio: 615 / 415;
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
             top: 14%;
-            left: 24%;    
+            left: 24%;
 
             aspect-ratio: 615 / 415;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             top: -1%;
-            left: 16.5%;           
+            left: 16.5%;
             aspect-ratio: 615 / 415;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             top: 12%;
             left: 24%;
-        
-        
+
             aspect-ratio: 615 / 415;
         }
-
 
         .animated-lightning {
             width: 100%;
@@ -674,7 +649,6 @@
         height: fit-content;
         top: 42svh;
         z-index: 10;
-
 
         @media screen and (max-width: 430px) {
             top: 48svh;
@@ -759,11 +733,10 @@
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
-                top: 20%;
-                left: -19%;
-                transform: scale(0.7);
-            }
-        
+            top: 20%;
+            left: -19%;
+            transform: scale(0.7);
+        }
     }
 
     &__content {
@@ -776,8 +749,6 @@
         flex-direction: column;
         align-items: stretch;
         text-shadow: 0 0 1rem variables.$bg;
-
-
 
         @media screen and (max-width: 430px) {
             top: 43svh;
@@ -819,7 +790,6 @@
             align-items: stretch;
             justify-content: flex-start;
         }
-
     }
 
     &__grid-row,
@@ -980,7 +950,6 @@
         flex-direction: column;
         row-gap: 1rem;
 
-
         @media screen and (max-width: 430px) {
             position: relative;
             display: block;
@@ -1042,7 +1011,6 @@
             letter-spacing: 0.768rem;
         }
 
-
         @media screen and (max-width: 430px) {
             font-size: 6.4rem;
             line-height: 7.7rem;
@@ -1094,7 +1062,6 @@
     &__title-left {
         text-align: left;
 
-
         @media screen and (max-width: 430px) {
             top: 0;
             left: calc(-2rem + 50%);
@@ -1136,7 +1103,6 @@
     &__title-right {
         text-align: right;
         margin-top: -0.8rem;
-
 
         @media screen and (max-width: 430px) {
             top: 8.6rem;
@@ -1197,7 +1163,6 @@
             font-size: 4.8rem;
             line-height: 6rem;
         }
-
 
         @media screen and (max-width: 430px) {
             position: relative;
