@@ -21,7 +21,13 @@
         justify-content: space-between;
         padding: 1.6rem;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+        @media screen and (max-width: 430px) {
+            padding: 2.4rem 2.8rem 0;
+            align-items: center;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
             padding: 2.4rem 2.8rem 0;
             align-items: center;
         }
@@ -38,7 +44,12 @@
                 width: auto;
                 height: 2.4rem;
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+                @media screen and (max-width: 430px) {
+                    height: 3.2rem;
+                }
+
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
                     height: 3.2rem;
                 }
 
@@ -199,7 +210,7 @@
         left: 0;
         top: 0;
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             width: 58%;
             height: 100%;
             left: 0;
@@ -224,7 +235,7 @@
 
             @media screen and (min-width: variables.$mobile) {
                 top: 0;
-                left: -3.5rem;         
+                left: 0;         
                 height: 16.3rem;
             }
         }
@@ -242,17 +253,25 @@
                 rgba(variables.$icon-color, 0) 100%
             );
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile) {           
-       
-                top: 64.5%;
-                left: -3.5rem;
-                width: 73%;
-                height: 48.5%;
+
+            @media screen and (max-width: 430px) {
+                top: 31.5%;
+                left: 0;
+                width: 100%;
+                height: 66%;
+                background: linear-gradient(
+                    0deg,
+                    variables.$bg 0%,
+                    variables.$bg 46%,
+                    rgba(variables.$bg, 0.94) 62%,
+                    rgba(variables.$bg, 0) 100%
+                );
             }
 
-            @media screen and (min-width: variables.$mobile) and (max-width: 768px) {
-            
-       
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                top: 31.5%;
+                left: 0;
+                width: 100%;
                 height: 66%;
                 background: linear-gradient(
                     0deg,
@@ -265,11 +284,11 @@
 
 
 
-            @media screen and (min-width: 769px) and (max-width: 1024px) {
-                top: 42%;
+            @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+                top: 30%;
                 left: 0;
                 width: 100%;
-                height: 58%;
+                height: 47%;
                 background: linear-gradient(
                     0deg,
                     variables.$bg 0%,
@@ -279,7 +298,7 @@
                 );
             }
 
-            @media screen and (min-width: 1025px) and (max-width: 1499px) {
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
                 top: 42%;
                 left: -3.5rem;
                 width: 100%;
@@ -292,9 +311,10 @@
                 );
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: 1024px) {
-                height: 37%;
+            @media screen and (min-width: variables.$desktop) {
+                top: 75%;
             }
+
         }
 
         &--right {
@@ -310,7 +330,8 @@
             );
             display: none;
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile) {
+
+            @media screen and (max-width: 430px) {
                 display: block;
                 right: 0;
                 width: 34%;
@@ -322,7 +343,20 @@
                 );
             }
 
-            @media screen and (min-width: variables.$mobile) and (max-width: 768px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                display: block;
+                right: 0;
+                width: 34%;
+                background: linear-gradient(
+                    to left,
+                    variables.$bg 0%,
+                    rgba(variables.$bg, 0.9) 34%,
+                    rgba(variables.$bg, 0) 100%
+                );
+            }
+
+
+            @media screen and (max-width: 430px) {
                 display: block;
                 right: 0;
                 width: 42%;
@@ -334,7 +368,19 @@
                 );
             }
 
-            @media screen and (min-width: 769px) and (max-width: 1024px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                display: block;
+                right: 0;
+                width: 42%;
+                background: linear-gradient(
+                    to left,
+                    variables.$bg 8%,
+                    rgba(variables.$bg, 0.88) 38%,
+                    rgba(variables.$bg, 0) 100%
+                );
+            }
+
+            @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
                 display: block;
                 right: 0;
                 width: 34%;
@@ -348,7 +394,7 @@
 
           
 
-            @media screen and (min-width: 1025px) and (max-width: 1499px) {
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
                 display: block;
                 right: 0;
                 width: 30%;
@@ -378,11 +424,16 @@
                 rgba(variables.$bg, 0) 100%
             );
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+            @media screen and (max-width: 430px) {
                 display: block;
             }
 
-            @media screen and (min-width: variables.$mobile) and (max-width: 1499px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                display: block;
+            }
+
+            @media screen and (min-width: variables.$mobile) and (max-width: variables.$desktop - 1px) {
                 display: block;
                 width: 42%;
                 background: linear-gradient(
@@ -393,7 +444,7 @@
                 );
             }
 
-            @media screen and (min-width: 1024px) and (max-width: 1499px) {
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
                 display: none;
             }
         }
@@ -420,7 +471,30 @@
                 1x
         );
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+        @media screen and (max-width: 430px) {
+            left: 50%;
+            top: 3.5rem;
+            width: 67.6rem;
+            height: 46.8rem;
+            transform: translateX(-50%);
+            background-size: contain;
+            background-position: top left;
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 6rem
+            );
+            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
+            background-image: image-set(
+                url("assets/webp/home/astronaut-rocks-small.webp")
+                    type("image/webp") 1x,
+                url("assets/png/home/astronaut-rocks-small.png")
+                    type("image/png") 1x
+            );
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
             left: 50%;
             top: 3.5rem;
             width: 67.6rem;
@@ -459,7 +533,7 @@
             );
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             left: 50%;
             top: 3.5rem;
             width: 67.6rem;
@@ -481,7 +555,7 @@
             );
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             left: 0;
             top: 8rem;
             transform: none;
@@ -518,25 +592,29 @@
         height: 100%;
 
 
-        @media screen and (max-width: 430px) and (orientation: portrait) {
-            top: 20svh;     
-            left: 14svw;   
-        }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+        @media screen and (max-width: 430px) {
             top: 14%;
             left: 24%;    
 
             aspect-ratio: 615 / 415;
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            top: 14%;
+            left: 24%;    
+
+            aspect-ratio: 615 / 415;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             top: -1%;
             left: 16.5%;           
             aspect-ratio: 615 / 415;
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             top: 12%;
             left: 24%;
         
@@ -577,7 +655,7 @@
         z-index: 3;
         pointer-events: auto;
 
-        @media screen and (max-width: 1024px) {
+        @media screen and (max-width: variables.$tablet - 1px) {
             width: 100%;
             height: 45svh;
             inset: auto;
@@ -597,16 +675,21 @@
         top: 42svh;
         z-index: 10;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+        @media screen and (max-width: 430px) {
             top: 48svh;
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
-            top: 20svh;
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            top: 48svh;
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
-            top: 17svh;
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            top: 25svh;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
+            top: 17.5svh;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -628,7 +711,7 @@
         width: 100%;
         min-height: 90svh;
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             position: absolute;
             top: 0;
             right: 0;
@@ -638,15 +721,15 @@
             height: 100%;
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             min-height: 85svh;
         }
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             min-height: 740px;
         }
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             min-height: 100%;
         }
 
@@ -675,7 +758,7 @@
             top: 0;
         }
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
                 top: 20%;
                 left: -19%;
                 transform: scale(0.7);
@@ -695,23 +778,28 @@
         text-shadow: 0 0 1rem variables.$bg;
 
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile) {
+
+        @media screen and (max-width: 430px) {
+            top: 43svh;
             left: 0;
             width: 100%;
             padding-inline: 2.4rem;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
         }
 
-        @media screen and (min-width: variables.$mobile)  and (max-width: 768px) {
-            top: 0;
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            top: 43svh;
             left: 0;
             width: 100%;
-            padding: 0;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
+            padding-inline: 2.4rem;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
         }
 
-        @media screen and (min-width:  769px) and (max-width: 1024px) {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             top: 36svh;
             left: 0;
             width: 100%;
@@ -721,7 +809,7 @@
             justify-content: flex-start;
         }
 
-        @media screen and (min-width: 1025px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             top: 31svh;
             left: auto;
             right: 4svw;
@@ -892,20 +980,8 @@
         flex-direction: column;
         row-gap: 1rem;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
-            width: min(100%, 56rem);
-            margin-inline: auto;
-            position: relative;
-            height: 17.2rem;
-            row-gap: 0;
-        }
 
-        @media screen and (min-width: variables.$mobile) {
-            position: absolute;
-            display: block;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (max-width: 430px) {
             position: relative;
             display: block;
             width: min(100%, 64rem);
@@ -914,13 +990,36 @@
             row-gap: 0;
         }
 
-        @media screen and (min-width: 1024px) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
             position: relative;
             display: block;
             width: min(100%, 64rem);
             margin-inline: auto;
             height: 17rem;
             row-gap: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            position: relative;
+            display: block;
+            width: min(100%, 64rem);
+            margin-inline: auto;
+            height: 17rem;
+            row-gap: 0;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
+            position: relative;
+            display: block;
+            width: min(100%, 64rem);
+            margin-inline: auto;
+            height: 17rem;
+            row-gap: 0;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            top: -43.4rem;
+            right: 1.6rem;
         }
     }
 
@@ -943,13 +1042,28 @@
             letter-spacing: 0.768rem;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
+
+        @media screen and (max-width: 430px) {
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
             width: max-content;
             position: absolute;
             left: 50%;
+            right: auto;
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+            width: max-content;
+            position: absolute;
+            left: 50%;
+            right: auto;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             font-size: 6.4rem;
             line-height: 7.7rem;
             letter-spacing: -0.1rem;
@@ -959,7 +1073,7 @@
             width: max-content;
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             font-size: 6.4rem;
             line-height: 7.7rem;
             letter-spacing: -0.1rem;
@@ -980,24 +1094,33 @@
     &__title-left {
         text-align: left;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
-            top: 0;
-            margin: 0;
-            transform: translateX(calc(-100% - 3rem));
-        }
 
-        @media screen and (min-width: variables.$mobile) {
-            left: calc(-5rem + 50%);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (max-width: 430px) {
             top: 0;
             left: calc(-2rem + 50%);
             margin: 0;
             transform: translateX(calc(-100% - 1.8rem));
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            top: 0;
+            left: calc(-2rem + 50%);
+            margin: 0;
+            transform: translateX(calc(-100% - 1.8rem));
+        }
+
+        @media screen and (min-width: variables.$mobile) {
+            left: calc(-5rem + 50%);
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            top: 0;
+            left: calc(-2rem + 50%);
+            margin: 0;
+            transform: translateX(calc(-100% - 1.8rem));
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             top: 0;
             left: calc(-2rem + 50%);
             margin: 0;
@@ -1014,18 +1137,8 @@
         text-align: right;
         margin-top: -0.8rem;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
-            top: 8.8rem;
-            margin: 0;
-            transform: translateX(4rem);
-        }
 
-        @media screen and (min-width: variables.$mobile) {
-            top: 30.8rem;
-            right: calc(-15rem + 50%);
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (max-width: 430px) {
             top: 8.6rem;
             right: calc(-15rem + 50%);
             left: auto;
@@ -1033,7 +1146,28 @@
             transform: translateX(1.8rem);
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            top: 8.6rem;
+            right: calc(-15rem + 50%);
+            left: auto;
+            margin: 0;
+            transform: translateX(1.8rem);
+        }
+
+        @media screen and (min-width: variables.$mobile) {
+            top: 30.8rem;
+            right: calc(-15rem + 50%);
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            top: 8.6rem;
+            right: calc(-15rem + 50%);
+            left: auto;
+            margin: 0;
+            transform: translateX(1.8rem);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             top: 8.6rem;
             right: calc(-15rem + 50%);
             left: auto;
@@ -1064,14 +1198,8 @@
             line-height: 6rem;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: 768px) {
-            width: min(100%, 56rem);
-            margin-left: auto;
-            margin-right: auto;
-            padding-inline: 1.2rem;
-        }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: 1024px) {
+        @media screen and (max-width: 430px) {
             position: relative;
             top: auto;
             left: auto;
@@ -1085,7 +1213,35 @@
             text-align: center;
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: 1499px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(100%, 64rem);
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 4.8rem;
+            line-height: 6rem;
+            text-align: center;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(100%, 64rem);
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 4.8rem;
+            line-height: 6rem;
+            text-align: center;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             position: relative;
             top: auto;
             left: auto;
@@ -1100,8 +1256,8 @@
         }
 
         @media screen and (min-width: variables.$desktop) {
-            top: 45.8rem;
-            left: 14.6rem;
+            top: 2.8rem;
+            left: 11.6rem;
             transform: translateX(0);
             text-align: left;
             font-size: 8rem;

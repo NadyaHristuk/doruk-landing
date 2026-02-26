@@ -21,8 +21,11 @@
     &__header {
         position: relative;
         z-index: 4;
-
         @media screen and (max-width: 430px) and (orientation: portrait) {
+            display: flex;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             display: flex;
         }
     }
@@ -35,12 +38,16 @@
             width: 105%;
             height: 100%;
             z-index: 2;
-
             @media screen and (max-width: 430px) and (orientation: portrait) {
                 right: -2.5rem;
                 width: 112%;
                 height: 125%;
-                top: 44rem;
+            }
+
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                right: -2.5rem;
+                width: 112%;
+                height: 125%;
             }
         }
 
@@ -63,7 +70,7 @@
         contain: layout style paint;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: variables.$mobile - 1px) {
         &__bg-dots,
         &__dots {
             display: none;
@@ -77,6 +84,14 @@
         transform: translateY(-5rem);
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10rem;
+            top: 0;
+            transform: translateY(0);
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
             margin-top: 10rem;
@@ -365,26 +380,5 @@
                 margin-inline: 1rem;
             }
         }
-    }
-}
-
-/* Bridge 431px..variables.$mobile-1: keep mobile portrait layout */
-@media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-    .our-benefits__header {
-        display: flex;
-    }
-
-    .our-benefits__bg-line {
-        right: -2.5rem;
-        width: 112%;
-        height: 125%;
-    }
-
-    .our-benefits__content {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10rem;
-        top: 0;
-        transform: translateY(0);
     }
 }
