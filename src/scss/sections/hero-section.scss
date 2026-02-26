@@ -253,10 +253,10 @@
             );
 
             @media screen and (max-width: 430px) {
-                top: 31.5%;
+                top: 45.5%;
                 left: 0;
                 width: 100%;
-                height: 66%;
+                height: 46%;
                 background: linear-gradient(
                     0deg,
                     variables.$bg 0%,
@@ -326,7 +326,7 @@
             display: none;
 
             @media screen and (max-width: 430px) {
-                display: block;
+                display: none;
                 right: 0;
                 width: 34%;
                 background: linear-gradient(
@@ -350,7 +350,7 @@
             }
 
             @media screen and (max-width: 430px) {
-                display: block;
+                display: none;
                 right: 0;
                 width: 42%;
                 background: linear-gradient(
@@ -416,7 +416,7 @@
             );
 
             @media screen and (max-width: 430px) {
-                display: block;
+                width: 20%;
             }
 
             @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
