@@ -6,7 +6,7 @@ const HeroBackground = () => {
         <div className="hero__bg" aria-hidden="true">
             <div className="hero__bg-box" aria-hidden="true">
                 <div className="hero__bg-rocks" aria-hidden="true" />
-                <div className="hero__bg-lightning" aria-hidden="true">
+                {/* <div className="hero__bg-lightning" aria-hidden="true">
                     <AnimatedLightning
                         highlightPaths={[
                             `M73.5 295 
@@ -20,7 +20,7 @@ const HeroBackground = () => {
                         ]}
                         viewBox="0 0 615 415"
                     />
-                </div>
+                </div> */}
             </div>
 
             <div
