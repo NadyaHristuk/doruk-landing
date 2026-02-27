@@ -319,7 +319,12 @@ main {
         }
 
         @media screen and (max-width: 430px) {
-            right: -2.4rem;
+            right: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            bottom: 2rem;
+            right: 5.6rem;
         }
 
         &::before {
