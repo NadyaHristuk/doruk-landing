@@ -239,7 +239,7 @@ main {
     cursor: pointer;
 
     @media screen and (max-width: 430px) and (orientation: portrait) {
-        bottom: -2.5rem;
+        right: 1.6rem;
     }
 
     @media screen and (min-width: variables.$tablet) {
@@ -303,7 +303,6 @@ main {
 
     &__toggle {
         position: relative;
-        right: 1.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -316,15 +315,6 @@ main {
 
         @media screen and (min-width: variables.$tablet) {
             display: none;
-        }
-
-        @media screen and (max-width: 430px) {
-            right: 2.4rem;
-        }
-
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
-            bottom: 2rem;
-            right: 5.6rem;
         }
 
         &::before {
