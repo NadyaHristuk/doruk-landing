@@ -409,9 +409,14 @@ main {
         word-spacing: 0;
         letter-spacing: 0;
 
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 550px) {
             gap: 1rem;
             left: 0;
+        }
+
+        @media screen and (min-width: 551px) and (max-width: 768px) {
+            gap: 1rem;
+            left: 50%;
         }
     }
 
@@ -576,6 +581,14 @@ main {
             height: 173rem;
         }
 
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            height: 170rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            height: 170rem;
+        }
+
         @media screen and (min-width: variables.$mobile) {
             height: 230rem;
         }
@@ -587,7 +600,7 @@ main {
 
     &--our-benefits {
         @media screen and (orientation: portrait) {
-            min-height: 90rem;
+            min-height: 97rem;
 
             @media screen and (min-width: variables.$mobile) {
                 min-height: 105rem;

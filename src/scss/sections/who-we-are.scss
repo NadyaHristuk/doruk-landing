@@ -20,7 +20,12 @@
         width: calc(100% - 3.2rem);
     }
 
-    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+        margin: 0 1.6rem;
+        width: calc(100% - 3.2rem);
+    }
+
+    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
         margin: 0 1.6rem;
         width: calc(100% - 3.2rem);
     }
@@ -54,10 +59,17 @@
             margin: 0 auto;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
             grid-auto-columns: 100%;
             padding-top: 12.2rem;
             max-width: 430px;
+            margin: 0 auto;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+            grid-auto-columns: 100%;
+            padding-top: 12.2rem;
+            max-width: 80%;
             margin: 0 auto;
         }
     }
@@ -95,11 +107,18 @@
                 width: calc(100% + 83px);
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
                 top: -3rem;
                 height: 629px;
                 left: 4.4rem;
                 width: calc(100% + 15px);
+            }
+
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                top: -3rem;
+                height: 629px;
+                left: -3.6rem;
+                width: calc(113% + 15px);
             }
 
             .svg-line {
@@ -134,7 +153,13 @@
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    top: -9.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     top: -9.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -154,7 +179,13 @@
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    top: 40.5rem;
+                    width: 42rem;
+                    height: 42rem;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     top: 40.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -209,7 +240,13 @@
             min-height: fit-content;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            padding-top: 0;
+            padding-bottom: 3rem;
+            min-height: fit-content;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
             padding-top: 0;
             padding-bottom: 3rem;
             min-height: fit-content;
@@ -236,7 +273,12 @@
                 flex-direction: column;
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                display: flex;
+                flex-direction: column;
+            }
+
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                 display: flex;
                 flex-direction: column;
             }
@@ -264,7 +306,16 @@
                     top: 0;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    order: 2;
+                    width: 100%;
+                    --who-image-layer-shift: 2.3rem;
+                    left: 0;
+                    margin: 0;
+                    top: 0;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
@@ -359,7 +410,11 @@
                     display: contents;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    display: contents;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     display: contents;
                 }
 
@@ -407,7 +462,13 @@
                     right: 7%;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    order: 1;
+                    position: absolute;
+                    right: 7%;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     order: 1;
                     position: absolute;
                     right: 7%;
@@ -443,7 +504,15 @@
                         height: 5.6rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 5.6rem;
+                        height: 5.6rem;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         position: absolute;
                         top: 0;
                         right: 0;
@@ -471,7 +540,13 @@
                             font-size: 2rem;
                         }
 
-                        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                            transform: rotate(0);
+                            color: variables.$icon-color;
+                            font-size: 2rem;
+                        }
+
+                        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                             transform: rotate(0);
                             color: variables.$icon-color;
                             font-size: 2rem;
@@ -505,7 +580,14 @@
                         font-size: 1.8rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        text-shadow: none;
+                        text-align: left;
+                        width: auto;
+                        font-size: 1.8rem;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         text-shadow: none;
                         text-align: left;
                         width: auto;
@@ -523,7 +605,12 @@
                         line-height: 2rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        font-size: 1.8rem;
+                        line-height: 2rem;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         font-size: 1.8rem;
                         line-height: 2rem;
                     }
@@ -545,7 +632,12 @@
                         max-width: unset;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        padding-right: 0.5rem;
+                        max-width: unset;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         padding-right: 0.5rem;
                         max-width: unset;
                     }
@@ -570,7 +662,14 @@
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        display: block;
+                        text-align: center;
+                        padding-left: 30%rem;
+                        width: 100%;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         display: block;
                         text-align: center;
                         padding-left: 30%rem;
@@ -612,7 +711,15 @@
                     height: auto;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    order: 3;
+                    margin-top: 8rem;
+                    margin-left: 9rem;
+                    width: 29.5rem;
+                    height: auto;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     order: 3;
                     margin-top: 8rem;
                     margin-left: 9rem;
@@ -672,7 +779,11 @@
                         display: none;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        display: none;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         display: none;
                     }
                 }
@@ -759,7 +870,12 @@
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        /* do not override top/left/opacity here; animations rely on them */
+                        border-radius: variables.$border-radius-base;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         /* do not override top/left/opacity here; animations rely on them */
                         border-radius: variables.$border-radius-base;
                     }
@@ -829,7 +945,11 @@
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        border-radius: variables.$border-radius-base;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         border-radius: variables.$border-radius-base;
                     }
 
@@ -868,7 +988,13 @@
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        padding: 2rem;
+                        min-height: unset;
+                        width: 100%;
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         padding: 2rem;
                         min-height: unset;
                         width: 100%;
@@ -955,7 +1081,18 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    left: 50%;
+                    right: auto;
+                    transform: translateX(-50%);
+                    width: calc(100% - 11.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    margin: 0;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     left: 50%;
                     right: auto;
                     transform: translateX(-50%);
@@ -976,7 +1113,14 @@
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
@@ -1006,7 +1150,14 @@
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    margin-top: 6.4rem;
+                    margin-left: 7rem;
+                    margin-right: auto;
+                    width: calc(100% - 10rem);
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     margin-top: 6.4rem;
                     margin-left: 7rem;
                     margin-right: auto;
@@ -1048,7 +1199,15 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    text-align: left;
+                    width: calc(100% - 11.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     text-align: left;
                     width: calc(100% - 11.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
@@ -1066,7 +1225,14 @@
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: clamp(5.6rem, 8.6vw, 6.4rem);
+                        height: clamp(5.6rem, 8.6vw, 6.4rem);
+                    }
+
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
@@ -1097,7 +1263,11 @@
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    width: calc(100% - 10rem);
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
                     width: calc(100% - 10rem);
                 }
 

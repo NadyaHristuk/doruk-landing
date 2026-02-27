@@ -12,9 +12,16 @@
         flex-direction: column;
     }
 
-    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
         width: calc(100% - 3.2rem);
-        margin: 0 16px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        width: calc(100% - 3.2rem);
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
     }
@@ -57,10 +64,17 @@
                 height: calc(100% - var(--content-mobile-offset));
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-                top: 0;
-                left: 0;
-                width: 100%;
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+                top: 2svh;
+                left: -5svw;
+                width: 111svw;
+                height: calc(100% - var(--content-mobile-offset));
+            }
+
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                top: 2svh;
+                left: -5svw;
+                width: 111svw;
                 height: calc(100% - var(--content-mobile-offset));
             }
 
@@ -125,7 +139,11 @@
             margin-top: 10rem;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            margin-top: 10rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             margin-top: 10rem;
         }
 
@@ -144,6 +162,14 @@
         align-items: flex-start;
         row-gap: 1.6rem;
 
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            align-items: center;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+            align-items: center;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             padding-top: 0;
             flex-flow: row nowrap;
@@ -160,7 +186,12 @@
                 height: 5.6rem;
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+                width: 100%;
+                height: 5.6rem;
+            }
+
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
                 width: 100%;
                 height: 5.6rem;
             }
@@ -227,18 +258,16 @@
         }
 
         textarea {
-            width: 60rem;
+            width: 100%;
+            max-width: 60rem;
             height: 14rem;
             padding-top: 1.4rem;
             resize: none;
             overflow: hidden;
 
-            @media screen and (max-width: 430px) and (orientation: portrait) {
-                width: 100%;
-            }
-
             @media screen and (min-width: variables.$desktop) {
                 width: 60.1rem;
+                max-width: none;
                 height: 13.6rem;
             }
         }
@@ -296,8 +325,14 @@
             width: 28rem;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
             width: 28rem;
+            margin-inline: auto;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            width: 28rem;
+            margin-inline: auto;
         }
 
         @media screen and (min-width: variables.$mobile) {
@@ -369,6 +404,12 @@
         z-index: 4;
         position: relative;
         width: 100%;
+
+        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &__form-fields {
@@ -381,6 +422,18 @@
 
         @media screen and (max-width: 430px) {
             margin-bottom: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            margin-bottom: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            margin-bottom: 2.4rem;
+        }
+
+        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            justify-content: center;
         }
 
         @media screen and (min-width: variables.$mobile) {
@@ -479,6 +532,21 @@
 
     &__submit {
         position: relative;
+        max-width: 60rem;
+
+        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            margin-inline: auto;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            width: 100%;
+            max-width: 37rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            width: 100%;
+            max-width: 37rem;
+        }
     }
 
     &__message {
@@ -583,11 +651,20 @@
             transform: none;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
             width: 335px;
             max-width: calc(100% - 3.2rem);
             height: 185px;
-            margin: 2.4rem auto 0 0;
+            margin: 2.4rem auto 0;
+            align-self: center;
+            transform: none;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            width: 335px;
+            max-width: calc(100% - 3.2rem);
+            height: 185px;
+            margin: 2.4rem auto 0;
             align-self: center;
             transform: none;
         }
@@ -680,7 +757,12 @@
             line-height: 2rem;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            font-size: 1.8rem;
+            line-height: 2rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             font-size: 1.8rem;
             line-height: 2rem;
         }
@@ -701,7 +783,13 @@
             margin-left: auto;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            width: fit-content;
+            max-width: 18ch;
+            margin-left: auto;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             width: fit-content;
             max-width: 18ch;
             margin-left: auto;
