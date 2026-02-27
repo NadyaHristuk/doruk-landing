@@ -25,11 +25,11 @@
             display: flex;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             display: flex;
         }
 
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
             display: flex;
         }
     }
@@ -53,14 +53,14 @@
                 height: 125%;
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
                 top: 39rem;
                 right: -2.5rem;
                 width: 113%;
                 height: 102svw;
             }
 
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
                 top: 39rem;
                 right: -2.5rem;
                 width: 113%;
@@ -87,7 +87,7 @@
         contain: layout style paint;
     }
 
-    @media screen and (max-width: variables.$mobile - 1px) {
+    @media screen and (max-width: variables.$mobile  - 1px) {
         &__bg-dots,
         &__dots {
             display: none;
@@ -108,7 +108,7 @@
             transform: translateY(0);
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
             margin-top: 10rem;
@@ -116,7 +116,7 @@
             transform: translateY(0);
         }
 
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
             margin-top: 10rem;

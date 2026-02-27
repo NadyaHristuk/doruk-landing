@@ -1,10 +1,11 @@
 $bg: #1c1c1e;
 $bg-rgba: rgba(28, 28, 30, 0.5);
 $color-white: #fff;
+$spec-color: #454546;
 $border-color: #747474;
 $color-primary: #f6b823;
 $icon-color: #242426;
-$error-color: #FF4F4F;
+$error-color: #ff4f4f;
 
 $font-source-code-pro: "Source Code Pro", monospace;
 $font-pixelify-sans: "Pixelify Sans", system-ui;
@@ -20,6 +21,7 @@ $border-radius-base: 3.6rem;
 $border-radius-large: 6.4rem;
 $border-radius-pill: 7.4rem;
 $glass-blur: blur(0.7rem);
+$spec-glass-blur: blur(0.073rem);
 
 $text-glow:
     0 0 2.6rem rgba(246, 184, 35, 0.72),

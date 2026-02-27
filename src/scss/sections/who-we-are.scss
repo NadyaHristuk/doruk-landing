@@ -13,19 +13,17 @@
     display: block;
     contain: layout style;
 
-
-
     @media screen and (max-width: 430px) {
         margin: 0 1.6rem;
         width: calc(100% - 3.2rem);
     }
 
-    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
         margin: 0 1.6rem;
         width: calc(100% - 3.2rem);
     }
 
-    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
         margin: 0 1.6rem;
         width: calc(100% - 3.2rem);
     }
@@ -50,8 +48,6 @@
             touch-action: pan-y;
         }
 
-
-
         @media screen and (max-width: 430px) {
             grid-auto-columns: 100%;
             padding-top: 12.2rem;
@@ -59,14 +55,21 @@
             margin: 0 auto;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
             grid-auto-columns: 100%;
             padding-top: 12.2rem;
             max-width: 430px;
             margin: 0 auto;
         }
 
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
+            grid-auto-columns: 100%;
+            padding-top: 12.2rem;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
             grid-auto-columns: 100%;
             padding-top: 12.2rem;
             max-width: 80%;
@@ -98,8 +101,6 @@
             width: 104%;
             height: 100%;
 
-
-
             @media screen and (max-width: 430px) {
                 top: -4rem;
                 height: 639px;
@@ -107,18 +108,18 @@
                 width: calc(100% + 83px);
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                 top: -3rem;
                 height: 629px;
                 left: 4.4rem;
                 width: calc(100% + 15px);
             }
 
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-                top: -3rem;
-                height: 629px;
-                left: -3.6rem;
-                width: calc(113% + 15px);
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
+                top: 0;
+                left: -0.5rem;
+                width: 104%;
+                height: 100%;
             }
 
             .svg-line {
@@ -145,21 +146,19 @@
             svg:nth-child(1) {
                 top: 11.5rem;
 
-
-
                 @media screen and (max-width: 430px) {
                     top: -9.5rem;
                     width: 42rem;
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     top: -9.5rem;
                     width: 42rem;
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     top: -9.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -171,21 +170,19 @@
             }
 
             svg:nth-child(2) {
-
-
                 @media screen and (max-width: 430px) {
                     top: 40.5rem;
                     width: 42rem;
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     top: 40.5rem;
                     width: 42rem;
                     height: 42rem;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     top: 40.5rem;
                     width: 42rem;
                     height: 42rem;
@@ -214,7 +211,7 @@
             right: 2.3rem;
         }
 
-        @media screen and (max-width: variables.$mobile - 1px) {
+        @media screen and (max-width: variables.$mobile  - 1px) {
             .who-we-are__dots--left,
             .who-we-are__dots--right {
                 display: none;
@@ -232,21 +229,19 @@
         padding-top: 5rem;
         scroll-snap-align: start;
 
-
-
         @media screen and (max-width: 430px) {
             padding-top: 0;
             padding-bottom: 3rem;
             min-height: fit-content;
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
             padding-top: 0;
             padding-bottom: 3rem;
             min-height: fit-content;
         }
 
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
             padding-top: 0;
             padding-bottom: 3rem;
             min-height: fit-content;
@@ -266,19 +261,17 @@
 
         &.who-we-are__panel--default,
         &.who-we-are__panel--mirrored {
-
-
             @media screen and (max-width: 430px) {
                 display: flex;
                 flex-direction: column;
             }
 
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                 display: flex;
                 flex-direction: column;
             }
 
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                 display: flex;
                 flex-direction: column;
             }
@@ -296,7 +289,6 @@
                     --who-image-layer-shift: 3rem;
                 }
 
-
                 @media screen and (max-width: 430px) {
                     order: 2;
                     width: 100%;
@@ -306,7 +298,7 @@
                     top: 0;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
@@ -315,7 +307,7 @@
                     top: 0;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
@@ -323,7 +315,7 @@
                     margin: 0;
                     top: 0;
                 }
-              
+
                 @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
                     width: 65rem;
                     --who-image-layer-shift: 4rem;
@@ -404,17 +396,15 @@
             .who-we-are__info {
                 position: relative;
 
-
-
                 @media screen and (max-width: 430px) {
                     display: contents;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     display: contents;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     display: contents;
                 }
 
@@ -454,21 +444,19 @@
                 padding: 0 6rem 0 2rem;
                 overflow: visible;
 
-
-
                 @media screen and (max-width: 430px) {
                     order: 1;
                     position: absolute;
                     right: 7%;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     order: 1;
                     position: absolute;
                     right: 7%;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     order: 1;
                     position: absolute;
                     right: 7%;
@@ -494,8 +482,6 @@
                     align-items: center;
                     justify-content: center;
 
-
-
                     @media screen and (max-width: 430px) {
                         position: absolute;
                         top: 0;
@@ -504,7 +490,7 @@
                         height: 5.6rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         position: absolute;
                         top: 0;
                         right: 0;
@@ -512,7 +498,7 @@
                         height: 5.6rem;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         position: absolute;
                         top: 0;
                         right: 0;
@@ -532,21 +518,19 @@
                         font-size: 2.8rem;
                         color: variables.$icon-color;
 
-
-
                         @media screen and (max-width: 430px) {
                             transform: rotate(0);
                             color: variables.$icon-color;
                             font-size: 2rem;
                         }
 
-                        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                             transform: rotate(0);
                             color: variables.$icon-color;
                             font-size: 2rem;
                         }
 
-                        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                             transform: rotate(0);
                             color: variables.$icon-color;
                             font-size: 2rem;
@@ -571,8 +555,6 @@
                         0 0 1.2rem variables.$bg;
                     color: variables.$color-white;
 
-
-
                     @media screen and (max-width: 430px) {
                         text-shadow: none;
                         text-align: left;
@@ -580,14 +562,14 @@
                         font-size: 1.8rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         text-shadow: none;
                         text-align: left;
                         width: auto;
                         font-size: 1.8rem;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         text-shadow: none;
                         text-align: left;
                         width: auto;
@@ -598,19 +580,17 @@
                         font-size: 1.8rem;
                     }
 
-
-
                     @media screen and (max-width: 430px) {
                         font-size: 1.8rem;
                         line-height: 2rem;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         font-size: 1.8rem;
                         line-height: 2rem;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         font-size: 1.8rem;
                         line-height: 2rem;
                     }
@@ -625,19 +605,17 @@
                     text-align: left;
                     padding-right: 9.7rem;
 
-
-
                     @media screen and (max-width: 430px) {
                         padding-right: 0.5rem;
                         max-width: unset;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         padding-right: 0.5rem;
                         max-width: unset;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         padding-right: 0.5rem;
                         max-width: unset;
                     }
@@ -653,8 +631,6 @@
                 }
 
                 .who-we-are__title-line--second {
-
-
                     @media screen and (max-width: 430px) {
                         display: block;
                         text-align: center;
@@ -662,20 +638,19 @@
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         display: block;
                         text-align: center;
                         padding-left: 30%rem;
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         display: block;
                         text-align: center;
                         padding-left: 30%rem;
                         width: 100%;
                     }
-
 
                     @media screen and (min-width: variables.$tablet) {
                         padding-left: 10.7rem;
@@ -701,8 +676,6 @@
                 width: 73%;
                 height: 100%;
 
-
-
                 @media screen and (max-width: 430px) {
                     order: 3;
                     margin-top: 8rem;
@@ -711,7 +684,7 @@
                     height: auto;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     order: 3;
                     margin-top: 8rem;
                     margin-left: 9rem;
@@ -719,7 +692,7 @@
                     height: auto;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     order: 3;
                     margin-top: 8rem;
                     margin-left: 9rem;
@@ -773,17 +746,15 @@
                         0
                     );
 
-
-
                     @media screen and (max-width: 430px) {
                         display: none;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         display: none;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         display: none;
                     }
                 }
@@ -864,22 +835,20 @@
                     /* keep animated before-layer visible on phones but still driven
                     by var(--who-layer-before-progress) so gsap can move it */
 
-
                     @media screen and (max-width: 430px) {
                         /* do not override top/left/opacity here; animations rely on them */
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         /* do not override top/left/opacity here; animations rely on them */
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         /* do not override top/left/opacity here; animations rely on them */
                         border-radius: variables.$border-radius-base;
                     }
-
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                         border-radius: variables.$border-radius-large;
@@ -940,16 +909,15 @@
                     /* similarly, allow progress variable to control after-layer movement;
                     only keep radius and remove forced opacity/positions/backdrop changes */
 
-
                     @media screen and (max-width: 430px) {
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         border-radius: variables.$border-radius-base;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         border-radius: variables.$border-radius-base;
                     }
 
@@ -980,21 +948,19 @@
                     color: variables.$color-white;
                     backdrop-filter: variables.$glass-blur;
 
-
-
                     @media screen and (max-width: 430px) {
                         padding: 2rem;
                         min-height: unset;
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         padding: 2rem;
                         min-height: unset;
                         width: 100%;
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         padding: 2rem;
                         min-height: unset;
                         width: 100%;
@@ -1068,8 +1034,6 @@
             }
 
             .who-we-are__title-block {
-
-
                 @media screen and (max-width: 430px) {
                     left: 50%;
                     right: auto;
@@ -1081,7 +1045,7 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     left: 50%;
                     right: auto;
                     transform: translateX(-50%);
@@ -1092,7 +1056,7 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     left: 50%;
                     right: auto;
                     transform: translateX(-50%);
@@ -1104,8 +1068,6 @@
                 }
 
                 .who-we-are__title-circle {
-
-
                     @media screen and (max-width: 430px) {
                         top: 50%;
                         transform: translateY(-50%);
@@ -1113,14 +1075,14 @@
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
@@ -1128,7 +1090,7 @@
                     }
 
                     i {
-                        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                        @media screen and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
                             font-size: clamp(2rem, 3.3vw, 2.4rem);
                         }
                     }
@@ -1139,8 +1101,6 @@
                 --who-layer-dir-x: 1;
                 --who-layer-dir-y: -1;
 
-
-
                 @media screen and (max-width: 430px) {
                     --who-layer-dir-x: -1;
                     --who-layer-dir-y: -1;
@@ -1150,14 +1110,14 @@
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     margin-top: 6.4rem;
                     margin-left: 7rem;
                     margin-right: auto;
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     margin-top: 6.4rem;
                     margin-left: 7rem;
                     margin-right: auto;
@@ -1188,9 +1148,7 @@
                 }
             }
 
-            .who-we-are__title-block {                
-
-
+            .who-we-are__title-block {
                 @media screen and (max-width: 430px) {
                     text-align: left;
                     width: calc(100% - 11.2rem);
@@ -1199,7 +1157,7 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     text-align: left;
                     width: calc(100% - 11.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
@@ -1207,7 +1165,7 @@
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     text-align: left;
                     width: calc(100% - 11.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
@@ -1216,8 +1174,6 @@
                 }
 
                 .who-we-are__title-circle {
-
-
                     @media screen and (max-width: 430px) {
                         top: 50%;
                         transform: translateY(-50%);
@@ -1225,14 +1181,14 @@
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
                         height: clamp(5.6rem, 8.6vw, 6.4rem);
                     }
 
-                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                    @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                         top: 50%;
                         transform: translateY(-50%);
                         width: clamp(5.6rem, 8.6vw, 6.4rem);
@@ -1240,7 +1196,7 @@
                     }
 
                     i {
-                        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                        @media screen and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
                             font-size: clamp(2rem, 3.3vw, 2.4rem);
                         }
                     }
@@ -1257,17 +1213,15 @@
                 margin-left: auto;
                 --who-layer-dir-x: 1;
 
-
-
                 @media screen and (max-width: 430px) {
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     width: calc(100% - 10rem);
                 }
 
