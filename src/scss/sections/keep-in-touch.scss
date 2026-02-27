@@ -40,6 +40,14 @@
         display: flex;
 
         .animated-title {
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                padding-top: 6rem;
+            }
+
+            @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                padding-top: 7rem;
+            }
+
             @media screen and (min-width: variables.$desktop) {
                 padding-top: 8.4rem;
             }
@@ -147,6 +155,20 @@
             margin-top: 10rem;
         }
 
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            max-width: none;
+            width: calc(100% - 4rem);
+            margin-inline: 2rem;
+            padding-top: 22rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            max-width: none;
+            width: calc(100% - 5rem);
+            margin-inline: 2.5rem;
+            padding-top: 24rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             max-width: none;
             width: calc(100% - 6.8rem);
@@ -168,6 +190,22 @@
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
             align-items: center;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            padding-top: 0;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            padding-top: 0;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 4rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -198,6 +236,14 @@
 
             @media screen and (min-width: variables.$mobile) {
                 width: 40rem;
+            }
+
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                width: 34rem;
+            }
+
+            @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                width: 38rem;
             }
 
             @media screen and (min-width: variables.$desktop) {
@@ -264,6 +310,18 @@
             padding-top: 1.4rem;
             resize: none;
             overflow: hidden;
+
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                width: 34rem;
+                max-width: none;
+                height: 13.6rem;
+            }
+
+            @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                width: 48rem;
+                max-width: none;
+                height: 13.6rem;
+            }
 
             @media screen and (min-width: variables.$desktop) {
                 width: 60.1rem;
@@ -341,6 +399,18 @@
             margin-bottom: 4rem;
         }
 
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            flex: 0 0 33.6rem;
+            width: 33.6rem;
+            height: 22.4rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            flex: 0 0 44rem;
+            width: 44rem;
+            height: 29rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             flex: 0 0 63rem;
             width: 63rem;
@@ -393,6 +463,16 @@
             border-radius: variables.$border-radius-base;
             border: 0.1rem solid variables.$border-color;
 
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                height: 22.4rem;
+                object-fit: cover;
+            }
+
+            @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                height: 29rem;
+                object-fit: cover;
+            }
+
             @media screen and (min-width: variables.$desktop) {
                 height: 42rem;
                 object-fit: cover;
@@ -438,6 +518,16 @@
 
         @media screen and (min-width: variables.$mobile) {
             gap: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            gap: 2rem;
+            flex-wrap: nowrap;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -675,6 +765,18 @@
             margin-right: 2.4rem;
             width: 44rem;
             transform: rotate(-20deg);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            width: 38rem;
+            margin-top: 2rem;
+            margin-right: 3.2rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            width: 40rem;
+            margin-top: -10rem;
+            margin-right: 4rem;
         }
 
         @media screen and (min-width: variables.$desktop) {

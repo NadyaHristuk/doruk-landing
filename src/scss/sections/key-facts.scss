@@ -103,6 +103,14 @@
             top: 40rem;
         }
 
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            top: 80rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            top: 110rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             top: 138rem;
         }
@@ -232,6 +240,14 @@
         @media screen and (min-width: variables.$tablet) {
             top: 16rem;
             background-size: 80%;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            background-size: 70%;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            background-size: 65%;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -672,6 +688,20 @@
         justify-content: flex-end;
         padding-top: 21.5rem;
 
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            flex-direction: unset;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-left: 42rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            flex-direction: unset;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-left: 50rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             flex-direction: unset;
             align-items: flex-end;
@@ -699,6 +729,24 @@
             margin-left: 0;
             width: 40rem;
             height: 40rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            order: 2;
+            width: 34rem;
+            height: 34rem;
+            margin-left: -2.4rem;
+            transform: translateY(8rem);
+            z-index: 5;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            order: 2;
+            width: 38rem;
+            height: 38rem;
+            margin-left: -2.8rem;
+            transform: translateY(10rem);
+            z-index: 5;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -828,6 +876,14 @@
             margin: 0.1rem auto auto;
             border-radius: 50%;
             border: 0.1rem solid variables.$border-color;
+
+            @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                width: 34rem;
+            }
+
+            @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                width: 38rem;
+            }
 
             @media screen and (min-width: variables.$desktop) {
                 width: 43rem;

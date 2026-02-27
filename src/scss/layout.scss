@@ -399,6 +399,16 @@ main {
         word-spacing: 5rem;
     }
 
+    @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+        font-size: 7.8rem;
+        line-height: 9.6rem;
+    }
+
+    @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+        font-size: 8.4rem;
+        line-height: 10.2rem;
+    }
+
     @media screen and (min-width: variables.$desktop) {
         font-size: 9.2rem;
         line-height: 11.1rem;
@@ -444,6 +454,16 @@ main {
             line-height: 5.2rem;
         }
 
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            font-size: 7.8rem;
+            line-height: 9.6rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            font-size: 8.4rem;
+            line-height: 10.2rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             font-size: 9.2rem;
             line-height: 11.1rem;
@@ -464,6 +484,16 @@ main {
 
         @media screen and (min-width: variables.$mobile) {
             letter-spacing: 1.44rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            font-size: 6rem;
+            line-height: 7.8rem;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            font-size: 6.6rem;
+            line-height: 8.4rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -572,6 +602,16 @@ main {
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
             height: calc(100svh - 7rem);
             min-height: calc(100svh - 7rem);
+        }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            height: 800px;
+            max-height: 800px;
+        }
+
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            height: 880px;
+            max-height: 880px;
         }
 
         @media screen and (min-width: variables.$desktop) {
