@@ -567,7 +567,7 @@
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-            left: 0;
+            left: -121px;
             top: 0;
             transform: none;
             width: 100%;
