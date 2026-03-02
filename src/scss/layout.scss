@@ -319,7 +319,7 @@ main {
         }
 
         @media screen and (max-width: 430px) {
-            left: 2.9rem;
+            right: 1.9rem;
             bottom: 5rem;
         }
 
@@ -437,7 +437,10 @@ main {
 
         @media screen and (min-width: 551px) and (max-width: 768px) {
             gap: 1rem;
-            left: 50%;
+            left: 0;
+            right: 0;
+            width: fit-content;
+            margin-inline: auto;
         }
     }
 
@@ -637,6 +640,10 @@ main {
             height: 173rem;
         }
 
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+            height: 169rem;
+        }
+
         @media screen and (min-width: variables.$mobile) {
             height: 230rem;
         }
@@ -649,6 +656,10 @@ main {
     &--our-benefits {
         @media screen and (orientation: portrait) {
             min-height: 90rem;
+
+            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+                min-height: 104rem;
+            }
 
             @media screen and (min-width: variables.$mobile) {
                 min-height: 105rem;

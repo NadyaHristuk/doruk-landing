@@ -624,18 +624,21 @@
         position: relative;
         max-width: 60rem;
 
-        @media screen and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
+        @media screen and (max-width: 430px) and (orientation: portrait) {
+            width: 100%;
             margin-inline: auto;
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             width: 100%;
             max-width: 37rem;
+            margin-inline: auto;
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
             width: 100%;
             max-width: 37rem;
+            margin-inline: auto;
         }
     }
 

@@ -117,7 +117,7 @@
 
             @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                 top: 0;
-                left: -0.5rem;
+                left: 5.5rem;
                 width: 104%;
                 height: 100%;
             }
@@ -1204,7 +1204,7 @@
                     left: 50%;
                     right: auto;
                     transform: translateX(-50%);
-                    width: calc(100% - 11.2rem);
+                    width: calc(100% - 4.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
                     height: auto;
                     margin: 0;
@@ -1226,7 +1226,7 @@
                     left: 50%;
                     right: auto;
                     transform: translateX(-50%);
-                    width: calc(100% - 11.2rem);
+                    width: calc(100% - 5.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
                     height: auto;
                     margin: 0;
@@ -1317,7 +1317,7 @@
             .who-we-are__title-block {
                 @media screen and (max-width: 430px) {
                     text-align: left;
-                    width: calc(100% - 11.2rem);
+                    width: calc(100% - 4.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
                     height: auto;
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
@@ -1333,7 +1333,7 @@
 
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     text-align: left;
-                    width: calc(100% - 11.2rem);
+                    width: calc(100% - 5.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
                     height: auto;
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;

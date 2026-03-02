@@ -93,10 +93,10 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-            top: 49svh;
-            right: -16svw;
-            width: 129svw;
-            height: 60svh;
+            top: 50svh;
+            right: -24svw;
+            width: 143svw;
+            height: 77svh;
         }
 
         @media screen and (min-width: variables.$tablet) {
@@ -688,6 +688,12 @@
             width: 9.8rem;
             height: 9.8rem;
             padding: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$desktop) {
+            width: 11.2rem;
+            height: 11.2rem;
+            padding: 2.8rem;
         }
 
         @media (prefers-reduced-motion: reduce) {

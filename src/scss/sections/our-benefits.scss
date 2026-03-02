@@ -424,6 +424,12 @@
             }
         }
 
+        @media screen and (min-width: 1500px) {
+            &:nth-child(3) {
+                bottom: 62px;
+            }
+        }
+
         @media screen and (min-width: variables.$extra-large) {
             &:nth-child(1) {
                 left: 18%;
