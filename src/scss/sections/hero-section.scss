@@ -389,6 +389,12 @@
             top: 0;
         }
 
+        @media screen and (min-width: variables.$desktop) {
+            width: auto;
+            height: auto;
+            top: 0;
+        }
+
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
             height: 69%;
         }

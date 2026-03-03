@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { langs, defaultLang } from '../config';
 import logo from '../assets/png/home/logo.png';
-import logoWebp from '../assets/webp/home/logo.webp';
 
 const HeroHeader = ({ lang, setLang }) => {
   const [langOpen, setLangOpen] = useState(false);
@@ -14,10 +13,7 @@ const HeroHeader = ({ lang, setLang }) => {
         aria-label="Go to hero section"
         onClick={(e) => e.preventDefault()}
       >
-        <picture>
-          <source type="image/webp" srcSet={logoWebp} />
-          <img src={logo} width="215" height="40" alt="" aria-hidden="true" />
-        </picture>
+        <img src={logo} width="215" height="40" alt="" aria-hidden="true" />
       </a>
       <nav
         className={`hero__header-lang hero__header-lang--mobile ${
