@@ -3,8 +3,7 @@ import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
 import ScrollPathRunner from "../components/ScrollPathRunner";
 import { translate, svgConfig } from "../config";
-import jpgBg from "../assets/jpg/our-benefits/benefits-bg.jpg";
-import jpgBgWebp from "../assets/webp/our-benefits/benefits-bg.webp";
+import benefitsBg from "../assets/webp/our-benefits/benefits-bg.webp";
 import SvgBenefitsDots from "../assets/svg/animations/benefits-dots.svg?react";
 
 const TitleBlock = ({ children, icon }) => {
@@ -77,19 +76,16 @@ const OurBenefits = ({ lang }) => {
             <div className="our-benefits__content">
                 <div className="our-benefits__figure">
                     <div className="our-benefits__image-wrap">
-                        <picture>
-                            <source type="image/webp" srcSet={jpgBgWebp} />
-                            <img
-                                className="our-benefits__image-masked"
-                                src={jpgBg}
-                                width="1380"
-                                height="920"
-                                loading="lazy"
-                                alt=""
-                                role="presentation"
-                                aria-hidden="true"
-                            />
-                        </picture>
+                        <img
+                            className="our-benefits__image-masked"
+                            src={benefitsBg}
+                            width="1380"
+                            height="920"
+                            loading="lazy"
+                            alt=""
+                            role="presentation"
+                            aria-hidden="true"
+                        />
                     </div>
                 </div>
                 <ul className="our-benefits__list" role="list">

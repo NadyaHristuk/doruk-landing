@@ -32,19 +32,16 @@ const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
             aria-hidden={hidden ? "true" : undefined}
         >
             <div className="who-we-are__image">
-                <picture>
-                    <source type="image/webp" srcSet={item.bgWebp} />
-                    <img
-                        className="who-we-are__image-masked"
-                        src={item.bg}
-                        width="798"
-                        height="496"
-                        loading="lazy"
-                        alt=""
-                        role="presentation"
-                        aria-hidden="true"
-                    />
-                </picture>
+                <img
+                    className="who-we-are__image-masked"
+                    src={item.bg}
+                    width="798"
+                    height="496"
+                    loading="lazy"
+                    alt=""
+                    role="presentation"
+                    aria-hidden="true"
+                />
             </div>
             <div className="who-we-are__info">
                 <div className="who-we-are__title-block">

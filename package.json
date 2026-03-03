@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "images:astronaut": "node scripts/convert-astronaut-webp.cjs"
   },
   "dependencies": {
     "@fontsource/arimo": "^5.2.5",

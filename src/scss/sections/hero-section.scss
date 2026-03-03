@@ -232,7 +232,7 @@
         height: 100%;
         left: 0;
         top: 0;
-        background-image: url("assets/png/astronaut.png");
+        background-image: url("assets/webp/home/astronaut-mobile.webp");
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -278,12 +278,14 @@
             top: 0;
             width: 100%;
             height: 100%;
+            background-image: url("assets/webp/home/astronaut-tablet.webp");
             background-size: contain;
             background-position: top left;
         }
 
         @media screen and (min-width: variables.$desktop) {
             width: 71.875%;
+            background-image: url("assets/webp/home/astronaut-desktop.webp");
         }
     }
 

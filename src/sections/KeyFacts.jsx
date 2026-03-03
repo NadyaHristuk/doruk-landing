@@ -6,10 +6,8 @@ import ScrollPathRunner from '../components/ScrollPathRunner';
 // config
 import { keyFactsConfig, translate, svgConfig } from '../config';
 // assets
-import circleImg from '../assets/jpg/key-facts/key-facts-bg.jpg';
-import squareImg from '../assets/png/key-facts/bg-2.png';
-import circleImgWebp from '../assets/webp/key-facts/key-facts-bg.webp';
-import squareImgWebp from '../assets/webp/key-facts/bg-2.webp';
+import circleImg from '../assets/webp/key-facts/key-facts-bg.webp';
+import squareImg from '../assets/webp/key-facts/bg-2.webp';
 
 const { logos, hoverOffset } = keyFactsConfig;
 
@@ -230,18 +228,15 @@ const KeyFacts = ({ lang }) => {
         </div>
         <div className="key-facts__block key-facts__block--photo">
           <div className="key-facts__figure" aria-hidden="true">
-            <picture>
-              <source type="image/webp" srcSet={circleImgWebp} />
-              <img
-                src={circleImg}
-                width="1480"
-                height="1480"
-                loading="lazy"
-                alt=""
-                role="presentation"
-                aria-hidden="true"
-              />
-            </picture>
+            <img
+              src={circleImg}
+              width="1480"
+              height="1480"
+              loading="lazy"
+              alt=""
+              role="presentation"
+              aria-hidden="true"
+            />
           </div>
           <p className="key-facts__text" ref={(el) => setTextRef(el, 1)}>
             {translate('keyFacts.text.2', lang)}
@@ -252,18 +247,15 @@ const KeyFacts = ({ lang }) => {
             {translate('keyFacts.text.3', lang)}
           </p>
           <div className="key-facts__figure" aria-hidden="true">
-            <picture>
-              <source type="image/webp" srcSet={squareImgWebp} />
-              <img
-                src={squareImg}
-                width="926"
-                height="520"
-                loading="lazy"
-                alt=""
-                role="presentation"
-                aria-hidden="true"
-              />
-            </picture>
+            <img
+              src={squareImg}
+              width="926"
+              height="520"
+              loading="lazy"
+              alt=""
+              role="presentation"
+              aria-hidden="true"
+            />
           </div>
         </div>
       </div>

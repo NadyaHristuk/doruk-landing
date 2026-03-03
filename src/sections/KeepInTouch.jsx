@@ -15,8 +15,7 @@ import {
     commentMinLength,
     commentMaxLength,
 } from "../config";
-import jpgBg from "../assets/jpg/keep-in-touch/keep-in-touch-bg.jpg";
-import jpgBgWebp from "../assets/webp/keep-in-touch/keep-in-touch-bg.webp";
+import keepInTouchBg from "../assets/webp/keep-in-touch/keep-in-touch-bg.webp";
 import SvgDotsLeft from "../assets/svg/animations/about-dots-left.svg?react";
 import SvgDotsRight from "../assets/svg/animations/about-dots-right.svg?react";
 
@@ -174,18 +173,15 @@ const KeepInTouch = ({ lang }) => {
             <div className="keep-in-touch__content">
                 <div className="keep-in-touch__top">
                     <div className="keep-in-touch__figure">
-                        <picture>
-                            <source type="image/webp" srcSet={jpgBgWebp} />
-                            <img
-                                src={jpgBg}
-                                width="630"
-                                height="350"
-                                loading="lazy"
-                                alt=""
-                                role="presentation"
-                                aria-hidden="true"
-                            />
-                        </picture>
+                        <img
+                            src={keepInTouchBg}
+                            width="630"
+                            height="350"
+                            loading="lazy"
+                            alt=""
+                            role="presentation"
+                            aria-hidden="true"
+                        />
                     </div>
                     <form
                         className="keep-in-touch__form"
