@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
-import AnimatedPathFollower from "../components/AnimatedPathFollower";
+import ScrollPathRunner from "../components/ScrollPathRunner";
 import { translate, svgConfig } from "../config";
 import jpgBg from "../assets/jpg/our-benefits/benefits-bg.jpg";
 import jpgBgWebp from "../assets/webp/our-benefits/benefits-bg.webp";
@@ -44,6 +44,24 @@ const OurBenefits = ({ lang }) => {
 
     return (
         <div className="our-benefits">
+            <div className="our-benefits__backgrounds">
+                <div className="our-benefits__bg">
+                    <div className="our-benefits__bg-line" ref={containerRef}>
+                        <ScrollPathRunner
+                            direction="rtl"
+                            offsetStart={0}
+                            config={svgConfig.ourBenefits}
+                        />
+                    </div>
+                    {!disableDots && (
+                        <div className="our-benefits__bg-dots" aria-hidden="true">
+                            <SvgBenefitsDots className="our-benefits__dots" />
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="our-benefits__inner">
             <div className="our-benefits__header" ref={entryRef}>
                 <h2
                     className="animated-title"
@@ -56,24 +74,6 @@ const OurBenefits = ({ lang }) => {
                     <span className="animated-title__text">{titleRest}</span>
                 </h2>
             </div>
-            <div className="our-benefits__backgrounds">
-                <div className="our-benefits__bg">
-                    <div className="our-benefits__bg-line" ref={containerRef}>
-                        <AnimatedPathFollower
-                            container={containerRef.current}
-                            direction="rtl"
-                            offsetStart={1.2}
-                            config={svgConfig.ourBenefits}
-                        />
-                    </div>
-                    {!disableDots && (
-                        <div className="our-benefits__bg-dots" aria-hidden="true">
-                            <SvgBenefitsDots className="our-benefits__dots" />
-                        </div>
-                    )}
-                </div>
-            </div>
-
             <div className="our-benefits__content">
                 <div className="our-benefits__figure">
                     <div className="our-benefits__image-wrap">
@@ -163,6 +163,7 @@ const OurBenefits = ({ lang }) => {
                         </p>
                     </TitleBlock>
                 </ul>
+            </div>
             </div>
         </div>
     );

@@ -1,0 +1,75 @@
+<svg preserveAspectRatio="meet" class="animated-lightning" xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true" focusable="false" height="100%" width="100%" viewBox="0 0 1000 692">
+  <defs>
+    <radialGradient id="orbGradient" r="55%">
+      <stop offset="0%" stop-color="#fffdf7" stop-opacity="1"></stop>
+      <stop offset="20%" stop-color="#fff6d8" stop-opacity="1"></stop>
+      <stop offset="40%" stop-color="#ffe6a3" stop-opacity="1"></stop>
+      <stop offset="65%" stop-color="#ffd26a" stop-opacity="1"></stop>
+      <stop offset="85%" stop-color="#d4af37" stop-opacity="1"></stop>
+      <stop offset="100%" stop-color="#b8860b" stop-opacity="0"></stop>
+    </radialGradient>
+    <filter id="orb-glow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="3" result="blur1"></feGaussianBlur>
+      <feGaussianBlur stdDeviation="4" result="blur2"></feGaussianBlur>
+      <feGaussianBlur stdDeviation="6" result="blur3"></feGaussianBlur>
+      <feMerge>
+        <feMergeNode in="blur3"></feMergeNode>
+        <feMergeNode in="blur2"></feMergeNode>
+        <feMergeNode in="blur1"></feMergeNode>
+        <feMergeNode in="SourceGraphic"></feMergeNode>
+      </feMerge>
+    </filter>
+    <mask id="hardMask" maskUnits="userSpaceOnUse">
+      <rect width="100%" height="100%" fill="white"></rect>
+      <rect x="576" y="290" width="3.5" height="200" fill="black"
+        transform="rotate(-8 576 290)"></rect>
+      <polygon points="388,270 430,295 430,320 390,283" fill="white"></polygon>
+    </mask>
+  </defs>
+  <g transform="scale(1,1)">
+    <g mask="url(#hardMask)">
+
+      <circle
+        r="5"
+        fill="url(#orbGradient)"
+        filter="url(#orb-glow)"
+        cx="0"
+        cy="0">
+        <animateMotion path=
+          "M285.5 480.2
+                         L317 207
+L628 461.5
+L549 504
+L388 368
+L726.5 246.2
+L666 498
+"
+          additive="replace"
+          dur="25s" repeatCount="indefinite" calcMode="linear"></animateMotion>
+        <animateTransform dur="25s" begin="0s" repeatCount="indefinite" attributeName="transform"
+          additive="replace"
+          type="scale" keyTimes="0;0.005;
+                                      0.24;0.245;
+                                      0.260;0.266;
+                                      0.266;0.274;
+                                      0.295;0.301;
+                                      0.301;0.312;
+                                      0.347;0.359;
+                                      0.485;0.49;
+                                      0.512;0.520;
+                                     0.995;1"
+          values="0;1;
+                                    1;0;
+                                    0;0.8;
+                                    0.8;0;
+                                    0;0.8;
+                                    0.8;0;
+                                    0;1;
+                                    1;0;
+                                    0;1;
+                                    1;0" calcMode="linear"></animateTransform>
+      </circle>
+    </g>
+  </g>
+</svg>

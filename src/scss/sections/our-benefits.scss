@@ -18,6 +18,20 @@
         height: 100%;
     }
 
+    &__inner {
+        position: relative;
+        z-index: 1;
+        padding-inline: 1.6rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            padding-inline: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            padding-inline: 0;
+        }
+    }
+
     &__header {
         position: relative;
         z-index: 4;
@@ -56,6 +70,7 @@
             }
 
             @media screen and (max-width: 430px) and (orientation: portrait) {
+                top: 41rem;
                 right: -2.5rem;
                 width: 112%;
                 height: 125%;
@@ -195,7 +210,25 @@
         width: 90%;
         margin-left: 10%;
 
-        @media screen and (min-width: variables.$mobile) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media screen and (min-width: variables.$tablet) {
             margin-left: 0;
             width: 100%;
         }
@@ -216,9 +249,11 @@
     }
 
     &__image-masked {
+        display: block;
         position: relative;
         width: 96%;
         height: auto;
+        margin-inline: auto;
         mask: url("assets/svg/bg/our-benefits-image-mask.svg") no-repeat center
             center / contain;
     }

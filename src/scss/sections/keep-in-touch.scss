@@ -34,6 +34,20 @@
         height: 100%;
     }
 
+    &__inner {
+        position: relative;
+        z-index: 1;
+        padding-inline: 1.6rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            padding-inline: 2.4rem;
+        }
+
+        @media screen and (min-width: variables.$tablet) {
+            padding-inline: 0;
+        }
+    }
+
     &__header {
         position: relative;
         z-index: 4;
@@ -74,15 +88,15 @@
 
             @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
                 top: 2svh;
-                left: -5svw;
-                width: 111svw;
+                left: -3svw;
+                width: 105%;
                 height: calc(100% - var(--content-mobile-offset));
             }
 
             @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
                 top: 2svh;
                 left: -5svw;
-                width: 111svw;
+                width: 105%;
                 height: calc(100% - var(--content-mobile-offset));
             }
 

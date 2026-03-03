@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // components
-import AnimatedPathFollower from '../components/AnimatedPathFollower.jsx';
+import ScrollPathRunner from '../components/ScrollPathRunner.jsx';
 import HeroHeader from '../components/HeroHeader.jsx';
 import HeroBackground from '../components/HeroBackground.jsx';
 import HeroGrid from '../components/HeroGrid.jsx';
@@ -66,16 +66,18 @@ const HeroSection = ({ lang, setLang }) => {
 
   return (
     <div className="hero" ref={heroRef}>
-      <HeroHeader lang={lang} setLang={setLang} />
       <HeroBackground />
       <div className="hero__bg-line" ref={containerRef} aria-hidden="true">
-        <AnimatedPathFollower
-          container={containerRef.current}
+        <ScrollPathRunner
           direction="rtl"
-          offsetStart={1.1}
+          offsetStart={0}
+          start="top top"
+          end="bottom top"
           config={svgConfig.home}
         />
       </div>
+      <div className="hero__inner">
+      <HeroHeader lang={lang} setLang={setLang} />
       <div className="hero__stage">
         <HeroGrid />
         <div className="hero__content">
@@ -93,6 +95,7 @@ const HeroSection = ({ lang, setLang }) => {
             <span className="hero__subtitle-pixelify hero__subtitle-pixelify--end">{translate('home.subtitle.end', lang)}</span>
           </h2>
         </div>
+      </div>
       </div>
     </div>
   );

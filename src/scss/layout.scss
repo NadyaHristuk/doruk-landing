@@ -179,13 +179,13 @@ main {
 
                 &:nth-child(2) {
                     bottom: 12rem;
-                    right: 5rem;
+                    right: 9rem;
                     height: 24rem;
                 }
 
                 &:nth-child(3) {
                     bottom: 10rem;
-                    right: 1.5rem;
+                    right: 6.5rem;
                     height: 19.2rem;
                 }
             }
@@ -237,10 +237,6 @@ main {
     height: 9.4rem;
     border-radius: 50%;
     cursor: pointer;
-
-    @media screen and (max-width: 430px) and (orientation: portrait) {
-        bottom: -2.5rem;
-    }
 
     @media screen and (min-width: variables.$tablet) {
         top: 50%;
@@ -325,7 +321,7 @@ main {
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile  - 1px) {
             bottom: 2rem;
-            right: 5.6rem;
+            right: 3.6rem;
         }
 
         &::before {
@@ -430,9 +426,9 @@ main {
         word-spacing: 0;
         letter-spacing: 0;
 
-        @media screen and (max-width: 550px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
             gap: 1rem;
-            left: 0;
+            left: 5%;
         }
 
         @media screen and (min-width: 551px) and (max-width: 768px) {
@@ -591,6 +587,28 @@ main {
     }
 }
 
+// ── Section inner wrapper mixin ──────────────────────────────────
+// Correct section structure:
+//   .section
+//     ├── __bg         → position: absolute, full-width (no padding)
+//     └── __inner      → @include section-inner  (header + content together)
+//          ├── __header
+//          └── __content
+//
+// __bg is placed OUTSIDE __inner so it bleeds to screen edges.
+// __inner wraps everything else and carries the horizontal padding.
+@mixin section-inner {
+    padding-inline: 1.6rem;
+
+    @media screen and (min-width: variables.$mobile) {
+        padding-inline: 2.4rem;
+    }
+
+    @media screen and (min-width: variables.$tablet) {
+        padding-inline: 0;
+    }
+}
+
 .section {
     width: 100%;
 
@@ -602,25 +620,30 @@ main {
     }
 
     &--hero {
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-            height: calc(100svh - 7rem);
-            min-height: calc(100svh - 7rem);
-        }
+        height: 956px;
+        width: 1920px;
+        overflow: hidden;
+        position: relative;
 
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            height: 800px;
-            max-height: 800px;
-        }
+        // @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
+        //     height: calc(100svh - 7rem);
+        //     min-height: calc(100svh - 7rem);
+        // }
 
-        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            height: 880px;
-            max-height: 880px;
-        }
+        // @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+        //     height: 800px;
+        //     max-height: 800px;
+        // }
 
-        @media screen and (min-width: variables.$desktop) {
-            height: 956px;
-            max-height: 956px;
-        }
+        // @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+        //     height: 880px;
+        //     max-height: 880px;
+        // }
+
+        // @media screen and (min-width: variables.$desktop) {
+        //     height: 956px;
+        //     max-height: 956px;
+        // }
     }
 
     &--who-we-are {
@@ -638,6 +661,10 @@ main {
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             height: 173rem;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            height: 166rem;
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {

@@ -6,33 +6,49 @@
     width: 100%;
     min-height: 100%;
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     background-color: variables.$bg;
 
     @media screen and (min-width: variables.$tablet) {
         transform: translate3d(0, 0, 0);
     }
 
+    &__inner {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 100vw;
+        padding-inline: 1.6rem;
+
+        @media screen and (min-width: variables.$mobile) {
+            padding-inline: 0;
+        }
+    }
+
     &__header {
         position: relative;
         z-index: 20;
         display: flex;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
         align-items: flex-start;
         justify-content: space-between;
-        padding: 1.6rem;
+        box-sizing: border-box;
+        padding: 1.6rem 0;
 
         @media screen and (max-width: 430px) {
-            padding: 2.4rem 2.8rem 0;
+            padding: 2.4rem 0 0;
             align-items: center;
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
-            padding: 2.4rem 2.8rem 0;
+            padding: 2.4rem 0 0;
             align-items: center;
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-            padding: 2.4rem 2.8rem 0;
+            padding: 2.4rem 0 0;
             align-items: center;
         }
 
@@ -216,470 +232,75 @@
         height: 100%;
         left: 0;
         top: 0;
-
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-            width: 100%;
-            height: 100%;
-            left: 0;
-            top: 0;
-        }
-    }
-
-    &__bg-gradient {
-        position: absolute;
-
-        &--top {
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 7rem;
-            background: linear-gradient(
-                180deg,
-                variables.$icon-color 0%,
-                rgba(variables.$icon-color, 0) 100%
-            );
-
-            @media screen and (min-width: variables.$mobile) {
-                top: 0;
-                left: 0;
-                width: 75%;
-                height: 17vh;
-            }
-        }
-
-        &--bottom {
-            z-index: 1;
-            top: 35%;
-            left: 0;
-            width: 100%;
-            height: 25%;
-            background: linear-gradient(
-                0deg,
-                variables.$bg 0%,
-                variables.$bg 30%,
-                rgba(variables.$icon-color, 0) 100%
-            );
-
-            @media screen and (max-width: 430px) {
-                top: 45.5%;
-                left: 0;
-                width: 100%;
-                height: 46%;
-                background: linear-gradient(
-                    0deg,
-                    variables.$bg 0%,
-                    variables.$bg 46%,
-                    rgba(variables.$bg, 0.94) 62%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-                top: 31.5%;
-                left: 0;
-                width: 100%;
-                height: 66%;
-                background: linear-gradient(
-                    0deg,
-                    variables.$bg 0%,
-                    variables.$bg 46%,
-                    rgba(variables.$bg, 0.94) 62%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-                top: 31.5%;
-                left: 0;
-                width: 100%;
-                height: 66%;
-                background: linear-gradient(
-                    0deg,
-                    variables.$bg 0%,
-                    variables.$bg 46%,
-                    rgba(variables.$bg, 0.94) 62%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
-                top: 30%;
-                left: 0;
-                width: 100%;
-                height: 47%;
-                background: linear-gradient(
-                    0deg,
-                    variables.$bg 0%,
-                    variables.$bg 42%,
-                    rgba(variables.$bg, 0.9) 60%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-                top: 70vh;
-            }
-
-            @media screen and (min-width: variables.$desktop) {
-                top: 77vh;
-            }
-        }
-
-        &--right {
-            z-index: 1;
-            top: 0;
-            right: 25%;
-            width: 30%;
-            height: 100%;
-            background: linear-gradient(
-                to left,
-                variables.$bg 10%,
-                rgba(0, 0, 0, 0) 100%
-            );
-            display: none;
-
-            @media screen and (max-width: 430px) {
-                display: none;
-                right: 0;
-                width: 34%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 0%,
-                    rgba(variables.$bg, 0.9) 34%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-                display: block;
-                right: 0;
-                width: 34%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 0%,
-                    rgba(variables.$bg, 0.9) 34%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-                display: block;
-                right: 0;
-                width: 34%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 0%,
-                    rgba(variables.$bg, 0.9) 34%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (max-width: 430px) {
-                display: none;
-                right: 0;
-                width: 42%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 8%,
-                    rgba(variables.$bg, 0.88) 38%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-                display: block;
-                right: 0;
-                width: 42%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 8%,
-                    rgba(variables.$bg, 0.88) 38%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-                display: block;
-                right: 0;
-                width: 42%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 8%,
-                    rgba(variables.$bg, 0.88) 38%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
-                display: block;
-                right: 0;
-                width: 34%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 0%,
-                    rgba(variables.$bg, 0.9) 34%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-                display: block;
-                right: 0;
-                width: 30%;
-                background: linear-gradient(
-                    to left,
-                    variables.$bg 10%,
-                    rgba(0, 0, 0, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$desktop) {
-                display: block;
-            }
-        }
-
-        &--left {
-            z-index: 1;
-            top: 0;
-            left: 0;
-            width: 36%;
-            height: 100%;
-            display: none;
-            background: linear-gradient(
-                to right,
-                variables.$bg 0%,
-                rgba(variables.$bg, 0.9) 34%,
-                rgba(variables.$bg, 0) 100%
-            );
-
-            @media screen and (max-width: 430px) {
-                width: 20%;
-            }
-
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-                display: block;
-            }
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-                display: block;
-            }
-
-            @media screen and (min-width: variables.$mobile) and (max-width: variables.$desktop  - 1px) {
-                display: block;
-                width: 42%;
-                background: linear-gradient(
-                    to right,
-                    variables.$bg 8%,
-                    rgba(variables.$bg, 0.88) 38%,
-                    rgba(variables.$bg, 0) 100%
-                );
-            }
-
-            @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-                display: none;
-            }
-        }
-    }
-
-    &__bg-box {
-        display: block;
-    }
-
-    &__bg-rocks {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 3.5rem;
-        width: 67.6rem;
-        height: 46.8rem;
-        z-index: 0;
-        pointer-events: none;
-        background-repeat: no-repeat;
+        background-image: url("assets/png/astronaut.png");
         background-size: contain;
-        background-position: top left;
-        mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
-
-        background-image: url("assets/svg/home/astronaut-rocks.svg");
+        background-position: center;
+        background-repeat: no-repeat;
 
         @media screen and (max-width: 430px) {
             left: 50%;
             top: 3.5rem;
             width: 67.6rem;
             height: 46.8rem;
-            transform: translateX(-50%);
             background-size: contain;
             background-position: top left;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                black 6rem
-            );
-            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
         }
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
             left: 50%;
             top: 3.5rem;
             width: 67.6rem;
             height: 46.8rem;
-            transform: translateX(-50%);
             background-size: contain;
             background-position: top left;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                black 6rem
-            );
-            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
         }
 
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
             left: 50%;
             top: 3.5rem;
             width: 67.6rem;
             height: 46.8rem;
-            transform: translateX(-50%);
             background-size: contain;
             background-position: top left;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                black 6rem
-            );
-            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
         }
 
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             left: 50%;
             top: 3.5rem;
-            transform: translateX(-50%);
             width: 67.6rem;
             height: 46.8rem;
             background-size: contain;
             background-position: top left;
-            -webkit-mask-image: linear-gradient(
-                to bottom,
-                transparent 0%,
-                black 6rem
-            );
-            mask-image: linear-gradient(to bottom, transparent 0%, black 6rem);
         }
 
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             left: -121px;
             top: 0;
-            transform: none;
             width: 100%;
             height: 100%;
             background-size: contain;
             background-position: top left;
-            -webkit-mask-image: none;
-            mask-image: none;
         }
 
         @media screen and (min-width: variables.$desktop) {
-            left: 0;
-            top: 0;
-            transform: none;
-            width: 100%;
-            height: 100%;
-            background-position: top left;
-            -webkit-mask-image: none;
-            mask-image: none;
+            width: 71.875%;
         }
-    }
-
-    &__bg-lightning {
-        position: absolute;
-        z-index: 4;
-        pointer-events: none;
-        container-type: inline-size;
-        width: 100%;
-        height: 100%;
-
-        @media screen and (max-width: 430px) {
-            top: 14%;
-            left: 24%;
-
-            aspect-ratio: 615 / 415;
-        }
-
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-            top: 14%;
-            left: 24%;
-
-            aspect-ratio: 615 / 415;
-        }
-
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-            top: 14%;
-            left: 24%;
-
-            aspect-ratio: 615 / 415;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
-            top: -1%;
-            left: 16.5%;
-            aspect-ratio: 615 / 415;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-            top: 12%;
-            left: 24%;
-
-            aspect-ratio: 615 / 415;
-        }
-
-        .animated-lightning {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-    }
-
-    &__bg-stars {
-        top: 0;
-        left: -3.5rem;
-        z-index: 2;
-        width: 100%;
-        height: 80%;
-        background: url("assets/svg/bg/stars.svg") no-repeat top left / contain;
-
-        mask: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0.7) 35%,
-            rgba(0, 0, 0, 0) 55%
-        );
     }
 
     &__bg-particles {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 50vh;
-        z-index: 3;
-        pointer-events: auto;
-
-        @media screen and (max-width: variables.$tablet  - 1px) {
-            width: 100%;
-            height: 45svh;
-            inset: auto;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            inset: 0 0 0 -3.5rem;
-            width: auto;
-            height: auto;
-        }
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 10;
     }
 
     &__bg-line {
         left: 0;
-        width: 100%;
+        width: 105%;
         height: fit-content;
         top: 42svh;
         z-index: 10;
@@ -1106,7 +727,7 @@
             line-height: 10.2rem;
             letter-spacing: 0.64rem;
         }
-}
+    }
 
     &--intro {
         .hero__title-left,

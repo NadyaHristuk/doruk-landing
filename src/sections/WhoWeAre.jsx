@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
 // components
-import AnimatedPathFollower from "../components/AnimatedPathFollower";
+import ScrollPathRunner from "../components/ScrollPathRunner";
 // config
 import { translate, svgConfig, aboutContent } from "../config";
 // assets
@@ -312,21 +312,9 @@ const WhoWeAre = ({ lang }) => {
 
     return (
         <>
-            <header className="who-we-are__header" ref={entryRef}>
-                <h2
-                    className="animated-title"
-                    aria-label={title}
-                    style={{ transform: `translateX(${progress}%)` }}
-                >
-                    <span className="animated-title__cap">{titleInitial}</span>
-                    <span className="animated-title__text">{titleRest}</span>
-                </h2>
-            </header>
-
             <div className="who-we-are__backgrounds">
                 <div className="who-we-are__bg-line" ref={containerRef}>
-                    <AnimatedPathFollower
-                        container={containerRef.current}
+                    <ScrollPathRunner
                         direction="rtl"
                         scrub={0.8}
                         offsetStart={0.12}
@@ -341,22 +329,35 @@ const WhoWeAre = ({ lang }) => {
                 )}
             </div>
 
-            <div
-                className={`who-we-are__slider ${TEMP_PAUSE_WHO_SLIDER ? "who-we-are__slider--paused" : ""}`}
-                role="region"
-                aria-label={translate("about.title", lang)}
-                ref={sliderRef}
-            >
-                {aboutContent.map((item) => (
-                    <WhoWeAreContent item={item} lang={lang} key={item.id} />
-                ))}
-                <WhoWeAreContent
-                    item={aboutContent[0]}
-                    lang={lang}
-                    key={`${aboutContent[0].id}-clone`}
-                    idSuffix="-clone"
-                    hidden={true}
-                />
+            <div className="who-we-are__inner">
+                <header className="who-we-are__header" ref={entryRef}>
+                    <h2
+                        className="animated-title"
+                        aria-label={title}
+                        style={{ transform: `translateX(${progress}%)` }}
+                    >
+                        <span className="animated-title__cap">{titleInitial}</span>
+                        <span className="animated-title__text">{titleRest}</span>
+                    </h2>
+                </header>
+
+                <div
+                    className={`who-we-are__slider ${TEMP_PAUSE_WHO_SLIDER ? "who-we-are__slider--paused" : ""}`}
+                    role="region"
+                    aria-label={translate("about.title", lang)}
+                    ref={sliderRef}
+                >
+                    {aboutContent.map((item) => (
+                        <WhoWeAreContent item={item} lang={lang} key={item.id} />
+                    ))}
+                    <WhoWeAreContent
+                        item={aboutContent[0]}
+                        lang={lang}
+                        key={`${aboutContent[0].id}-clone`}
+                        idSuffix="-clone"
+                        hidden={true}
+                    />
+                </div>
             </div>
         </>
     );

@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react
 // hooks
 import { useTitleAnimation } from '../hooks';
 // components
-import AnimatedPathFollower from '../components/AnimatedPathFollower';
+import ScrollPathRunner from '../components/ScrollPathRunner';
 // config
 import { keyFactsConfig, translate, svgConfig } from '../config';
 // assets
@@ -73,12 +73,19 @@ const KeyFacts = ({ lang }) => {
   };
 
   useEffect(() => {
-    onResize();
-    window.addEventListener('resize', onResize);
-    window.addEventListener('orientationchange', onResize);
+    const handleResize = () => {
+      onResize();
+      textRefs.current.forEach((el, i) => {
+        if (!el || !fullTexts.current[i]) return;
+        truncateToFit(el, fullTexts.current[i]);
+      });
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
     return () => {
-      window.removeEventListener('resize', onResize);
-      window.removeEventListener('orientationchange', onResize);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
     };
   }, []);
 
@@ -91,17 +98,6 @@ const KeyFacts = ({ lang }) => {
       truncateToFit(el, fullTexts.current[i]);
     });
   });
-
-  useEffect(() => {
-    const handleResize = () => {
-      textRefs.current.forEach((el, i) => {
-        if (!el || !fullTexts.current[i]) return;
-        truncateToFit(el, fullTexts.current[i]);
-      });
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const handleMouseEnter = (id) => {
     if (isMobile || isLowPower) return;
@@ -142,16 +138,6 @@ const KeyFacts = ({ lang }) => {
 
   return (
     <div className="key-facts">
-      <header className="key-facts__header" ref={entryRef}>
-        <h2
-          className="animated-title"
-          style={{ transform: `translateX(${progress}%)` }}
-          aria-label={keyFactsTitle}
-        >
-          <span className="animated-title__cap">{titleInitial}</span>
-          <span className="animated-title__text">{titleRest}</span>
-        </h2>
-      </header>
       <div className="key-facts__backgrounds">
         <div className="key-facts__bg key-facts__bg--upper">
           {/* <div className="key-facts__bg-art" aria-hidden="true" /> */}
@@ -161,8 +147,7 @@ const KeyFacts = ({ lang }) => {
             className="key-facts__bg-line key-facts__bg-line--upper"
             ref={lineUpperRef}
           >
-            <AnimatedPathFollower
-              container={lineUpperRef.current}
+            <ScrollPathRunner
               direction="rtl"
               offsetStart={0.2}
               scrub={50}
@@ -177,8 +162,7 @@ const KeyFacts = ({ lang }) => {
             className="key-facts__bg-line key-facts__bg-line--lower"
             ref={lineLowerRef}
           >
-            <AnimatedPathFollower
-              container={lineLowerRef.current}
+            <ScrollPathRunner
               direction={isMobile ? 'rtl' : 'ltr'}
               offsetStart={0.3}
               config={svgConfig.keyFacts.b}
@@ -190,8 +174,7 @@ const KeyFacts = ({ lang }) => {
             className="key-facts__bg-line key-facts__bg-line--mobile"
             ref={lineMobileRef}
           >
-            <AnimatedPathFollower
-              container={lineMobileRef.current}
+            <ScrollPathRunner
               direction="rtl"
               offsetStart={0.2}
               scrub={50}
@@ -201,6 +184,17 @@ const KeyFacts = ({ lang }) => {
         </div>
       </div>
 
+      <div className="key-facts__inner">
+      <header className="key-facts__header" ref={entryRef}>
+        <h2
+          className="animated-title"
+          style={{ transform: `translateX(${progress}%)` }}
+          aria-label={keyFactsTitle}
+        >
+          <span className="animated-title__cap">{titleInitial}</span>
+          <span className="animated-title__text">{titleRest}</span>
+        </h2>
+      </header>
       <div className="key-facts__content">
         <div className="key-facts__block key-facts__block--logos">
           <p className="key-facts__text" ref={(el) => setTextRef(el, 0)}>
@@ -272,6 +266,7 @@ const KeyFacts = ({ lang }) => {
             </picture>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

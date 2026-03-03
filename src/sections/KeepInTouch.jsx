@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
-import AnimatedPathFollower from "../components/AnimatedPathFollower.jsx";
+import ScrollPathRunner from "../components/ScrollPathRunner.jsx";
 import {
     translate,
     svgConfig,
@@ -143,21 +143,10 @@ const KeepInTouch = ({ lang }) => {
 
     return (
         <div className="keep-in-touch">
-            <div className="keep-in-touch__header" ref={entryRef}>
-                <h2
-                    className="animated-title"
-                    style={{ transform: `translateX(${progress}%)` }}
-                    aria-label={title}
-                >
-                    <span className="animated-title__cap">{titleInitial}</span>
-                    <span className="animated-title__text">{titleRest}</span>
-                </h2>
-            </div>
             <div className="keep-in-touch__backgrounds">
                 <div className="keep-in-touch__bg">
                     <div className="keep-in-touch__bg-line" ref={containerRef}>
-                        <AnimatedPathFollower
-                            container={containerRef.current}
+                        <ScrollPathRunner
                             offsetStart={0.2}
                             config={svgConfig.keepInTouch}
                         />
@@ -171,6 +160,17 @@ const KeepInTouch = ({ lang }) => {
                 </div>
             </div>
 
+            <div className="keep-in-touch__inner">
+            <div className="keep-in-touch__header" ref={entryRef}>
+                <h2
+                    className="animated-title"
+                    style={{ transform: `translateX(${progress}%)` }}
+                    aria-label={title}
+                >
+                    <span className="animated-title__cap">{titleInitial}</span>
+                    <span className="animated-title__text">{titleRest}</span>
+                </h2>
+            </div>
             <div className="keep-in-touch__content">
                 <div className="keep-in-touch__top">
                     <div className="keep-in-touch__figure">
@@ -413,6 +413,7 @@ const KeepInTouch = ({ lang }) => {
                         </p>
                     </address>
                 </div>
+            </div>
             </div>
         </div>
     );
