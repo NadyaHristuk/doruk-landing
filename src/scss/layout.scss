@@ -69,6 +69,7 @@ body {
     background-color: variables.$bg;
     max-width: 100%;
     width: 100%;
+    overflow-x: hidden;
     overscroll-behavior: none;
 }
 
@@ -231,21 +232,35 @@ main {
 .sidebar {
     z-index: 104;
     position: fixed;
-    bottom: 4.5rem;
-    right: 0;
+    top: calc(100svh - 9.9rem);
+    left: unset;
+    right: calc(env(safe-area-inset-right) + 1.8rem);
     width: 9.4rem;
     height: 9.4rem;
     border-radius: 50%;
     cursor: pointer;
 
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+        top: calc(100svh - 15.9rem);
+        right: calc(env(safe-area-inset-right) - 1.4rem);
+    }
+
+    @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) {
+        left: calc(100vw - env(safe-area-inset-right) - 12rem);
+        right: unset;
+    }
+
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) {
+        left: calc(100vw - env(safe-area-inset-right) - 13rem);
+        right: unset;
+    }
+
     @media screen and (min-width: variables.$tablet) {
-        top: 50%;
+        top: max(2.4rem, calc(50svh - 22.8rem));
         left: 0;
         right: unset;
-        bottom: unset;
         width: 5.6rem;
         height: auto;
-        transform: translateY(-50%);
         border-radius: 2.8rem;
         border: 0.1rem solid variables.$border-color;
         backdrop-filter: variables.$glass-blur;
@@ -299,7 +314,6 @@ main {
 
     &__toggle {
         position: relative;
-        right: 1.6rem;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -312,16 +326,6 @@ main {
 
         @media screen and (min-width: variables.$tablet) {
             display: none;
-        }
-
-        @media screen and (max-width: 430px) {
-            right: 1.9rem;
-            bottom: 5rem;
-        }
-
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile  - 1px) {
-            bottom: 2rem;
-            right: 3.6rem;
         }
 
         &::before {
@@ -620,30 +624,27 @@ main {
     }
 
     &--hero {
-        height: 956px;
-        width: 1920px;
+        // width: 100% inherited from .section — do NOT hardcode 1920px
+        // height: 100svh / min-height: 100svh inherited from the combined rule above
+        // for mobile, small phones, portrait tablets → full viewport, no override needed
         overflow: hidden;
         position: relative;
 
-        // @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-        //     height: calc(100svh - 7rem);
-        //     min-height: calc(100svh - 7rem);
-        // }
+        // Large-screen fixed heights — design mockup values
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop - 1px) {
+            height: 800px;
+            min-height: 800px;
+        }
 
-        // @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-        //     height: 800px;
-        //     max-height: 800px;
-        // }
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop - 1px) {
+            height: 880px;
+            min-height: 880px;
+        }
 
-        // @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-        //     height: 880px;
-        //     max-height: 880px;
-        // }
-
-        // @media screen and (min-width: variables.$desktop) {
-        //     height: 956px;
-        //     max-height: 956px;
-        // }
+        @media screen and (min-width: variables.$desktop) {
+            height: 956px;
+            min-height: 956px;
+        }
     }
 
     &--who-we-are {
