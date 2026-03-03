@@ -70,7 +70,6 @@ export const inputMaxLength = 40;
 export const commentMinLength = 10;
 export const commentMaxLength = 500;
 export const langs = ['ua', 'en'];
-export const defaultLang = 'en';
 export const translate = (key, lang) => {
   const dict = lang === 'ua' ? uaJson : enJson;
   return key
@@ -159,22 +158,6 @@ export const svgConfig = {
       path: 'M1826.11,725.01c-.6,0-1.18,0-1.77,0-98.92-.36-227.73-36.02-362.71-100.4-63.91-30.48-129.95-88.09-199.85-149.09-77.77-67.85-158.19-138.01-235.81-168.02-92.69-35.83-162.68-30.62-259.54-23.41-56.49,4.2-120.52,8.97-204.21,7.33-82.27-1.61-165.41-19.18-247.1-52.22-68.33-27.63-121.74-60.24-157.08-81.82-15-9.16-26.85-16.4-35.12-20.36C75.47,114.25,3.06,6.79,0,2.23L3.32,0c.74,1.11,74.86,111.11,121.34,133.41,8.45,4.05,20.37,11.33,35.47,20.55,68.97,42.11,212.5,129.74,402.17,133.46,83.5,1.64,147.43-3.12,203.83-7.32,97.39-7.25,167.75-12.48,261.28,23.67,78.28,30.26,158.97,100.65,237,168.73,69.7,60.81,135.53,118.24,198.95,148.49,134.45,64.13,262.66,99.65,361,100.01.58,0,1.18,0,1.77,0,94.47,0,236.55-27.5,270.63-47.55,33.87-19.93,88.71-27.29,89.26-27.36l.52,3.97c-.54.07-54.59,7.33-87.76,26.84-34.47,20.28-177.66,48.1-272.67,48.1Z'
     }
   }
-};
-
-// Optional path for animated lightning overlay on the hero.
-// Replace with exact path data from design when available.
-export const homeLightning = {
-  viewBox: '0 0 1000 600',
-  // Placeholder approximating the mock; provide a precise path later
-  d: 'M140,520 L340,120 L620,340 L840,120',
-  // Optional: highlight-only segments (runner animates only here)
-  // Replace array with exact subpaths from provided SVG
-  highlight: [],
-  // Split base into behind/front segments for z-index layering
-  behindBase: [],
-  behindHighlight: [],
-  frontBase: [],
-  frontHighlight: []
 };
 
 export const aboutContent = [

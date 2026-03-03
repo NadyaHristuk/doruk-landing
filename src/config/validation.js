@@ -1,9 +1,0 @@
-export const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-export const phoneRegex = /^\+?[1-9]\d{1,14}$/;
-export const contactUrl = import.meta.env.VITE_CONTACT_URL || '';
-export const nameMinLength = 2;
-export const phoneMinLength = 10;
-export const emailMinLength = 5;
-export const inputMaxLength = 40;
-export const commentMinLength = 10;
-export const commentMaxLength = 500;

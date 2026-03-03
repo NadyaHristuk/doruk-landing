@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { langs, defaultLang } from '../config';
+import { langs } from '../config';
 import logo from '../assets/png/home/logo.png';
 
 const HeroHeader = ({ lang, setLang }) => {

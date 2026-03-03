@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,13 +22,25 @@ export const useScrollTriggers = (containerRef, callbacks) => {
 
     const sections = [
       { id: 'hero', start: 'top top', end: 'bottom top' },
-      { id: 'who-we-are', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
-      { id: 'key-facts', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
-      { id: 'our-benefits', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' },
+      {
+        id: 'who-we-are',
+        start: 'clamp(top bottom)',
+        end: 'clamp(bottom bottom)'
+      },
+      {
+        id: 'key-facts',
+        start: 'clamp(top bottom)',
+        end: 'clamp(bottom bottom)'
+      },
+      {
+        id: 'our-benefits',
+        start: 'clamp(top bottom)',
+        end: 'clamp(bottom bottom)'
+      },
       { id: 'keep-in-touch', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' }
     ];
 
-    const triggers = sections.map(section =>
+    const triggers = sections.map((section) =>
       ScrollTrigger.create({
         trigger: `#${section.id}`,
         start: section.start,
@@ -42,7 +53,7 @@ export const useScrollTriggers = (containerRef, callbacks) => {
     );
 
     return () => {
-      triggers.forEach(t => t.kill());
+      triggers.forEach((trigger) => trigger.kill());
     };
   }, [containerRef, onSectionChange, onProgress]);
 };

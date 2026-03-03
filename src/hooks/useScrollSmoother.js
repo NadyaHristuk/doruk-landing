@@ -1,4 +1,3 @@
-
 import { useEffect } from 'react';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { gsap } from 'gsap';
@@ -21,7 +20,11 @@ export const useScrollSmoother = (container, debugDisable = false) => {
     // Stricter check: only enable on powerful devices (8GB+ RAM, 6+ cores)
     const isLowPower = deviceMemory < 8 || cores < 6;
     const enableSmoother =
-      !debugDisable && !prefersReduce && !isLowPower && isFinePointer && isDesktopWidth;
+      !debugDisable &&
+      !prefersReduce &&
+      !isLowPower &&
+      isFinePointer &&
+      isDesktopWidth;
 
     if (!enableSmoother || !container) return;
 

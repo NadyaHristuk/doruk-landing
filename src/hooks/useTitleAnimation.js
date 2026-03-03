@@ -14,8 +14,8 @@ const getAnimValues = () => {
 };
 
 const useTitleAnimation = ref => {
-    const valuesRef = useReactRef(getAnimValues());
-    const [progress, setProgress] = useState(valuesRef.current.start);
+    const initialValuesRef = useReactRef(getAnimValues());
+    const [progress, setProgress] = useState(initialValuesRef.current.start);
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -27,8 +27,7 @@ const useTitleAnimation = ref => {
             ticking = false;
             if (!ref.current) return;
 
-            valuesRef.current = getAnimValues();
-            const { start: startValue, end: endValue } = valuesRef.current;
+            const { start: startValue, end: endValue } = getAnimValues();
 
             const rect = ref.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
