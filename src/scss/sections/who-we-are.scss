@@ -16,7 +16,6 @@
     .who-we-are__inner {
         position: relative;
         z-index: 1;
-        padding-inline: 1.6rem;
 
         @media screen and (min-width: variables.$mobile) {
             padding-inline: 2.4rem;
@@ -49,7 +48,7 @@
 
         @media screen and (max-width: 430px) {
             grid-auto-columns: 100%;
-            padding-top: 12.2rem;
+            padding-top: 5.2rem;
             max-width: 430px;
             margin: 0 auto;
         }
@@ -83,6 +82,7 @@
     .who-we-are__header {
         position: relative;
         z-index: 4;
+        overflow: hidden;
     }
 
     .who-we-are__backgrounds {
@@ -1516,18 +1516,22 @@
                 --who-layer-dir-x: -1;
 
                 @media screen and (max-width: 430px) {
+                    --who-layer-dir-x: 1;
                     width: calc(100% - 10rem);
                 }
 
                 @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
+                    --who-layer-dir-x: 1;
                     width: calc(100% - 10rem);
                 }
 
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
+                    --who-layer-dir-x: 1;
                     width: calc(100% - 10rem);
                 }
 
                 @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) and (orientation: portrait) {
+                    --who-layer-dir-x: 1;
                     width: calc(100% - 10rem);
                 }
 

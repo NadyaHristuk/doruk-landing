@@ -10,11 +10,11 @@ gsap.registerPlugin(ScrollToPlugin);
  * @param {object} options - Optional configuration (duration, onComplete).
  */
 export const scrollToSection = (sectionId, options = {}) => {
-  const { duration = 0.5, onComplete } = options;
-  
+  const { duration = 0.5, onComplete, offsetY = 24 } = options;
+
   gsap.to(window, {
     duration,
-    scrollTo: `#${sectionId}`,
+    scrollTo: { y: `#${sectionId}`, offsetY },
     ease: 'power2.out',
     onComplete
   });

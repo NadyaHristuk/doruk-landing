@@ -13,7 +13,6 @@
     &__inner {
         position: relative;
         z-index: 1;
-        padding-inline: 1.6rem;
 
         @media screen and (min-width: variables.$mobile) {
             padding-inline: 2.4rem;
@@ -28,6 +27,7 @@
         position: relative;
         z-index: 3;
         width: 100%;
+        overflow: hidden;
     }
 
     &__backgrounds {
@@ -81,6 +81,18 @@
         @media screen and (min-width: variables.$tablet) {
             right: -2.6rem;
         }
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            right: -4svw;
+            left: -4svw;
+            width: calc(100svw + 8svw);
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
+            right: -4svw;
+            left: -4svw;
+            width: calc(100svw + 8svw);
+        }
     }
 
     &__bg-line--lower {
@@ -98,7 +110,14 @@
             overflow: visible;
         }
 
-        @media screen and (max-width: 430px) and (orientation: portrait) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: 68svh;
+            right: -6svw;
+            width: 112%;
+            height: 57svh;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
             top: 68svh;
             right: -6svw;
             width: 112%;
@@ -1089,6 +1108,11 @@
         flex: 0 0 auto;
         width: 28rem;
         border-radius: variables.$border-radius-base;
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            margin-left: 7svw;
+            z-index: 5;
+        }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             margin-left: 15svw;

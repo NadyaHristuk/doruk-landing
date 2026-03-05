@@ -240,17 +240,52 @@ main {
     border-radius: 50%;
     cursor: pointer;
 
-    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) {
+    @media screen and (max-width: #{variables.$extra-small - 1px}) {
+        right: calc(env(safe-area-inset-right) + 1.8rem);
+    }
+
+    @media screen and (min-width: variables.$extra-small) and (max-width: #{variables.$small - 1px}) {
         top: calc(100svh - 15.9rem);
         right: calc(env(safe-area-inset-right) - 1.4rem);
     }
 
-    @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) {
+    @media screen and (min-width: variables.$small) and (max-width: #{variables.$mobile - 1px}) {
+        top: calc(100svh - 15.9rem);
+        right: calc(env(safe-area-inset-right) - 1.4rem);
+    }
+
+    // Phone landscape (≤500px height)
+    @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         left: calc(100vw - env(safe-area-inset-right) - 12rem);
         right: unset;
     }
 
-    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) {
+    // Nest Hub landscape (501–650px height)
+    @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+        left: calc(100vw - env(safe-area-inset-right) - 12rem);
+        right: unset;
+    }
+
+    // Tablet landscape (≥651px height)
+    @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+        left: calc(100vw - env(safe-area-inset-right) - 12rem);
+        right: unset;
+    }
+
+    // Phone landscape extra-small+ (≤500px height)
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        left: calc(100vw - env(safe-area-inset-right) - 13rem);
+        right: unset;
+    }
+
+    // Nest Hub landscape extra-small+ (501–650px height)
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+        left: calc(100vw - env(safe-area-inset-right) - 13rem);
+        right: unset;
+    }
+
+    // Tablet landscape extra-small+ (≥651px height)
+    @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
         left: calc(100vw - env(safe-area-inset-right) - 13rem);
         right: unset;
     }
@@ -374,11 +409,11 @@ main {
 
 .animated-title {
     z-index: 100;
-    position: absolute;
-    top: 0;
-    left: 50%;
+    position: relative;
+    display: flex;
+    width: fit-content;
+    margin-inline: auto;
     transition: transform variables.$linear-transition;
-    margin: 0;
     font-family: variables.$font-neutral-face;
     font-size: 4.8rem;
     font-weight: 700;
@@ -388,8 +423,9 @@ main {
     text-wrap-mode: nowrap;
     color: variables.$color-white;
 
-    @media screen and (max-width: 768px) {
-        left: 1.6rem;
+    @media screen and (max-width: 550px) {
+        margin-left: 1.6rem;
+        margin-right: 0;
     }
 
     @media screen and (min-width: variables.$mobile) {
@@ -424,23 +460,18 @@ main {
     }
 
     &:has(.animated-title__cap) {
-        display: inline-flex;
         align-items: baseline;
         gap: 2rem;
         word-spacing: 0;
         letter-spacing: 0;
 
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+        @media screen and (max-width: 767px) {
             gap: 1rem;
-            left: 5%;
         }
 
-        @media screen and (min-width: 551px) and (max-width: 768px) {
-            gap: 1rem;
-            left: 0;
-            right: 0;
-            width: fit-content;
-            margin-inline: auto;
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
+            margin-left: 5%;
+            margin-right: 0;
         }
     }
 

@@ -20,10 +20,13 @@
         width: 100%;
         height: 100%;
         max-width: 100vw;
-        padding-inline: 1.6rem;
 
         @media screen and (min-width: variables.$mobile) {
             padding-inline: 0;
+        }
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            padding-inline: 1.2rem;
         }
     }
 
@@ -39,7 +42,12 @@
         box-sizing: border-box;
         padding: 1.6rem 0;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) {
+            padding: 2.4rem 0 0;
+            align-items: center;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             padding: 2.4rem 0 0;
             align-items: center;
         }
@@ -69,36 +77,28 @@
             align-items: center;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            padding: 2.4rem 2.4rem 0;
+            align-items: center;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            padding: 2.4rem 5.6rem 0;
+            align-items: center;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            padding: 2.4rem 5.6rem 0;
+            align-items: center;
+        }
+
         &-logo {
             display: block;
 
             img {
                 width: auto;
-                height: 2.4rem;
-
-                @media screen and (max-width: 430px) {
-                    height: 3.2rem;
-                }
-
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-                    height: 3.2rem;
-                }
-
-                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-                    height: 3.2rem;
-                }
-
-                @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
-                    height: 3rem;
-                }
-
-                @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
-                    height: 3.4rem;
-                }
-
-                @media screen and (min-width: variables.$desktop) {
-                    height: 4rem;
-                }
+                // 390px→24px (2.4rem), 1920px→40px (4rem) — linear interpolation
+                height: clamp(2.4rem, calc(0.1046vw + 1.992rem), 4rem);
             }
         }
 
@@ -261,7 +261,16 @@
         background-position: center;
         background-repeat: no-repeat;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: 4.8rem;
+            left: 50%;
+            width: 56rem;
+            height: 38rem;
+            transform: translateX(-50%);
+            background-position: top center;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             top: 3.5rem;
             width: 67.6rem;
             height: 46.8rem;
@@ -285,6 +294,24 @@
             height: 46.8rem;
         }
 
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            top: 3.6rem;
+            left: 50%;
+            width: min(180vw, 67.6rem);
+            height: clamp(38rem, 50svh, 50rem);
+            transform: translateX(-50%);
+            background-position: top center;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            top: 3.6rem;
+            left: 50%;
+            width: min(180vw, 67.6rem);
+            height: clamp(38rem, 50svh, 50rem);
+            transform: translateX(-50%);
+            background-position: top center;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop - 1px) {
             left: -121px;
             top: 0;
@@ -297,6 +324,7 @@
             width: 71.875%;
             background-image: url("assets/webp/home/astronaut-desktop.webp");
         }
+
     }
 
     &__bg-particles {
@@ -317,7 +345,13 @@
         top: 42svh;
         z-index: 10;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: 53svh;
+            left: -6%;
+            width: 112%;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             top: 48svh;
         }
 
@@ -333,12 +367,39 @@
             top: 48svh;
         }
 
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            top: 45svh;
+            left: -4%;
+            width: 108%;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            top: 45svh;
+            left: -4%;
+            width: 108%;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
             top: 14svh;
         }
 
         @media screen and (min-width: variables.$desktop) {
             top: 12svh;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            width: 100%;
+            left: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            width: 100%;
+            left: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            width: 100%;
+            left: 0;
         }
 
         .svg-line {
@@ -382,6 +443,44 @@
             width: 79.1rem;
             height: 73.1rem;
         }
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            min-height: 100svh;
+        }
+
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            height: 100%;
+            min-height: 100svh;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            height: 100%;
+            min-height: 100svh;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: relative;
+            left: 0;
+            top: 0;
+            min-height: 100svh;
+            width: 100%;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: relative;
+            left: 0;
+            top: 0;
+            min-height: 100svh;
+            width: 100%;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: relative;
+            left: 0;
+            top: 0;
+            min-height: 100svh;
+            width: 100%;
+        }
     }
 
     &__grid {
@@ -414,6 +513,38 @@
             left: 0;
             transform: scale(0.85);
         }
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: calc(15svh);
+            bottom: auto;
+            height: 58%;
+            transform: scale(0.82);
+            transform-origin: top center;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
+            top: calc(9svh + 9rem);
+            bottom: auto;
+            height: 30svh;
+            transform-origin: top center;
+            transform: scale(0.9);
+        }
+
+        @media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            top: calc(42svh + 9rem);
+            bottom: auto;
+            height: 30svh;
+            transform-origin: top center;
+            transform: scale(0.9);
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            top: calc(42svh + 9rem);
+            bottom: auto;
+            height: 30svh;
+            transform-origin: top center;
+            transform: scale(0.9);
+        }
     }
 
     &__content {
@@ -427,7 +558,13 @@
         align-items: stretch;
         text-shadow: 0 0 1rem variables.$bg;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: calc(42svh);
+            width: 100%;
+            padding-inline: 1.6rem;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             top: 43svh;
             left: 0;
             width: 100%;
@@ -475,11 +612,43 @@
             top: 43svh;
         }
 
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            top: 42svh;
+            left: 0;
+            width: 100%;
+            padding-inline: clamp(1.6rem, 5vw, 2.4rem);
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            top: 42svh;
+            left: 0;
+            width: 100%;
+            padding-inline: clamp(1.6rem, 5vw, 2.4rem);
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
             top: 45svh;
             left: 1.6rem;
             width: calc(100% - 3.2rem);
             padding-inline: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            top: 43svh;
+            left: 0;
+            width: min(100%, 64rem);
+            padding-inline: 2.4rem;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            top: 36svh;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            top: 36svh;
         }
     }
 
@@ -641,7 +810,12 @@
         flex-direction: column;
         row-gap: 1rem;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            width: 100%;
+            height: 14rem;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             position: relative;
             display: block;
             width: min(100%, 64rem);
@@ -682,6 +856,41 @@
             right: 1.2rem;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: relative;
+            display: block;
+            width: min(100%, 64rem);
+            margin-inline: auto;
+            height: 17rem;
+            row-gap: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: relative;
+            display: block;
+            width: min(100%, 64rem);
+            margin-inline: auto;
+            height: 17rem;
+            row-gap: 0;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: relative;
+            display: block;
+            width: min(100%, 64rem);
+            margin-inline: auto;
+            height: 17rem;
+            row-gap: 0;
+        }
+
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            height: 15.6rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            height: 15.6rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             top: -43.4rem;
             right: 1.6rem;
@@ -707,7 +916,17 @@
             letter-spacing: 0.768rem;
         }
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            font-size: 5.2rem;
+            line-height: 6.2rem;
+            letter-spacing: 0;
+            width: max-content;
+            position: absolute;
+            left: 50%;
+            right: auto;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             font-size: 6.4rem;
             line-height: 7.7rem;
             letter-spacing: -0.1rem;
@@ -747,6 +966,30 @@
             width: max-content;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: absolute;
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+            width: max-content;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: absolute;
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+            width: max-content;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: absolute;
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+            width: max-content;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
             position: absolute;
             font-size: 8rem;
@@ -765,9 +1008,16 @@
     &__title-left {
         text-align: left;
 
-        @media screen and (max-width: 430px) {
-            top: 0;
-            left: calc(-2rem + 50%);
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: 2.4rem;
+            left: calc(50% - 2rem);
+            margin: 0;
+            transform: translateX(calc(-100% - 1rem));
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
+            top: 1.3rem;
+            left: calc(0rem + 50%);
             margin: 0;
             transform: translateX(calc(-100% - 1.8rem));
         }
@@ -811,6 +1061,33 @@
             transform: none;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: absolute;
+            top: 0;
+            left: calc(-2rem + 50%);
+            right: auto;
+            margin: 0;
+            transform: translateX(calc(-100% - 1.8rem));
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: absolute;
+            top: 0;
+            left: calc(-2rem + 50%);
+            right: auto;
+            margin: 0;
+            transform: translateX(calc(-100% - 1.8rem));
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: absolute;
+            top: 0;
+            left: calc(-2rem + 50%);
+            right: auto;
+            margin: 0;
+            transform: translateX(calc(-100% - 1.8rem));
+        }
+
         @media screen and (min-width: variables.$desktop) {
             top: 15.6rem;
             left: 14.6rem;
@@ -821,7 +1098,15 @@
         text-align: right;
         margin-top: -0.8rem;
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            top: 7rem;
+            left: calc(50% + 2.6rem);
+            right: auto;
+            margin: 0;
+            transform: none;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             top: 8.6rem;
             right: calc(-15rem + 50%);
             left: auto;
@@ -872,6 +1157,42 @@
             transform: none;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: absolute;
+            top: 8.6rem;
+            right: calc(-15rem + 50%);
+            left: auto;
+            margin: 0;
+            transform: translateX(1.8rem);
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: absolute;
+            top: 8.6rem;
+            right: calc(-15rem + 50%);
+            left: auto;
+            margin: 0;
+            transform: translateX(1.8rem);
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: absolute;
+            top: 8.6rem;
+            right: calc(-15rem + 50%);
+            left: auto;
+            margin: 0;
+            transform: translateX(1.8rem);
+            font-size: 6.4rem;
+            line-height: 7.7rem;
+            letter-spacing: -0.1rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             right: 5.4rem;
         }
@@ -895,7 +1216,18 @@
             line-height: 6rem;
         }
 
-        @media screen and (max-width: 430px) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            width: 100%;
+            max-width: 32rem;
+            margin-inline: auto;
+            margin-top: 0.8rem;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            font-size: 3.6rem;
+            line-height: 4.4rem;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) {
             position: relative;
             top: auto;
             left: auto;
@@ -969,6 +1301,68 @@
             line-height: 9rem;
         }
 
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(100%, 64rem);
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 4.8rem;
+            line-height: 6rem;
+            text-align: center;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(100%, 64rem);
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 4.8rem;
+            line-height: 6rem;
+            text-align: center;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            width: min(100%, 64rem);
+            margin-top: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 4.8rem;
+            line-height: 6rem;
+            text-align: center;
+        }
+
+        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
+            width: min(100%, 34rem);
+            margin-inline: auto;
+            margin-top: 0.8rem;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            font-size: 4rem;
+            line-height: 4.8rem;
+        }
+
+        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            width: min(100%, 34rem);
+            margin-inline: auto;
+            margin-top: 0.8rem;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            font-size: 4rem;
+            line-height: 4.8rem;
+        }
+
         @media screen and (min-width: variables.$desktop) {
             top: 2.8rem;
             left: 11.6rem;
@@ -999,251 +1393,19 @@
         &--end {
             letter-spacing: 0.16rem;
         }
+
+        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+            line-height: inherit;
+        }
     }
 
     &__subtitle-source {
         font-family: variables.$font-source-code-pro;
         font-weight: 400;
         letter-spacing: 0;
-    }
 
-    // ── Portrait mobile scene (<=768px) ───────────────────────────────────────
-    // Keep the whole hero as a single scene inside the first viewport.
-    @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-        &__inner {
-            padding-inline: 1.6rem;
-        }
-
-        &__bg {
-            top: 3.6rem;
-            left: 50%;
-            width: min(180vw, 67.6rem);
-            height: 44rem;
-            transform: translateX(-41%);
-            background-position: top center;
-        }
-
-        &__bg-line {
-            top: 45svh;
-            left: -4%;
-            width: 108%;
-        }
-
-        &__stage {
-            height: 100%;
-            min-height: 100svh;
-        }
-
-        &__grid {
-            top: auto;
-            bottom: 6svh;
-            height: 39svh;
-            transform-origin: bottom center;
-            transform: scale(0.9);
-        }
-
-        &__content {
-            top: 42svh;
-            left: 0;
-            width: 100%;
-            padding-inline: clamp(1.6rem, 5vw, 2.4rem);
-        }
-
-        &__title {
-            height: 15.6rem;
-        }
-
-        &__subtitle {
-            width: min(100%, 34rem);
-            margin-inline: auto;
-            margin-top: 0.8rem;
-            white-space: normal;
-            overflow-wrap: anywhere;
-            font-size: 4rem;
-            line-height: 4.8rem;
-        }
-
-        &__subtitle-pixelify,
-        &__subtitle-source {
+        @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             line-height: inherit;
-        }
-    }
-
-    // ── Narrow portrait phones (<=390px) ──────────────────────────────────────
-    // Dedicated compact layer for iPhone SE / similar narrow screens.
-    // Keeps the hero composition inside the first viewport without clipping.
-    @media screen and (max-width: 390px) and (orientation: portrait) {
-        &__inner {
-            padding-inline: 1.2rem;
-        }
-
-        &__bg {
-            top: 4.8rem;
-            left: 50%;
-            width: 56rem;
-            height: 38rem;
-            transform: translateX(-50%);
-            background-position: top center;
-        }
-
-        &__bg-line {
-            top: 53svh;
-            left: -6%;
-            width: 112%;
-        }
-
-        &__stage {
-            min-height: 100svh;
-        }
-
-        &__grid {
-            top: calc(15svh);
-            bottom: auto;
-            height: 58%;
-            transform: scale(0.82);
-            transform-origin: top center;
-        }
-
-        &__content {
-            top: calc(42svh);
-            width: 100%;
-            padding-inline: 1.6rem;
-        }
-
-        &__title {
-            width: 100%;
-            height: 14rem;
-        }
-
-        &__title-left,
-        &__title-right {
-            font-size: 5.2rem;
-            line-height: 6.2rem;
-            letter-spacing: 0;
-        }
-
-        &__title-left {
-            top: 2.4rem;
-            left: calc(50% - 0.8rem);
-            transform: translateX(calc(-100% - 1rem));
-        }
-
-        &__title-right {
-            top: 7rem;
-            left: calc(50% + 3.6rem);
-            right: auto;
-            transform: none;
-        }
-
-        &__subtitle {
-            width: 100%;
-            max-width: 32rem;
-            margin-inline: auto;
-            margin-top: 0.8rem;
-            white-space: normal;
-            overflow-wrap: anywhere;
-            font-size: 3.6rem;
-            line-height: 4.4rem;
-        }
-
-        &__subtitle-pixelify,
-        &__subtitle-source {
-            line-height: inherit;
-        }
-    }
-
-    // ── Landscape phones ────────────────────────────────────────────────────────
-    // $mobile–$tablet wide (769–1024px), height ≤ 500px (SE=375h, XR=414h, etc.)
-    // Values copied from max-width:430px portrait — same devices, just rotated.
-    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        &__header {
-            padding: 2.4rem 2.4rem 0;
-            align-items: center;
-        }
-
-        &__bg-line {
-            width: 100%;
-            left: 0;
-        }
-
-        &__stage {
-            position: relative;
-            left: 0;
-            top: 0;
-            min-height: 100svh;
-            width: 100%;
-        }
-
-        &__content {
-            top: 43svh;
-            left: 0;
-            width: min(100%, 64rem);
-            padding-inline: 2.4rem;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-        }
-
-        &__title {
-            position: relative;
-            display: block;
-            width: min(100%, 64rem);
-            margin-inline: auto;
-            height: 17rem;
-            row-gap: 0;
-        }
-
-        &__title-left {
-            position: absolute;
-            top: 0;
-            left: calc(-2rem + 50%);
-            right: auto;
-            margin: 0;
-            transform: translateX(calc(-100% - 1.8rem));
-            font-size: 6.4rem;
-            line-height: 7.7rem;
-            letter-spacing: -0.1rem;
-            width: max-content;
-        }
-
-        &__title-right {
-            position: absolute;
-            top: 8.6rem;
-            right: calc(-15rem + 50%);
-            left: auto;
-            margin: 0;
-            transform: translateX(1.8rem);
-            font-size: 6.4rem;
-            line-height: 7.7rem;
-            letter-spacing: -0.1rem;
-        }
-
-        &__subtitle {
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
-            width: min(100%, 64rem);
-            margin-top: 0;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 4.8rem;
-            line-height: 6rem;
-            text-align: center;
-        }
-    }
-
-    // ── Nest Hub (1024×600) ─────────────────────────────────────────────────────
-    // In $mobile–$tablet by width, but short height 501–650px.
-    // Values copied from $mobile–$tablet portrait with reduced padding.
-    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
-        &__header {
-            padding: 2.4rem 5.6rem 0;
-            align-items: center;
-        }
-
-        &__content {
-            top: 36svh;
         }
     }
 }

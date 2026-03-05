@@ -2,7 +2,7 @@ import { useEffect, useState, useRef as useReactRef } from "react";
 
 const MOBILE_BREAKPOINT = 768;
 const DESKTOP_START = -350;
-const DESKTOP_END = -50;
+const DESKTOP_END = 0;
 const MOBILE_START = -300;
 const MOBILE_END = 0;
 

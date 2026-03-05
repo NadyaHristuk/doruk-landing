@@ -21,7 +21,6 @@
     &__inner {
         position: relative;
         z-index: 1;
-        padding-inline: 1.6rem;
 
         @media screen and (min-width: variables.$mobile) {
             padding-inline: 2.4rem;
@@ -35,7 +34,12 @@
     &__header {
         position: relative;
         z-index: 4;
-        @media screen and (max-width: 430px) and (orientation: portrait) {
+        overflow: hidden;
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            display: flex;
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
             display: flex;
         }
 
@@ -69,7 +73,14 @@
                 top: 10rem;
             }
 
-            @media screen and (max-width: 430px) and (orientation: portrait) {
+            @media screen and (max-width: 390px) and (orientation: portrait) {
+                top: 41rem;
+                right: -2.5rem;
+                width: 112%;
+                height: 125%;
+            }
+
+            @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
                 top: 41rem;
                 right: -2.5rem;
                 width: 112%;
@@ -123,10 +134,18 @@
         margin-inline: auto;
         transform: translateY(-5rem);
 
-        @media screen and (max-width: 430px) and (orientation: portrait) {
+        @media screen and (max-width: 390px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
-            margin-top: 10rem;
+            margin-top: 5rem;
+            top: 0;
+            transform: translateY(0);
+        }
+
+        @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
+            display: flex;
+            flex-direction: column;
+            margin-top: 5rem;
             top: 0;
             transform: translateY(0);
         }
@@ -134,7 +153,7 @@
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
-            margin-top: 10rem;
+            margin-top: 5rem;
             top: 0;
             transform: translateY(0);
         }
@@ -142,7 +161,7 @@
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
-            margin-top: 10rem;
+            margin-top: 5rem;
             top: 0;
             transform: translateY(0);
         }

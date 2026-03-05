@@ -43,5 +43,6 @@ $mobile-height: 431px;
 $tablet-height: 1025px;
 
 // Height breakpoints — for landscape / short-screen handling
-$landscape-phone-max-height: 500px; // landscape phones: SE=375h, XR=414h, 14ProMax=430h
-$nest-hub-max-height:        650px; // Nest Hub 1024×600
+$landscape-phone-max-height:   500px; // landscape phones: SE=375h, XR=414h, 14ProMax=430h
+$nest-hub-max-height:          650px; // Nest Hub 1024×600
+$landscape-tablet-min-height:  651px; // tablets in landscape: iPad mini/Air=768h, iPad Pro=1024h
