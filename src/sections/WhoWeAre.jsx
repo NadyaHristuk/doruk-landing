@@ -1,22 +1,14 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
-// components
-import ScrollPathRunner from "../components/ScrollPathRunner";
 // config
-import { translate, svgConfig, aboutContent } from "../config";
+import { translate, aboutContent } from "../config";
 // assets
 import SvgDotsLeft from "../assets/svg/animations/about-dots-left.svg?react";
 import SvgDotsRight from "../assets/svg/animations/about-dots-right.svg?react";
 import aboutBgSmall from "../assets/svg/bg/about-bg-small.svg";
 import { useMatrixDots } from "../hooks/useMatrixDots";
-
-const AUTOPLAY_HOLD_MS = 3200;
-const SLIDE_ANIMATION_SEC = 0.8;
-const AUTOPLAY_ENABLED = true;
-const TEMP_PAUSE_WHO_SLIDER = false;
 
 // Panel content component
 const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
@@ -79,9 +71,8 @@ const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
 };
 
 const WhoWeAre = ({ lang }) => {
-    const containerRef = useRef(null);
     const entryRef = useRef(null);
-    const sliderRef = useRef(null);
+    const trackRef = useRef(null);
     const disableDots = useMobile(769);
     const progress = useTitleAnimation(entryRef);
     const title = `${translate("about.title", lang) || ""}`;
@@ -89,7 +80,6 @@ const WhoWeAre = ({ lang }) => {
     const titleInitial = titleChars[0] || "";
     const titleRest = titleChars.slice(1).join("");
 
-    // Matrix dots animation
     useMatrixDots({
         sectionId: "#who-we-are",
         svgSelector: ".who-we-are__dots--left",
@@ -117,207 +107,31 @@ const WhoWeAre = ({ lang }) => {
     });
 
     useEffect(() => {
-        if (TEMP_PAUSE_WHO_SLIDER) return;
+        const section = document.querySelector("#who-we-are");
+        const track = trackRef.current;
+        if (!section || !track) return;
 
-        const originalCount = aboutContent.length;
-        const count = originalCount;
-        const slider = sliderRef.current;
-        const sectionEl = document.querySelector("#who-we-are");
-        if (!slider || !sectionEl || count <= 1) return;
-        const panels = Array.from(
-            slider.querySelectorAll(".who-we-are__panel"),
-        );
-        const panelLayers = panels.map((panel) => ({
-            textBlock: panel.querySelector(".who-we-are__text-block"),
-            imageLayers: panel.querySelector(".who-we-are__image"),
-            imageNode: panel.querySelector(
-                ".who-we-are__image .who-we-are__image-masked",
-            ),
-        }));
-
-        let activeIndex = 0;
-        let slideTween = null;
-        let isAutoPlaying = false;
-        let autoplayTimer = null;
-        let triggerActive = false;
-
-        const clearTimer = (timerId) => {
-            if (timerId) window.clearTimeout(timerId);
-            return null;
-        };
-
-        const currentPanelWidth = () =>
-            slider.clientWidth || window.innerWidth || 1;
-
-        const stopAutoplay = () => {
-            isAutoPlaying = false;
-            autoplayTimer = clearTimer(autoplayTimer);
-        };
-
-        const animatePanelState = (index, immediate = false) => {
-            const activeLogicalIndex = index % originalCount;
-            panelLayers.forEach((panelLayer, panelIndex) => {
-                const logicalIndex = panelIndex % originalCount;
-                const isActive = logicalIndex === activeLogicalIndex;
-                const duration = immediate ? 0 : 0.55;
-                const ease = immediate ? "none" : "power2.out";
-                const staggerDelay = immediate ? 0 : 0.2;
-
-                if (panelLayer.imageLayers) {
-                    gsap.to(panelLayer.imageLayers, {
-                        "--who-image-layer-progress": isActive ? 1 : 0,
-                        duration,
-                        delay: isActive ? staggerDelay : 0,
-                        ease,
-                        overwrite: true,
-                    });
-                }
-
-                if (panelLayer.textBlock) {
-                    gsap.to(panelLayer.textBlock, {
-                        "--who-layer-substrate-progress": isActive ? 1 : 0,
-                        duration,
-                        delay: isActive ? staggerDelay * 2 : 0,
-                        ease,
-                        overwrite: true,
-                    });
-                    gsap.to(panelLayer.textBlock, {
-                        "--who-layer-after-progress": isActive ? 1 : 0,
-                        duration,
-                        delay: isActive ? staggerDelay * 3 : 0,
-                        ease,
-                        overwrite: "auto",
-                    });
-                    gsap.to(panelLayer.textBlock, {
-                        "--who-layer-before-progress": isActive ? 1 : 0,
-                        duration,
-                        delay: isActive ? staggerDelay * 4 : 0,
-                        ease,
-                        overwrite: "auto",
-                    });
-                }
-            });
-        };
-
-        const goToSlide = (targetIndex, options = {}) => {
-            const { immediate = false } = options;
-            const clampedIndex = Math.max(0, Math.min(targetIndex, count));
-            const sameSlide = clampedIndex === activeIndex;
-            if (sameSlide && !immediate) return;
-
-            if (slideTween) {
-                slideTween.kill();
-                slideTween = null;
-            }
-
-            activeIndex = clampedIndex;
-            animatePanelState(activeIndex, immediate);
-            slideTween = gsap.to(slider, {
-                scrollLeft: currentPanelWidth() * activeIndex,
-                duration: immediate ? 0 : SLIDE_ANIMATION_SEC,
-                ease: immediate ? "none" : "power2.out",
-                overwrite: true,
-                onComplete: () => {
-                    if (activeIndex !== count) return;
-                    activeIndex = 0;
-                    gsap.set(slider, { scrollLeft: 0 });
-                    animatePanelState(0, true);
+        const ctx = gsap.context(() => {
+            gsap.to(track, {
+                x: () => -(track.scrollWidth - window.innerWidth),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: section,
+                    pin: true,
+                    scrub: 1,
+                    end: () => `+=${track.scrollWidth - window.innerWidth}`,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
                 },
             });
-        };
-
-        const scheduleNextAutoplayStep = () => {
-            autoplayTimer = clearTimer(autoplayTimer);
-            if (!isAutoPlaying || !triggerActive) {
-                stopAutoplay();
-                return;
-            }
-
-            autoplayTimer = window.setTimeout(() => {
-                const nextIndex = activeIndex + 1;
-                goToSlide(nextIndex);
-                scheduleNextAutoplayStep();
-            }, AUTOPLAY_HOLD_MS);
-        };
-
-        const startAutoplay = () => {
-            if (!AUTOPLAY_ENABLED) return;
-            isAutoPlaying = true;
-            scheduleNextAutoplayStep();
-        };
-
-        const onResize = () => {
-            goToSlide(activeIndex, { immediate: true });
-            ScrollTrigger.refresh();
-        };
-
-        const trigger = ScrollTrigger.create({
-            trigger: sectionEl,
-            start: "top 80%",
-            end: "bottom top",
-            onEnter: () => {
-                triggerActive = true;
-                gsap.fromTo(
-                    slider,
-                    { autoAlpha: 0, y: 36 },
-                    {
-                        autoAlpha: 1,
-                        y: 0,
-                        duration: 0.75,
-                        ease: "power2.out",
-                        overwrite: true,
-                    },
-                );
-                startAutoplay();
-            },
-            onEnterBack: () => {
-                triggerActive = true;
-                gsap.fromTo(
-                    slider,
-                    { autoAlpha: 0, y: 24 },
-                    {
-                        autoAlpha: 1,
-                        y: 0,
-                        duration: 0.55,
-                        ease: "power2.out",
-                        overwrite: true,
-                    },
-                );
-                startAutoplay();
-            },
-            onLeave: () => {
-                triggerActive = false;
-                stopAutoplay();
-            },
-            onLeaveBack: () => {
-                triggerActive = false;
-                stopAutoplay();
-            },
         });
 
-        gsap.set(slider, { autoAlpha: 0, y: 36 });
-        goToSlide(0, { immediate: true });
-        window.addEventListener("resize", onResize);
-
-        return () => {
-            stopAutoplay();
-            if (slideTween) slideTween.kill();
-            window.removeEventListener("resize", onResize);
-            trigger.kill();
-        };
+        return () => ctx.revert();
     }, []);
 
     return (
         <>
             <div className="who-we-are__backgrounds">
-                <div className="who-we-are__bg-line" ref={containerRef}>
-                    <ScrollPathRunner
-                        direction="rtl"
-                        scrub={0.8}
-                        offsetStart={0.12}
-                        config={svgConfig.about}
-                    />
-                </div>
                 {!disableDots && (
                     <div className="who-we-are__background-stripes">
                         <SvgDotsLeft className="who-we-are__dots--left" />
@@ -339,21 +153,14 @@ const WhoWeAre = ({ lang }) => {
                 </header>
 
                 <div
-                    className={`who-we-are__slider ${TEMP_PAUSE_WHO_SLIDER ? "who-we-are__slider--paused" : ""}`}
+                    className="who-we-are__track"
                     role="region"
                     aria-label={translate("about.title", lang)}
-                    ref={sliderRef}
+                    ref={trackRef}
                 >
                     {aboutContent.map((item) => (
                         <WhoWeAreContent item={item} lang={lang} key={item.id} />
                     ))}
-                    <WhoWeAreContent
-                        item={aboutContent[0]}
-                        lang={lang}
-                        key={`${aboutContent[0].id}-clone`}
-                        idSuffix="-clone"
-                        hidden={true}
-                    />
                 </div>
             </div>
         </>

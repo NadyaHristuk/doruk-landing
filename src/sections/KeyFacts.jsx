@@ -1,10 +1,8 @@
 import { useEffect, useLayoutEffect, useState, useRef, useCallback } from 'react';
 // hooks
 import { useTitleAnimation } from '../hooks';
-// components
-import ScrollPathRunner from '../components/ScrollPathRunner';
 // config
-import { keyFactsConfig, translate, svgConfig } from '../config';
+import { keyFactsConfig, translate } from '../config';
 // assets
 import circleImg from '../assets/webp/key-facts/key-facts-bg.webp';
 import squareImg from '../assets/webp/key-facts/bg-2.webp';
@@ -42,9 +40,6 @@ const KeyFacts = ({ lang }) => {
   const titleRest = titleChars.slice(1).join('');
 
   const entryRef = useRef(null),
-    lineUpperRef = useRef(null),
-    lineLowerRef = useRef(null),
-    lineMobileRef = useRef(null),
     logosRef = useRef(null),
     textRefs = useRef([]),
     fullTexts = useRef([]),
@@ -138,47 +133,14 @@ const KeyFacts = ({ lang }) => {
     <div className="key-facts">
       <div className="key-facts__backgrounds">
         <div className="key-facts__bg key-facts__bg--upper">
-          {/* <div className="key-facts__bg-art" aria-hidden="true" /> */}
           <div className="key-facts__watermark key-facts__watermark--upper" />
           <div className="key-facts__watermark key-facts__watermark--lower" />
-          <div
-            className="key-facts__bg-line key-facts__bg-line--upper"
-            ref={lineUpperRef}
-          >
-            <ScrollPathRunner
-              direction="rtl"
-              offsetStart={0.2}
-              scrub={50}
-              config={svgConfig.keyFacts.a}
-            />
-          </div>
           <div className="key-facts__bg-stripes key-facts__bg-stripes--upper" />
         </div>
         <div className="key-facts__bg key-facts__bg--lower">
           <div className="key-facts__watermark" />
-          <div
-            className="key-facts__bg-line key-facts__bg-line--lower"
-            ref={lineLowerRef}
-          >
-            <ScrollPathRunner
-              direction={isMobile ? 'rtl' : 'ltr'}
-              offsetStart={0.3}
-              config={svgConfig.keyFacts.b}
-            />
-          </div>
           <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-left" />
           <div className="key-facts__bg-stripes key-facts__bg-stripes--lower key-facts__bg-stripes--lower-right" />
-          <div
-            className="key-facts__bg-line key-facts__bg-line--mobile"
-            ref={lineMobileRef}
-          >
-            <ScrollPathRunner
-              direction="rtl"
-              offsetStart={0.2}
-              scrub={50}
-              config={svgConfig.keyFacts.a}
-            />
-          </div>
         </div>
       </div>
 

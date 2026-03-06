@@ -1,10 +1,8 @@
 import { useState, useRef } from "react";
 import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
-import ScrollPathRunner from "../components/ScrollPathRunner.jsx";
 import {
     translate,
-    svgConfig,
     contactUrl,
     phoneRegex,
     emailRegex,
@@ -39,7 +37,6 @@ const NameInput = ({ value, setValue, lang }) => {
 
 const KeepInTouch = ({ lang }) => {
     const entryRef = useRef(null),
-        containerRef = useRef(null),
         [userName, setUserName] = useState(""),
         [userPhone, setUserPhone] = useState(""),
         [userEmail, setUserEmail] = useState(""),
@@ -144,12 +141,6 @@ const KeepInTouch = ({ lang }) => {
         <div className="keep-in-touch">
             <div className="keep-in-touch__backgrounds">
                 <div className="keep-in-touch__bg">
-                    <div className="keep-in-touch__bg-line" ref={containerRef}>
-                        <ScrollPathRunner
-                            offsetStart={0.2}
-                            config={svgConfig.keepInTouch}
-                        />
-                    </div>
                     {!disableDots && (
                         <div className="keep-in-touch__bg-dots" aria-hidden="true">
                             <SvgDotsLeft className="keep-in-touch__dots--left" />

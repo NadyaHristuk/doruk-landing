@@ -15,6 +15,7 @@ const WhoWeAre = lazy(() => import('./sections/WhoWeAre'));
 const KeyFacts = lazy(() => import('./sections/KeyFacts'));
 const OurBenefits = lazy(() => import('./sections/OurBenefits'));
 const KeepInTouch = lazy(() => import('./sections/KeepInTouch'));
+const SvgLine = lazy(() => import('./components/SvgLine'));
 // config
 import { menu } from './config';
 // local components
@@ -92,6 +93,9 @@ const App = () => {
       </aside>
 
       <div id="smooth-content" className="smooth-content">
+        <Suspense fallback={null}>
+          <SvgLine />
+        </Suspense>
         <section
           id="hero"
           className="section section--hero"

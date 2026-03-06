@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { useMobile, useTitleAnimation } from "../hooks";
 import { useMatrixDots } from "../hooks/useMatrixDots";
-import ScrollPathRunner from "../components/ScrollPathRunner";
-import { translate, svgConfig } from "../config";
+import { translate } from "../config";
 import benefitsBg from "../assets/webp/our-benefits/benefits-bg.webp";
 import SvgBenefitsDots from "../assets/svg/animations/benefits-dots.svg?react";
 
@@ -19,7 +18,6 @@ const TitleBlock = ({ children, icon }) => {
 
 const OurBenefits = ({ lang }) => {
     const entryRef = useRef(null),
-        containerRef = useRef(null),
         disableDots = useMobile(769),
         progress = useTitleAnimation(entryRef);
 
@@ -45,13 +43,6 @@ const OurBenefits = ({ lang }) => {
         <div className="our-benefits">
             <div className="our-benefits__backgrounds">
                 <div className="our-benefits__bg">
-                    <div className="our-benefits__bg-line" ref={containerRef}>
-                        <ScrollPathRunner
-                            direction="rtl"
-                            offsetStart={0}
-                            config={svgConfig.ourBenefits}
-                        />
-                    </div>
                     {!disableDots && (
                         <div className="our-benefits__bg-dots" aria-hidden="true">
                             <SvgBenefitsDots className="our-benefits__dots" />

@@ -96,9 +96,9 @@
             display: block;
 
             img {
-                width: auto;
-                // 390px→24px (2.4rem), 1920px→40px (4rem) — linear interpolation
-                height: clamp(2.4rem, calc(0.1046vw + 1.992rem), 4rem);
+                // 390px -> 129x24, 1920px -> 215x40
+                width: clamp(12.9rem, calc(5.6209vw + 10.7078rem), 21.5rem);
+                height: clamp(2.4rem, calc(1.0458vw + 1.9922rem), 4rem);
             }
         }
 
@@ -245,8 +245,7 @@
     }
 
     &__bg,
-    &__bg-stars,
-    &__bg-line {
+    &__bg-stars {
         position: absolute;
         pointer-events: none;
     }
@@ -336,78 +335,6 @@
         height: 100%;
         background: transparent;
         z-index: 10;
-    }
-
-    &__bg-line {
-        left: 0;
-        width: 105%;
-        height: fit-content;
-        top: 42svh;
-        z-index: 10;
-
-        @media screen and (max-width: 390px) and (orientation: portrait) {
-            top: 53svh;
-            left: -6%;
-            width: 112%;
-        }
-
-        @media screen and (min-width: 391px) and (max-width: 430px) {
-            top: 48svh;
-        }
-
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
-            top: 48svh;
-        }
-
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
-            top: 48svh;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
-            top: 48svh;
-        }
-
-        @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
-            top: 45svh;
-            left: -4%;
-            width: 108%;
-        }
-
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            top: 45svh;
-            left: -4%;
-            width: 108%;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
-            top: 14svh;
-        }
-
-        @media screen and (min-width: variables.$desktop) {
-            top: 12svh;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            width: 100%;
-            left: 0;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
-            width: 100%;
-            left: 0;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
-            width: 100%;
-            left: 0;
-        }
-
-        .svg-line {
-            display: block;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
     }
 
     &__stage {

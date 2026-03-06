@@ -3,17 +3,15 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // components
-import ScrollPathRunner from '../components/ScrollPathRunner.jsx';
 import HeroHeader from '../components/HeroHeader.jsx';
 import HeroBackground from '../components/HeroBackground.jsx';
 import HeroGrid from '../components/HeroGrid.jsx';
 // config
-import { translate, svgConfig } from '../config';
+import { translate } from '../config';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = ({ lang, setLang }) => {
-  const containerRef = useRef(null);
   const heroRef = useRef(null);
   const titleLeftRef = useRef(null);
   const titleRightRef = useRef(null);
@@ -67,15 +65,6 @@ const HeroSection = ({ lang, setLang }) => {
   return (
     <div className="hero" ref={heroRef}>
       <HeroBackground />
-      <div className="hero__bg-line" ref={containerRef} aria-hidden="true">
-        <ScrollPathRunner
-          direction="rtl"
-          offsetStart={0}
-          start="top top"
-          end="bottom top"
-          config={svgConfig.home}
-        />
-      </div>
       <div className="hero__inner">
       <HeroHeader lang={lang} setLang={setLang} />
       <div className="hero__stage">

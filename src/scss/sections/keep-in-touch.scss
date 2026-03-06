@@ -78,57 +78,6 @@
     &__bg {
         height: 100%;
 
-        &-line {
-            z-index: 1;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: calc(100% - var(--content-mobile-offset));
-
-            @media screen and (max-width: 390px) and (orientation: portrait) {
-                top: 11px;
-                left: -26px;
-                width: 123%;
-                height: calc(100% - var(--content-mobile-offset));
-            }
-
-            @media screen and (min-width: 391px) and (max-width: 430px) and (orientation: portrait) {
-                top: 11px;
-                left: -26px;
-                width: 123%;
-                height: calc(100% - var(--content-mobile-offset));
-            }
-
-            @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
-                top: 2svh;
-                left: -3svw;
-                width: 105%;
-                height: calc(100% - var(--content-mobile-offset));
-            }
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-                top: 2svh;
-                left: -5svw;
-                width: 105%;
-                height: calc(100% - var(--content-mobile-offset));
-            }
-
-            .keep-in-touch__svg-line {
-                top: -24%;
-
-                @media screen and (min-width: variables.$mobile) {
-                    top: 0;
-                }
-            }
-
-            @media screen and (min-width: variables.$mobile) {
-                top: 12rem;
-                width: 105%;
-                left: -0.5rem;
-            }
-        }
-
         &-dots {
             position: absolute;
             top: 0;
