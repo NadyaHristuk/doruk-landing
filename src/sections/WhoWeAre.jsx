@@ -109,19 +109,29 @@ const WhoWeAre = ({ lang }) => {
     useEffect(() => {
         const section = document.querySelector("#who-we-are");
         const track = trackRef.current;
+        const overlay = document.querySelector(".svg-line-overlay");
         if (!section || !track) return;
 
         const ctx = gsap.context(() => {
+            const maxX = () => Math.max(track.scrollWidth - window.innerWidth, 0);
+
             gsap.to(track, {
-                x: () => -(track.scrollWidth - window.innerWidth),
+                x: () => -maxX(),
                 ease: "none",
                 scrollTrigger: {
                     trigger: section,
                     pin: true,
-                    scrub: 1,
-                    end: () => `+=${track.scrollWidth - window.innerWidth}`,
+                    scrub: true,
+                    end: () => `+=${maxX()}`,
                     anticipatePin: 1,
                     invalidateOnRefresh: true,
+                    onUpdate: (self) => {
+                        // Shift overlay: X левая с треком, Y вниз (компенсация pin-скролла)
+                        const offset = self.progress * maxX();
+                        if (overlay) {
+                            gsap.set(overlay, { x: -offset, y: offset });
+                        }
+                    },
                 },
             });
         });

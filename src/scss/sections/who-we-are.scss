@@ -1508,3 +1508,22 @@
         }
     }
 }
+
+@media screen and (max-width: #{variables.$laptop - 1px}) {
+    #who-we-are {
+        height: auto;
+        overflow: visible;
+
+        .who-we-are__inner {
+            height: auto;
+            overflow: visible;
+        }
+
+        .who-we-are__track {
+            display: block;
+            width: 100%;
+            height: auto;
+            will-change: auto;
+        }
+    }
+}

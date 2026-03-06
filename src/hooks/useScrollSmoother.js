@@ -8,6 +8,8 @@ export const useScrollSmoother = (container, debugDisable = false) => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    const wrapper = container?.current ?? container;
+
     const prefersReduce =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -26,7 +28,7 @@ export const useScrollSmoother = (container, debugDisable = false) => {
       isFinePointer &&
       isDesktopWidth;
 
-    if (!enableSmoother || !container) return;
+    if (!enableSmoother || !wrapper) return;
 
     let smoother;
     let idleId;
@@ -35,7 +37,7 @@ export const useScrollSmoother = (container, debugDisable = false) => {
     const start = () => {
       if (cancelled) return;
       smoother = ScrollSmoother.create({
-        wrapper: container,
+        wrapper,
         content: '#smooth-content',
         smooth: 1.0,
         effects: false,

@@ -41,7 +41,7 @@ const App = () => {
     [lang, setLang] = useState('en');
 
   // Initialize ScrollSmoother
-  useScrollSmoother(container.current);
+  useScrollSmoother(container);
 
   // Initialize ScrollTriggers for sections
   useScrollTriggers(container, {
