@@ -18,6 +18,7 @@ const SvgLine = () => {
         const length = pathEl.getTotalLength();
         pathEl.style.strokeDasharray = length;
         pathEl.style.strokeDashoffset = length;
+        pathEl.setAttribute("data-ready", "true");
 
         const ctx = gsap.context(() => {
             // Draw line progressively over entire page scroll
@@ -47,7 +48,7 @@ const SvgLine = () => {
                 width="100%"
                 height="100%"
             >
-                <path ref={pathRef} d={SVG_PATH} />
+                <path ref={pathRef} d={SVG_PATH} data-ready="false" />
             </svg>
         </div>
     );

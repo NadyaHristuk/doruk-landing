@@ -20,5 +20,11 @@
         stroke-width: 10px;
         stroke-linecap: round;
         stroke-linejoin: round;
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+
+        &[data-ready="true"] {
+            opacity: 1;
+        }
     }
 }

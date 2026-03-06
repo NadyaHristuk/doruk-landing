@@ -114,6 +114,7 @@ const WhoWeAre = ({ lang }) => {
 
         const ctx = gsap.context(() => {
             const maxX = () => Math.max(track.scrollWidth - window.innerWidth, 0);
+            const panels = Array.from(track.querySelectorAll(".who-we-are__panel"));
 
             gsap.to(track, {
                 x: () => -maxX(),
@@ -126,10 +127,63 @@ const WhoWeAre = ({ lang }) => {
                     anticipatePin: 1,
                     invalidateOnRefresh: true,
                     onUpdate: (self) => {
-                        // Shift overlay: X левая с треком, Y вниз (компенсация pin-скролла)
+                        // During horizontal scroll: move overlay left with track and down to compensate for pin
                         const offset = self.progress * maxX();
                         if (overlay) {
                             gsap.set(overlay, { x: -offset, y: offset });
+                        }
+
+                        // Update panel layer visibility based on scroll progress
+                        const panelWidth = window.innerWidth;
+                        const trackOffset = offset;
+                        const activeIndex = Math.round(trackOffset / panelWidth);
+
+                        panels.forEach((panel, index) => {
+                            const isActive = index === activeIndex;
+                            const imageLayer = panel.querySelector(".who-we-are__image");
+                            const textBlock = panel.querySelector(".who-we-are__text-block");
+
+                            if (imageLayer) {
+                                gsap.to(imageLayer, {
+                                    "--who-image-layer-progress": isActive ? 1 : 0,
+                                    duration: 0.55,
+                                    ease: "power2.out",
+                                    overwrite: "auto",
+                                });
+                            }
+
+                            if (textBlock) {
+                                gsap.to(textBlock, {
+                                    "--who-layer-substrate-progress": isActive ? 1 : 0,
+                                    duration: 0.55,
+                                    ease: "power2.out",
+                                    overwrite: "auto",
+                                });
+                                gsap.to(textBlock, {
+                                    "--who-layer-before-progress": isActive ? 1 : 0,
+                                    duration: 0.55,
+                                    ease: "power2.out",
+                                    overwrite: "auto",
+                                });
+                                gsap.to(textBlock, {
+                                    "--who-layer-after-progress": isActive ? 1 : 0,
+                                    duration: 0.55,
+                                    ease: "power2.out",
+                                    overwrite: "auto",
+                                });
+                            }
+                        });
+                    },
+                    onLeave: (self) => {
+                        // When exiting section: maintain final Y offset (= total scroll distance consumed by pin)
+                        if (overlay) {
+                            gsap.set(overlay, { y: maxX() });
+                        }
+                    },
+                    onLeaveBack: () => {
+                        // When scrolling back up into section from below: reset to no Y offset
+                        if (overlay) {
+                            gsap.set(overlay, { y: 0 });
                         }
                     },
                 },
