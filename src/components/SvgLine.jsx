@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const SVG_PATH =
     "M 2087,0 C 1861,232 1727,472 1366,451 1005,430 1217,868 839,681 461,494 554,1157 8,925 -56,898 0,1177 -22,1223 148,1403 426,1175 709,1350 1041,1555 1132,1777 1563,1578 1994,1379 2273,1346 2504,1402 c 231,56 621,595 974,222 354,-373 817,-501 1310,-98 493,403 507,-307 988,373 8,197 72,345 44,539 -178,286 -531,389 -831,293 -380,-100 -559,370 -902,270 -126,-64 -408,-298 -323,-12 l 45,552 c 535,-177 729,778 1904,256 C 5982,3726 6353,5060 5247,4778 c -380,-71 -637,271 -942,420 -201,79 -784,-145 -662,31 146,216 262,481 537,560 418,113 562,-94 842,226 210,249 551,370 867,272 22,57 16,136 16,195";
@@ -9,34 +10,92 @@ const SvgLine = () => {
     const pathRef = useRef(null);
 
     useEffect(() => {
-        const wrapper = wrapperRef.current;
         const pathEl = pathRef.current;
-        const content = document.getElementById("smooth-content");
-        if (!wrapper || !pathEl || !content) return;
+        if (!pathEl) return;
 
-        // Draw line progressively over entire page scroll (GSAP scrub)
-        const length = pathEl.getTotalLength();
-        pathEl.style.strokeDasharray = length;
-        pathEl.style.strokeDashoffset = length;
+        const pathLength = pathEl.getTotalLength();
+        pathEl.style.strokeDasharray = pathLength;
+        pathEl.style.strokeDashoffset = pathLength;
         pathEl.setAttribute("data-ready", "true");
 
-        const ctx = gsap.context(() => {
-            // Draw line progressively over entire page scroll
-            gsap.to(pathEl, {
-                strokeDashoffset: 0,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: content,
-                    start: "top top",
-                    end: "bottom bottom",
-                    scrub: 1,
-                },
-            });
-            // Overlay shift is handled by WhoWeAre.jsx onUpdate callback
-        });
+        let pinStart = 0;
+        let maxX = 0;
+        let totalScroll = 0;
+
+        // Compute zones: pinStart, maxX, totalScroll
+        function computeZones() {
+            const section = document.querySelector("#who-we-are");
+            const track = section?.querySelector(".who-we-are__track");
+
+            // Get pinStart from WhoWeAre's ScrollTrigger
+            const whoST = ScrollTrigger.getAll().find(
+                (st) => st.trigger === section
+            );
+            pinStart = whoST ? whoST.start : (section?.offsetTop ?? 0);
+
+            // Get maxX from track width
+            maxX = track
+                ? Math.max(track.scrollWidth - window.innerWidth, 0)
+                : 0;
+
+            // Get total scroll distance
+            totalScroll = ScrollTrigger.maxScroll(window);
+        }
+
+        // Compute visual progress accounting for 3 zones
+        function getVisualProgress(scrollY) {
+            const vh = window.innerHeight;
+            const pinEnd = pinStart + maxX;
+            const visualTotal = totalScroll - maxX + vh;
+
+            if (visualTotal <= 0) return 0;
+
+            if (scrollY <= pinStart) {
+                // Zone 1: before WhoWeAre (linear 1:1)
+                return scrollY / visualTotal;
+            } else if (scrollY < pinEnd) {
+                // Zone 2: WhoWeAre pin period (compressed to 1vh)
+                const whoP = (scrollY - pinStart) / Math.max(maxX, 1);
+                return (pinStart / visualTotal) + whoP * (vh / visualTotal);
+            } else {
+                // Zone 3: after WhoWeAre (linear 1:1)
+                const zone2end = (pinStart + vh) / visualTotal;
+                const restVirtual = totalScroll - pinEnd;
+                const restP =
+                    restVirtual > 0
+                        ? (scrollY - pinEnd) / restVirtual
+                        : 1;
+                return zone2end + restP * (1 - zone2end);
+            }
+        }
+
+        let currentOffset = pathLength;
+        const getScroll = ScrollTrigger.getScrollFunc(window);
+
+        // RAF ticker with lerp smoothing (scrub: 1 equivalent)
+        function onTick(_time, deltaTime) {
+            const vp = Math.min(
+                Math.max(getVisualProgress(getScroll()), 0),
+                1
+            );
+            const targetOffset = pathLength * (1 - vp);
+
+            // lerp factor: exp decay gives ~scrub:1 feel at 60fps
+            const lerpFactor = 1 - Math.exp((-deltaTime / 1000) * 6);
+            currentOffset += (targetOffset - currentOffset) * lerpFactor;
+            pathEl.style.strokeDashoffset = currentOffset;
+        }
+
+        // Register refresh listener and initial compute
+        ScrollTrigger.addEventListener("refresh", computeZones);
+        computeZones();
+
+        // Start ticker
+        gsap.ticker.add(onTick);
 
         return () => {
-            ctx.revert();
+            gsap.ticker.remove(onTick);
+            ScrollTrigger.removeEventListener("refresh", computeZones);
         };
     }, []);
 
