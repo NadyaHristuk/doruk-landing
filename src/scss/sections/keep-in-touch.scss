@@ -899,6 +899,35 @@
 
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__content {
+            width: calc(100% - 5rem);
+            margin-inline: 2.5rem;
+            padding-top: var(--content-mobile-offset);
+        }
+
+        &__top {
+            padding-top: 0;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 4rem;
+        }
+
+        &__figure {
+            flex: 0 0 36rem;
+            width: 36rem;
+            height: 22rem;
+
+            img {
+                height: 22rem;
+                object-fit: cover;
+            }
+        }
+
+        &__top input,
+        &__top button {
+            width: 36rem;
+        }
     }
 
     // ── Short landscape phone (iPhone SE): tablet-equivalent layout

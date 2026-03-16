@@ -716,5 +716,67 @@
 
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__content {
+            width: calc(100vw - 3.2rem);
+            margin-top: var(--content-mobile-offset);
+            transform: translateY(0);
+        }
+
+        &__figure {
+            position: relative;
+            z-index: 2;
+            width: 56rem;
+            margin-inline: auto;
+        }
+
+        &__image-wrap {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        &__list {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 50%;
+            margin-top: 0;
+            transform: translateX(-50%);
+            width: calc(100vw - 3.2rem);
+            height: 42rem;
+        }
+
+        &__item {
+            position: absolute;
+            width: 42rem;
+            max-width: unset;
+            height: 7.2rem;
+            order: initial;
+
+            &:nth-child(1) { top: -18%; left: calc(6% + 1rem); }
+            &:nth-child(2) { top: 50%; left: calc(2% + 1rem); }
+            &:nth-child(3) { left: calc(50% - 21rem); bottom: 0; transform-origin: center center; }
+            &:nth-child(4) { top: -10%; right: calc(5% + 1rem); transform-origin: right center; }
+            &:nth-child(5) { top: 50%; right: calc(2% + 1rem); transform-origin: right center; }
+        }
+
+        &__circle {
+            width: 7.2rem;
+            height: 7.2rem;
+
+            i { font-size: 3.2rem; }
+        }
+
+        &__item-text {
+            height: 7.2rem;
+            width: calc(100% - 7.2rem);
+            padding: 0 1.4rem;
+        }
+
+        &__item-title,
+        &__item-subtitle {
+            font-size: 2rem;
+            padding-top: 0.3rem;
+        }
     }
 }

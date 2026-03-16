@@ -1346,9 +1346,37 @@
 
     // ── Short landscape phone (iPhone SE, width ≤768px) ───────────
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__astronaut {
+            top: 2rem;
+            height: clamp(26rem, 80svh, 32rem);
+            width: min(160vw, 54rem);
+        }
+
+        &__stage {
+            min-height: 100svh;
+        }
+
+        &__main-title {
+            font-size: 4.8rem;
+            line-height: 5.6rem;
+        }
     }
 
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__astronaut {
+            top: 2rem;
+            height: clamp(30rem, 82svh, 38rem);
+            width: min(160vw, 64rem);
+        }
+
+        &__stage {
+            min-height: 100svh;
+        }
+
+        &__main-title {
+            font-size: 5.6rem;
+            line-height: 6.4rem;
+        }
     }
 }
