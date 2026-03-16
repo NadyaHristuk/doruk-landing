@@ -17,7 +17,16 @@
         margin-bottom: 6rem;
     }
 
+    // Short landscape phones (SE etc)
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        height: 100svh;
+        min-height: 100svh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    // Tall landscape phones (iPhone 12/14/XR/Pixel 7)
+    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         height: 100svh;
         min-height: 100svh;
         overflow-y: auto;
