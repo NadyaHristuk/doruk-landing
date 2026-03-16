@@ -892,4 +892,37 @@
     &__phone {
         margin: 0;
     }
+
+    // ── Landscape phone: tablet-equivalent layout ─────────────────
+    @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__content {
+            width: calc(100% - 4rem);
+            margin-inline: 2rem;
+            padding-top: var(--content-mobile-offset);
+        }
+
+        &__top {
+            padding-top: 0;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        &__figure {
+            flex: 0 0 28rem;
+            width: 28rem;
+            height: 18rem;
+
+            img {
+                height: 18rem;
+                object-fit: cover;
+            }
+        }
+
+        &__top input,
+        &__top button {
+            width: 28rem;
+        }
+    }
 }

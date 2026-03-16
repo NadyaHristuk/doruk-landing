@@ -652,4 +652,61 @@
             }
         }
     }
+
+    // ── Landscape phone: tablet-equivalent layout ─────────────────
+    @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__content {
+            width: calc(100vw - 3.2rem);
+            margin-top: var(--content-mobile-offset);
+            transform: translateY(0);
+        }
+
+        &__figure {
+            position: relative;
+            z-index: 2;
+            width: 46rem;
+            margin-inline: auto;
+        }
+
+        &__image-wrap {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        &__list {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 50%;
+            margin-top: 0;
+            transform: translateX(-50%);
+            width: calc(100vw - 3.2rem);
+            height: 36rem;
+        }
+
+        &__item {
+            position: absolute;
+            width: 34rem;
+            max-width: unset;
+            height: 6rem;
+            order: initial;
+
+            &:nth-child(1) { top: -15%; left: 4%; }
+            &:nth-child(2) { top: 50%; left: 2%; }
+            &:nth-child(3) { left: calc(50% - 17rem); bottom: 0; transform-origin: center center; }
+            &:nth-child(4) { top: -8%; right: 4%; transform-origin: right center; }
+            &:nth-child(5) { top: 50%; right: 2%; transform-origin: right center; }
+        }
+
+        &__circle {
+            width: 6rem;
+            height: 6rem;
+        }
+
+        &__item-text {
+            height: 6rem;
+            width: calc(100% - 6rem);
+        }
+    }
 }
