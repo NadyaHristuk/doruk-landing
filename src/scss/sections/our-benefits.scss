@@ -224,8 +224,8 @@
         margin-left: 10%;
 
         @media screen and (max-width: 390px) and (orientation: portrait) {
-            width: 100%;
-            margin-left: 6%;
+            width: 90%;
+            margin-left: 10%;
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
