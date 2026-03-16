@@ -1336,4 +1336,11 @@
             line-height: inherit;
         }
     }
+
+    // ── Tall phone (XR/11/Plus, portrait ≥800px height) ──────────
+    @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+        &__astronaut {
+            height: clamp(46rem, 58svh, 56rem);
+        }
+    }
 }

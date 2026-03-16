@@ -46,3 +46,6 @@ $tablet-height: 1025px;
 $landscape-phone-max-height:   500px; // landscape phones: SE=375h, XR=414h, 14ProMax=430h
 $nest-hub-max-height:          650px; // Nest Hub 1024×600
 $landscape-tablet-min-height:  651px; // tablets in landscape: iPad mini/Air=768h, iPad Pro=1024h
+
+// Tall phone (portrait) — iPhone XR/11/12/13/14 Plus, etc.
+$tall-phone-min-height:        800px; // tall portrait phones: XR=896h, 14ProMax=932h
