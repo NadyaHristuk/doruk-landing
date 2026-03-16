@@ -18,9 +18,10 @@
     }
 
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        height: auto;
+        height: 100svh;
         min-height: 100svh;
-        overflow: visible;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .who-we-are__inner {
