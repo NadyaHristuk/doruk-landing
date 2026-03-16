@@ -713,4 +713,8 @@
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
     }
+
+    // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
+    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+    }
 }
