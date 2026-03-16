@@ -3,8 +3,6 @@
 .our-benefits {
     position: relative;
     z-index: 4;
-    width: calc(100% - 3.2rem);
-    margin: 0 16px;
     min-height: 100%;
 
     @media screen and (min-width: variables.$tablet) {
@@ -138,7 +136,6 @@
         @media screen and (max-width: 390px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
-            margin-top: 5rem;
             transform: translateY(0);
         }
 
@@ -226,6 +223,11 @@
         width: 90%;
         margin-left: 10%;
 
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            width: 100%;
+            margin-left: 6%;
+        }
+
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
             width: 80%;
             margin-left: auto;
@@ -283,6 +285,11 @@
         margin-top: 5.8rem;
         width: 100%;
         height: auto;
+
+        @media screen and (max-width: 390px) and (orientation: portrait) {
+            row-gap: 1rem;
+            margin-top: 3.8rem;
+        }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             position: absolute;

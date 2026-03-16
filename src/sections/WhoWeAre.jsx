@@ -92,10 +92,13 @@ const WhoWeAre = ({ lang }) => {
 
         const panels = document.querySelectorAll(".who-we-are__panel");
         panels.forEach((panel, index) => {
+            const isActive = index === activePanel;
+
+            // Set aria-hidden attribute for accessibility and CSS selectors
+            panel.setAttribute("aria-hidden", isActive ? "false" : "true");
+
             const imageLayer = panel.querySelector(".who-we-are__image");
             const textBlock = panel.querySelector(".who-we-are__text-block");
-
-            const isActive = index === activePanel;
 
             if (imageLayer) {
                 imageLayer.style.setProperty("--who-image-layer-progress", isActive ? "1" : "0");
@@ -260,12 +263,11 @@ const WhoWeAre = ({ lang }) => {
                     ref={trackRef}
                     data-active-panel={activePanel}
                 >
-                    {aboutContent.map((item, idx) => (
+                    {aboutContent.map((item) => (
                         <WhoWeAreContent
                             item={item}
                             lang={lang}
                             key={item.id}
-                            hidden={isMobileLayout && idx !== activePanel}
                         />
                     ))}
                 </div>
@@ -274,6 +276,7 @@ const WhoWeAre = ({ lang }) => {
                 {isMobileLayout && (
                     <div className="who-we-are__mobile-nav">
                         <button
+                            type="button"
                             className="who-we-are__nav-btn who-we-are__nav-btn--prev"
                             onClick={() => setActivePanel((p) => (p - 1 + aboutContent.length) % aboutContent.length)}
                             aria-label="Previous panel"
@@ -284,6 +287,7 @@ const WhoWeAre = ({ lang }) => {
                         <div className="who-we-are__dots">
                             {aboutContent.map((_, idx) => (
                                 <button
+                                    type="button"
                                     key={idx}
                                     className={`who-we-are__dot ${idx === activePanel ? "who-we-are__dot--active" : ""}`}
                                     onClick={() => setActivePanel(idx)}
@@ -294,6 +298,7 @@ const WhoWeAre = ({ lang }) => {
                         </div>
 
                         <button
+                            type="button"
                             className="who-we-are__nav-btn who-we-are__nav-btn--next"
                             onClick={() => setActivePanel((p) => (p + 1) % aboutContent.length)}
                             aria-label="Next panel"

@@ -425,8 +425,8 @@ main {
     color: variables.$color-white;
 
     @media screen and (max-width: 550px) {
-        margin-bottom: 5rem;
-        margin-left: 1.6rem;
+        margin-bottom: 1rem;
+        margin-left: 0;
         margin-right: auto;
     }
 

@@ -13,6 +13,10 @@
     display: block;
     overflow: hidden;
 
+    @media screen and (max-width: #{variables.$mobile - 1px}) {
+        margin-bottom: 6rem;
+    }
+
     .who-we-are__inner {
         position: relative;
         z-index: 1;
@@ -1425,6 +1429,7 @@
                 @media screen and (max-width: 430px) {
                     --who-layer-dir-x: 1;
                     width: calc(100% - 10rem);
+                    margin-top: 6.4rem;
                 }
 
                 @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
