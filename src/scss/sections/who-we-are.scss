@@ -18,6 +18,10 @@
         z-index: 1;
         height: 100%;
         overflow: hidden;
+
+        @media screen and (max-width: #{variables.$mobile - 1px}) {
+            padding-inline: 1.6rem;
+        }
     }
 
     .who-we-are__track {
@@ -26,7 +30,6 @@
         width: 300vw;
         height: 100%;
         will-change: transform;
-
     }
 
     .who-we-are__header {
@@ -149,7 +152,7 @@
 
         @media screen and (max-width: 430px) {
             padding-top: 0;
-            padding-bottom: 3rem;
+            padding-bottom: 0;
             min-height: fit-content;
         }
 
@@ -236,27 +239,20 @@
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
-                    left: 0;
-                    margin: 0;
-                    top: 0;
                 }
 
                 @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
-                    left: 0;
                     margin: 0;
-                    top: 0;
                 }
 
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     order: 2;
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
-                    left: 0;
                     margin: 0;
-                    top: 0;
                 }
 
                 @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
@@ -1524,6 +1520,61 @@
             width: 100%;
             height: auto;
             will-change: auto;
+
+            .who-we-are__panel {
+                display: none;
+
+                &[aria-hidden="false"] {
+                    display: flex;
+                }
+            }
+        }
+
+        .who-we-are__mobile-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.6rem;
+            padding: 2rem 0;
+        }
+
+        .who-we-are__nav-btn {
+            width: 3.2rem;
+            height: 3.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.4rem;
+            background: transparent;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .who-we-are__dots {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .who-we-are__dot {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &--active {
+                background: #f6b823;
+            }
+
+            &:hover {
+                background: rgba(255, 255, 255, 0.5);
+            }
         }
     }
 }

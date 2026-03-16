@@ -234,24 +234,24 @@ main {
     position: fixed;
     top: calc(100svh - 9.9rem);
     left: unset;
-    right: calc(env(safe-area-inset-right) + 1.8rem);
+    right: calc(env(safe-area-inset-right) - 4.7rem);
     width: 9.4rem;
     height: 9.4rem;
     border-radius: 50%;
     cursor: pointer;
 
-    @media screen and (max-width: #{variables.$extra-small - 1px}) {
-        right: calc(env(safe-area-inset-right) + 1.8rem);
+    @media screen and (max-width: 430px) {
+        right: calc(env(safe-area-inset-right) - 2.2rem);
     }
 
     @media screen and (min-width: variables.$extra-small) and (max-width: #{variables.$small - 1px}) {
         top: calc(100svh - 15.9rem);
-        right: calc(env(safe-area-inset-right) - 1.4rem);
+        right: calc(env(safe-area-inset-right) - 4.7rem);
     }
 
     @media screen and (min-width: variables.$small) and (max-width: #{variables.$mobile - 1px}) {
         top: calc(100svh - 15.9rem);
-        right: calc(env(safe-area-inset-right) - 1.4rem);
+        right: calc(env(safe-area-inset-right) - 4.7rem);
     }
 
     // Phone landscape (≤500px height)
@@ -274,8 +274,9 @@ main {
 
     // Phone landscape extra-small+ (≤500px height)
     @media screen and (min-width: variables.$extra-small) and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        left: calc(100vw - env(safe-area-inset-right) - 13rem);
+        left: calc(100vw - env(safe-area-inset-right) - 7rem);
         right: unset;
+        top: calc(100svh - 9.9rem);
     }
 
     // Nest Hub landscape extra-small+ (501–650px height)
@@ -424,8 +425,9 @@ main {
     color: variables.$color-white;
 
     @media screen and (max-width: 550px) {
+        margin-bottom: 5rem;
         margin-left: 1.6rem;
-        margin-right: 0;
+        margin-right: auto;
     }
 
     @media screen and (min-width: variables.$mobile) {
@@ -648,81 +650,25 @@ main {
     width: 100%;
 
     &--hero,
+    &--who-we-are,
     &--our-benefits,
     &--keep-in-touch {
-        height: 100svh;
-        min-height: 100svh;
+        height: 100vh;
+        min-height: 100vh;
+        overflow: hidden;
     }
 
     &--hero {
-        // width: 100% inherited from .section — do NOT hardcode 1920px
-        // height: 100svh / min-height: 100svh inherited from the combined rule above
-        // for mobile, small phones, portrait tablets → full viewport, no override needed
-        overflow: hidden;
         position: relative;
-
-        // Large-screen fixed heights — design mockup values
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop - 1px) {
-            height: 800px;
-            min-height: 800px;
-        }
-
-        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop - 1px) {
-            height: 880px;
-            min-height: 880px;
-        }
-
-        @media screen and (min-width: variables.$desktop) {
-            height: 956px;
-            min-height: 956px;
-        }
-    }
-
-    &--who-we-are {
-        height: 100svh;
-        min-height: 100svh;
-
-        @media screen and (max-width: 430px) and (orientation: portrait) {
-            height: auto;
-            min-height: 662px;
-        }
     }
 
     &--key-facts {
-        height: 200rem;
+        height: 200vh;
+        min-height: 200vh;
 
-        @media screen and (max-width: 430px) and (orientation: portrait) {
-            height: 173rem;
-        }
-
-        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
-            height: 166rem;
-        }
-
-        @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-            height: 169rem;
-        }
-
-        @media screen and (min-width: variables.$mobile) {
-            height: 230rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) {
-            height: 200rem;
-        }
-    }
-
-    &--our-benefits {
-        @media screen and (orientation: portrait) {
-            min-height: 90rem;
-
-            @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
-                min-height: 104rem;
-            }
-
-            @media screen and (min-width: variables.$mobile) {
-                min-height: 105rem;
-            }
+        @media screen and (max-width: 430px) {
+            height: 250vh;
+            min-height: 250vh;
         }
     }
 
@@ -733,28 +679,6 @@ main {
             margin-top: 0;
         }
     }
-
-    &--keep-in-touch {
-        height: 99.6rem;
-        @media screen and (orientation: portrait) {
-            min-height: 90rem;
-
-            @media screen and (min-width: variables.$mobile) {
-                min-height: 105rem;
-            }
-        }
-    }
-
-    // @media screen and (max-width: 430px) and (orientation: portrait) {
-    //     &--hero,
-    //     &--who-we-are,
-    //     &--key-facts,
-    //     &--our-benefits,
-    //     &--keep-in-touch {
-    //         height: auto;
-    //         min-height: fit-content;
-    //     }
-    // }
 }
 
 button {

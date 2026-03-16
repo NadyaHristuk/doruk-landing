@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
@@ -21,19 +21,22 @@ const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
         <article
             className={`who-we-are__panel ${layoutClass}`}
             aria-labelledby={titleId}
-            aria-hidden={hidden ? "true" : undefined}
+            aria-hidden={hidden ? "true" : "false"}
         >
             <div className="who-we-are__image">
-                <img
-                    className="who-we-are__image-masked"
-                    src={item.bg}
-                    width="798"
-                    height="496"
-                    loading="lazy"
-                    alt=""
-                    role="presentation"
-                    aria-hidden="true"
-                />
+                <picture>
+                    <source type="image/webp" srcSet={item.bgWebp} />
+                    <img
+                        className="who-we-are__image-masked"
+                        src={item.bg}
+                        width="798"
+                        height="496"
+                        loading="lazy"
+                        alt=""
+                        role="presentation"
+                        aria-hidden="true"
+                    />
+                </picture>
             </div>
             <div className="who-we-are__info">
                 <div className="who-we-are__title-block">
@@ -74,11 +77,37 @@ const WhoWeAre = ({ lang }) => {
     const entryRef = useRef(null);
     const trackRef = useRef(null);
     const disableDots = useMobile(769);
+    const isMobileLayout = useMobile(1280);
     const progress = useTitleAnimation(entryRef);
     const title = `${translate("about.title", lang) || ""}`;
     const titleChars = Array.from(title);
     const titleInitial = titleChars[0] || "";
     const titleRest = titleChars.slice(1).join("");
+
+    const [activePanel, setActivePanel] = useState(0);
+
+    // On mobile: update image layer visibility when active panel changes
+    useEffect(() => {
+        if (!isMobileLayout) return;
+
+        const panels = document.querySelectorAll(".who-we-are__panel");
+        panels.forEach((panel, index) => {
+            const imageLayer = panel.querySelector(".who-we-are__image");
+            const textBlock = panel.querySelector(".who-we-are__text-block");
+
+            const isActive = index === activePanel;
+
+            if (imageLayer) {
+                imageLayer.style.setProperty("--who-image-layer-progress", isActive ? "1" : "0");
+            }
+
+            if (textBlock) {
+                textBlock.style.setProperty("--who-layer-substrate-progress", isActive ? "1" : "0");
+                textBlock.style.setProperty("--who-layer-before-progress", isActive ? "1" : "0");
+                textBlock.style.setProperty("--who-layer-after-progress", isActive ? "1" : "0");
+            }
+        });
+    }, [activePanel, isMobileLayout]);
 
     useMatrixDots({
         sectionId: "#who-we-are",
@@ -112,6 +141,13 @@ const WhoWeAre = ({ lang }) => {
         const overlay = document.querySelector(".svg-line-overlay");
         if (!section || !track) return;
 
+        // Skip GSAP animation on mobile — use button/dot navigation instead
+        if (isMobileLayout) {
+            // Reset track position for mobile
+            gsap.set(track, { x: 0 });
+            return;
+        }
+
         const ctx = gsap.context(() => {
             const maxX = () => Math.max(track.scrollWidth - window.innerWidth, 0);
             const panels = Array.from(track.querySelectorAll(".who-we-are__panel"));
@@ -119,12 +155,13 @@ const WhoWeAre = ({ lang }) => {
             gsap.to(track, {
                 x: () => -maxX(),
                 ease: "none",
+                force3D: true,
                 scrollTrigger: {
                     trigger: section,
                     pin: true,
                     scrub: true,
                     end: () => `+=${maxX()}`,
-                    anticipatePin: 1,
+                    anticipatePin: 0,
                     invalidateOnRefresh: true,
                     onUpdate: (self) => {
                         // During horizontal scroll: move overlay left with track and down to compensate for pin
@@ -174,7 +211,7 @@ const WhoWeAre = ({ lang }) => {
                             }
                         });
                     },
-                    onLeave: (self) => {
+                    onLeave: () => {
                         // When exiting section: maintain final Y offset (= total scroll distance consumed by pin)
                         if (overlay) {
                             gsap.set(overlay, { y: maxX() });
@@ -191,7 +228,7 @@ const WhoWeAre = ({ lang }) => {
         });
 
         return () => ctx.revert();
-    }, []);
+    }, [isMobileLayout]);
 
     return (
         <>
@@ -221,11 +258,50 @@ const WhoWeAre = ({ lang }) => {
                     role="region"
                     aria-label={translate("about.title", lang)}
                     ref={trackRef}
+                    data-active-panel={activePanel}
                 >
-                    {aboutContent.map((item) => (
-                        <WhoWeAreContent item={item} lang={lang} key={item.id} />
+                    {aboutContent.map((item, idx) => (
+                        <WhoWeAreContent
+                            item={item}
+                            lang={lang}
+                            key={item.id}
+                            hidden={isMobileLayout && idx !== activePanel}
+                        />
                     ))}
                 </div>
+
+                {/* Mobile navigation: prev/next + dots */}
+                {isMobileLayout && (
+                    <div className="who-we-are__mobile-nav">
+                        <button
+                            className="who-we-are__nav-btn who-we-are__nav-btn--prev"
+                            onClick={() => setActivePanel((p) => (p - 1 + aboutContent.length) % aboutContent.length)}
+                            aria-label="Previous panel"
+                        >
+                            ←
+                        </button>
+
+                        <div className="who-we-are__dots">
+                            {aboutContent.map((_, idx) => (
+                                <button
+                                    key={idx}
+                                    className={`who-we-are__dot ${idx === activePanel ? "who-we-are__dot--active" : ""}`}
+                                    onClick={() => setActivePanel(idx)}
+                                    aria-label={`Panel ${idx + 1}`}
+                                    aria-current={idx === activePanel ? "page" : undefined}
+                                />
+                            ))}
+                        </div>
+
+                        <button
+                            className="who-we-are__nav-btn who-we-are__nav-btn--next"
+                            onClick={() => setActivePanel((p) => (p + 1) % aboutContent.length)}
+                            aria-label="Next panel"
+                        >
+                            →
+                        </button>
+                    </div>
+                )}
             </div>
         </>
     );
