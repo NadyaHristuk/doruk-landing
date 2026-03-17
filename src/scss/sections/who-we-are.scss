@@ -17,22 +17,6 @@
         margin-bottom: 6rem;
     }
 
-    // Short landscape phones (SE etc)
-    @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        height: 100svh;
-        min-height: 100svh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    // Tall landscape phones (iPhone 12/14/XR/Pixel 7)
-    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        height: 100svh;
-        min-height: 100svh;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
     .who-we-are__inner {
         position: relative;
         z-index: 1;
@@ -1613,5 +1597,24 @@
     }
 
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        .who-we-are__text-substrate {
+            display: none;
+        }
+
+        .who-we-are__track .who-we-are__panel[aria-hidden=false] {
+            display: flex;
+            padding-top: 2rem;
+            justify-content: center;
+        }
+
+        .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block .who-we-are__text-content {
+            min-height: 16rem;
+        }
+
+        .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block,
+        .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__text-block {
+            width: 100%;
+        }
+
     }
 }

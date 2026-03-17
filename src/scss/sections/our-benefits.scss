@@ -160,6 +160,10 @@
             transform: translateY(0);
         }
 
+        @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+            margin-top: 0;
+        }
+
         @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
             margin-top: calc(var(--content-offset) - 12rem);
         }

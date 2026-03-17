@@ -134,6 +134,10 @@
             margin-top: 5rem;
         }
 
+        @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+            margin-top: 0;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             max-width: none;
             width: calc(100% - 4rem);
@@ -902,7 +906,7 @@
         &__content {
             width: calc(100% - 5rem);
             margin-inline: 2.5rem;
-            padding-top: var(--content-mobile-offset);
+            padding-top: 2rem;
         }
 
         &__top {
@@ -914,14 +918,19 @@
         }
 
         &__figure {
-            flex: 0 0 36rem;
-            width: 36rem;
-            height: 22rem;
+            display: none;
+        }
 
-            img {
-                height: 22rem;
-                object-fit: cover;
-            }
+        &__contact-card {
+            margin-top: -5.4rem;
+            margin-right: 2.4rem;
+            width: 32rem;
+        }
+
+        &__contact-info {
+            padding: 1rem;
+            font-size: 2rem;
+            line-height: 2rem;
         }
 
         &__top input,

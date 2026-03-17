@@ -86,9 +86,29 @@ const WhoWeAre = ({ lang }) => {
 
     const [activePanel, setActivePanel] = useState(0);
 
+    // Landscape phones should use GSAP desktop scroll, not mobile buttons
+    const [isLandscapePhone, setIsLandscapePhone] = useState(() => {
+        if (typeof window === "undefined") return false;
+        return window.innerHeight <= 500 && window.innerWidth > window.innerHeight;
+    });
+
+    useEffect(() => {
+        const check = () => {
+            setIsLandscapePhone(window.innerHeight <= 500 && window.innerWidth > window.innerHeight);
+        };
+        window.addEventListener("resize", check);
+        window.addEventListener("orientationchange", check);
+        return () => {
+            window.removeEventListener("resize", check);
+            window.removeEventListener("orientationchange", check);
+        };
+    }, []);
+
+    const useMobileNav = isMobileLayout && !isLandscapePhone;
+
     // On mobile: update image layer visibility when active panel changes
     useEffect(() => {
-        if (!isMobileLayout) return;
+        if (!useMobileNav) return;
 
         const panels = document.querySelectorAll(".who-we-are__panel");
         panels.forEach((panel, index) => {
@@ -110,7 +130,7 @@ const WhoWeAre = ({ lang }) => {
                 textBlock.style.setProperty("--who-layer-after-progress", isActive ? "1" : "0");
             }
         });
-    }, [activePanel, isMobileLayout]);
+    }, [activePanel, useMobileNav]);
 
     useMatrixDots({
         sectionId: "#who-we-are",
@@ -145,7 +165,7 @@ const WhoWeAre = ({ lang }) => {
         if (!section || !track) return;
 
         // Skip GSAP animation on mobile — use button/dot navigation instead
-        if (isMobileLayout) {
+        if (useMobileNav) {
             // Reset track position for mobile
             gsap.set(track, { x: 0 });
             return;
@@ -231,7 +251,7 @@ const WhoWeAre = ({ lang }) => {
         });
 
         return () => ctx.revert();
-    }, [isMobileLayout]);
+    }, [useMobileNav]);
 
     return (
         <>
@@ -273,7 +293,7 @@ const WhoWeAre = ({ lang }) => {
                 </div>
 
                 {/* Mobile navigation: prev/next + dots */}
-                {isMobileLayout && (
+                {useMobileNav && (
                     <div className="who-we-are__mobile-nav">
                         <button
                             type="button"

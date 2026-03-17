@@ -291,6 +291,12 @@ main {
         right: unset;
     }
 
+    // Tall landscape phones (iPhone XR/12/14/Pixel 7, 769–1024px)
+    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        left: unset;
+        right: calc(env(safe-area-inset-right) - 2.7rem);
+    }
+
     @media screen and (min-width: variables.$tablet) {
         top: max(2.4rem, calc(50svh - 22.8rem));
         left: 0;
@@ -428,6 +434,10 @@ main {
         margin-bottom: 1rem;
         margin-left: 0;
         margin-right: auto;
+    }
+
+    @media screen and (max-width: 550px) and (orientation: portrait) and (min-height: 800px) {
+        margin-bottom: 7rem;
     }
 
     @media screen and (min-width: variables.$mobile) {
@@ -674,17 +684,26 @@ main {
         }
     }
 
+    // who-we-are uses GSAP pin — overflow-y: auto intercepts touch scroll and breaks pinning
+    &--who-we-are {
+        @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            overflow: hidden;
+        }
+    }
+
     &--hero {
         position: relative;
     }
 
     &--key-facts {
-        height: 200vh;
-        min-height: 200vh;
-
         @media screen and (max-width: 430px) {
             height: 250vh;
             min-height: 250vh;
+        }
+
+        @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+            height: 200vh;
+            min-height: 200vh;
         }
 
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
@@ -700,6 +719,11 @@ main {
             overflow-y: auto;
             overflow-x: hidden;
         }
+
+        @media screen and (min-width: variables.$tablet) {
+            height: 200vh;
+            min-height: 200vh;
+        }
     }
 
     &--our-benefits {
@@ -707,6 +731,10 @@ main {
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             margin-top: 0;
+        }
+
+        @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+            margin-bottom: 10rem;
         }
     }
 }
