@@ -323,7 +323,6 @@
             width: 71.875%;
             background-image: url("assets/webp/home/astronaut-desktop.webp");
         }
-
     }
 
     &__bg-particles {
@@ -1341,6 +1340,14 @@
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
         &__bg {
             top: 9.6svh;
+        }
+
+        &__grid {
+            top: calc(14svh + 9rem);
+        }
+
+        &__content {
+            top: 43svh;
         }
 
         &__astronaut {

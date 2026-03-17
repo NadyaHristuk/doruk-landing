@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
 // config
@@ -169,19 +168,14 @@ const WhoWeAre = ({ lang }) => {
         if (useMobileNav) {
             // Reset track position for mobile
             gsap.set(track, { x: 0 });
-            ScrollTrigger.normalizeScroll(false);
             return;
         }
 
-        // On landscape phones, normalize scroll to prevent iOS momentum from
-        // blasting through the entire pin zone in one touch gesture
-        if (isLandscapePhone) {
-            ScrollTrigger.normalizeScroll(true);
-        }
-
         const ctx = gsap.context(() => {
-            const maxX = () => Math.max(track.scrollWidth - window.innerWidth, 0);
             const panels = Array.from(track.querySelectorAll(".who-we-are__panel"));
+
+            // How far the track moves horizontally (always full panel-width steps)
+            const maxX = () => Math.max(track.scrollWidth - window.innerWidth, 0);
 
             gsap.to(track, {
                 x: () => -maxX(),
@@ -195,10 +189,10 @@ const WhoWeAre = ({ lang }) => {
                     anticipatePin: 0,
                     invalidateOnRefresh: true,
                     onUpdate: (self) => {
-                        // During horizontal scroll: move overlay left with track and down to compensate for pin
+                        // Horizontal offset of the track at current scroll progress
                         const offset = self.progress * maxX();
                         if (overlay) {
-                            gsap.set(overlay, { x: -offset, y: offset });
+                            gsap.set(overlay, { x: -offset, y: self.progress * maxX() });
                         }
 
                         // Update panel layer visibility based on scroll progress
@@ -206,64 +200,63 @@ const WhoWeAre = ({ lang }) => {
                         const trackOffset = offset;
                         const activeIndex = Math.round(trackOffset / panelWidth);
 
-                        panels.forEach((panel, index) => {
-                            const isActive = index === activeIndex;
-                            const imageLayer = panel.querySelector(".who-we-are__image");
-                            const textBlock = panel.querySelector(".who-we-are__text-block");
+                        // On landscape phones the CSS already forces all layer-progress
+                        // vars to 1 (fully visible). Skipping GSAP layer animation here
+                        // prevents onUpdate from immediately setting inactive panels to 0,
+                        // which would hide their content before the 0.55s tween completes.
+                        if (!isLandscapePhone) {
+                            panels.forEach((panel, index) => {
+                                const isActive = index === activeIndex;
+                                const imageLayer = panel.querySelector(".who-we-are__image");
+                                const textBlock = panel.querySelector(".who-we-are__text-block");
 
-                            if (imageLayer) {
-                                gsap.to(imageLayer, {
-                                    "--who-image-layer-progress": isActive ? 1 : 0,
-                                    duration: 0.55,
-                                    ease: "power2.out",
-                                    overwrite: "auto",
-                                });
-                            }
+                                if (imageLayer) {
+                                    gsap.to(imageLayer, {
+                                        "--who-image-layer-progress": isActive ? 1 : 0,
+                                        duration: 0.55,
+                                        ease: "power2.out",
+                                        overwrite: "auto",
+                                    });
+                                }
 
-                            if (textBlock) {
-                                gsap.to(textBlock, {
-                                    "--who-layer-substrate-progress": isActive ? 1 : 0,
-                                    duration: 0.55,
-                                    ease: "power2.out",
-                                    overwrite: "auto",
-                                });
-                                gsap.to(textBlock, {
-                                    "--who-layer-before-progress": isActive ? 1 : 0,
-                                    duration: 0.55,
-                                    ease: "power2.out",
-                                    overwrite: "auto",
-                                });
-                                gsap.to(textBlock, {
-                                    "--who-layer-after-progress": isActive ? 1 : 0,
-                                    duration: 0.55,
-                                    ease: "power2.out",
-                                    overwrite: "auto",
-                                });
-                            }
-                        });
+                                if (textBlock) {
+                                    gsap.to(textBlock, {
+                                        "--who-layer-substrate-progress": isActive ? 1 : 0,
+                                        duration: 0.55,
+                                        ease: "power2.out",
+                                        overwrite: "auto",
+                                    });
+                                    gsap.to(textBlock, {
+                                        "--who-layer-before-progress": isActive ? 1 : 0,
+                                        duration: 0.55,
+                                        ease: "power2.out",
+                                        overwrite: "auto",
+                                    });
+                                    gsap.to(textBlock, {
+                                        "--who-layer-after-progress": isActive ? 1 : 0,
+                                        duration: 0.55,
+                                        ease: "power2.out",
+                                        overwrite: "auto",
+                                    });
+                                }
+                            });
+                        }
                     },
                     onLeave: () => {
-                        // When exiting section: maintain final Y offset (= total scroll distance consumed by pin)
                         if (overlay) {
-                            gsap.set(overlay, { y: maxX() });
+                            gsap.set(overlay, { x: -maxX(), y: maxX() });
                         }
                     },
                     onLeaveBack: () => {
-                        // When scrolling back up into section from below: reset to no Y offset
                         if (overlay) {
-                            gsap.set(overlay, { y: 0 });
+                            gsap.set(overlay, { x: 0, y: 0 });
                         }
                     },
                 },
             });
         });
 
-        return () => {
-            ctx.revert();
-            if (isLandscapePhone) {
-                ScrollTrigger.normalizeScroll(false);
-            }
-        };
+        return () => ctx.revert();
     }, [useMobileNav]);
 
     return (

@@ -1613,7 +1613,9 @@
             will-change: transform;
         }
 
-        .who-we-are__panel {
+        // Use .who-we-are__track .who-we-are__panel (specificity 1,2,0) to beat the
+        // mobile block which hides panels via #who-we-are .who-we-are__track .who-we-are__panel { display: none }
+        .who-we-are__track .who-we-are__panel {
             display: flex;
             flex-flow: row nowrap;
             justify-content: center;
@@ -1642,12 +1644,12 @@
             --who-layer-after-progress: 1;
         }
 
-        .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block .who-we-are__text-content {
+        .who-we-are__track .who-we-are__panel--default .who-we-are__text-block .who-we-are__text-content {
             min-height: 16rem;
         }
 
-        .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block,
-        .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__text-block {
+        .who-we-are__track .who-we-are__panel--default .who-we-are__text-block,
+        .who-we-are__track .who-we-are__panel--mirrored .who-we-are__text-block {
             width: 100%;
         }
     }
