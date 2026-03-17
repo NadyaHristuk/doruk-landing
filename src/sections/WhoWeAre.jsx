@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
 // config
@@ -168,7 +169,14 @@ const WhoWeAre = ({ lang }) => {
         if (useMobileNav) {
             // Reset track position for mobile
             gsap.set(track, { x: 0 });
+            ScrollTrigger.normalizeScroll(false);
             return;
+        }
+
+        // On landscape phones, normalize scroll to prevent iOS momentum from
+        // blasting through the entire pin zone in one touch gesture
+        if (isLandscapePhone) {
+            ScrollTrigger.normalizeScroll(true);
         }
 
         const ctx = gsap.context(() => {
@@ -250,7 +258,12 @@ const WhoWeAre = ({ lang }) => {
             });
         });
 
-        return () => ctx.revert();
+        return () => {
+            ctx.revert();
+            if (isLandscapePhone) {
+                ScrollTrigger.normalizeScroll(false);
+            }
+        };
     }, [useMobileNav]);
 
     return (

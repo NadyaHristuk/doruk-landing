@@ -1596,15 +1596,50 @@
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
     }
 
-    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        // Restore desktop horizontal slider layout (overrides max-width: $laptop block)
+        height: 100svh;
+        overflow: hidden;
+
+        .who-we-are__inner {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .who-we-are__track {
+            display: flex;
+            width: 300vw;
+            height: 100%;
+            will-change: transform;
+        }
+
+        .who-we-are__panel {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            flex: 0 0 100vw;
+            width: 100vw;
+            min-height: 100svh;
+            padding-top: 4rem;
+            gap: 3rem;
+        }
+
         .who-we-are__text-substrate {
             display: none;
         }
 
-        .who-we-are__track .who-we-are__panel[aria-hidden=false] {
-            display: flex;
-            padding-top: 2rem;
-            justify-content: center;
+        // All layer-progress vars default to 0 (opacity: 0). On landscape phones
+        // the GSAP custom-property animation is unreliable on iOS Safari, so force
+        // all layers fully visible — GSAP onUpdate will still animate them when active.
+        .who-we-are__image {
+            --who-image-layer-progress: 1;
+        }
+
+        .who-we-are__text-block {
+            --who-layer-substrate-progress: 1;
+            --who-layer-before-progress: 1;
+            --who-layer-after-progress: 1;
         }
 
         .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block .who-we-are__text-content {
@@ -1615,6 +1650,5 @@
         .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__text-block {
             width: 100%;
         }
-
     }
 }

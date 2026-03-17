@@ -1026,8 +1026,8 @@
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         &__content {
-            width: 80%;
-            padding-top: var(--content-mobile-offset);
+            width: 100%;
+            padding-top: 2rem;
         }
 
         &__block {
