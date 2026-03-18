@@ -709,6 +709,11 @@ main {
             overflow: hidden;
         }
 
+        @media screen and (min-width: variables.$extra-small) and (max-width: #{variables.$tablet - 1px}) and (orientation: portrait) {
+            height: 200vh;
+            min-height: 200vh;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             height: 200vh;
             min-height: 200vh;

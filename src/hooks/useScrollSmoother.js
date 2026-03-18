@@ -51,9 +51,23 @@ export const useScrollSmoother = (container, debugDisable = false) => {
       timeoutId = setTimeout(start, 0);
     }
 
+    // Kill smoother when viewport drops below desktop threshold or pointer changes
+    const mqlWidth = window.matchMedia('(min-width: 1024px)');
+    const mqlPointer = window.matchMedia('(pointer: fine)');
+    const onConditionChange = (e) => {
+      if (!e.matches && smoother) {
+        smoother.kill();
+        smoother = null;
+      }
+    };
+    mqlWidth.addEventListener('change', onConditionChange);
+    mqlPointer.addEventListener('change', onConditionChange);
+
     return () => {
       // Clean up if component unmounts - though usually App doesn't unmount
       cancelled = true;
+      mqlWidth.removeEventListener('change', onConditionChange);
+      mqlPointer.removeEventListener('change', onConditionChange);
       if (idleId && typeof window.cancelIdleCallback === 'function') {
         window.cancelIdleCallback(idleId);
       }

@@ -303,11 +303,12 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            top: 3.6rem;
+            top: 5.6rem;
             left: 50%;
-            width: min(180vw, 67.6rem);
-            height: clamp(38rem, 50svh, 50rem);
+            width: min(100vw, 77.6rem);
+            height: clamp(38rem, 61svh, 67rem);
             transform: translateX(-50%);
+            background-size: 120% auto;
             background-position: top center;
         }
 
@@ -465,11 +466,11 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            top: calc(42svh + 9rem);
+            top: calc(11svh + 9rem);
             bottom: auto;
             height: 30svh;
             transform-origin: top center;
-            transform: scale(0.9);
+            transform: scale(1.2);
         }
     }
 
@@ -546,8 +547,8 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            top: 42svh;
-            left: 0;
+            top: 51svh;
+            left: 19px;
             width: 100%;
             padding-inline: clamp(1.6rem, 5vw, 2.4rem);
         }

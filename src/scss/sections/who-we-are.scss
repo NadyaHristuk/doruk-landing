@@ -452,6 +452,17 @@
                     right: 7%;
                 }
 
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                    left: 50%;
+                    right: auto;
+                    transform: translateX(-50%);
+                    width: calc(100% - 11.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    margin: 0;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
                 @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) and (orientation: portrait) {
                     order: 1;
                     position: absolute;
@@ -1357,6 +1368,14 @@
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
                     text-align: left;
                     width: calc(100% - 5.2rem);
+                    min-height: clamp(5.8rem, 7.2vw, 6.8rem);
+                    height: auto;
+                    padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
+                }
+
+                @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
+                    text-align: left;
+                    width: calc(100% - 11.2rem);
                     min-height: clamp(5.8rem, 7.2vw, 6.8rem);
                     height: auto;
                     padding: 0 clamp(6rem, 9.5vw, 7rem) 0 1.8rem;
