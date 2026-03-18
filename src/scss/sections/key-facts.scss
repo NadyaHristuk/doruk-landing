@@ -1042,6 +1042,16 @@
             left: 197px;
         }
 
+        &__block--photo &__figure {
+            margin-left: 0;
+            width: 28rem;
+            height: 28rem;
+        }
+
+        &__block--device &__figure {
+            width: 41rem;
+        }
+
         &__block {
             flex-direction: row;
         }

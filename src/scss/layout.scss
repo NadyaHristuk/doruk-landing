@@ -671,22 +671,13 @@ main {
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
             height: 100svh;
             min-height: 100svh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         // Tall landscape phones (iPhone 12/14/XR/Pixel 7, width 769–1024px)
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
             height: 100svh;
             min-height: 100svh;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-    }
-
-    // who-we-are uses GSAP pin — overflow-y: auto intercepts touch scroll and breaks pinning
-    &--who-we-are {
-        @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
             overflow: hidden;
         }
     }
@@ -709,15 +700,13 @@ main {
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
             height: 100svh;
             min-height: 100svh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            height: 200svh;
+            height: 300svh;
             min-height: 200svh;
-            overflow-y: auto;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         @media screen and (min-width: variables.$tablet) {

@@ -28,82 +28,14 @@ const SvgLine = () => {
         pathMobileEl.style.strokeDashoffset = pathLengthMobile;
         pathMobileEl.setAttribute("data-ready", "true");
 
-        let pinStart = 0;
-        let maxX = 0;
         let totalScroll = 0;
 
-        // Compute zones: pinStart, maxX, totalScroll
         function computeZones() {
-            const section = document.querySelector("#who-we-are");
-            const track = section?.querySelector(".who-we-are__track");
-
-
-            // Get pinStart from WhoWeAre element position
-            // pinStart = scroll position when section.top aligns with viewport.top
-            if (section) {
-                // Get the element's position in the document flow
-                // We need to account for any transforms or parent positioning
-                let elementTop = 0;
-                let element = section;
-
-                // Walk up the DOM to calculate offset, accounting for positioned parents
-                while (element && element !== document.body && element !== document.documentElement) {
-                    elementTop += element.offsetTop;
-                    element = element.offsetParent;
-                }
-
-                pinStart = Math.max(elementTop, 0);
-            }
-
-            // Get maxX from ScrollTrigger or track width
-            // If track is not loaded, calculate from WhoWeAre ST (end - start = pin distance = maxX)
-            if (track) {
-                const trackScrollWidth = track.scrollWidth;
-                const windowWidth = window.innerWidth;
-                maxX = Math.max(trackScrollWidth - windowWidth, 0);
-
-            } else if (section) {
-                // Fallback: get from WhoWeAre ScrollTrigger (end - start = pin distance)
-                const whoST = ScrollTrigger.getAll().find(
-                    (st) => st.trigger === section
-                );
-                if (whoST && whoST.end !== undefined) {
-                    maxX = whoST.end - whoST.start;
-                } else {
-                    maxX = 0;
-                }
-            } else {
-                maxX = 0;
-            }
-
-            // Get total scroll distance
             totalScroll = ScrollTrigger.maxScroll(window);
-
         }
 
-        // Compute visual progress accounting for 3 zones
         function getVisualProgress(scrollY) {
-            const pinEnd = pinStart + maxX;
-            const restVirtual = totalScroll - pinEnd;
-
-            // Fixed zone allocation for testing
-            const zone1end = 0.19;  // Hero: 19%
-            const zone2end = 0.39;  // WhoWeAre: 20% (19% + 20% = 39%)
-            // Zone 3 (Rest): 61% (remaining)
-
-            if (scrollY <= pinStart) {
-                // Zone 1: Hero section - linear progression
-                return (scrollY / pinStart) * zone1end;
-            } else if (scrollY < pinEnd) {
-                // Zone 2: WhoWeAre pin period - map horizontal progress to line progress
-                const whoP = (scrollY - pinStart) / Math.max(maxX, 1); // 0→1 as we scroll horizontally
-                const zone2size = zone2end - zone1end;
-                return zone1end + whoP * zone2size;
-            } else {
-                // Zone 3: After WhoWeAre - linear progression
-                const restProgress = restVirtual > 0 ? (scrollY - pinEnd) / restVirtual : 1;
-                return zone2end + restProgress * (1 - zone2end);
-            }
+            return totalScroll > 0 ? scrollY / totalScroll : 0;
         }
 
         let currentOffset = pathLength;

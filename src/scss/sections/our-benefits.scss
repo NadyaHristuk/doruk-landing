@@ -722,14 +722,15 @@
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         &__content {
             width: calc(100vw - 3.2rem);
-            margin-top: var(--content-mobile-offset);
+            margin-top: 20px;
             transform: translateY(0);
         }
 
         &__figure {
             position: relative;
             z-index: 2;
-            width: 56rem;
+            width: 38%;
+            height: auto;
             margin-inline: auto;
         }
 
@@ -757,11 +758,11 @@
             height: 7.2rem;
             order: initial;
 
-            &:nth-child(1) { top: -13%; left: calc(1% + 1rem); }
-            &:nth-child(2) { top: 36%; left: calc(2% + 1rem); }
-            &:nth-child(3) { left: calc(50% - 21rem); bottom: 0; transform-origin: center center; }
-            &:nth-child(4) { top: -10%; right: calc(1% + 1rem); transform-origin: right center; }
-            &:nth-child(5) { top: 50%; right: calc(2% + 1rem); transform-origin: right center; }
+            &:nth-child(1) { top: -2%; left: calc(1% + 1rem); }
+            &:nth-child(2) { top: 27%; left: calc(2% + 1rem); }
+            &:nth-child(3) { left: calc(50% - 21rem); top: 22rem; transform-origin: center center; }
+            &:nth-child(4) { top: 1%; right: calc(1% + 1rem); transform-origin: right center; }
+            &:nth-child(5) { top: 31%; right: calc(2% + 1rem); transform-origin: right center; }
         }
 
         &__circle {
