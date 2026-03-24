@@ -89,12 +89,12 @@ const WhoWeAre = ({ lang }) => {
     // Landscape phones should use GSAP desktop scroll, not mobile buttons
     const [isLandscapePhone, setIsLandscapePhone] = useState(() => {
         if (typeof window === "undefined") return false;
-        return window.innerHeight <= 500 && window.innerWidth > window.innerHeight;
+        return window.innerHeight <= 500 && window.innerWidth > window.innerHeight && window.innerWidth >= 769;
     });
 
     useEffect(() => {
         const check = () => {
-            setIsLandscapePhone(window.innerHeight <= 500 && window.innerWidth > window.innerHeight);
+            setIsLandscapePhone(window.innerHeight <= 500 && window.innerWidth > window.innerHeight && window.innerWidth >= 769);
         };
         window.addEventListener("resize", check);
         window.addEventListener("orientationchange", check);

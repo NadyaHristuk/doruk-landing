@@ -474,7 +474,6 @@
             align-items: center;
         }
     }
-
     &__form-fields {
         display: flex;
         flex-flow: row wrap;
@@ -934,6 +933,16 @@
         }
 
         &__contact-card {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        &__form-fields {
+            width: 50%;
+        }
+
+        &__contact-card {
             margin-top: -5.4rem;
             margin-right: -1.6rem;
             width: 32rem;
@@ -953,9 +962,29 @@
             margin-bottom: 1rem;
         }
 
+        &__form-fields {
+            width: 50%;
+        }
+
+        &__form-fields {
+            width: 50%;
+        }
+
         &__top input,
         &__top button {
-            width: 36rem;
+            width: 100%;
+            height: 4rem;
+                    font-size: 1.8rem;
+        }
+
+        &__submit {
+            position: relative;
+            max-width: 50%;
+        }
+
+        &__submit {
+            position: relative;
+            max-width: 50%;
         }
     }
 
@@ -966,9 +995,8 @@
         &__content {
             width: calc(100% - 4rem);
             margin-inline: 2rem;
-            padding-top: var(--content-mobile-offset);
+            padding-top: 2rem;
         }
-
         &__top {
             padding-top: 0;
             flex-flow: row nowrap;
@@ -978,19 +1006,50 @@
         }
 
         &__figure {
-            flex: 0 0 28rem;
-            width: 28rem;
-            height: 18rem;
+            display: none;
+        }
 
-            img {
-                height: 18rem;
-                object-fit: cover;
-            }
+        &__form-fields {
+            width: 50%;
         }
 
         &__top input,
         &__top button {
             width: 28rem;
+            height: 4rem;
+        }
+
+        &__top textarea {
+            height: 11rem;
+        }
+    }
+
+    // ── Tall landscape phones (769–1024px wide, short height) ──
+    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__contact-card {
+            margin-top: 1.6rem;
+            margin-right: -1.6rem;
+            width: 32rem;
+        }
+
+        &__submit {
+            position: relative;
+            max-width: 50%;
+        }
+    }
+
+    // ── Mid-height landscape phones (up to 768px wide, 501–650px tall) ──
+    @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+        &__top input,
+        &__top button {
+            width: 100%;
+            height: 4rem;
+                    font-size: 1.8rem;
+        }
+
+        &__submit {
+            position: relative;
+            max-width: 50%;
         }
     }
 }
