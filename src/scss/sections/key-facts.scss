@@ -263,7 +263,11 @@
 
         @media screen and (min-width: variables.$tablet) {
             width: 75%;
-            padding-top: var(--content-mobile-offset);
+            margin-top: var(--content-mobile-offset);
+        }
+
+        @media screen and (min-width: 1500px) {
+            margin-top: 7rem;
         }
     }
 

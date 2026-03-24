@@ -297,6 +297,10 @@ main {
         right: calc(env(safe-area-inset-right) - 2.7rem);
     }
 
+    @media screen and (min-width: 551px) and (max-width: 768px) {
+        right: calc(env(safe-area-inset-right) - 2.2rem);
+    }
+
     @media screen and (min-width: variables.$tablet) {
         top: max(2.4rem, calc(50svh - 22.8rem));
         left: 0;
@@ -474,8 +478,19 @@ main {
     &:has(.animated-title__cap) {
         align-items: baseline;
         gap: 2rem;
+        margin-bottom: 7rem;
         word-spacing: 0;
         letter-spacing: 0;
+
+        @media screen and (max-width: 550px) {
+            margin-bottom: 1rem;
+            margin-left: 0;
+            margin-right: auto;
+        }
+
+        @media screen and (min-width: 1501px) {
+            margin-bottom: 0;
+        }
 
         @media screen and (max-width: 767px) {
             gap: 1rem;
@@ -484,6 +499,18 @@ main {
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
             margin-left: 5%;
             margin-right: 0;
+        }
+
+        @media screen and (min-width: 551px) and (max-width: 768px) {
+            gap: 1rem;
+
+            .animated-title__cap {
+                font-size: 5.4rem;
+            }
+
+            .animated-title__text {
+                font-size: 4.3rem;
+            }
         }
     }
 
@@ -714,14 +741,28 @@ main {
             min-height: 200vh;
         }
 
+        @media screen and (min-width: 431px) and (max-width: 1024px) and (orientation: portrait) {
+            height: 180vh;
+            min-height: 180vh;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             height: 200vh;
             min-height: 200vh;
+        }
+
+        @media screen and (min-width: 1500px) {
+            height: 210vh;
+            min-height: 210vh;
         }
     }
 
     &--our-benefits {
         margin-top: 5rem;
+
+        @media screen and (min-width: 1500px) {
+            margin-top: 10rem;
+        }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
             margin-top: 0;

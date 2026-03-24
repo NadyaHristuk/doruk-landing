@@ -131,7 +131,6 @@
         position: relative;
         z-index: 3;
         margin-inline: auto;
-        transform: translateY(-5rem);
 
         @media screen and (max-width: 390px) and (orientation: portrait) {
             display: flex;
@@ -176,6 +175,10 @@
             margin-top: calc(var(--content-offset) - 3rem);
         }
 
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            margin-top: 0;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             width: 85.4rem;
         }
@@ -196,6 +199,10 @@
             margin-top: calc(var(--content-offset) + 10rem);
             width: calc(100vw - 3.2rem);
             max-width: 140rem;
+        }
+
+        @media screen and (min-width: 1500px) {
+            margin-top: 19rem;
         }
     }
 
@@ -302,8 +309,14 @@
             left: 50%;
             margin-top: 0;
             transform: translateX(-50%);
+            row-gap: 3rem;
             width: calc(100vw - 3.2rem);
             height: 50rem;
+        }
+
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            justify-content: center;
+            align-items: center;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
@@ -373,7 +386,7 @@
             position: absolute;
             width: 44rem;
             max-width: unset;
-            height: 7.2rem;
+            height: 6.4rem;
             order: initial;
 
             &:nth-child(1) {
@@ -524,8 +537,8 @@
         justify-content: center;
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            width: 7.2rem;
-            height: 7.2rem;
+            width: 6.4rem;
+            height: 6.4rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
@@ -568,8 +581,8 @@
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            height: 7.2rem;
-            width: 36.8rem;
+            height: 6.4rem;
+            width: 37.6rem;
             padding: 0 2rem;
         }
 
@@ -696,11 +709,29 @@
             height: 6rem;
             order: initial;
 
-            &:nth-child(1) { top: -15%; left: 4%; }
-            &:nth-child(2) { top: 50%; left: 2%; }
-            &:nth-child(3) { left: calc(50% - 17rem); bottom: 0; transform-origin: center center; }
-            &:nth-child(4) { top: -8%; right: 4%; transform-origin: right center; }
-            &:nth-child(5) { top: 50%; right: 2%; transform-origin: right center; }
+            &:nth-child(1) {
+                top: -15%;
+                left: 4%;
+            }
+            &:nth-child(2) {
+                top: 50%;
+                left: 2%;
+            }
+            &:nth-child(3) {
+                left: calc(50% - 17rem);
+                bottom: 0;
+                transform-origin: center center;
+            }
+            &:nth-child(4) {
+                top: -8%;
+                right: 4%;
+                transform-origin: right center;
+            }
+            &:nth-child(5) {
+                top: 50%;
+                right: 2%;
+                transform-origin: right center;
+            }
         }
 
         &__circle {
@@ -758,18 +789,38 @@
             height: 7.2rem;
             order: initial;
 
-            &:nth-child(1) { top: -2%; left: calc(1% + 1rem); }
-            &:nth-child(2) { top: 27%; left: calc(2% + 1rem); }
-            &:nth-child(3) { left: calc(50% - 21rem); top: 22rem; transform-origin: center center; }
-            &:nth-child(4) { top: 1%; right: calc(1% + 1rem); transform-origin: right center; }
-            &:nth-child(5) { top: 31%; right: calc(2% + 1rem); transform-origin: right center; }
+            &:nth-child(1) {
+                top: -2%;
+                left: calc(1% + 1rem);
+            }
+            &:nth-child(2) {
+                top: 27%;
+                left: calc(2% + 1rem);
+            }
+            &:nth-child(3) {
+                left: calc(50% - 21rem);
+                top: 22rem;
+                transform-origin: center center;
+            }
+            &:nth-child(4) {
+                top: 1%;
+                right: calc(1% + 1rem);
+                transform-origin: right center;
+            }
+            &:nth-child(5) {
+                top: 31%;
+                right: calc(2% + 1rem);
+                transform-origin: right center;
+            }
         }
 
         &__circle {
             width: 7.2rem;
             height: 7.2rem;
 
-            i { font-size: 3.2rem; }
+            i {
+                font-size: 3.2rem;
+            }
         }
 
         &__item-text {

@@ -472,6 +472,10 @@
             transform-origin: top center;
             transform: scale(1.2);
         }
+
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            top: calc(10svh + 9rem);
+        }
     }
 
     &__content {
@@ -537,6 +541,10 @@
         //          iPad Air(1180px)→43svh, Surface Pro/iPad Pro(1366px)→44svh
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: portrait) {
             top: 43svh;
+        }
+
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            top: 49svh;
         }
 
         @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
@@ -1359,10 +1367,15 @@
     // ── Short landscape phone (iPhone SE, width ≤768px) ───────────
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         &__bg {
-            top: 0;
+            top: 3.5rem;
             left: 0;
             width: 44rem;
             height: 32rem;
+        }
+
+        &__grid {
+            top: -179px;
+            left: -28rem;
         }
 
         &__stage {
@@ -1375,9 +1388,9 @@
         }
 
         &__content {
-            top: 14svh;
-            left: 0;
-            width: 100%;
+            top: 26svh;
+            left: -114px;
+            width: 147%;
             padding-inline: 1.6rem;
             flex-direction: column;
         }

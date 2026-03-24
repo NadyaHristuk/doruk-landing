@@ -28,26 +28,68 @@ const SvgLine = () => {
         pathMobileEl.style.strokeDashoffset = pathLengthMobile;
         pathMobileEl.setAttribute("data-ready", "true");
 
+        let pinStart = 0;
+        let maxX = 0;
         let totalScroll = 0;
 
         function computeZones() {
+            const section = document.querySelector("#who-we-are");
+            const track = section?.querySelector(".who-we-are__track");
+
+            const whoST = ScrollTrigger.getAll().find(
+                (st) => st.trigger === section,
+            );
+            pinStart = whoST
+                ? whoST.start
+                : (section?.offsetTop ?? window.innerHeight);
+
+            const isDesktop = window.innerWidth >= 1280;
+            maxX =
+                isDesktop && track
+                    ? Math.max(track.scrollWidth - window.innerWidth, 0)
+                    : 0;
+
             totalScroll = ScrollTrigger.maxScroll(window);
         }
 
         function getVisualProgress(scrollY) {
-            return totalScroll > 0 ? scrollY / totalScroll : 0;
+            if (totalScroll <= 0) return 0;
+
+            const heroEnd = window.innerHeight; // always reliable
+            const whoEnd = pinStart + maxX;
+
+            // Fraction of line drawn in each zone. Tune to taste:
+            const heroFraction = 0.28; // Hero
+            const whoFraction = 0.01; // WhoWeAre horizontal slider
+
+            if (scrollY <= heroEnd) {
+                // Zone 1: Hero — boosted rate
+                return (scrollY / heroEnd) * heroFraction;
+            } else if (maxX > 0 && scrollY < whoEnd) {
+                // Zone 2: WhoWeAre slider (only if maxX computed correctly)
+                const whoProgress = Math.max((scrollY - pinStart) / maxX, 0);
+                return heroFraction + whoProgress * whoFraction;
+            } else {
+                // Zone 3: rest of page
+                // Use whoEnd as start if zone 2 existed, otherwise heroEnd
+                const zone3Start = maxX > 0 ? whoEnd : heroEnd;
+                const zone3BaseFrac =
+                    maxX > 0 ? heroFraction + whoFraction : heroFraction;
+                const restProgress =
+                    (scrollY - zone3Start) /
+                    Math.max(totalScroll - zone3Start, 1);
+                return zone3BaseFrac + restProgress * (1 - zone3BaseFrac);
+            }
         }
 
         let currentOffset = pathLength;
         let currentOffsetMobile = pathLengthMobile;
+        const getScroll = ScrollTrigger.getScrollFunc(window);
 
         // RAF ticker with lerp smoothing (scrub: 1 equivalent)
         function onTick(_time, deltaTime) {
-            const scrollY = window.scrollY;
-            const vp = Math.min(
-                Math.max(getVisualProgress(scrollY), 0),
-                1
-            );
+            const scrollY = getScroll();
+            const vp = Math.min(Math.max(getVisualProgress(scrollY), 0), 1);
 
             // lerp factor: exp decay gives ~scrub:1 feel at 60fps
             const lerpFactor = 1 - Math.exp((-deltaTime / 1000) * 6);
@@ -57,7 +99,8 @@ const SvgLine = () => {
             pathEl.style.strokeDashoffset = currentOffset;
 
             const targetOffsetMobile = pathLengthMobile * (1 - vp);
-            currentOffsetMobile += (targetOffsetMobile - currentOffsetMobile) * lerpFactor;
+            currentOffsetMobile +=
+                (targetOffsetMobile - currentOffsetMobile) * lerpFactor;
             pathMobileEl.style.strokeDashoffset = currentOffsetMobile;
         }
 
@@ -92,7 +135,11 @@ const SvgLine = () => {
                 width="100%"
                 height="100%"
             >
-                <path ref={pathMobileRef} d={MOBILE_SVG_PATH} data-ready="false" />
+                <path
+                    ref={pathMobileRef}
+                    d={MOBILE_SVG_PATH}
+                    data-ready="false"
+                />
             </svg>
         </div>
     );
