@@ -935,7 +935,17 @@
         &__contact-card {
             position: absolute;
             top: 0;
-            right: 0;
+            right: -43px;
+                    width: 32rem;
+            transform: rotate(-20deg);
+        }
+
+        &__contact-card {
+            position: absolute;
+            top: 0;
+            right: -43px;
+            width: 32rem;
+            transform: rotate(-20deg);
         }
 
         &__form-fields {
@@ -1009,6 +1019,14 @@
             display: none;
         }
 
+        &__contact-card {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 32rem;
+            transform: rotate(-20deg);
+        }
+
         &__form-fields {
             width: 50%;
         }
@@ -1021,6 +1039,10 @@
 
         &__top textarea {
             height: 11rem;
+        }
+
+        &__contact-card {
+            right: -43px;
         }
     }
 

@@ -71,6 +71,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     overscroll-behavior: none;
+    touch-action: pan-y;
 }
 
 main {
@@ -444,6 +445,18 @@ main {
         margin-bottom: 7rem;
     }
 
+    @media screen and (min-width: 1501px) {
+        margin-bottom: 0;
+    }
+
+    @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        margin-bottom: 0;
+    }
+
+    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        margin-bottom: 0;
+    }
+
     @media screen and (min-width: variables.$mobile) {
         font-size: 7.2rem;
         line-height: 9.2rem;
@@ -452,13 +465,13 @@ main {
     }
 
     @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-        font-size: 7.8rem;
-        line-height: 9.6rem;
+        font-size: 7.02rem;
+        line-height: 8.64rem;
     }
 
     @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-        font-size: 8.4rem;
-        line-height: 10.2rem;
+        font-size: 7.56rem;
+        line-height: 9.18rem;
     }
 
     @media screen and (min-width: variables.$desktop) {
@@ -478,29 +491,16 @@ main {
     &:has(.animated-title__cap) {
         align-items: baseline;
         gap: 2rem;
-        margin-bottom: 7rem;
         word-spacing: 0;
         letter-spacing: 0;
 
         @media screen and (max-width: 550px) {
-            margin-bottom: 1rem;
             margin-left: 0;
             margin-right: auto;
         }
 
-        @media screen and (min-width: 1501px) {
-            margin-bottom: 0;
-        }
-
         @media screen and (max-width: 767px) {
             gap: 1rem;
-        }
-        @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            margin-bottom: 0;
-        }
-
-        @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            margin-bottom: 0;
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small - 1px) {
@@ -535,13 +535,13 @@ main {
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            font-size: 7.8rem;
-            line-height: 9.6rem;
+            font-size: 7.02rem;
+            line-height: 8.64rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            font-size: 8.4rem;
-            line-height: 10.2rem;
+            font-size: 7.56rem;
+            line-height: 9.18rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -567,13 +567,13 @@ main {
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            font-size: 6rem;
-            line-height: 7.8rem;
+            font-size: 5.4rem;
+            line-height: 7.02rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            font-size: 6.6rem;
-            line-height: 8.4rem;
+            font-size: 5.94rem;
+            line-height: 7.56rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -721,6 +721,9 @@ main {
     }
 
     &--key-facts {
+        position: relative;
+        z-index: 5;
+
         @media screen and (max-width: 430px) {
             height: 250vh;
             min-height: 250vh;

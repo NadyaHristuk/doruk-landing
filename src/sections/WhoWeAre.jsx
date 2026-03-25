@@ -181,6 +181,7 @@ const WhoWeAre = ({ lang }) => {
                 force3D: true,
                 scrollTrigger: {
                     trigger: section,
+                    start: 'top top',
                     pin: true,
                     scrub: true,
                     end: () => `+=${maxX()}`,

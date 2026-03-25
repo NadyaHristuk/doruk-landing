@@ -28,6 +28,22 @@
         z-index: 3;
         width: 100%;
         overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 10;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 10;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 10;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 10;
     }
 
     &__backgrounds {
@@ -262,8 +278,8 @@
         margin-inline: auto;
 
         @media screen and (min-width: variables.$tablet) {
-            width: 75%;
-            margin-top: var(--content-mobile-offset);
+            width: 85%;
+            margin-top: 0;
         }
 
         @media screen and (min-width: 1500px) {
@@ -302,7 +318,7 @@
         z-index: 4;
         flex: 0 0 44.6rem;
         width: 44.6rem;
-        height: 38.6rem;
+        height: 30rem;
         max-width: 29.4rem;
         padding: 2.4rem;
         border-radius: variables.$border-radius-base;
@@ -313,13 +329,53 @@
         line-height: 2rem;
         color: variables.$color-white;
         overflow: hidden;
-
-        @media screen and (min-width: variables.$mobile) {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 10;
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            width: 34rem;
+            height: 25rem;
             max-width: unset;
-            padding: 4.6rem 3.6rem;
+            flex: 0 0 34rem;
+            padding: 2.4rem;
+            border-radius: variables.$border-radius-base;
+            font-size: 1.6rem;
+            line-height: 2rem;
+            -webkit-line-clamp: 9;
+        }
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            width: 38rem;
+            height: 26rem;
+            max-width: unset;
+            flex: 0 0 38rem;
+            padding: 2.6rem;
+            border-radius: 4.4rem;
+            font-size: 1.7rem;
+            line-height: 2.1rem;
+            -webkit-line-clamp: 9;
+        }
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            width: 41rem;
+            height: 27rem;
+            max-width: unset;
+            flex: 0 0 41rem;
+            padding: 2.8rem;
+            border-radius: 5.2rem;
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+            -webkit-line-clamp: 10;
+        }
+        @media screen and (min-width: variables.$desktop) {
+            width: 44.6rem;
+            height: 30rem;
+            max-width: unset;
+            flex: 0 0 44.6rem;
+            padding: 3rem;
             border-radius: variables.$border-radius-large;
-            font-size: 2.2rem;
-            line-height: 2.8rem;
+            font-size: 2rem;
+            line-height: 2.4rem;
+            -webkit-line-clamp: 10;
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
@@ -373,11 +429,11 @@
             width: 100%;
             height: 40rem;
         }
-
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            left: 2rem;
+            left: 3rem;
             width: 90%;
-            height: 44.6rem;
+            height: 37.6rem;
+            top: 1.6rem;
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
@@ -671,13 +727,12 @@
             padding-top: 12rem;
             padding-left: 35rem;
         }
-
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
             flex-direction: unset;
             align-items: flex-end;
             justify-content: flex-start;
-            padding-top: 15rem;
-            padding-left: 42rem;
+            padding-top: clamp(13rem, 10vw, 15rem);
+            padding-left: clamp(34rem, 28vw, 42rem);
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -717,13 +772,13 @@
             transform: translateY(8rem);
             z-index: 5;
         }
-
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
             order: 2;
-            width: 38rem;
-            height: 38rem;
-            margin-left: -2.8rem;
+            width: 34rem;
+            height: 31rem;
+            margin-left: -5.8rem;
             transform: translateY(10rem);
+            backdrop-filter: blur(0.1rem);
             z-index: 5;
         }
 

@@ -20,24 +20,20 @@ export const useScrollTriggers = (containerRef, callbacks) => {
       onProgress(progress);
     };
 
+    const whoEl = document.querySelector('#who-we-are');
+    const whoEnd = () => {
+      const pinST = ScrollTrigger.getAll().find(
+        t => t.pin && t.trigger === whoEl
+      );
+      return pinST ? pinST.end : whoEl.offsetTop + whoEl.offsetHeight;
+    };
+
     const sections = [
       { id: 'hero', start: 'top top', end: 'bottom top' },
-      {
-        id: 'who-we-are',
-        start: 'clamp(top bottom)',
-        end: 'clamp(bottom bottom)'
-      },
-      {
-        id: 'key-facts',
-        start: 'clamp(top bottom)',
-        end: 'clamp(bottom bottom)'
-      },
-      {
-        id: 'our-benefits',
-        start: 'clamp(top bottom)',
-        end: 'clamp(bottom bottom)'
-      },
-      { id: 'keep-in-touch', start: 'clamp(top bottom)', end: 'clamp(bottom bottom)' }
+      { id: 'who-we-are', start: 'top top', end: whoEnd },
+      { id: 'key-facts', start: 'top top', end: 'bottom top' },
+      { id: 'our-benefits', start: 'top top', end: 'bottom top' },
+      { id: 'keep-in-touch', start: 'top top', end: 'bottom top' },
     ];
 
     const triggers = sections.map((section) =>
@@ -46,6 +42,7 @@ export const useScrollTriggers = (containerRef, callbacks) => {
         start: section.start,
         end: section.end,
         markers: false,
+        invalidateOnRefresh: true,
         onEnter: () => onSectionChange(section.id),
         onEnterBack: () => onSectionChange(section.id),
         onUpdate: (self) => updateProgress(self.progress * 100)
