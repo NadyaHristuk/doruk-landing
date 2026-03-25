@@ -465,13 +465,13 @@ main {
     }
 
     @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-        font-size: 7.02rem;
-        line-height: 8.64rem;
+        font-size: 6.32rem;
+        line-height: 7.78rem;
     }
 
     @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-        font-size: 7.56rem;
-        line-height: 9.18rem;
+        font-size: 6.8rem;
+        line-height: 8.26rem;
     }
 
     @media screen and (min-width: variables.$desktop) {
@@ -535,13 +535,13 @@ main {
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            font-size: 7.02rem;
-            line-height: 8.64rem;
+            font-size: 6.32rem;
+            line-height: 7.78rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            font-size: 7.56rem;
-            line-height: 9.18rem;
+            font-size: 6.8rem;
+            line-height: 8.26rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -567,13 +567,13 @@ main {
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            font-size: 5.4rem;
-            line-height: 7.02rem;
+            font-size: 4.86rem;
+            line-height: 6.32rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            font-size: 5.94rem;
-            line-height: 7.56rem;
+            font-size: 5.35rem;
+            line-height: 6.8rem;
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -730,8 +730,8 @@ main {
         }
 
         @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
-            height: 200vh;
-            min-height: 200vh;
+            height: 176vh;
+            min-height: 176vh;
         }
 
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
@@ -747,8 +747,8 @@ main {
         }
 
         @media screen and (min-width: variables.$extra-small) and (max-width: #{variables.$tablet - 1px}) and (orientation: portrait) {
-            height: 200vh;
-            min-height: 200vh;
+            height: 176vh;
+            min-height: 176vh;
         }
 
         @media screen and (min-width: 431px) and (max-width: 1024px) and (orientation: portrait) {
@@ -757,13 +757,13 @@ main {
         }
 
         @media screen and (min-width: variables.$tablet) {
-            height: 200vh;
-            min-height: 200vh;
+            height: 176vh;
+            min-height: 176vh;
         }
 
         @media screen and (min-width: 1500px) {
-            height: 210vh;
-            min-height: 210vh;
+            height: 176vh;
+            min-height: 176vh;
         }
     }
 

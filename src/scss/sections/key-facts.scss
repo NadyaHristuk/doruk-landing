@@ -96,6 +96,18 @@
                 top: 67rem;
                 right: 22%;
                 transform: rotate(45deg) scaleX(-1);
+                @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+                    top: 67rem;
+                    right: 22%;
+                }
+                @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+                    top: 61rem;
+                    right: 21.5%;
+                }
+                @media screen and (min-width: variables.$desktop) {
+                    top: 55rem;
+                    right: 21%;
+                }
             }
         }
     }
@@ -116,10 +128,14 @@
         @media screen and (min-width: variables.$mobile) {
             display: block;
         }
-
         @media screen and (min-width: variables.$tablet) {
             top: 158rem;
             left: 24%;
+            transform: rotate(241deg);
+        }
+        @media screen and (min-width: variables.$desktop) {
+            top: 141rem;
+            left: 23%;
             transform: rotate(241deg);
         }
     }
@@ -138,13 +154,19 @@
         height: 156.84rem;
         background: url("assets/svg/bg/key-facts-bg-1.svg") no-repeat 0 0 /
             cover;
-
         @media screen and (min-width: variables.$tablet) {
             top: -30rem;
             width: 91%;
             left: -25.5rem;
             height: 166.54rem;
             transform: rotate(7deg);
+        }
+        @media screen and (min-width: variables.$desktop) {
+            top: -42rem;
+            width: 88%;
+            left: -29.5rem;
+            height: 174.54rem;
+            transform: rotate(2deg);
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
@@ -206,7 +228,6 @@
     &__bg-stripes--lower-left {
         background: url("assets/svg/bg/key-facts-bg-lower-left.svg") no-repeat
             center left / 200%;
-
         @media screen and (min-width: variables.$tablet) {
             top: 73rem;
             left: -42.5rem;
@@ -214,6 +235,14 @@
             height: 146rem;
             background-size: cover;
             transform: rotate(30deg);
+        }
+        @media screen and (min-width: variables.$desktop) {
+            top: 73rem;
+            left: -42.5rem;
+            width: 86%;
+            height: 146rem;
+            background-size: cover;
+            transform: rotate(19deg);
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
@@ -240,9 +269,17 @@
     &__bg-stripes--lower-right {
         background: url("assets/svg/bg/key-facts-bg-lower-right.svg") no-repeat
             center right / 200%;
-
         @media screen and (min-width: variables.$tablet) {
             top: 100rem;
+            right: -16.5rem;
+            left: unset;
+            width: 79%;
+            height: 144rem;
+            background-size: cover;
+            transform: rotate(-6deg);
+        }
+        @media screen and (min-width: variables.$desktop) {
+            top: 79rem;
             right: -16.5rem;
             left: unset;
             width: 79%;
@@ -299,7 +336,7 @@
     }
 
     &__block--logos {
-        padding-top: 0;
+        padding-top: 3rem;
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             padding-top: 4rem;
@@ -307,10 +344,6 @@
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
             padding-top: 6rem;
-        }
-
-        @media screen and (min-width: variables.$desktop) {
-            padding-top: 8rem;
         }
     }
 
@@ -346,35 +379,36 @@
         }
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             width: 38rem;
-            height: 26rem;
+            height: 31rem;
             max-width: unset;
             flex: 0 0 38rem;
             padding: 2.6rem;
             border-radius: 4.4rem;
-            font-size: 1.7rem;
-            line-height: 2.1rem;
-            -webkit-line-clamp: 9;
+            font-size: 1.8rem;
+            line-height: 2.3rem;
+            -webkit-line-clamp: 10;
         }
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
             width: 41rem;
-            height: 27rem;
+            height: 34rem;
             max-width: unset;
             flex: 0 0 41rem;
             padding: 2.8rem;
             border-radius: 5.2rem;
-            font-size: 1.8rem;
-            line-height: 2.2rem;
+            font-size: 2rem;
+            line-height: 2.5rem;
             -webkit-line-clamp: 10;
         }
         @media screen and (min-width: variables.$desktop) {
             width: 44.6rem;
-            height: 30rem;
+            height: 38.6rem;
             max-width: unset;
             flex: 0 0 44.6rem;
             padding: 3rem;
             border-radius: variables.$border-radius-large;
-            font-size: 2rem;
-            line-height: 2.4rem;
+            font-size: 2.2rem;
+            line-height: 2.8rem;
+            letter-spacing: 0;
             -webkit-line-clamp: 10;
         }
 
@@ -418,42 +452,47 @@
         left: 7rem;
         width: 70%;
         height: 44.6rem;
-
-        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
-            top: 14.6rem;
-            left: 25rem;
-        }
-
-        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-            left: 0;
-            width: 100%;
-            height: 40rem;
-        }
-        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-            left: 3rem;
-            width: 90%;
-            height: 37.6rem;
-            top: 1.6rem;
-        }
-
         @media screen and (max-width: 430px) and (orientation: portrait) {
             top: -8rem;
             left: 1rem;
             width: 100%;
+            height: 44rem;
         }
-
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             top: -13rem;
             left: 1rem;
             width: 100%;
-            height: 500px;
+            height: 50rem;
         }
-
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-            top: -13rem;
-            left: 1rem;
-            width: 100%;
-            height: 500px;
+            top: -10rem;
+            left: 0.5rem;
+            width: 92%;
+            height: 43rem;
+        }
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
+            top: 10rem;
+            left: 18rem;
+            width: 94%;
+            height: 34rem;
+        }
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            top: 2.8rem;
+            left: -2rem;
+            width: 88%;
+            height: 35.2rem;
+        }
+        @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
+            top: -1.2rem;
+            left: -4rem;
+            width: 84%;
+            height: 37.6rem;
+        }
+        @media screen and (min-width: variables.$desktop) {
+            top: -0.4rem;
+            left: -6rem;
+            width: 80%;
+            height: 46.6rem;
         }
     }
 
@@ -503,7 +542,7 @@
         }
         &:nth-child(7) {
             --logo-left: 58.5%;
-            --logo-top: 83.7%;
+            --logo-top: 87.7%;
         }
         &:nth-child(8) {
             --logo-left: 94.9%;
@@ -739,7 +778,7 @@
             flex-direction: unset;
             align-items: flex-end;
             justify-content: flex-start;
-            padding-left: 60rem;
+            padding-top: 3rem;
         }
     }
 
@@ -780,6 +819,9 @@
             transform: translateY(10rem);
             backdrop-filter: blur(0.1rem);
             z-index: 5;
+            img {
+                width: 28rem;
+            }
         }
 
         @media screen and (min-width: variables.$desktop) {
@@ -789,6 +831,9 @@
             margin-left: -3.2rem;
             transform: translateY(12.1rem);
             z-index: 5;
+            img {
+                width: 38.3rem;
+            }
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {

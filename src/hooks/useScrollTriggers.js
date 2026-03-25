@@ -31,7 +31,7 @@ export const useScrollTriggers = (containerRef, callbacks) => {
     const sections = [
       { id: 'hero', start: 'top top', end: 'bottom top' },
       { id: 'who-we-are', start: 'top top', end: whoEnd },
-      { id: 'key-facts', start: 'top top', end: 'bottom top' },
+      { id: 'key-facts', start: whoEnd, end: 'bottom top' },
       { id: 'our-benefits', start: 'top top', end: 'bottom top' },
       { id: 'keep-in-touch', start: 'top top', end: 'bottom top' },
     ];
