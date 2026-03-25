@@ -454,8 +454,8 @@
         width: 70%;
         height: 44.6rem;
         @media screen and (max-width: 430px) and (orientation: portrait) {
-            top: -8rem;
-            left: 1rem;
+            top: -5rem;
+            left: clamp(-3rem, -7vw, -1.4rem);
             width: 100%;
             height: 44rem;
         }
@@ -560,7 +560,7 @@
                 --logo-top: 97%;
             }
             &:nth-child(2) {
-                --logo-left: 89%;
+                --logo-left: 91%;
                 --logo-top: 50%;
             }
             &:nth-child(3) {
@@ -568,7 +568,7 @@
                 --logo-top: 85%;
             }
             &:nth-child(4) {
-                --logo-left: 82%;
+                --logo-left: 87%;
                 --logo-top: 30%;
             }
             &:nth-child(5) {
@@ -1277,5 +1277,13 @@
 @media screen and (min-width: 1905px) {
     .key-facts__block--photo .key-facts__figure img {
         width: 38.3rem;
+    }
+}
+
+@media screen and (max-width: 550px) and (orientation: portrait) and (min-height: 800px) {
+    .key-facts__block--photo {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        padding-top: 16.5rem;
     }
 }

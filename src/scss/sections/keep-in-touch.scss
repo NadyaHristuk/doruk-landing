@@ -720,6 +720,15 @@
         @media screen and (max-width: 430px) and (orientation: portrait) {
             width: 335px;
             max-width: calc(100% - 3.2rem);
+            height: 129px;
+            margin: 2.4rem auto 0 0;
+            align-self: center;
+            transform: none;
+        }
+
+        @media screen and (max-width: 430px) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+            width: 335px;
+            max-width: calc(100% - 3.2rem);
             height: 185px;
             margin: 2.4rem auto 0 0;
             align-self: center;
