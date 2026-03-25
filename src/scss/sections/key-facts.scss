@@ -1170,8 +1170,8 @@
     // ─────────────────────────────────────────────────────────────
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         &__content {
-            width: 75%;
-            padding-top: var(--content-mobile-offset);
+            width: 95%;
+            padding-top: 1rem;
         }
 
         &__block {

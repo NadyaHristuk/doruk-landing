@@ -1732,27 +1732,30 @@
 // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
 #who-we-are {
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        overflow: hidden;
+        margin-bottom: 6rem;
+
         .who-we-are__track {
-            display: flex;
-            width: 300vw;
-            height: 100%;
-            will-change: transform;
+            display: block;
+            width: 100%;
+            height: auto;
+            will-change: auto;
         }
 
-        .who-we-are__track .who-we-are__panel {
+        .who-we-are__track .who-we-are__panel[aria-hidden="false"] {
             display: flex;
             flex-flow: row nowrap;
             justify-content: center;
             align-items: flex-start;
-            flex: 0 0 100vw;
-            width: 100vw;
-            min-height: 100svh;
+            padding-bottom: 1rem;
+            width: 100%;
+            min-height: auto;
             padding-top: 0;
-            gap: 1.6rem;
+            gap: 0rem;
         }
 
         .who-we-are__image {
-            width: 28rem;
+            width: 25rem;
             height: auto;
             flex-shrink: 0;
         }
@@ -1783,6 +1786,7 @@
             .who-we-are__text-block
             .who-we-are__text-content {
             min-height: 12.8rem;
+            max-height: 12.8rem;
             padding: 1.6rem;
             font-size: 1.3rem;
             line-height: 1.7rem;
@@ -1810,6 +1814,11 @@
             padding-left: 0.3rem;
             background-color: variables.$bg;
         }
+
+        .who-we-are__mobile-nav {
+            padding: 0.8rem 0 0;
+        }
+
     }
 
     @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {

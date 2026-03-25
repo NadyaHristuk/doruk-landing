@@ -841,9 +841,9 @@ main {
         }
 
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            height: 100svh;
-            min-height: 100svh;
-            overflow: hidden;
+            height: 200svh;
+            min-height: 200svh;
+            overflow: visible;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
