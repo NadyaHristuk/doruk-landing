@@ -301,7 +301,7 @@
             }
 
             @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
-                width: 48rem;
+                width: 37rem;
                 max-width: none;
                 height: 13.6rem;
             }
@@ -1057,6 +1057,21 @@
         &__submit {
             position: relative;
             max-width: 50%;
+        }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1499px) {
+        &__top input {
+            width: 34.2rem;
+        }
+
+        &__submit {
+            width: 34.2rem;
+        }
+
+        &__figure {
+            flex: 0 0 45.8rem;
+            width: 35.8rem;
         }
     }
 

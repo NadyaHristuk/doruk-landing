@@ -1181,6 +1181,52 @@
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1499px) {
+    .key-facts__bg-stripes--upper {
+        top: -30rem;
+        width: 87%;
+        left: -25.5rem;
+        height: 166.54rem;
+        transform: rotate(11deg);
+    }
+
+    .key-facts__bg-stripes--lower-left {
+        top: 46rem;
+        left: -42.5rem;
+        width: 86%;
+        height: 146rem;
+        background-size: cover;
+        transform: rotate(18deg);
+    }
+
+    .key-facts__bg-stripes--lower-right {
+        top: 44rem;
+        right: -16.5rem;
+        left: unset;
+        width: 79%;
+        height: 144rem;
+        background-size: cover;
+        transform: rotate(-6deg);
+    }
+
+    .key-facts__bg--lower .key-facts__watermark {
+        top: 120rem;
+        left: 24%;
+        transform: rotate(250deg);
+    }
+
+    .key-facts__bg--upper .key-facts__watermark--lower {
+        top: 48rem;
+        right: 21.5%;
+    }
+
+    .key-facts__block--photo {
+        flex-direction: unset;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding-top: clamp(8rem, 6vw, 15rem);
+        padding-left: clamp(34rem, 28vw, 42rem);
+    }
+
     .key-facts__block--photo .key-facts__figure img {
         width: 28rem;
     }
@@ -1190,6 +1236,39 @@
     }
 }
 @media screen and (min-width: 1500px) {
+    .key-facts__bg-stripes--upper {
+        top: -30rem;
+        width: 91%;
+        left: -25.5rem;
+        height: 166.54rem;
+        transform: rotate(7deg);
+    }
+
+    .key-facts__bg-stripes--lower-left {
+        top: 73rem;
+        left: -42.5rem;
+        width: 86%;
+        height: 146rem;
+        background-size: cover;
+        transform: rotate(30deg);
+    }
+
+    .key-facts__bg-stripes--lower-right {
+        top: 100rem;
+        right: -16.5rem;
+        left: unset;
+        width: 79%;
+        height: 144rem;
+        background-size: cover;
+        transform: rotate(-6deg);
+    }
+
+    .key-facts__bg--lower .key-facts__watermark {
+        top: 158rem;
+        left: 24%;
+        transform: rotate(241deg);
+    }
+
     .key-facts__block--photo .key-facts__figure img {
         width: 38.3rem;
     }

@@ -761,6 +761,11 @@ main {
             min-height: 176vh;
         }
 
+        @media screen and (min-width: 1280px) and (max-width: 1499px) {
+            height: 190vh;
+            min-height: 190vh;
+        }
+
         @media screen and (min-width: 1500px) {
             height: 176vh;
             min-height: 176vh;
