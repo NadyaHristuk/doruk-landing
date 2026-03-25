@@ -39,9 +39,7 @@ const SvgLine = () => {
             const whoST = ScrollTrigger.getAll().find(
                 (st) => st.trigger === section,
             );
-            pinStart = whoST
-                ? whoST.start
-                : (section?.offsetTop ?? window.innerHeight);
+            pinStart = whoST ? whoST.start : (section?.offsetTop ?? 0);
 
             const isDesktop = window.innerWidth >= 1280;
             maxX =
@@ -53,32 +51,28 @@ const SvgLine = () => {
         }
 
         function getVisualProgress(scrollY) {
-            if (totalScroll <= 0) return 0;
+            const vh = window.innerHeight;
+            const pinEnd = pinStart + maxX;
+            const visualTotal = totalScroll - maxX + vh;
 
-            const heroEnd = window.innerHeight; // always reliable
-            const whoEnd = pinStart + maxX;
+            if (visualTotal <= 0) return 0;
 
-            // Fraction of line drawn in each zone. Tune to taste:
-            const heroFraction = 0.28; // Hero
-            const whoFraction = 0.01; // WhoWeAre horizontal slider
-
-            if (scrollY <= heroEnd) {
-                // Zone 1: Hero — boosted rate
-                return (scrollY / heroEnd) * heroFraction;
-            } else if (maxX > 0 && scrollY < whoEnd) {
-                // Zone 2: WhoWeAre slider (only if maxX computed correctly)
-                const whoProgress = Math.max((scrollY - pinStart) / maxX, 0);
-                return heroFraction + whoProgress * whoFraction;
+            if (scrollY <= pinStart) {
+                // Zone 1: before WhoWeAre (linear 1:1)
+                return scrollY / visualTotal;
+            } else if (maxX > 0 && scrollY < pinEnd) {
+                // Zone 2: WhoWeAre pin period (compressed to 1vh)
+                const whoP = (scrollY - pinStart) / Math.max(maxX, 1);
+                return (pinStart / visualTotal) + whoP * (vh / visualTotal);
             } else {
-                // Zone 3: rest of page
-                // Use whoEnd as start if zone 2 existed, otherwise heroEnd
-                const zone3Start = maxX > 0 ? whoEnd : heroEnd;
-                const zone3BaseFrac =
-                    maxX > 0 ? heroFraction + whoFraction : heroFraction;
-                const restProgress =
-                    (scrollY - zone3Start) /
-                    Math.max(totalScroll - zone3Start, 1);
-                return zone3BaseFrac + restProgress * (1 - zone3BaseFrac);
+                // Zone 3: after WhoWeAre (linear 1:1)
+                const zone2end = (pinStart + vh) / visualTotal;
+                const restVirtual = totalScroll - pinEnd;
+                const restP =
+                    restVirtual > 0
+                        ? (scrollY - pinEnd) / restVirtual
+                        : 1;
+                return zone2end + restP * (1 - zone2end);
             }
         }
 
