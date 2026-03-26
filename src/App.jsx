@@ -43,7 +43,8 @@ const App = () => {
   const container = useRef(),
     [mobileMenuOpen, setMobileMenuOpen] = useState(false),
     [activeSection, setActiveSection] = useState('hero'),
-    [lang, setLang] = useState('en');
+    [lang, setLang] = useState('en'),
+    lastMenuToggle = useRef(0);
 
   // Initialize ScrollSmoother
   useScrollSmoother(container);
@@ -86,7 +87,12 @@ const App = () => {
           className={`sidebar__toggle ${
             mobileMenuOpen ? 'sidebar__toggle--opened' : ''
           }`}
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          onClick={() => {
+            const now = Date.now();
+            if (now - lastMenuToggle.current < 300) return;
+            lastMenuToggle.current = now;
+            setMobileMenuOpen((prev) => !prev);
+          }}
         >
           <i className={mobileMenuOpen ? 'icon-close' : 'icon-menu'}></i>
         </button>

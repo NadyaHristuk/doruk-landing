@@ -18,6 +18,10 @@
             padding-inline: 1.6rem;
         }
 
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
         @media screen and (min-width: variables.$tablet) {
             padding-inline: 0;
         }
@@ -48,6 +52,7 @@
 
     &__backgrounds {
         position: relative;
+        pointer-events: none;
     }
 
     &__bg-art {
@@ -483,7 +488,7 @@
         }
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             top: 2.8rem;
-            left: -2rem;
+            left: 9rem;
             width: 88%;
             height: 35.2rem;
         }
@@ -769,7 +774,7 @@
             align-items: flex-end;
             justify-content: flex-start;
             padding-top: 12rem;
-            padding-left: 35rem;
+            padding-left: 24rem;
         }
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
             flex-direction: unset;
@@ -1128,6 +1133,50 @@
         }
     }
 
+    // ── iPad Mini / tablet landscape (1024–1279px, ≥651px height) ─
+    @media screen and (min-width: variables.$tablet) and (max-width: #{variables.$laptop - 1px}) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+        &__backgrounds {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        &__bg-stripes--upper {
+            top: -15rem;
+            left: -20rem;
+            width: 96%;
+            height: 145rem;
+            transform: rotate(5deg);
+            background-size: cover;
+        }
+
+        &__bg-stripes--lower {
+            top: 10rem;
+            background-size: 75%;
+        }
+
+        &__bg-stripes--lower-left {
+            top: 65rem;
+            left: -30rem;
+            width: 82%;
+            height: 115rem;
+            background-size: contain;
+            transform: rotate(22deg);
+        }
+
+        &__bg-stripes--lower-right {
+            top: 80rem;
+            right: -12rem;
+            left: auto;
+            width: 76%;
+            height: 110rem;
+            background-size: contain;
+            transform: rotate(-5deg);
+        }
+    }
+
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
         &__inner {
@@ -1375,6 +1424,13 @@
     }
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1279px) {
+    .key-facts__block--device .key-facts__figure {
+        width: 41.9rem;
+        max-width: 41.9rem;
+    }
+}
+
 @media screen and (min-width: 1280px) and (max-width: 1499px) {
     .key-facts__bg-stripes--upper {
         top: -30rem;
@@ -1410,24 +1466,20 @@
     }
 
     .key-facts__bg--upper .key-facts__watermark--lower {
-        top: 48rem;
-        right: 21.5%;
+        top: 42rem;
+        right: 22%;
     }
 
     .key-facts__block--photo {
         flex-direction: unset;
         align-items: flex-end;
         justify-content: flex-start;
-        padding-top: clamp(8rem, 6vw, 15rem);
-        padding-left: clamp(34rem, 28vw, 42rem);
+        padding-top: 12rem;
+        padding-left: 24rem;
     }
 
     .key-facts__block--photo .key-facts__figure img {
         width: 28rem;
-    }
-
-    .key-facts__block--device .key-facts__figure {
-        width: 52.9rem;
     }
 }
 @media screen and (min-width: 1500px) {
@@ -1486,5 +1538,103 @@
 @media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
     .key-facts__block.key-facts__block--photo {
         padding-top: 88px;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) {
+    .key-facts__block--photo {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        padding-top: 12.5rem;
+    }
+
+    .key-facts__block--device {
+        margin-top: 0;
+    }
+
+    .key-facts__block--device .key-facts__figure {
+        margin-left: 23svw;
+        z-index: 5;
+        width: 45rem;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+    .key-facts__text {
+        width: 330px;
+        height: 255px;
+        max-width: none;
+        flex: 0 0 auto;
+        padding: 25px;
+        border-radius: 3.6rem;
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+
+    .key-facts__logos {
+        top: -7rem;
+        left: -5.5rem;
+        width: 68%;
+        height: 47rem;
+    }
+
+    .key-facts__logo {
+        width: 8.4rem;
+        height: 8.4rem;
+        padding: 2rem;
+    }
+
+    .key-facts__block--photo .key-facts__figure img {
+        width: 25.6rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+    .key-facts__inner {
+        padding-top: clamp(3rem, 3vw, 5rem);
+    }
+
+    .key-facts__block--photo {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        padding-top: 12.5rem;
+    }
+
+    .key-facts__block--device {
+        margin-top: 0;
+    }
+
+    .key-facts__block--device .key-facts__figure {
+        margin-left: 23svw;
+        z-index: 5;
+        width: 45rem;
+    }
+
+    .key-facts__text {
+        width: 330px;
+        height: 255px;
+        max-width: none;
+        flex: 0 0 auto;
+        padding: 25px;
+        border-radius: 3.6rem;
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+
+    .key-facts__logos {
+        top: -7rem;
+        left: -5.5rem;
+        width: 68%;
+        height: 47rem;
+    }
+
+    .key-facts__logo {
+        width: 13.4rem;
+        height: 13.4rem;
+        padding: 3.4rem;
+    }
+
+    .key-facts__block--photo .key-facts__figure img {
+        width: 25.6rem;
     }
 }

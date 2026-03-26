@@ -42,8 +42,16 @@ const SvgLine = () => {
             pinStart = whoST ? whoST.start : (section?.offsetTop ?? 0);
 
             const isDesktop = window.innerWidth >= 1280;
+            // Tall landscape phones (769–1023px, landscape, ≤500px height) also use
+            // GSAP horizontal scroll, so they need maxX computed like desktop
+            const isTallLandscapePhone =
+                !isDesktop &&
+                window.innerWidth >= 769 &&
+                window.innerWidth < 1024 &&
+                window.innerHeight <= 500 &&
+                window.innerWidth > window.innerHeight;
             maxX =
-                isDesktop && track
+                (isDesktop || isTallLandscapePhone) && track
                     ? Math.max(track.scrollWidth - window.innerWidth, 0)
                     : 0;
 

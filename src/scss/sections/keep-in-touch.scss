@@ -48,6 +48,10 @@
             padding-inline: 1.6rem;
         }
 
+        @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
         @media screen and (min-width: variables.$tablet) {
             padding-inline: 0;
         }
@@ -61,7 +65,7 @@
 
         .animated-title {
             @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-                padding-top: 6rem;
+                padding-top: 0;
             }
 
             @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
@@ -131,7 +135,7 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-            margin-top: 5rem;
+            margin-top: 2rem;
         }
 
         @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
@@ -141,7 +145,7 @@
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             max-width: none;
             width: calc(100% - 4rem);
-            margin-inline: 2rem;
+            margin-inline: 6rem;
             padding-top: 6rem;
         }
 
@@ -180,7 +184,7 @@
             flex-flow: row nowrap;
             justify-content: center;
             align-items: flex-start;
-            gap: 3rem;
+            gap: 6rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
@@ -222,7 +226,7 @@
             }
 
             @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-                width: 34rem;
+                width: 37rem;
             }
 
             @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop  - 1px) {
@@ -372,7 +376,7 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-            width: 28rem;
+            width: 40rem;
             margin-inline: auto;
         }
 
@@ -622,6 +626,10 @@
             max-width: 37rem;
             margin-inline: auto;
         }
+
+        @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
+            width: 37rem;
+        }
     }
 
     &__message {
@@ -745,9 +753,9 @@
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
-            width: 335px;
+            width: 54rem;
             max-width: calc(100% - 3.2rem);
-            height: 185px;
+            height: auto;
             margin: 2.4rem auto 0;
             align-self: center;
             transform: none;
@@ -905,6 +913,29 @@
         margin: 0;
     }
 
+    // ── iPad Mini / mid-size tablet portrait (551–768px) ─────────
+    @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+        &__top input,
+        &__top button {
+            width: 54rem;
+        }
+
+        &__top textarea {
+            width: 54rem;
+            max-width: 54rem;
+        }
+
+        &__submit {
+            width: 54rem;
+            max-width: 54rem;
+        }
+
+        &__contact-info {
+            font-size: 2.2rem;
+            line-height: 3.4rem;
+        }
+    }
+
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
         &__inner {
@@ -932,6 +963,39 @@
         &__figure {
             display: block;
             width: 69%;
+        }
+    }
+
+    @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+        &__contact-label {
+            margin: 0 0 1rem;
+            width: -moz-fit-content;
+            width: fit-content;
+            max-width: 18ch;
+            margin-left: auto;
+        }
+    }
+
+    // ── iPad Mini / tablet landscape (1024–1279px, ≥651px height) ─
+    @media screen and (min-width: variables.$tablet) and (max-width: #{variables.$laptop - 1px}) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+        &__contact-card {
+            width: 24rem;
+            margin-top: 1rem;
+            margin-right: 1.6rem;
+        }
+
+        &__contact-info {
+            padding: 1rem 1.4rem;
+            font-size: 1.6rem;
+            line-height: 2.2rem;
+        }
+
+        &__contact-label {
+            margin: 0 0 0.8rem auto;
+        }
+
+        &__email {
+            margin-bottom: 0.6rem;
         }
     }
 

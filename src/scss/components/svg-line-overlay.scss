@@ -48,11 +48,6 @@
         // height set dynamically via JS
     }
 
-    // Tall landscape phones use GSAP horizontal scroll (like desktop) — restore 300vw
-    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        width: 300vw;
-    }
-
     // Mobile slider (< 1280px) — show mobile path
     @media screen and (max-width: #{variables.$laptop - 1px}) {
         &__desktop {
@@ -64,14 +59,4 @@
         }
     }
 
-    // Landscape phones use GSAP desktop scroll — restore desktop path
-    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        &__desktop {
-            visibility: visible;
-        }
-
-        &__mobile {
-            visibility: hidden;
-        }
-    }
 }
