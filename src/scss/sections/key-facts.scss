@@ -1479,7 +1479,7 @@
     }
 
     .key-facts__block--photo .key-facts__figure img {
-        width: 28rem;
+        width: 30rem;
     }
 }
 @media screen and (min-width: 1500px) {
@@ -1543,9 +1543,14 @@
 
 @media screen and (min-width: 551px) and (max-width: 768px) {
     .key-facts__block--photo {
-        flex-direction: column-reverse;
-        justify-content: flex-end;
+        flex-direction: row;
         padding-top: 12.5rem;
+    }
+
+    .key-facts__block--photo .key-facts__figure {
+        margin-left: 0;
+        width: 29rem;
+        height: 29rem;
     }
 
     .key-facts__block--device {
@@ -1592,12 +1597,27 @@
 @media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
     .key-facts__inner {
         padding-top: clamp(3rem, 3vw, 5rem);
+        padding-inline: 2.6rem;
+    }
+
+    .key-facts__bg-stripes--lower-left {
+        top: 30svh;
+        left: -7.5svw;
     }
 
     .key-facts__block--photo {
         flex-direction: column-reverse;
         justify-content: flex-end;
         padding-top: 12.5rem;
+    }
+
+    .key-facts__block--photo .key-facts__figure {
+        margin-left: 0;
+        width: 29rem;
+        height: 29rem;
+        top: auto;
+        left: auto;
+        transform: none;
     }
 
     .key-facts__block--device {
@@ -1629,9 +1649,9 @@
     }
 
     .key-facts__logo {
-        width: 13.4rem;
-        height: 13.4rem;
-        padding: 3.4rem;
+        width: 8.4rem;
+        height: 8.4rem;
+        padding: 2rem;
     }
 
     .key-facts__block--photo .key-facts__figure img {

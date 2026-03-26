@@ -993,6 +993,11 @@ main {
             min-height: 180vh;
         }
 
+        @media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+            height: 150vh;
+            min-height: 150vh;
+        }
+
         @media screen and (min-width: variables.$tablet) {
             height: 176vh;
             min-height: 176vh;
@@ -1043,6 +1048,18 @@ main {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+    .mobile-menu {
+        height: 100svh;
+        overflow: hidden;
+
+        &--opened {
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            animation-name: open-menu;
+        }
+    }
+
     .mobile-menu__rectangles {
         top: 51px;
         left: 20px;
@@ -1083,6 +1100,7 @@ main {
 
     .animated-title:has(.animated-title__cap) {
         gap: 1rem;
+        padding-bottom: 4rem;
     }
 
     .animated-title:has(.animated-title__cap) .animated-title__cap {

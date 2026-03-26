@@ -1611,7 +1611,7 @@
         }
 
         &__content {
-            top: 18svh;
+            top: 24svh;
             left: 0;
             width: 100%;
             padding-inline: 0;
@@ -1660,8 +1660,14 @@
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) {
+    .hero__bg {
+        left: 0px;
+        width: 100%;
+        height: 56%;
+    }
+
     .hero__grid {
-        top: calc(9svh);
+        top: 14svh;
         bottom: auto;
         height: 30svh;
         transform-origin: top center;
@@ -1669,6 +1675,6 @@
     }
 
     .hero__content {
-        top: 49svh;
+        top: 48svh;
     }
 }

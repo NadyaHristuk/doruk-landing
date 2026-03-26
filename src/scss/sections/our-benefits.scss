@@ -982,5 +982,23 @@
 
     .our-benefits__item {
         max-width: 54rem;
+        height: 6.4rem;
+    }
+
+    .our-benefits__circle {
+        width: 6.4rem;
+        height: 6.4rem;
+    }
+
+    .our-benefits__item-text {
+        height: 6.4rem;
+        width: calc(100% - 6.4rem);
+        padding: 0 2.4rem 0 1.4rem;
+    }
+
+    .our-benefits__item-title,
+    .our-benefits__item-subtitle {
+        font-size: 2.2rem;
+        padding-top: 0.3rem;
     }
 }

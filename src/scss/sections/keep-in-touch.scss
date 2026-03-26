@@ -98,6 +98,10 @@
         transform: translateX(-50%);
         pointer-events: none;
         contain: layout style paint;
+
+        path {
+            animation: none !important;
+        }
     }
 
     &__dots--right {
@@ -107,6 +111,10 @@
         transform: translateX(-50%);
         pointer-events: none;
         contain: layout style paint;
+
+        path {
+            animation: none !important;
+        }
     }
 
     @media screen and (max-width: variables.$mobile  - 1px) {

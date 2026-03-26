@@ -164,73 +164,92 @@ export const useMatrixDots = ({
 
     // Флаг видимости секции
     let isVisible = false;
+    // Callbacks to restart each SVG's animation loop when section re-enters view
+    const restartFns = [];
 
     svgElements.forEach((svg) => {
       if (!svg) return;
       const nodes = prepareSvgNodes(svg, baseOpacity);
       if (!nodes.length) return;
-      const columns = groupNodesByColumn(nodes, bucketSize);
-      if (!columns.length) return;
-
-      const states = columns.map((columnNodes) =>
-        createColumnState({
-          nodes: columnNodes,
-          baseOpacity,
-          minTailLength,
-          maxTailLength,
-          minHeadOpacity,
-          maxHeadOpacity,
-          minDuration,
-          maxDuration
-        })
-      );
 
       let rafId = null;
-      let lastUpdateTime = 0;
-      const frameThrottle = 1000 / 30; // 30 FPS max
 
-      const animate = (time) => {
-        // Пауза когда секция не видна
-        if (!isVisible) {
+      const startAnimation = () => {
+        const columns = groupNodesByColumn(nodes, bucketSize);
+        if (!columns.length) return;
+
+        const states = columns.map((columnNodes) =>
+          createColumnState({
+            nodes: columnNodes,
+            baseOpacity,
+            minTailLength,
+            maxTailLength,
+            minHeadOpacity,
+            maxHeadOpacity,
+            minDuration,
+            maxDuration
+          })
+        );
+
+        let lastUpdateTime = 0;
+        const frameThrottle = 1000 / 30; // 30 FPS max
+
+        const animate = (time) => {
+          // Section not visible: stop the loop entirely (restart via observer)
+          if (!isVisible) {
+            rafId = null;
+            return;
+          }
+
+          if (time - lastUpdateTime >= frameThrottle) {
+            lastUpdateTime = time;
+
+            states.forEach((state) => {
+              const { duration, travelDistance, tailLength } = state;
+              if (!duration || travelDistance <= 0) return;
+              const localTime = (time + state.offset) % duration;
+              const progress = localTime / duration;
+              const headPosition = progress * travelDistance - tailLength;
+              const pointer = Math.floor(headPosition);
+              updateColumn(state, pointer);
+            });
+          }
+
           rafId = window.requestAnimationFrame(animate);
-          return;
-        }
+        };
 
-        if (time - lastUpdateTime >= frameThrottle) {
-          lastUpdateTime = time;
-
-          states.forEach((state) => {
-            const { duration, travelDistance, tailLength } = state;
-            if (!duration || travelDistance <= 0) return;
-            const localTime = (time + state.offset) % duration;
-            const progress = localTime / duration;
-            const headPosition = progress * travelDistance - tailLength;
-            const pointer = Math.floor(headPosition);
-            updateColumn(state, pointer);
-          });
-        }
+        restartFns.push(() => {
+          if (!rafId) rafId = window.requestAnimationFrame(animate);
+        });
 
         rafId = window.requestAnimationFrame(animate);
+
+        cleanupFns.push(() => {
+          if (rafId) window.cancelAnimationFrame(rafId);
+          rafId = null;
+          states.forEach((state) => {
+            state.nodes.forEach(({ el }) => {
+              el.style.opacity = String(baseOpacity);
+            });
+            state.activeIndices = [];
+          });
+        });
       };
 
-      rafId = window.requestAnimationFrame(animate);
-
-      cleanupFns.push(() => {
-        if (rafId) window.cancelAnimationFrame(rafId);
-        states.forEach((state) => {
-          state.nodes.forEach(({ el }) => {
-            el.style.opacity = String(baseOpacity);
-          });
-          state.activeIndices = [];
-        });
-      });
+      // Defer getBBox() calls until after SVG is fully laid out
+      const timerId = setTimeout(startAnimation, 0);
+      cleanupFns.push(() => clearTimeout(timerId));
     });
 
-    // IntersectionObserver для паузы когда секция не видна
+    // IntersectionObserver: pause when section leaves view, restart when it re-enters
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const wasVisible = isVisible;
           isVisible = entry.isIntersecting;
+          if (isVisible && !wasVisible) {
+            restartFns.forEach((fn) => fn());
+          }
         });
       },
       { threshold: 0, rootMargin: '50px' }
