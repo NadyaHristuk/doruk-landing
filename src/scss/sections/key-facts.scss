@@ -1485,15 +1485,15 @@
 @media screen and (min-width: 1500px) {
     .key-facts__bg-stripes--upper {
         top: -30rem;
-        width: 91%;
+        width: 87%;
         left: -25.5rem;
         height: 166.54rem;
-        transform: rotate(7deg);
+        transform: rotate(-1deg);
     }
 
     .key-facts__bg-stripes--lower-left {
-        top: 73rem;
-        left: -42.5rem;
+        top: 58rem;
+        left: -37.5rem;
         width: 86%;
         height: 146rem;
         background-size: cover;
@@ -1501,18 +1501,18 @@
     }
 
     .key-facts__bg-stripes--lower-right {
-        top: 100rem;
+        top: 72rem;
         right: -16.5rem;
         left: unset;
         width: 79%;
         height: 144rem;
         background-size: cover;
-        transform: rotate(-6deg);
+        transform: rotate(-13deg);
     }
 
     .key-facts__bg--lower .key-facts__watermark {
-        top: 158rem;
-        left: 24%;
+        top: 140rem;
+        left: 22%;
         transform: rotate(241deg);
     }
 
@@ -1606,9 +1606,10 @@
     }
 
     .key-facts__block--photo {
-        flex-direction: column-reverse;
+        flex-direction: row;
         justify-content: flex-end;
-        padding-top: 12.5rem;
+        align-items: flex-end;
+        padding-top: 17.5rem;
     }
 
     .key-facts__block--photo .key-facts__figure {

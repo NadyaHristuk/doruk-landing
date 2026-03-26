@@ -190,7 +190,7 @@ const WhoWeAre = ({ lang }) => {
                     onUpdate: (self) => {
                         const offset = self.progress * maxX();
                         if (overlay) {
-                            gsap.set(overlay, { y: offset });
+                            gsap.set(overlay, { x: -offset, y: offset });
                         }
 
                         const panelWidth = window.innerWidth;
@@ -234,7 +234,7 @@ const WhoWeAre = ({ lang }) => {
                     },
                     onLeave: () => {
                         if (overlay) {
-                            gsap.set(overlay, { x: 0, y: maxX() });
+                            gsap.set(overlay, { y: maxX() });
                         }
                     },
                     onLeaveBack: () => {
