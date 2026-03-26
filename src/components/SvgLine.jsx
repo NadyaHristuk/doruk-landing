@@ -48,6 +48,13 @@ const SvgLine = () => {
                     : 0;
 
             totalScroll = ScrollTrigger.maxScroll(window);
+
+            // On mobile (non-desktop), set overlay height to match actual page height
+            // so the SVG path covers the full scroll range (not a fixed 600vh estimate)
+            const wrapper = wrapperRef.current;
+            if (wrapper && !isDesktop) {
+                wrapper.style.height = (totalScroll + window.innerHeight) + 'px';
+            }
         }
 
         function getVisualProgress(scrollY) {

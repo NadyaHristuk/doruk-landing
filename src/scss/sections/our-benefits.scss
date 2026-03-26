@@ -749,6 +749,13 @@
 
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+        &__inner {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
+        &__header {
+            margin-top: 0;
+        }
     }
 
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
@@ -781,14 +788,14 @@
             margin-top: 0;
             transform: translateX(-50%);
             width: calc(100vw - 3.2rem);
-            height: 42rem;
+            height: 38rem;
         }
 
         &__item {
             position: absolute;
-            width: 39rem;
+            width: 34rem;
             max-width: unset;
-            height: 7.2rem;
+            height: 5rem;
             order: initial;
 
             &:nth-child(1) {
@@ -800,7 +807,7 @@
                 left: calc(2% + 1rem);
             }
             &:nth-child(3) {
-                left: calc(50% - 21rem);
+                left: calc(50% - 17rem);
                 top: 22rem;
                 transform-origin: center center;
             }
@@ -810,31 +817,27 @@
                 transform-origin: right center;
             }
             &:nth-child(5) {
-                top: 31%;
+                top: 38%;
                 right: calc(2% + 1rem);
                 transform-origin: right center;
             }
         }
 
         &__circle {
-            width: 7.2rem;
-            height: 7.2rem;
-
-            i {
-                font-size: 3.2rem;
-            }
+            width: 5rem;
+            height: 5rem;
         }
 
         &__item-text {
-            height: 7.2rem;
-            width: calc(100% - 7.2rem);
-            padding: 0 1.4rem;
+            height: 5rem;
+            width: calc(100% - 5rem);
+            padding: 0 1.2rem;
         }
 
         &__item-title,
         &__item-subtitle {
-            font-size: 2rem;
-            padding-top: 0.3rem;
+            font-size: 1.6rem;
+            padding-top: 0.2rem;
         }
     }
 }

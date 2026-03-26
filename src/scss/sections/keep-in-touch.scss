@@ -907,12 +907,26 @@
 
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+        &__inner {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
+        &__header {
+            margin-top: 0;
+        }
+
         &__contact-info {
-            line-height: 3rem;
+            padding: 1.4rem 2rem;
+            font-size: 1.7rem;
+            line-height: 2rem;
         }
 
         &__contact-label {
-            margin: 0 0 2rem auto;
+            margin: 0 0 1.2rem auto;
+        }
+
+        &__email {
+            margin-bottom: 0.8rem;
         }
 
         &__figure {
@@ -926,7 +940,8 @@
         &__content {
             width: calc(100% - 5rem);
             margin-inline: 2.5rem;
-            padding-top: 2rem;
+            padding-top: 0;
+            margin-bottom: 2rem;
         }
 
         &__top {
@@ -958,12 +973,17 @@
         }
 
         &__form-fields {
-            width: 50%;
+            width: 40%;
+        }
+
+        &__inputs {
+            width: 100%;
+            gap: 1.4rem;
         }
 
         &__contact-card {
-            margin-top: -5.4rem;
-            margin-right: -1.6rem;
+            margin-top: 5.6rem;
+            margin-right: 4.4rem;
             width: 32rem;
         }
 
@@ -981,14 +1001,6 @@
             margin-bottom: 1rem;
         }
 
-        &__form-fields {
-            width: 50%;
-        }
-
-        &__form-fields {
-            width: 50%;
-        }
-
         &__top input,
         &__top button {
             width: 100%;
@@ -998,12 +1010,7 @@
 
         &__submit {
             position: relative;
-            max-width: 50%;
-        }
-
-        &__submit {
-            position: relative;
-            max-width: 50%;
+            max-width: 40%;
         }
     }
 
@@ -1076,16 +1083,6 @@
 
     // ── Tall landscape phones (769–1024px wide, short height) ──
     @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-        &__contact-card {
-            margin-top: 1.6rem;
-            margin-right: -1.6rem;
-            width: 32rem;
-        }
-
-        &__submit {
-            position: relative;
-            max-width: 50%;
-        }
     }
 
     @media screen and (min-width: 1280px) and (max-width: 1499px) {

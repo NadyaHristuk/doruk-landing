@@ -26,6 +26,11 @@ import './App.scss';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
+// Normalize scroll on non-desktop: fixes native touch/wheel scroll when GSAP triggers are active
+if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+    ScrollTrigger.normalizeScroll(true);
+}
+
 /**
  * @see {@link https://gsap.com} for GSAP animation library
  * @see {@link https://gsap.com/resources/React} useGSAP() Hook

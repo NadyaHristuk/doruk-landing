@@ -1725,6 +1725,16 @@
 // ── Tall phone (XR/11/Plus, portrait ≥800px height) ──────────
 #who-we-are {
     @media screen and (max-width: #{variables.$mobile - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+        height: 85vh;
+        min-height: 85vh;
+
+        .who-we-are__inner {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
+        .who-we-are__header {
+            margin-top: 0;
+        }
     }
 }
 
@@ -1848,7 +1858,7 @@
             flex: 0 0 100vw;
             width: 100vw;
             min-height: 100svh;
-            padding-top: 4rem;
+            padding-top: 0;
             gap: 0;
         }
 

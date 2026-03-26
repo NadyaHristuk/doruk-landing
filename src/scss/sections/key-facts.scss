@@ -388,19 +388,23 @@
             line-height: 2.3rem;
             -webkit-line-clamp: 10;
         }
-         @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
+        @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
             width: clamp(41rem, calc(33.6272rem + 0.576vw), 44.6rem);
             height: clamp(34rem, calc(24.5792rem + 0.736vw), 38.6rem);
             max-width: unset;
             flex: 0 0 clamp(41rem, calc(33.6272rem + 0.576vw), 44.6rem);
             padding: clamp(2.8rem, calc(2.3904rem + 0.032vw), 3rem);
-            border-radius: clamp(5.2rem, calc(2.7424rem + 0.192vw), variables.$border-radius-large);
+            border-radius: clamp(
+                5.2rem,
+                calc(2.7424rem + 0.192vw),
+                variables.$border-radius-large
+            );
             font-size: clamp(2rem, calc(1.5904rem + 0.032vw), 2.2rem);
             line-height: clamp(2.5rem, calc(1.8856rem + 0.048vw), 2.8rem);
             letter-spacing: 0;
             -webkit-line-clamp: 10;
         }
-         @media screen and (min-width: 1905px) {
+        @media screen and (min-width: 1905px) {
             width: 44.6rem;
             height: 38.6rem;
             max-width: unset;
@@ -483,13 +487,13 @@
             width: 88%;
             height: 35.2rem;
         }
-         @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
+        @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
             top: clamp(-0.4rem, calc(18.4976rem - 0.992vw), 5.8rem);
             left: clamp(-6rem, calc(33.624rem - 2.08vw), 7rem);
             width: clamp(80%, calc(86.096% - 0.32vw), 82%);
             height: clamp(36.6rem, calc(16.12rem + 1.6vw), 46.6rem);
         }
-         @media screen and (min-width: 1905px) {
+        @media screen and (min-width: 1905px) {
             top: -0.4rem;
             left: -6rem;
             width: 80%;
@@ -812,19 +816,21 @@
             transform: translateY(8rem);
             z-index: 5;
         }
-         @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
+        @media screen and (min-width: variables.$laptop) and (max-width: 1904px) {
             order: 2;
             width: clamp(34rem, calc(15.568rem + 1.44vw), 43rem);
             height: clamp(31rem, calc(6.424rem + 1.92vw), 43rem);
             margin-left: clamp(-3.8rem, calc(-5.0288rem + 0.096vw), -3.2rem);
-            transform: translateY(clamp(10rem, calc(5.6992rem + 0.336vw), 12.1rem));
+            transform: translateY(
+                clamp(10rem, calc(5.6992rem + 0.336vw), 12.1rem)
+            );
             backdrop-filter: blur(0.1rem);
             z-index: 5;
             img {
                 width: clamp(28rem, calc(6.9056rem + 1.648vw), 38rem);
             }
         }
-          @media screen and (min-width: 1905px) {
+        @media screen and (min-width: 1905px) {
             order: 2;
             width: 43rem;
             height: 43rem;
@@ -1124,10 +1130,115 @@
 
     // ── Tall phone (iPhone 12/14/XR/Pixel 7, portrait ≥800px) ────
     @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
+        &__inner {
+            padding-top: clamp(3rem, 3vw, 5rem);
+        }
+
+        &__header {
+            margin-top: 0;
+        }
+
+        &__backgrounds {
+            overflow: hidden;
+        }
+
+        &__bg-stripes {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__bg-stripes--upper {
+            top: -8svh;
+            left: -6svw;
+            width: 112%;
+            height: 108svh;
+            background-size: cover;
+        }
+
+        &__bg-stripes--lower {
+            top: 0;
+            background-size: contain;
+        }
+
+        &__bg-stripes--lower-left {
+            top: 83svh;
+            left: -6svw;
+            width: 108%;
+            height: 82svh;
+            background-size: cover;
+            transform: rotate(8deg);
+        }
+
+        &__bg-stripes--lower-right {
+            top: 10svh;
+            right: -6svw;
+            left: auto;
+            width: 108%;
+            height: 112svh;
+            background-size: cover;
+            transform: rotate(-4deg);
+        }
     }
 
     // ── Tall landscape phone (iPhone 12/14/XR/Pixel 7, 769–1024px)
     @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__backgrounds {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        &__bg-stripes {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__bg-stripes--upper {
+            top: -10rem;
+            left: -10rem;
+            width: 112%;
+            height: 88rem;
+            background-size: cover;
+            transform: rotate(2deg);
+        }
+
+        &__bg-stripes--lower {
+            top: -2rem;
+            background-size: contain;
+        }
+
+        &__bg-stripes--lower-left {
+            top: 66rem;
+            left: -16rem;
+            width: 82%;
+            height: 92rem;
+            background-size: contain;
+            transform: rotate(18deg);
+        }
+
+        &__bg-stripes--lower-right {
+            top: 132rem;
+            right: -10rem;
+            left: auto;
+            width: 78%;
+            height: 92rem;
+            background-size: contain;
+            transform: rotate(-6deg);
+        }
+
+        &__bg--upper .key-facts__watermark--lower {
+            top: 44rem;
+            right: 19%;
+        }
+
+        &__bg--lower .key-facts__watermark {
+            top: 150rem;
+            left: 22%;
+            transform: rotate(244deg);
+        }
+
         &__content {
             width: 95%;
             padding-top: 2rem;
@@ -1141,14 +1252,23 @@
         }
 
         &__logos {
-            top: -21px;
-            left: 197px;
+            top: 3px;
+            left: 33px;
+            height: 31rem;
         }
 
         &__block--photo &__figure {
             margin-left: 0;
             width: 28rem;
             height: 28rem;
+        }
+
+        &__block--photo {
+            padding-top: 8rem;
+        }
+
+        &__block--photo &__text {
+            margin-left: 0;
         }
 
         &__block--device &__figure {

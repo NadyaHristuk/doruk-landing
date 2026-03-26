@@ -262,10 +262,89 @@ main {
         }
 
         &::after {
-            top: 1rem;
-            left: 6%;
-            background-position: -0.4rem 87%;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100svh;
+            background-position: left top;
+            background-size: auto 100%;
+        }
+
+        &--opened {
+            width: 50%;
+            align-items: flex-start;
+            animation-name: open-menu-half;
+            border-left: 1px solid #747474;
+        }
+
+        .nav {
+            gap: 2.4rem;
+            padding-top: 6rem;
+            padding-left: 2.4rem;
+        }
+
+        .nav__list {
+            gap: 2rem;
+            padding-top: 56px;
+            padding-left: 2.4rem;
+        }
+
+        .nav__item {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+        }
+
+        &__rectangles--vertical {
+            .mobile-menu__rectangle {
+                &:nth-child(1) {
+                    height: 16rem;
+                }
+
+                &:nth-child(2) {
+                    bottom: 7rem;
+                    right: 6rem;
+                    height: 15rem;
+                }
+
+                &:nth-child(3) {
+                    bottom: 5rem;
+                    right: 4rem;
+                    height: 12rem;
+                }
+            }
+        }
+
+        &__rectangles--horizontal {
+            .mobile-menu__rectangle {
+                &:nth-child(3) {
+                    bottom: 14rem;
+                    width: 40%;
+                }
+
+                &:nth-child(4) {
+                    bottom: 12rem;
+                    width: 48%;
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        height: 100svh;
+        overflow: hidden;
+
+        &::before {
+            background-position: right -8rem;
             background-size: contain;
+        }
+
+        &::after {
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100svh;
+            background-position: left top;
+            background-size: auto 100%;
         }
 
         &--opened {
@@ -836,8 +915,13 @@ main {
         }
 
         @media screen and (max-width: 430px) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
-            height: 180vh;
-            min-height: 180vh;
+            height: 185vh;
+            min-height: 185vh;
+        }
+
+        @media screen and (max-width: 430px) and (min-height: 844px) and (orientation: portrait) {
+            height: 195vh;
+            min-height: 185vh;
         }
 
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
@@ -847,7 +931,13 @@ main {
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            height: 300svh;
+            height: 270svh;
+            min-height: 200svh;
+            overflow: hidden;
+        }
+
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: 390px) {
+            height: 280svh;
             min-height: 200svh;
             overflow: hidden;
         }
@@ -895,6 +985,13 @@ main {
 
         @media screen and (max-width: #{variables.$extra-small - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
             margin-bottom: 10rem;
+        }
+    }
+
+    &--keep-in-touch {
+        @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            height: auto;
+            min-height: auto;
         }
     }
 }
