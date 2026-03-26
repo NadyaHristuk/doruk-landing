@@ -1169,13 +1169,88 @@
     // ── Short landscape phone (iPhone SE): tablet-equivalent layout
     // ─────────────────────────────────────────────────────────────
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &__backgrounds {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        &__bg-stripes {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__bg-stripes--upper {
+            top: -4rem;
+            left: -2rem;
+            width: 104%;
+            height: 62rem;
+            background-size: cover;
+            transform: rotate(0deg);
+        }
+
         &__content {
             width: 95%;
             padding-top: 1rem;
         }
 
+        &__logos {
+            position: absolute;
+            top: 0.6rem;
+            left: 17rem;
+            width: 70%;
+            height: 27.6rem;
+        }
+
+        &__bg-stripes--lower {
+            top: -8rem;
+            background-size: contain;
+        }
+
+        &__bg-stripes--lower-left {
+            top: 52rem;
+            left: -12rem;
+            width: 78%;
+            height: 76rem;
+            background-size: contain;
+            transform: rotate(16deg);
+        }
+
+        &__bg-stripes--lower-right {
+            top: 118rem;
+            right: -8rem;
+            left: auto;
+            width: 72%;
+            height: 78rem;
+            background-size: contain;
+            transform: rotate(-6deg);
+        }
+
+        &__block--photo {
+            padding-top: 0;
+        }
+
+        &__text {
+            flex: 0 0 44.6rem;
+            width: 49.6rem;
+            height: 23rem;
+            max-width: 35.4rem;
+        }
+
+        &__block--device &__figure {
+            align-self: flex-start;
+            height: auto;
+        }
+
+        &__block--device &__figure img {
+            display: block;
+        }
+
         &__block {
             flex-direction: row;
+            padding-top: 0;
         }
     }
 }
@@ -1285,5 +1360,11 @@
         flex-direction: column-reverse;
         justify-content: flex-end;
         padding-top: 16.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .key-facts__block.key-facts__block--photo {
+        padding-top: 88px;
     }
 }

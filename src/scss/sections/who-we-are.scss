@@ -1733,7 +1733,7 @@
 #who-we-are {
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         overflow: hidden;
-        margin-bottom: 6rem;
+        margin-bottom: 0;
 
         .who-we-are__track {
             display: block;
@@ -1766,7 +1766,7 @@
             min-height: 5.2rem;
             height: auto;
             padding: 0 5.4rem 0 1.6rem;
-            left: 64%;
+            left: 67%;
         }
 
         .who-we-are__track .who-we-are__panel--default .who-we-are__text-block,

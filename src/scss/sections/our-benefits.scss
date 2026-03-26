@@ -681,7 +681,7 @@
         &__figure {
             position: relative;
             z-index: 2;
-            width: 38%;
+            width: 60%;
             height: auto;
             margin-inline: auto;
         }
@@ -720,7 +720,8 @@
             }
             &:nth-child(3) {
                 left: calc(50% - 17rem);
-                bottom: 0;
+                bottom: unset;
+                top: 22rem;
                 transform-origin: center center;
             }
             &:nth-child(4) {

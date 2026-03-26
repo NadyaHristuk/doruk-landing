@@ -262,9 +262,9 @@ main {
         }
 
         &::after {
-            top: -2rem;
-            left: 1%;
-            background-position: -0.4rem 50%;
+            top: 1rem;
+            left: 6%;
+            background-position: -0.4rem 87%;
             background-size: contain;
         }
 
@@ -841,8 +841,8 @@ main {
         }
 
         @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
-            height: 200svh;
-            min-height: 200svh;
+            height: 270svh;
+            min-height: 270svh;
             overflow: visible;
         }
 
@@ -883,6 +883,10 @@ main {
 
         @media screen and (min-width: 1500px) {
             margin-top: 10rem;
+        }
+
+        @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            margin-top: 0;
         }
 
         @media screen and (max-width: 430px) and (orientation: portrait) {
