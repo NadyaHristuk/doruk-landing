@@ -1564,6 +1564,26 @@
     }
 }
 
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    .key-facts__block {
+        flex-direction: row;
+        padding-top: 0;
+    }
+
+    .key-facts__block--photo .key-facts__figure {
+        margin-left: 0;
+        width: 21rem;
+        height: 26rem;
+    }
+
+    .key-facts__block--device .key-facts__figure {
+        margin-left: -2svw;
+        z-index: 5;
+        width: 27rem;
+        top: 110px;
+    }
+}
+
 @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
     .key-facts__text {
         width: 330px;

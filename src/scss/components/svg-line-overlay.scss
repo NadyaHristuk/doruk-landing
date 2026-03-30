@@ -48,14 +48,30 @@
         // height set dynamically via JS
     }
 
-    // Mobile slider (< 1280px) — show mobile path
+    // Mobile slider (< 1280px) — show mobile path, drop below content
     @media screen and (max-width: #{variables.$laptop - 1px}) {
+        z-index: 1;
+
         &__desktop {
             visibility: hidden;
         }
 
         &__mobile {
             visibility: visible;
+        }
+    }
+
+    // Tall landscape phones (iPhone XR/12/14, 769–1023px wide, ≤500px tall) —
+    // these use the desktop horizontal scroll layout, so show desktop path
+    @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        width: 300vw;
+
+        &__desktop {
+            visibility: visible;
+        }
+
+        &__mobile {
+            visibility: hidden;
         }
     }
 

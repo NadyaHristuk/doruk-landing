@@ -262,10 +262,10 @@ main {
         }
 
         &::after {
-            top: 0;
+            top: -53px;
             left: 17px;
-            width: 50%;
-            height: 100svh;
+            width: 72%;
+            height: 127svh;
             background-position: left top;
             background-size: auto 100%;
         }
@@ -307,9 +307,9 @@ main {
                 }
 
                 &:nth-child(3) {
-                    bottom: 5rem;
+                    bottom: 2rem;
                     right: 4rem;
-                    height: 12rem;
+                    height: 28rem;
                 }
             }
         }
@@ -335,14 +335,13 @@ main {
 
         &::before {
             background-position: right -8rem;
-            background-size: contain;
         }
 
         &::after {
-            top: 0;
-            left: 0;
-            width: 50%;
-            height: 100svh;
+            top: -28px;
+            left: 17px;
+            width: 54%;
+            height: 118svh;
             background-position: left top;
             background-size: auto 100%;
         }
@@ -356,8 +355,8 @@ main {
 
         .nav {
             gap: 2.4rem;
-            padding-top: 2rem;
-            padding-left: 2.4rem;
+            padding-top: 6rem;
+            padding-left: 4.4rem;
         }
 
         .nav__list {
@@ -378,9 +377,9 @@ main {
                 }
 
                 &:nth-child(2) {
-                    bottom: 7rem;
+                    bottom: 5rem;
                     right: 6rem;
-                    height: 15rem;
+                    height: 17rem;
                 }
 
                 &:nth-child(3) {
@@ -393,13 +392,19 @@ main {
 
         &__rectangles--horizontal {
             .mobile-menu__rectangle {
+                &:nth-child(1) {
+                    top: 45px;
+                    left: 0;
+                    width: 47%;
+                }
+
                 &:nth-child(3) {
-                    bottom: 14rem;
+                    bottom: 10rem;
                     width: 40%;
                 }
 
                 &:nth-child(4) {
-                    bottom: 12rem;
+                    bottom: 7rem;
                     width: 48%;
                 }
             }

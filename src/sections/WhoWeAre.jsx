@@ -190,7 +190,9 @@ const WhoWeAre = ({ lang }) => {
                     onUpdate: (self) => {
                         const offset = self.progress * maxX();
                         if (overlay) {
-                            gsap.set(overlay, { x: -offset, y: offset });
+                            const pinStart = self.start ?? 0;
+                            const yOffset = Math.min(Math.max(window.scrollY - pinStart, 0), maxX());
+                            gsap.set(overlay, { x: -offset, y: yOffset });
                         }
 
                         const panelWidth = window.innerWidth;

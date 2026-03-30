@@ -1902,8 +1902,6 @@
             position: relative;
             overflow: hidden;
             display: -webkit-box;
-            line-clamp: 5;
-            -webkit-line-clamp: 5;
             -webkit-box-orient: vertical;
             white-space: normal;
         }
@@ -1961,6 +1959,10 @@
             gap: 0;
         }
 
+        .who-we-are__track .who-we-are__panel.who-we-are__panel--mirrored {
+            flex-flow: row-reverse nowrap;
+        }
+
         .who-we-are__text-substrate {
             display: none;
         }
@@ -1993,12 +1995,17 @@
             min-height: 16rem;
         }
 
+        .who-we-are__track .who-we-are__panel--mirrored .who-we-are__text-block {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
         .who-we-are__track .who-we-are__panel--default .who-we-are__text-block,
         .who-we-are__track
             .who-we-are__panel--mirrored
             .who-we-are__text-block {
             width: 28rem;
-            height: 14rem;
+            height: 18rem;
             margin-top: 2rem;
         }
 
@@ -2025,5 +2032,84 @@
             font-size: 1.4rem;
             line-height: 1.8rem;
         }
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 500px) {
+    #who-we-are .who-we-are__track .who-we-are__panel.who-we-are__panel--mirrored[aria-hidden="false"] {
+        flex-flow: row-reverse nowrap;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__image,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__image {
+        width: 49%;
+        margin: 0;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block .who-we-are__title-circle,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__title-block .who-we-are__title-circle {
+        width: clamp(4.48rem, 15vh, 9.12rem);
+        height: clamp(4.48rem, 15vh, 9.12rem);
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--default .who-we-are__title-block,
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__title-block {
+        width: 30rem;
+        min-height: 5.2rem;
+        height: auto;
+        padding: 0 5.4rem 0 1.6rem;
+        left: 64%;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__title-block {
+        left: auto;
+        right: 46%;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block .who-we-are__title-line,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__title-block .who-we-are__title-line {
+        font-size: 1.8rem;
+        line-height: 2rem;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__text-block {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--default .who-we-are__text-block .who-we-are__text-content,
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__text-block .who-we-are__text-content {
+        margin: 0;
+        box-sizing: border-box;
+        padding: 1.4rem 1.6rem 1.8rem;
+        font-size: 1.25rem;
+        line-height: 1.55rem;
+        min-height: 12.95rem;
+        height: 12.95rem;
+        max-height: 12.95rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: landscape) and (max-height: 500px) {
+    #who-we-are .who-we-are__track .who-we-are__panel--default .who-we-are__title-block,
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__title-block {
+        width: 36rem;
+        min-height: 5.6rem;
+        height: auto;
+        padding: 0 5.8rem 0 1.8rem;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--default .who-we-are__title-block {
+        left: -7rem;
+        margin: 0 auto 2.5rem;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__title-block {
+        left: auto;
+        right: -3rem;
+        margin: 0 auto 2.5rem;
     }
 }
