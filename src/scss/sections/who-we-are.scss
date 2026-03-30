@@ -1673,6 +1673,14 @@
     }
 }
 
+@media screen and (orientation: landscape) and (min-width: 1024px) and (max-width: 1279px) and (min-height: 651px) {
+    .who-we-are__dots--left,
+    .who-we-are__dots--right {
+        width: 55vw;
+        height: auto;
+    }
+}
+
 @media screen and (orientation: landscape) and (min-width: 1024px) and (max-width: 1279px) {
     #who-we-are
         .who-we-are__panel.who-we-are__panel--default

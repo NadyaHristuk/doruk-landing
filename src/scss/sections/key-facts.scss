@@ -1435,6 +1435,18 @@
     }
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape) and (min-height: 651px) {
+    .key-facts__bg-stripes--lower-right {
+        top: 60rem;
+        right: -12rem;
+        left: auto;
+        width: 76%;
+        height: 110rem;
+        background-size: contain;
+        transform: rotate(-5deg);
+    }
+}
+
 @media screen and (min-width: 1280px) and (max-width: 1499px) {
     .key-facts__bg-stripes--upper {
         top: -30rem;

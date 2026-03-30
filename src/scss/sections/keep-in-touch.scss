@@ -985,6 +985,12 @@
 
     // ── iPad Mini / tablet landscape (1024–1279px, ≥651px height) ─
     @media screen and (min-width: variables.$tablet) and (max-width: #{variables.$laptop - 1px}) and (orientation: landscape) and (min-height: variables.$landscape-tablet-min-height) {
+        &__dots--left,
+        &__dots--right {
+            width: 55vw;
+            height: auto;
+        }
+
         &__contact-card {
             width: 24rem;
             margin-top: 1rem;

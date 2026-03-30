@@ -888,6 +888,13 @@
     }
 }
 
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape) and (min-height: 651px) {
+    .our-benefits__dots {
+        width: 135vw;
+        height: auto;
+    }
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
     .our-benefits__content {
         margin-top: 12rem;
