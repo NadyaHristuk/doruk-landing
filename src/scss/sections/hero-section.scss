@@ -1579,9 +1579,9 @@
         }
 
         &__bg {
-            left: -14%;
+            left: -16%;
             top: 0;
-            width: 95%;
+            width: 92%;
             height: 96%;
             background-image: url("assets/webp/home/astronaut-tablet.webp");
             background-position: left center;
@@ -1656,6 +1656,23 @@
         &__subtitle-pixelify {
             line-height: 4.1rem;
         }
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+    .hero__header-logo img {
+        width: 19rem;
+        height: auto;
+    }
+
+    .hero__header-lang--mobile .hero__header-lang-indicator {
+        width: 3.2rem;
+        height: 0.3rem;
+    }
+
+    .hero__header-lang--mobile .hero__header-lang-btn {
+        font-size: 2rem;
+        line-height: 2.4rem;
     }
 }
 

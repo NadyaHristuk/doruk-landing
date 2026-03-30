@@ -61,6 +61,12 @@
         }
     }
 
+    // Landscape tablets (iPad Mini/Air landscape, ≥1024px wide, >500px tall) —
+    // keep below hero section content
+    @media screen and (min-width: variables.$tablet) and (max-width: #{variables.$laptop - 1px}) and (orientation: landscape) and (min-height: 501px) {
+        z-index: 0;
+    }
+
     // Tall landscape phones (iPhone XR/12/14, 769–1023px wide, ≤500px tall) —
     // these use the desktop horizontal scroll layout, so show desktop path
     @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$tablet - 1px}) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {

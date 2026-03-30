@@ -307,7 +307,6 @@
             overflow: hidden;
 
             @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
-                width: 34rem;
                 max-width: none;
                 height: 13.6rem;
             }

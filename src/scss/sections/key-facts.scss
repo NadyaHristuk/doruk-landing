@@ -1429,6 +1429,10 @@
         width: 41.9rem;
         max-width: 41.9rem;
     }
+
+    .key-facts__block--photo .key-facts__figure img {
+        width: 30rem;
+    }
 }
 
 @media screen and (min-width: 1280px) and (max-width: 1499px) {
@@ -1549,8 +1553,10 @@
 
     .key-facts__block--photo .key-facts__figure {
         margin-left: 0;
-        width: 29rem;
-        height: 29rem;
+        width: 27rem;
+        height: 27rem;
+        top: -0.5rem;
+        left: 21%;
     }
 
     .key-facts__block--device {
@@ -1585,6 +1591,18 @@
 }
 
 @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
+    .section--key-facts {
+        height: 130vh;
+        min-height: 130vh;
+    }
+
+    .key-facts__bg-stripes--lower-left {
+        top: -7svh;
+        left: -39.5svw;
+        width: 86%;
+        height: 144vh;
+    }
+
     .key-facts__text {
         width: 330px;
         height: 255px;
@@ -1610,7 +1628,7 @@
     }
 
     .key-facts__block--photo .key-facts__figure img {
-        width: 25.6rem;
+        width: 24rem;
     }
 }
 
