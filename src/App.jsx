@@ -28,8 +28,14 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollToPlugin, ScrollSmoother);
 
 // Normalize scroll on phones only: fixes native touch/wheel scroll when GSAP triggers are active.
 // Do NOT enable on tablets (≥769px) — it creates a second scrollbar on iPad-sized devices.
-if (typeof window !== 'undefined' && window.innerWidth < 769) {
-    ScrollTrigger.normalizeScroll(true);
+if (typeof window !== 'undefined') {
+    const mqlNormalize = window.matchMedia('(max-width: 768px)');
+    if (mqlNormalize.matches) {
+        ScrollTrigger.normalizeScroll(true);
+    }
+    mqlNormalize.addEventListener('change', (e) => {
+        ScrollTrigger.normalizeScroll(e.matches);
+    });
 }
 
 /**

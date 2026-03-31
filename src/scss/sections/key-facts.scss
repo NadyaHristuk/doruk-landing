@@ -1436,6 +1436,24 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: landscape) and (min-height: 651px) {
+    .key-facts__bg-stripes--upper {
+        top: -36rem;
+        left: -36rem;
+        width: 99%;
+        height: 149rem;
+        transform: rotate(16deg);
+        background-size: cover;
+    }
+
+    .key-facts__bg-stripes--lower-left {
+        top: 60rem;
+        left: -30rem;
+        width: 82%;
+        height: 115rem;
+        background-size: contain;
+        transform: rotate(22deg);
+    }
+
     .key-facts__bg-stripes--lower-right {
         top: 60rem;
         right: -12rem;
@@ -1444,6 +1462,26 @@
         height: 110rem;
         background-size: contain;
         transform: rotate(-5deg);
+    }
+
+    .key-facts__bg--lower .key-facts__watermark {
+        top: 113rem;
+        left: 24%;
+        transform: rotate(247deg);
+        width: 16rem;
+    }
+
+    .key-facts__bg--upper .key-facts__watermark--upper {
+        top: -5rem;
+        left: 20%;
+        transform: rotate(-60deg);
+        opacity: 0.2;
+    }
+
+    .key-facts__bg--upper .key-facts__watermark--lower {
+        top: 41rem;
+        right: 22%;
+        width: 17rem;
     }
 }
 
@@ -1650,9 +1688,43 @@
         padding-inline: 2.6rem;
     }
 
+    .key-facts__bg-stripes--upper {
+        top: -9svh;
+        height: 92svh;
+        left: 0svw;
+    }
+
     .key-facts__bg-stripes--lower-left {
         top: 30svh;
-        left: -7.5svw;
+        left: -27.5svw;
+        background-size: 134%;
+    }
+
+    .key-facts__bg-stripes--lower-right {
+        top: 36.5svh;
+        left: 20svw;
+        background-size: 150%;
+    }
+
+    .key-facts__bg--lower .key-facts__watermark {
+        bottom: unset;
+        left: 20%;
+        top: 119rem;
+        transform: rotate(252deg) scaleX(-1);
+    }
+
+    .key-facts__bg--upper .key-facts__watermark--upper {
+        display: block;
+        top: -4rem;
+        left: 15%;
+        width: 16rem;
+    }
+
+    .key-facts__bg--upper .key-facts__watermark--lower {
+        top: 14rem;
+        left: 63%;
+        width: 16rem;
+        transform: rotate(-38deg);
     }
 
     .key-facts__block--photo {
@@ -1667,12 +1739,12 @@
         width: 29rem;
         height: 29rem;
         top: auto;
-        left: auto;
+        left: 17%;
         transform: none;
     }
 
     .key-facts__block--device {
-        margin-top: 0;
+        margin-top: 135px;
     }
 
     .key-facts__block--device .key-facts__figure {
@@ -1707,5 +1779,12 @@
 
     .key-facts__block--photo .key-facts__figure img {
         width: 25.6rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) and (orientation: portrait) and (min-height: 1180px) {
+    .section--key-facts {
+        height: 140vh;
+        min-height: 140vh;
     }
 }
