@@ -461,6 +461,11 @@ main {
         right: calc(env(safe-area-inset-right) - 4.7rem);
     }
 
+    @media screen and (min-width: 431px) and (max-width: 550px) and (orientation: portrait) {
+        top: calc(100svh - 12.9rem);
+        right: -2.5rem;
+    }
+
     // Phone landscape (≤500px height)
     @media screen and (max-width: variables.$mobile - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
         left: calc(100vw - env(safe-area-inset-right) - 12rem);
@@ -1046,6 +1051,12 @@ main {
 
     &--keep-in-touch {
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+            height: auto;
+            min-height: auto;
+        }
+
+        // Portrait tablets (769–1279px): content doesn't fill 100vh → shrink to fit
+        @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$laptop - 1px}) and (orientation: portrait) {
             height: auto;
             min-height: auto;
         }

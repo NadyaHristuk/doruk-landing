@@ -469,10 +469,10 @@
             height: 44rem;
         }
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
-            top: -13rem;
-            left: 1rem;
-            width: 100%;
-            height: 50rem;
+            top: -10rem;
+            left: -4rem;
+            width: 82%;
+            height: 51rem;
         }
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) and (orientation: portrait) {
             top: -10rem;
@@ -1581,11 +1581,27 @@
     }
 }
 
-@media screen and (max-width: 550px) and (orientation: portrait) and (min-height: 800px) {
+@media screen and (min-width: 431px) and (max-width: 550px) and (orientation: portrait) {
+    .section--key-facts {
+        height: 200vh;
+        min-height: 200vh;
+    }
+
     .key-facts__block--photo {
         flex-direction: column-reverse;
         justify-content: flex-end;
-        padding-top: 16.5rem;
+        padding-top: 17.5rem;
+    }
+
+    .key-facts__block--logos {
+        padding-top: 0;
+    }
+
+    .key-facts__block--device .key-facts__figure {
+        margin-left: 51svw;
+        z-index: 5;
+        width: 24rem;
+        bottom: 30rem;
     }
 }
 
@@ -1786,5 +1802,19 @@
     .section--key-facts {
         height: 140vh;
         min-height: 140vh;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: portrait) {
+    .section--key-facts {
+        height: 120vh;
+        min-height: 120vh;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1499px) and (orientation: landscape) {
+    .section--key-facts {
+        height: 185vh;
+        min-height: 160vh;
     }
 }

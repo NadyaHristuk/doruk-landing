@@ -1329,11 +1329,11 @@
                     width: calc(100% - 10rem);
                 }
 
-                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) {
+                @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
                     margin-top: 6.4rem;
                     margin-left: 7rem;
                     margin-right: auto;
-                    width: calc(100% - 10rem);
+                    width: calc(100% - 12rem);
                 }
 
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile  - 1px) {
@@ -1744,6 +1744,78 @@
         left: -7rem;
         top: 0.2rem;
         width: 43rem;
+    }
+}
+
+// ── iPad Pro 12.9" portrait (1024×1366) ─────────────────────────────────────
+// Override desktop row layout from 1024-1279px block — use portrait column layout.
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: portrait) {
+    #who-we-are .who-we-are__panel {
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        padding-top: 0;
+        gap: 0;
+        min-height: fit-content;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__info,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__info {
+        display: contents;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__image,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__image {
+        width: 85%;
+        margin: 0 auto;
+        order: 2;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__image::before,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__image::before {
+        left: 0.4rem;
+        top: 0.8rem;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__title-block {
+        order: 1;
+        position: absolute;
+        right: 7%;
+        left: auto;
+        top: auto;
+        width: 77%;
+        height: 8.5rem;
+        padding: 0 6.5rem 0 2rem;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block .who-we-are__title-circle,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__title-block .who-we-are__title-circle {
+        top: 50%;
+        transform: translateY(-50%);
+        width: clamp(6rem, 8.5vw, 9rem);
+        height: clamp(6rem, 8.5vw, 9rem);
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block .who-we-are__title-line,
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__title-block .who-we-are__title-line {
+        font-size: 3rem;
+        line-height: 3.2rem;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block {
+        width: 66%;
+        height: auto;
+        margin-left: 16rem;
+        margin-top: 8.4rem;
+        order: 3;
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--mirrored .who-we-are__text-block {
+        width: 66%;
+        height: auto;
+        margin-right: 16rem;
+        margin-top: 8.4rem;
+        order: 3;
     }
 }
 

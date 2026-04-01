@@ -467,7 +467,8 @@
         }
 
         @media screen and (min-width: 431px) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            top: calc(42svh + 9rem);
+            top: 8.2rem;
+            left: -7px;
             bottom: auto;
             height: 30svh;
             transform-origin: top center;
@@ -1579,7 +1580,7 @@
         }
 
         &__bg {
-            left: -16%;
+            left: -10%;
             top: 0;
             width: 92%;
             height: 96%;
@@ -1598,7 +1599,7 @@
         }
 
         &__grid {
-            top: 82px;
+            top: 20px;
             left: -21px;
             transform: scale(0.65);
             transform-origin: top left;
@@ -1693,5 +1694,92 @@
 
     .hero__content {
         top: 48svh;
+    }
+}
+
+// ── iPad Pro 12.9" portrait (1024×1366) ──────────────────────────────────────
+// $tablet = 1024px triggers desktop layout by default, which breaks in portrait.
+// Override to portrait-friendly layout matching the 769–1023px portrait pattern.
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (orientation: portrait) {
+    .hero__bg {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 58%;
+        background-image: url("assets/webp/home/astronaut-tablet.webp");
+        background-size: cover;
+        background-position: center top;
+    }
+
+    .hero__stage {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 85svh;
+    }
+
+    .hero__grid {
+        left: 17%;
+        top: 43svh;
+        bottom: auto;
+        height: 30svh;
+        transform-origin: top center;
+        transform: scale(0.8);
+    }
+
+    .hero__content {
+        top: 57svh;
+        left: 0;
+        width: 100%;
+        padding-inline: 2.4rem;
+    }
+
+    .hero__title {
+        margin-top: 0;
+        width: min(100%, 64rem);
+        margin-inline: auto;
+        height: 17rem;
+        display: block;
+        row-gap: 0;
+    }
+
+    .hero__title-left,
+    .hero__title-right {
+        font-size: 6.4rem;
+        line-height: 7.7rem;
+        letter-spacing: -0.1rem;
+        position: absolute;
+        width: max-content;
+    }
+
+    .hero__title-left {
+        top: 0;
+        left: calc(-2rem + 50%);
+        right: auto;
+        margin: 0;
+        transform: translateX(calc(-100% - 1.8rem));
+    }
+
+    .hero__title-right {
+        top: 8.6rem;
+        right: calc(-15rem + 50%);
+        left: auto;
+        margin: 0;
+        transform: translateX(1.8rem);
+    }
+
+    .hero__subtitle {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: min(100%, 64rem);
+        margin: 0 auto;
+        font-size: 4.8rem;
+        line-height: 6rem;
+        text-align: center;
+        white-space: normal;
     }
 }

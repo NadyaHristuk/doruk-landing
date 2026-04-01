@@ -152,7 +152,7 @@
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             display: flex;
             flex-direction: column;
-            margin-top: 5rem;
+            margin-top: 0;
             transform: translateY(0);
         }
 
@@ -293,6 +293,10 @@
         margin-inline: auto;
         mask: url("assets/svg/bg/our-benefits-image-mask.svg") no-repeat center
             center / contain;
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
+            width: 81%;
+        }
     }
 
     &__list {
@@ -308,6 +312,11 @@
         @media screen and (max-width: 390px) and (orientation: portrait) {
             row-gap: 1rem;
             margin-top: 3.8rem;
+        }
+
+        @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
+            margin-top: 3.8rem;
+            row-gap: 2rem;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
