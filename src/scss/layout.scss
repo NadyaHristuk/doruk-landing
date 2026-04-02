@@ -411,6 +411,24 @@ main {
         }
     }
 
+    // Extra-short fold/tablet landscape screens like 882x344 need a tighter menu offset.
+    @media screen and (min-width: variables.$mobile) and (max-width: 900px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        &::after {
+            top: -37px;
+            left: 17px;
+            width: 54%;
+            height: 124svh;
+            background-position: left top;
+            background-size: auto 100%;
+        }
+
+        .nav {
+            gap: 2.4rem;
+            padding-top: 3rem;
+            padding-left: 4.4rem;
+        }
+    }
+
     @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
         &__rectangles {
             top: 51px;
@@ -509,8 +527,16 @@ main {
         right: calc(env(safe-area-inset-right) - 2.7rem);
     }
 
+    @media screen and (min-width: variables.$mobile) and (max-width: 900px) and (orientation: landscape) and (max-height: variables.$landscape-phone-max-height) {
+        left: unset;
+        right: -2.5rem;
+        top: 73svh;
+    }
+
     @media screen and (min-width: 551px) and (max-width: 768px) {
-        right: calc(env(safe-area-inset-right) - 2.2rem);
+        right: -2.8rem;
+        left: unset;
+        top: 81svh;
     }
 
     @media screen and (min-width: 551px) and (max-width: 768px) and (orientation: portrait) {
@@ -1163,6 +1189,16 @@ button {
 @keyframes skeleton-spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media screen and (min-width: 431px) and (max-width: 550px) and (orientation: portrait) {
+    .mobile-menu::after {
+        top: 0rem;
+    }
+
+    .mobile-menu .nav {
+        padding-top: 15rem;
     }
 }
 

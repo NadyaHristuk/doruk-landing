@@ -175,6 +175,14 @@
             margin-top: calc(var(--content-offset) - 12rem);
         }
 
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            margin-top: 0;
+            transform: translateY(0);
+            width: calc(100vw - 3.2rem);
+            margin-inline: auto;
+            padding-top: 5rem;
+        }
+
         @media screen and (min-width: variables.$mobile) and (orientation: landscape) {
             margin-top: var(--content-tablet-offset);
         }
@@ -215,6 +223,13 @@
     }
 
     &__figure {
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            position: relative;
+            z-index: 2;
+            width: 44rem;
+            margin-inline: auto;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             position: relative;
             z-index: 2;
@@ -257,6 +272,11 @@
             width: 60%;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            margin-left: 0;
+            width: 100%;
         }
 
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) {
@@ -317,6 +337,17 @@
         @media screen and (min-width: variables.$extra-small) and (max-width: variables.$small  - 1px) and (orientation: portrait) {
             margin-top: 3.8rem;
             row-gap: 2rem;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 50%;
+            margin-top: 0;
+            transform: translateX(-50%);
+            width: calc(100vw - 3.2rem);
+            height: 37rem;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
@@ -399,6 +430,42 @@
 
         &:nth-child(3) {
             order: 5;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            position: absolute;
+            width: 32rem;
+            max-width: unset;
+            height: 5.4rem;
+            order: initial;
+
+            &:nth-child(1) {
+                top: -14%;
+                left: 4%;
+            }
+
+            &:nth-child(2) {
+                top: 50%;
+                left: 1%;
+            }
+
+            &:nth-child(3) {
+                left: calc(50% - 16rem);
+                bottom: 0;
+                transform-origin: center center;
+            }
+
+            &:nth-child(4) {
+                top: -14%;
+                right: 4%;
+                transform-origin: right center;
+            }
+
+            &:nth-child(5) {
+                top: 50%;
+                right: 1%;
+                transform-origin: right center;
+            }
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
@@ -993,7 +1060,7 @@
     }
 
     .our-benefits__image-wrap {
-        width: 48%;
+        width: 70%;
     }
 
     .our-benefits__item {

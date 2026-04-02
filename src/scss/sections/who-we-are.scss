@@ -184,6 +184,15 @@
             min-height: fit-content;
         }
 
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            justify-content: center;
+            flex-flow: row nowrap;
+            min-height: auto;
+            height: auto;
+            padding-top: 0;
+            gap: 3rem;
+        }
+
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) and (orientation: portrait) {
             padding-top: 0;
             padding-bottom: 3rem;
@@ -224,6 +233,10 @@
                 flex-direction: column;
             }
 
+            @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                flex-direction: row;
+            }
+
             @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet  - 1px) and (orientation: portrait) {
                 display: flex;
                 flex-direction: column;
@@ -260,6 +273,13 @@
                     width: 100%;
                     --who-image-layer-shift: 2.3rem;
                     margin: 0;
+                }
+
+                @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                    width: min(60rem, 43vw, 132.972972973dvh);
+                    aspect-ratio: 50 / 33;
+                    height: auto;
+                    flex-shrink: 0;
                 }
 
                 @media screen and (orientation: portrait) and (min-width: variables.$mobile) {
@@ -394,6 +414,14 @@
                     display: contents;
                 }
 
+                @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                    display: flex;
+                    flex-direction: column;
+                    width: 36rem;
+                    max-width: 40rem;
+                    margin: 0;
+                }
+
                 @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
                     width: 100%;
                     max-width: 81rem;
@@ -461,6 +489,15 @@
                     order: 1;
                     position: absolute;
                     right: 7%;
+                }
+
+                @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                    position: relative;
+                    height: 7.8rem;
+                    padding: 0 3rem 0 8rem;
+                    left: 0;
+                    top: 0.2rem;
+                    width: 43rem;
                 }
 
                 @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
@@ -554,6 +591,13 @@
                         height: clamp(5.6rem, 10.6vw, 11.4rem);
                     }
 
+                    @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                        left: 0;
+                        right: unset;
+                        width: 7.8rem;
+                        height: 7.8rem;
+                    }
+
                     @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
                         left: 0;
                         right: unset;
@@ -602,6 +646,11 @@
                             transform: rotate(0);
                             color: variables.$icon-color;
                             font-size: 2rem;
+                        }
+
+                        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                            transform: rotate(0);
+                            font-size: 4.4rem;
                         }
 
                         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
@@ -812,6 +861,12 @@
                     margin-left: 9rem;
                     width: 29.5rem;
                     height: auto;
+                }
+
+                @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                    margin-top: 3rem;
+                    width: 34rem;
+                    height: 20rem;
                 }
 
                 .who-we-are__text-substrate {
@@ -1130,6 +1185,13 @@
                         padding: 2rem;
                         min-height: unset;
                         width: 100%;
+                    }
+
+                    @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+                        padding: 3.2rem;
+                        font-size: 2rem;
+                        line-height: 2.6rem;
+                        border-radius: variables.$border-radius-large;
                     }
 
                     @media screen and (min-width: variables.$mobile) and (orientation: portrait) {
@@ -2191,5 +2253,31 @@
         left: auto;
         right: -3rem;
         margin: 0 auto 2.5rem;
+    }
+
+    #who-we-are .who-we-are__track .who-we-are__panel--default .who-we-are__text-block,
+    #who-we-are .who-we-are__track .who-we-are__panel--mirrored .who-we-are__text-block {
+        width: 28rem;
+        height: 18rem;
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+    #who-we-are .who-we-are__track {
+        margin-top: 0;
+    }
+}
+
+@media screen and (min-width: 431px) and (max-width: 550px) and (orientation: portrait) {
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__title-block {
+        width: calc(100% - 7.2rem);
+    }
+
+    #who-we-are .who-we-are__panel.who-we-are__panel--default .who-we-are__text-block {
+        margin-top: 6.4rem;
+        margin-left: 7rem;
+        margin-right: auto;
+        width: calc(100% - 13rem);
     }
 }

@@ -292,6 +292,16 @@
             height: 46.8rem;
         }
 
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            top: 45px;
+            left: -13rem;
+            width: 93%;
+            height: 100%;
+            background-image: url("assets/webp/home/astronaut-tablet.webp");
+            background-size: contain;
+            background-position: top left;
+        }
+
         @media screen and (min-width: variables.$mobile) and (max-width: variables.$tablet - 1px) {
             top: 3.5rem;
             width: 67.6rem;
@@ -356,6 +366,15 @@
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) {
             min-height: 80svh;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            position: absolute;
+            top: 4rem;
+            left: 43%;
+            min-height: auto;
+            width: 55%;
+            height: 90%;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
@@ -534,6 +553,16 @@
             left: 0;
             width: 100%;
             padding-inline: 2.4rem;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+        }
+
+        @media screen and (min-width: 600px) and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) {
+            top: 22svh;
+            left: 0;
+            width: 100%;
+            padding-inline: 2rem;
             flex-direction: column;
             align-items: stretch;
             justify-content: flex-start;
@@ -1674,6 +1703,22 @@
     .hero__header-lang--mobile .hero__header-lang-btn {
         font-size: 2rem;
         line-height: 2.4rem;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) and (orientation: landscape) and (max-height: 550px) {
+    .hero__grid {
+        top: -11.8rem;
+        left: -161px;
+    }
+
+    .hero__stage {
+        position: absolute;
+        top: 3rem;
+        left: 46%;
+        min-height: auto;
+        width: 55%;
+        height: 90%;
     }
 }
 
