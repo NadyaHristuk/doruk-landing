@@ -1081,6 +1081,12 @@ main {
             min-height: auto;
         }
 
+        // Portrait phones (<769px): content doesn't fill 100vh → shrink to fit
+        @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: portrait) {
+            height: auto;
+            min-height: auto;
+        }
+
         // Portrait tablets (769–1279px): content doesn't fill 100vh → shrink to fit
         @media screen and (min-width: variables.$mobile) and (max-width: #{variables.$laptop - 1px}) and (orientation: portrait) {
             height: auto;
@@ -1243,6 +1249,21 @@ button {
     .mobile-menu .nav {
         padding-top: 16rem;
         padding-left: 11rem;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 540px) {
+    .mobile-menu .nav {
+        padding-top: 102px;
+    }
+
+    .mobile-menu::after {
+        content: "";
+        position: absolute;
+        top: 0rem;
+        left: 2%;
+        width: 64%;
+        height: 100%;
     }
 }
 

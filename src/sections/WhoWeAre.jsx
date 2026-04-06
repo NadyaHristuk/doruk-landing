@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // hooks
 import { useMobile, useTitleAnimation } from "../hooks";
 // config
@@ -166,7 +167,10 @@ const WhoWeAre = ({ lang }) => {
 
         // Skip GSAP animation on mobile — use button/dot navigation instead
         if (useMobileNav) {
-            // Reset track position for mobile
+            // Kill any pin-spacer that may have been created at a wider viewport
+            ScrollTrigger.getAll()
+                .filter((st) => st.trigger === section)
+                .forEach((st) => st.kill());
             gsap.set(track, { x: 0 });
             return;
         }

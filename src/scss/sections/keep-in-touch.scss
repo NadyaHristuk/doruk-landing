@@ -1429,3 +1429,36 @@
         height: 9rem;
     }
 }
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
+    .keep-in-touch__content {
+        padding-top: 6rem;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
+    .keep-in-touch__contact-card {
+        width: 25rem;
+        margin-top: -12rem;
+        margin-right: 0.2rem;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
+    .keep-in-touch__contact-info {
+        padding: 1rem;
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
+    .keep-in-touch__contact-label {
+        margin: 1rem 0 0;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
+    .keep-in-touch__email {
+        margin-bottom: 0;
+    }
+}
