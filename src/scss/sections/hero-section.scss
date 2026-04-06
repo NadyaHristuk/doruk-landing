@@ -882,6 +882,7 @@
         letter-spacing: -0.1rem;
         color: variables.$color-white;
         text-transform: uppercase;
+        text-wrap: balance;
 
         @media screen and (min-width: variables.$mobile) {
             position: absolute;
@@ -969,6 +970,26 @@
             font-size: 8rem;
             line-height: 10.2rem;
             letter-spacing: 0.64rem;
+        }
+
+        @media screen and (max-width: variables.$tablet - 1px) {
+            max-width: min(48%, 28rem);
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: normal;
+
+            &:only-child {
+                position: relative;
+                top: auto;
+                right: auto;
+                left: auto;
+                display: block;
+                width: min(100%, 34rem);
+                max-width: 100%;
+                margin-inline: auto;
+                transform: none;
+                text-align: center;
+            }
         }
     }
 
@@ -1178,6 +1199,9 @@
         margin-top: 1rem;
         text-align: center;
         white-space: nowrap;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        text-wrap: balance;
         color: variables.$color-white;
         font-size: 4.8rem;
         line-height: 6rem;
@@ -1352,6 +1376,10 @@
         font-weight: 500;
         letter-spacing: 0;
 
+        &:empty {
+            display: none;
+        }
+
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$laptop  - 1px) {
             line-height: 8rem;
         }
@@ -1377,6 +1405,10 @@
         font-family: variables.$font-source-code-pro;
         font-weight: 400;
         letter-spacing: 0;
+
+        &:empty {
+            display: none;
+        }
 
         @media screen and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
             line-height: inherit;

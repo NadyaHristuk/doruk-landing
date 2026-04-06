@@ -15,6 +15,10 @@ const HeroSection = ({ lang, setLang }) => {
   const heroRef = useRef(null);
   const titleLeftRef = useRef(null);
   const titleRightRef = useRef(null);
+  const titleLeft = translate('home.title.left', lang);
+  const titleRight = translate('home.title.right', lang);
+  const subtitleText = translate('home.subtitle.text', lang) || '';
+  const subtitleEnd = translate('home.subtitle.end', lang) || '';
 
   // Title intro animation (appear from sides into fixed positions)
   useGSAP(
@@ -71,17 +75,27 @@ const HeroSection = ({ lang, setLang }) => {
         <HeroGrid />
         <div className="hero__content">
           <h1 className="hero__title">
-            <span className="hero__title-left" ref={titleLeftRef}>
-              {translate('home.title.left', lang)}
-            </span>
-            <span className="hero__title-right" ref={titleRightRef}>
-              {translate('home.title.right', lang)}
-            </span>
+            {titleLeft ? (
+              <span className="hero__title-left" ref={titleLeftRef}>
+                {titleLeft}
+              </span>
+            ) : null}
+            {titleRight ? (
+              <span className="hero__title-right" ref={titleRightRef}>
+                {titleRight}
+              </span>
+            ) : null}
           </h1>
           <h2 className="hero__subtitle">
-            <span className="hero__subtitle-pixelify">{translate('home.subtitle.text', lang).charAt(0)}</span>
-            <span className="hero__subtitle-source">{translate('home.subtitle.text', lang).slice(1)}</span>
-            <span className="hero__subtitle-pixelify hero__subtitle-pixelify--end">{translate('home.subtitle.end', lang)}</span>
+            {subtitleText ? (
+              <span className="hero__subtitle-pixelify">{subtitleText.charAt(0)}</span>
+            ) : null}
+            {subtitleText.slice(1) ? (
+              <span className="hero__subtitle-source">{subtitleText.slice(1)}</span>
+            ) : null}
+            {subtitleEnd ? (
+              <span className="hero__subtitle-pixelify hero__subtitle-pixelify--end">{subtitleEnd}</span>
+            ) : null}
           </h2>
         </div>
       </div>

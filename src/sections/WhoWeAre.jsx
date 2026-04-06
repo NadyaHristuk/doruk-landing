@@ -44,18 +44,17 @@ const WhoWeAreContent = ({ item, lang, idSuffix = "", hidden = false }) => {
                     <div className="who-we-are__title-circle">
                         <i className="icon-about-arrow" />
                     </div>
-                    <h3
-                        className="who-we-are__title-line who-we-are__title-line--first"
-                        id={titleId}
-                    >
-                        <span className="who-we-are__title-glow">
-                            {translate(item.titleStart, lang)}
+                    <h3 id={titleId}>
+                        <span className="who-we-are__title-line who-we-are__title-line--first">
+                            <span className="who-we-are__title-glow">
+                                {translate(item.titleStart, lang)}
+                            </span>
+                            {translate(item.title, lang)}
                         </span>
-                        {translate(item.title, lang)}
+                        <span className="who-we-are__title-line who-we-are__title-line--second">
+                            {translate(item.titleEnd, lang)}
+                        </span>
                     </h3>
-                    <p className="who-we-are__title-line who-we-are__title-line--second">
-                        {translate(item.titleEnd, lang)}
-                    </p>
                 </div>
                 <div className="who-we-are__text-block">
                     <img
