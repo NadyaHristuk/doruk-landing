@@ -1339,17 +1339,93 @@
     }
 
     // ── Mid-height landscape phones (up to 768px wide, 501–650px tall) ──
+    // Surface Duo 720×540 falls here
     @media screen and (max-width: #{variables.$mobile - 1px}) and (orientation: landscape) and (min-height: calc(variables.$landscape-phone-max-height + 1px)) and (max-height: variables.$nest-hub-max-height) {
+        &__content {
+            width: calc(100% - 5rem);
+            margin-inline: 4rem;
+            padding-top: 2rem;
+        }
+
+        &__top {
+            padding-top: 0;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3rem;
+        }
+
+        &__figure {
+            display: none;
+        }
+
+        &__contact-card {
+            position: absolute;
+            top: 42px;
+            right: -5px;
+            width: 25rem;
+            transform: rotate(-20deg);
+            margin-top: 0;
+        }
+
+        &__form-fields {
+            width: 50%;
+        }
+
         &__top input,
         &__top button {
             width: 100%;
             height: 4rem;
-                    font-size: 1.8rem;
+            font-size: 1.8rem;
+        }
+
+        &__top textarea {
+            width: 100%;
+            max-width: 100%;
+            height: 8rem;
+            padding-top: 0.4rem;
+        }
+
+        &__inputs {
+            width: 100%;
         }
 
         &__submit {
             position: relative;
             max-width: 50%;
         }
+
+        &__contact-info {
+            padding: 1.2rem 1.6rem;
+            font-size: 1.6rem;
+            line-height: 1.9rem;
+        }
+
+        &__contact-label {
+            margin: 0.4rem 0 1.4rem;
+        }
+
+        &__email {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 540px) {
+    .keep-in-touch__form-fields {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 540px) {
+    .keep-in-touch__submit {
+        position: relative;
+        max-width: 50%;
+    }
+}
+
+@media screen and (min-width: 551px) and (max-width: 768px) and (orientation: landscape) and (max-height: 540px) {
+    .keep-in-touch__top textarea {
+        height: 9rem;
     }
 }
