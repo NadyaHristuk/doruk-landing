@@ -58,7 +58,7 @@
         width: 100%;
         height: 100%;
 
-        .who-we-are__background-stripes {
+        .who-we-are__bg-dots {
             position: absolute;
             left: 0;
             width: 100vw;
@@ -124,12 +124,11 @@
             }
         }
 
-        .who-we-are__dots--left,
-        .who-we-are__dots--right {
+        .who-we-are__dots--left {
             position: absolute;
             top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            transform: none;
             pointer-events: none;
             contain: layout style paint;
             z-index: 1;
@@ -140,8 +139,19 @@
         }
 
         .who-we-are__dots--right {
+            position: absolute;
             top: auto;
             bottom: 0;
+            left: auto;
+            right: 0;
+            transform: none;
+            pointer-events: none;
+            contain: layout style paint;
+            z-index: 1;
+
+            path {
+                animation: none !important;
+            }
         }
 
         @media screen and (max-width: variables.$mobile  - 1px) {
@@ -2033,7 +2043,6 @@
 // ── Tall phone (XR/11/Plus, portrait ≥800px height) ──────────
 #who-we-are {
     @media screen and (max-width: #{variables.$mobile - 1px}) and (min-height: variables.$tall-phone-min-height) and (orientation: portrait) {
-        height: 85vh;
         min-height: 85vh;
 
         .who-we-are__inner {
@@ -2532,7 +2541,7 @@
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1279px) and (max-height: 600px) and (orientation: landscape) {
-    #who-we-are .who-we-are__backgrounds .who-we-are__background-stripes {
+    #who-we-are .who-we-are__backgrounds .who-we-are__bg-dots {
         top: -17rem;
     }
 }

@@ -42,13 +42,11 @@ const OurBenefits = ({ lang }) => {
     return (
         <div className="our-benefits">
             <div className="our-benefits__backgrounds">
-                <div className="our-benefits__bg">
-                    {!disableDots && (
-                        <div className="our-benefits__bg-dots" aria-hidden="true">
-                            <SvgBenefitsDots className="our-benefits__dots" />
-                        </div>
-                    )}
-                </div>
+                {!disableDots && (
+                    <div className="our-benefits__bg-dots" aria-hidden="true">
+                        <SvgBenefitsDots className="our-benefits__dots" />
+                    </div>
+                )}
             </div>
 
             <div className="our-benefits__inner">

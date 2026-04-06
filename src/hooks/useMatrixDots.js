@@ -162,8 +162,8 @@ export const useMatrixDots = ({
       ? Array.from(root.querySelectorAll(svgSelector))
       : Array.from(document.querySelectorAll(svgSelector));
 
-    // Флаг видимости секции
-    let isVisible = false;
+    // Флаг видимости секции — стартуем true, чтобы анимация начиналась сразу
+    let isVisible = true;
     // Callbacks to restart each SVG's animation loop when section re-enters view
     const restartFns = [];
 

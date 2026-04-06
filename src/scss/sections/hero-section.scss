@@ -372,18 +372,16 @@
             position: absolute;
             top: 4rem;
             left: 43%;
-            min-height: auto;
             width: 55%;
-            height: 90%;
+            min-height: 90%;
         }
 
         @media screen and (min-width: variables.$tablet) and (max-width: variables.$desktop  - 1px) {
             position: absolute;
             top: 7rem;
             left: 50%;
-            min-height: auto;
             width: 65rem;
-            height: 60rem;
+            min-height: 60rem;
         }
 
         @media screen and (min-width: variables.$laptop) and (max-width: variables.$desktop - 1px) {
@@ -394,9 +392,8 @@
             position: absolute;
             top: 9.4rem;
             left: 50%;
-            min-height: auto;
             width: 79.1rem;
-            height: 73.1rem;
+            min-height: 73.1rem;
         }
 
         @media screen and (max-width: 390px) and (orientation: portrait) {
@@ -404,12 +401,10 @@
         }
 
         @media screen and (max-width: variables.$mobile - 1px) and (min-width: 391px) and (orientation: portrait) {
-            height: 100%;
             min-height: 100svh;
         }
 
         @media screen and (min-width: variables.$small) and (max-width: variables.$mobile - 1px) and (orientation: portrait) {
-            height: 100%;
             min-height: 100svh;
         }
 

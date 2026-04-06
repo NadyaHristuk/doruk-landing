@@ -94,10 +94,11 @@
     &__dots--left {
         position: absolute;
         top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        transform: none;
         pointer-events: none;
         contain: layout style paint;
+        max-width: none;
 
         path {
             animation: none !important;
@@ -107,10 +108,12 @@
     &__dots--right {
         position: absolute;
         bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: auto;
+        right: 0;
+        transform: none;
         pointer-events: none;
         contain: layout style paint;
+        max-width: none;
 
         path {
             animation: none !important;

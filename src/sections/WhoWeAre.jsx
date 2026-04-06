@@ -259,7 +259,7 @@ const WhoWeAre = ({ lang }) => {
         <>
             <div className="who-we-are__backgrounds">
                 {!disableDots && (
-                    <div className="who-we-are__background-stripes">
+                    <div className="who-we-are__bg-dots">
                         <SvgDotsLeft className="who-we-are__dots--left" />
                         <SvgDotsRight className="who-we-are__dots--right" />
                     </div>
